@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Dashboard</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+        h1 { color: #38bdf8; text-align: center; margin-bottom: 30px; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        .stat-value { font-size: 2em; font-weight: bold; color: #38bdf8; }
+        .jobs-grid { display: grid; gap: 20px; }
+        .job-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .job-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+        .job-title { color: #38bdf8; font-size: 1.3em; font-weight: bold; margin-bottom: 10px; }
+        .job-company { color: #94a3b8; font-size: 1.1em; margin-bottom: 15px; }
+        .job-details { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 15px; 
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        .detail-item {
+            background: #0f172a;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .match-score {
+            display: inline-block;
+            background: #22c55e;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .status-applied { background: #3b82f6; color: white; }
+        .status-interview { background: #22c55e; color: white; }
+        .status-offer { background: #eab308; color: white; }
+        .status-rejected { background: #ef4444; color: white; }
+        .btn {
+            display: inline-block;
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: #0ea5e9; }
+        .btn-secondary {
+            background: #475569;
+            color: #e2e8f0;
+        }
+        .btn-secondary:hover { background: #334155; }
+        .job-details-full {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 5px;
+            border-left: 3px solid #38bdf8;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .job-details-full.show { display: block; }
+        .section-title {
+            color: #38bdf8;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        .detail-content {
+            color: #cbd5e1;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+    </style>
+    <script>
+        function toggleDetails(id) {
+            const elem = document.getElementById('details-' + id);
+            const btn = document.getElementById('btn-' + id);
+            if (elem.classList.contains('show')) {
+                elem.classList.remove('show');
+                btn.textContent = 'Show Full Details ▼';
+            } else {
+                elem.classList.add('show');
+                btn.textContent = 'Hide Details ▲';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>🚀 Job Search Dashboard</h1>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-value">5</div>
+            <div>Total Jobs</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">5</div>
+            <div>High Priority (85%+)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">0</div>
+            <div>Applications Tracked</div>
+        </div>
+    </div>
+
+    <div class="jobs-grid">
+
+        <div class="job-card">
+            <div class="job-title">Development Director at Girls Inc. ($75</div>
+            <div class="job-company">Strategic Match</div>
+            <div class="job-details">
+                <div class="detail-item">📍 Dallas-Fort Worth, TX</div>
+                <div class="detail-item">💼 nonprofit</div>
+                <div class="detail-item">📅 N/A</div>
+                <div class="detail-item">💰 N/A</div>
+                <span class="match-score">95% Match</span>
+                
+            </div>
+            <a href="https://strategic-match.com/job/14713" class="btn" target="_blank">View Job →</a>
+            <button class="btn btn-secondary" id="btn-12" onclick="toggleDetails(12)">Show Full Details ▼</button>
+
+            <div class="job-details-full" id="details-12">
+                <div class="section-title">📋 Job Description</div>
+                <div class="detail-content">N/A</div>
+
+                <div class="section-title">✅ Requirements</div>
+                <div class="detail-content">N/A</div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-title">Senior Account Executive – SaaS (Dallas</div>
+            <div class="job-company">** Leading SaaS provider specializing in enterprise solutions for CRM and workflow automation</div>
+            <div class="job-details">
+                <div class="detail-item">📍 Dallas-Fort Worth, TX</div>
+                <div class="detail-item">💼 corporate</div>
+                <div class="detail-item">📅 N/A</div>
+                <div class="detail-item">💰 N/A</div>
+                <span class="match-score">85% Match</span>
+                
+            </div>
+            <a href="**" class="btn" target="_blank">View Job →</a>
+            <button class="btn btn-secondary" id="btn-1" onclick="toggleDetails(1)">Show Full Details ▼</button>
+
+            <div class="job-details-full" id="details-1">
+                <div class="section-title">📋 Job Description</div>
+                <div class="detail-content">N/A</div>
+
+                <div class="section-title">✅ Requirements</div>
+                <div class="detail-content">N/A</div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-title">Sales Director – Enterprise Software (92 match score)</div>
+            <div class="job-company">analysis</div>
+            <div class="job-details">
+                <div class="detail-item">📍 Dallas-Fort Worth, TX</div>
+                <div class="detail-item">💼 corporate</div>
+                <div class="detail-item">📅 N/A</div>
+                <div class="detail-item">💰 N/A</div>
+                <span class="match-score">85% Match</span>
+                
+            </div>
+            <a href="https://strategic-match.com/job/76161" class="btn" target="_blank">View Job →</a>
+            <button class="btn btn-secondary" id="btn-2" onclick="toggleDetails(2)">Show Full Details ▼</button>
+
+            <div class="job-details-full" id="details-2">
+                <div class="section-title">📋 Job Description</div>
+                <div class="detail-content">N/A</div>
+
+                <div class="section-title">✅ Requirements</div>
+                <div class="detail-content">N/A</div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-title">Development Manager at Carroll Education Foundation ($65</div>
+            <div class="job-company">Strategic Match</div>
+            <div class="job-details">
+                <div class="detail-item">📍 Dallas-Fort Worth, TX</div>
+                <div class="detail-item">💼 nonprofit</div>
+                <div class="detail-item">📅 N/A</div>
+                <div class="detail-item">💰 N/A</div>
+                <span class="match-score">85% Match</span>
+                
+            </div>
+            <a href="https://strategic-match.com/job/89459" class="btn" target="_blank">View Job →</a>
+            <button class="btn btn-secondary" id="btn-10" onclick="toggleDetails(10)">Show Full Details ▼</button>
+
+            <div class="job-details-full" id="details-10">
+                <div class="section-title">📋 Job Description</div>
+                <div class="detail-content">N/A</div>
+
+                <div class="section-title">✅ Requirements</div>
+                <div class="detail-content">N/A</div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-title">Major Gifts Officer at Big Thought ($70</div>
+            <div class="job-company">Strategic Match</div>
+            <div class="job-details">
+                <div class="detail-item">📍 Dallas-Fort Worth, TX</div>
+                <div class="detail-item">💼 nonprofit</div>
+                <div class="detail-item">📅 N/A</div>
+                <div class="detail-item">💰 N/A</div>
+                <span class="match-score">85% Match</span>
+                
+            </div>
+            <a href="https://strategic-match.com/job/64758" class="btn" target="_blank">View Job →</a>
+            <button class="btn btn-secondary" id="btn-11" onclick="toggleDetails(11)">Show Full Details ▼</button>
+
+            <div class="job-details-full" id="details-11">
+                <div class="section-title">📋 Job Description</div>
+                <div class="detail-content">N/A</div>
+
+                <div class="section-title">✅ Requirements</div>
+                <div class="detail-content">N/A</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
