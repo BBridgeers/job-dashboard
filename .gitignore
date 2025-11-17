@@ -1,0 +1,5 @@
+credentials.json
+gdrive_credentials.json
+token.json
+*.json
+job_tracker.db

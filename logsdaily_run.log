@@ -1,0 +1,52 @@
+/mnt/c/Users/yoga/Documents/job_search_automation/venv/bin/python: can't open file '/mnt/c/Users/yoga/Documents/job_search_automation/job_search_agent_corporate_sonar_pro_updated.py': [Errno 2] No such file or directory
+/mnt/c/Users/yoga/Documents/job_search_automation/venv/bin/python: can't open file '/mnt/c/Users/yoga/Documents/job_search_automation/job_search_agent_nonprofit_sonar_pro_updated.py': [Errno 2] No such file or directory
+
+🏗️  Building HTML dashboard...
+✅ Dashboard built: dashboard/dashboard.html
+🌐 Open in browser: file:///mnt/c/Users/yoga/Documents/job_search_automation/dashboard/dashboard.html
+
+📤 Uploading dashboard to Google Drive...
+📁 Found existing folder: Job Search Results
+📤 Uploaded to Google Drive: dashboard.html
+🔗 View at: https://drive.google.com/file/d/1mZuakN1hQK07rU1xZ9OqXhFJap-Iao4_/view?usp=drivesdk
+✅ Dashboard uploaded to Google Drive!
+
+================================================================================
+🚀 JOB SEARCH AUTOMATION - FULL RUN
+================================================================================
+Started: 2025-11-16 10:56 PM CST
+
+================================================================================
+🚀 STEP 1/6: Corporate Job Search
+================================================================================
+❌ STEP 1/6: Corporate Job Search - FAILED
+Error: Command '['/mnt/c/Users/yoga/Documents/job_search_automation/venv/bin/python', 'job_search_agent_corporate_sonar_pro_updated.py']' returned non-zero exit status 2.
+
+================================================================================
+🚀 STEP 2/6: Nonprofit Job Search
+================================================================================
+❌ STEP 2/6: Nonprofit Job Search - FAILED
+Error: Command '['/mnt/c/Users/yoga/Documents/job_search_automation/venv/bin/python', 'job_search_agent_nonprofit_sonar_pro_updated.py']' returned non-zero exit status 2.
+⚠️  Corporate results file not found: job_search_results/job_search_corporate_sonar_2025-11-16.txt
+⚠️  Nonprofit results file not found: job_search_results/job_search_nonprofit_sonar_2025-11-16.txt
+
+================================================================================
+🚀 STEP 5/6: Building HTML Dashboard
+================================================================================
+✅ STEP 5/6: Building HTML Dashboard - SUCCESS
+
+================================================================================
+🚀 STEP 6/6: Exporting to CSV
+================================================================================
+📊 Exported 5 jobs to job_tracker.csv
+✅ Exported job_tracker.csv
+
+================================================================================
+📊 RUN SUMMARY
+================================================================================
+Completed: 2/6 steps
+Time: 2025-11-16 10:56 PM CST
+
+⚠️  4 step(s) had issues - review output above
+
+================================================================================
