@@ -3,237 +3,604 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Search Command Center</title>
+    <meta name="description" content="Job Search Dashboard - 9 Opportunities">
+    <title>Job Dashboard - 9 Opportunities</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.6; }
-
-        /* MOBILE-FIRST: HEADER STARTS COLLAPSED */
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 15px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
-        .header-top { display: flex; justify-content: space-between; align-items: center; }
-        .header h1 { font-size: 18px; margin: 0; }
-        .toggle-stats { background: rgba(255,255,255,0.3); border: none; color: white; padding: 6px 12px; border-radius: 15px; cursor: pointer; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
-        .toggle-stats:active { background: rgba(255,255,255,0.4); transform: scale(0.95); }
-
-        /* Stats grid - HIDDEN by default on mobile */
-        .stats-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 8px; 
-            margin-top: 12px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card h2 {
+            font-size: 32px;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card p {
+            color: #666;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .filters {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .job-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .job-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .match-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        
+        .match-high {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .match-medium {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+        
+        .match-low {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            color: white;
+        }
+        
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 12px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .job-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .job-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .skill-tag {
+            background: #f3f4f6;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .job-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .job-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .sector-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
             font-size: 11px;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
         }
-        .stats-grid.visible { 
-            max-height: 400px; 
-            opacity: 1;
+        
+        .sector-corporate {
+            background: #dbeafe;
+            color: #1e40af;
         }
-        .stats-grid.hidden {
-            margin-top: 0;
+        
+        .sector-nonprofit {
+            background: #dcfce7;
+            color: #166534;
         }
-        .stat-card { background: rgba(255,255,255,0.25); padding: 10px 8px; border-radius: 8px; backdrop-filter: blur(10px); text-align: center; }
-        .stat-card strong { display: block; font-size: 22px; margin-bottom: 3px; font-weight: 700; }
-        .stat-card span { font-size: 11px; opacity: 0.95; }
-
-        .tabs { background: white; padding: 0 8px; border-bottom: 1px solid #e5e5ea; position: sticky; top: 48px; z-index: 90; display: flex; gap: 3px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-        .tabs::-webkit-scrollbar { display: none; }
-        .tab { padding: 10px 12px; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; font-weight: 600; color: #8e8e93; white-space: nowrap; font-size: 13px; flex-shrink: 0; }
-        .tab.active { color: #667eea; border-bottom-color: #667eea; }
-        .tab:active { background: #f5f5f7; }
-
-        .search-bar { padding: 10px 8px; background: white; border-bottom: 1px solid #e5e5ea; position: sticky; top: 91px; z-index: 85; }
-        #search { width: 100%; padding: 10px; font-size: 14px; border: 2px solid #e5e5ea; border-radius: 8px; outline: none; }
-        #search:focus { border-color: #667eea; }
-
-        .container { padding: 12px 8px; max-width: 1400px; margin: 0 auto; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-
-        .job-card { background: white; border-radius: 10px; padding: 15px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); transition: transform 0.2s; }
-        .job-card:active { transform: scale(0.98); }
-        .job-card.applied { border-left: 4px solid #007aff; }
-        .job-card.interviewing { border-left: 4px solid #ff3b30; background: #fff5f5; }
-
-        .job-header { border-bottom: 2px solid #f5f5f7; padding-bottom: 10px; margin-bottom: 10px; }
-        .job-title { font-size: 16px; font-weight: 600; color: #1d1d1f; margin-bottom: 3px; line-height: 1.3; }
-        .company { font-size: 14px; color: #667eea; font-weight: 500; }
-        .meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; font-size: 11px; }
-        .badge { display: inline-block; padding: 3px 7px; border-radius: 4px; font-size: 10px; font-weight: 600; }
-        .badge-match { background: #34c759; color: white; }
-        .badge-type { background: #007aff; color: white; }
-
-        .section { margin-bottom: 12px; }
-        .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #8e8e93; margin-bottom: 5px; letter-spacing: 0.3px; }
-        .brief { background: #f5f5f7; padding: 10px; border-radius: 6px; font-size: 13px; line-height: 1.4; }
-
-        .btn { display: inline-block; padding: 10px 14px; background: #667eea; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; margin-top: 8px; font-size: 13px; }
-        .btn:active { background: #5568d3; }
-
-        .timestamp { text-align: center; padding: 15px 8px; color: #8e8e93; font-size: 10px; }
-        .empty-state { text-align: center; color: #8e8e93; padding: 40px 15px; font-size: 13px; }
-
-        /* Desktop styles */
-        @media (min-width: 768px) {
-            .header { padding: 20px 25px; }
-            .header h1 { font-size: 24px; }
-            .toggle-stats { display: none; } /* Hide toggle on desktop */
-            .stats-grid { 
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
-                gap: 12px; 
-                font-size: 13px;
-                max-height: none !important;
-                opacity: 1 !important;
-                margin-top: 15px !important;
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
             }
-            .stat-card { padding: 15px; }
-            .stat-card strong { font-size: 26px; }
-            .stat-card span { font-size: 12px; }
-            .tabs { padding: 0 20px; gap: 15px; top: 85px; }
-            .tab { padding: 14px 0; font-size: 15px; }
-            .search-bar { padding: 15px 20px; top: 135px; }
-            #search { padding: 12px; font-size: 16px; }
-            .container { padding: 20px; }
-            .job-card { padding: 20px; margin-bottom: 15px; }
-            .job-title { font-size: 18px; }
-            .company { font-size: 15px; }
-            .meta { font-size: 12px; gap: 8px; }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .job-title {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header" id="header">
-        <div class="header-top">
-            <h1>📊 Job Search</h1>
-            <button class="toggle-stats" onclick="toggleStats()">
-                <span id="toggle-icon">▶</span> <span>Stats</span>
-            </button>
-        </div>
-        <div class="stats-grid hidden" id="stats-grid">
-            <div class="stat-card"><strong>5</strong><span>Total Jobs</span></div>
-            <div class="stat-card"><strong>3</strong><span>High Match</span></div>
-            <div class="stat-card"><strong>0</strong><span>Applications</span></div>
-            <div class="stat-card"><strong>0</strong><span>Interviews</span></div>
-            <div class="stat-card"><strong>0%</strong><span>Interview Rate</span></div>
-            <div class="stat-card"><strong>0</strong><span>Offers</span></div>
-        </div>
-    </div>
-
-    <div class="tabs">
-        <div class="tab active" onclick="switchTab('all')">All</div>
-        <div class="tab" onclick="switchTab('unapplied')">To Apply</div>
-        <div class="tab" onclick="switchTab('applied')">Applied</div>
-        <div class="tab" onclick="switchTab('interviewing')">Interviews</div>
-    </div>
-
-    <div class="search-bar">
-        <input type="text" id="search" placeholder="🔍 Search jobs..." onkeyup="filterJobs()">
-    </div>
-
     <div class="container">
-        <div id="tab-all" class="tab-content active">
-            <div id="jobs-all">
-                <div class="job-card" data-company="example company" data-title="software engineer" data-status="">
-                    <div class="job-header">
-                        <div class="job-title">Software Engineer</div>
-                        <div class="company">Example Company</div>
-                        <div class="meta">
-                            <span class="badge badge-match">Match: 95</span>
-                            <span class="badge badge-type">Full-time</span>
-                            <span>📍 Remote</span>
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="section-title">📄 Role Summary</div>
-                        <div class="brief">Example job description. This will be populated with real data from your job searches.</div>
-                    </div>
-                    <a href="#" class="btn">View Posting →</a>
-                </div>
+        <div class="header">
+            <h1>🎯 Job Search Dashboard</h1>
+            <p class="subtitle">Last Updated: November 17, 2025 at 12:43 PM</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h2>9</h2>
+                <p>Total Jobs</p>
+            </div>
+            <div class="stat-card">
+                <h2>9</h2>
+                <p>High Match</p>
+            </div>
+            <div class="stat-card">
+                <h2>2</h2>
+                <p>Corporate</p>
+            </div>
+            <div class="stat-card">
+                <h2>7</h2>
+                <p>Nonprofit</p>
             </div>
         </div>
-        <div id="tab-unapplied" class="tab-content"><div id="jobs-unapplied"></div></div>
-        <div id="tab-applied" class="tab-content"><div id="jobs-applied"></div></div>
-        <div id="tab-interviewing" class="tab-content"><div id="jobs-interviewing"></div></div>
+        
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterJobs('all')">All Jobs</button>
+            <button class="filter-btn" onclick="filterJobs('high')">High Match (80%+)</button>
+            <button class="filter-btn" onclick="filterJobs('corporate')">Corporate</button>
+            <button class="filter-btn" onclick="filterJobs('nonprofit')">Nonprofit</button>
+        </div>
+        
+        <div id="job-list">
+
+        <div class="job-card" data-match="98" data-sector="corporate">
+            <div class="job-header">
+                <div class="job-title">Senior Account Executive – SaaS (Dallas</div>
+                <span class="match-badge match-high">98% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>** Leading SaaS provider specializing in enterprise solutions for CRM and workflow automation</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    ** Dallas, TX (Hybrid/Remote options)
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-corporate">corporate</span>
+            </div>
+            
+            <div class="job-description">
+                **
+            </div>
+            
+            
+            
+            <a href="**" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        <div class="job-card" data-match="95" data-sector="nonprofit">
+            <div class="job-header">
+                <div class="job-title">Development Director at Girls Inc. ($75</div>
+                <span class="match-badge match-high">95% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>Strategic Match</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    Dallas-Fort Worth, TX
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-nonprofit">nonprofit</span>
+            </div>
+            
+            <div class="job-description">
+                3. Development Director at Girls Inc. ($75-90k) - leadership role but salary seems low for "Director" title (probably because it's not the top development role)
+
+*checks Result [1] again* Ah! The $152k Director salary is for organizations with $5M+ b...
+            </div>
+            
+            
+            
+            <a href="https://strategic-match.com/job/14713" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        <div class="job-card" data-match="85" data-sector="corporate">
+            <div class="job-header">
+                <div class="job-title">Sales Director – Enterprise Software (92 match score)</div>
+                <span class="match-badge match-high">85% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>analysis</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    Dallas-Fort Worth, TX
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-corporate">corporate</span>
+            </div>
+            
+            <div class="job-description">
+                3. Sales Director – Enterprise Software (92 match score)
+
+Let me analyze these in detail based on the search results and my knowledge as a career strategist.
+
+For the overall DFW job market analysis, I'll synthesize the information from the search re...
+            </div>
+            
+            
+            
+            <a href="https://strategic-match.com/job/76161" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        <div class="job-card" data-match="85" data-sector="nonprofit">
+            <div class="job-header">
+                <div class="job-title">Development Manager at Carroll Education Foundation ($65</div>
+                <span class="match-badge match-high">85% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>Strategic Match</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    Dallas-Fort Worth, TX
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-nonprofit">nonprofit</span>
+            </div>
+            
+            <div class="job-description">
+                1. Development Manager at Carroll Education Foundation ($65-80k) - perfect entry point for corporate transitioner
+            </div>
+            
+            
+            
+            <a href="https://strategic-match.com/job/89459" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        <div class="job-card" data-match="85" data-sector="nonprofit">
+            <div class="job-header">
+                <div class="job-title">Major Gifts Officer at Big Thought ($70</div>
+                <span class="match-badge match-high">85% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>Strategic Match</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    Dallas-Fort Worth, TX
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-nonprofit">nonprofit</span>
+            </div>
+            
+            <div class="job-description">
+                2. Major Gifts Officer at Big Thought ($70-85k) - leverages sales background
+            </div>
+            
+            
+            
+            <a href="https://strategic-match.com/job/64758" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        <div class="job-card" data-match="85" data-sector="nonprofit">
+            <div class="job-header">
+                <div class="job-title">For the TOP 3 highest</div>
+                <span class="match-badge match-high">85% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>Strategic Match</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    Dallas-Fort Worth, TX
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-nonprofit">nonprofit</span>
+            </div>
+            
+            <div class="job-description">
+                1. For the TOP 3 highest-match jobs, provide detailed analysis across 8 specific areas
+            </div>
+            
+            
+            
+            <a href="https://strategic-match.com/job/19994" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        <div class="job-card" data-match="85" data-sector="nonprofit">
+            <div class="job-header">
+                <div class="job-title">Provide additional information about the DFW nonprofit landscape, transferable skills, networking strategies, and key certifications</div>
+                <span class="match-badge match-high">85% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>Strategic Match</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    Dallas-Fort Worth, TX
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-nonprofit">nonprofit</span>
+            </div>
+            
+            <div class="job-description">
+                2. Provide additional information about the DFW nonprofit landscape, transferable skills, networking strategies, and key certifications
+
+However, the user has also included a "Current Limitations" section that explains why the search results don't fu...
+            </div>
+            
+            
+            
+            <a href="https://strategic-match.com/job/29977" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        <div class="job-card" data-match="85" data-sector="nonprofit">
+            <div class="job-header">
+                <div class="job-title">Provide general guidance on nonprofit career transition since specific job details are limited</div>
+                <span class="match-badge match-high">85% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>Strategic Match</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    Dallas-Fort Worth, TX
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-nonprofit">nonprofit</span>
+            </div>
+            
+            <div class="job-description">
+                4. Provide general guidance on nonprofit career transition since specific job details are limited
+
+Let me analyze the search results to see what information I can extract:
+
+Result [1]: Shows entry-level jobs with $40K salary, including a Physical The...
+            </div>
+            
+            
+            
+            <a href="https://strategic-match.com/job/34417" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        <div class="job-card" data-match="85" data-sector="nonprofit">
+            <div class="job-header">
+                <div class="job-title">Provide general frameworks for analyzing nonprofit development roles since specific job details are limited</div>
+                <span class="match-badge match-high">85% Match</span>
+            </div>
+            
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <span>🏢</span>
+                    <strong>Strategic Match</strong>
+                </div>
+                <div class="job-meta-item">
+                    <span>📍</span>
+                    Dallas-Fort Worth, TX
+                </div>
+                <div class="job-meta-item">
+                    <span>📅</span>
+                    2025-11-17
+                </div>
+                <span class="sector-badge sector-nonprofit">nonprofit</span>
+            </div>
+            
+            <div class="job-description">
+                4. Provide general frameworks for analyzing nonprofit development roles since specific job details are limited
+
+I'll structure my response to be helpful despite the limitations of the search results, focusing on what I can reasonably infer and provid...
+            </div>
+            
+            
+            
+            <a href="https://strategic-match.com/job/2835" target="_blank" class="job-link">View Job Details →</a>
+        </div>
+    
+        </div>
     </div>
-
-    <div class="timestamp">Last updated: 2025-11-17 12:46 AM CST<br>Job Search Automation System v2.0</div>
-
+    
     <script>
-        let statsVisible = false; // STARTS COLLAPSED ON MOBILE
-
-        // On desktop, show stats by default
-        if (window.innerWidth >= 768) {
-            document.getElementById('stats-grid').classList.add('visible');
-            document.getElementById('stats-grid').classList.remove('hidden');
-            statsVisible = true;
-        }
-
-        function toggleStats() {
-            const statsGrid = document.getElementById('stats-grid');
-            const icon = document.getElementById('toggle-icon');
-
-            statsVisible = !statsVisible;
-
-            if (statsVisible) {
-                statsGrid.classList.add('visible');
-                statsGrid.classList.remove('hidden');
-                icon.textContent = '▼';
-            } else {
-                statsGrid.classList.remove('visible');
-                statsGrid.classList.add('hidden');
-                icon.textContent = '▶';
-            }
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('tab-' + tabName).classList.add('active');
+        function filterJobs(filter) {
+            const jobs = document.querySelectorAll('.job-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            if (tabName !== 'all') filterJobsByTab(tabName);
-        }
-
-        function filterJobsByTab(tabName) {
-            const allJobs = document.querySelectorAll('#tab-all .job-card');
-            const targetDiv = document.getElementById('jobs-' + tabName);
-            targetDiv.innerHTML = '';
-
-            let count = 0;
-            allJobs.forEach(job => {
-                const status = job.getAttribute('data-status');
-                let shouldShow = false;
-
-                if (tabName === 'unapplied' && !status) shouldShow = true;
-                if (tabName === 'applied' && status && status !== 'interviewing' && status !== 'offered') shouldShow = true;
-                if (tabName === 'interviewing' && (status === 'interviewing' || status === 'phone_screen')) shouldShow = true;
-
-                if (shouldShow) {
-                    targetDiv.appendChild(job.cloneNode(true));
-                    count++;
+            
+            jobs.forEach(job => {
+                const match = parseInt(job.dataset.match);
+                const sector = job.dataset.sector;
+                
+                if (filter === 'all') {
+                    job.style.display = 'block';
+                } else if (filter === 'high' && match >= 80) {
+                    job.style.display = 'block';
+                } else if (filter === 'corporate' && sector === 'corporate') {
+                    job.style.display = 'block';
+                } else if (filter === 'nonprofit' && sector === 'nonprofit') {
+                    job.style.display = 'block';
+                } else {
+                    job.style.display = 'none';
                 }
             });
-
-            if (count === 0) {
-                targetDiv.innerHTML = '<div class="empty-state">No jobs in this category yet</div>';
-            }
         }
-
-        function filterJobs() {
-            const searchTerm = document.getElementById('search').value.toLowerCase();
-            document.querySelectorAll('.job-card').forEach(card => {
-                const company = card.getAttribute('data-company');
-                const title = card.getAttribute('data-title');
-                card.style.display = (company.includes(searchTerm) || title.includes(searchTerm)) ? 'block' : 'none';
-            });
-        }
-
-        window.onload = function() {
-            filterJobsByTab('unapplied');
-            filterJobsByTab('applied');
-            filterJobsByTab('interviewing');
-        };
     </script>
 </body>
 </html>

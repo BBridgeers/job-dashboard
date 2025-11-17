@@ -467,7 +467,7 @@ html += '''
 '''
 
 # Save HTML
-output_file = 'dashboard.html'
+output_file = 'index.html'
 with open(output_file, 'w', encoding='utf-8') as f:
     f.write(html)
 
