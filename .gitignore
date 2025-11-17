@@ -3,3 +3,12 @@ gdrive_credentials.json
 token.json
 *.json
 job_tracker.db
+venv/
+__pycache__/
+*.pyc
+venv/
+__pycache__/
+*.pyc
+venv/
+__pycache__/
+*.pyc
