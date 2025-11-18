@@ -1,0 +1,197 @@
+
+        /* Job Details Expansion */
+        .job-details {
+            display: none;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .job-details.expanded {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-section {
+            margin-bottom: 25px;
+        }
+
+        .detail-section h3 {
+            color: #1f2937;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .detail-section p, .detail-section ul {
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .detail-section ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+
+        .detail-section li {
+            margin-bottom: 8px;
+        }
+
+        /* Notes Field */
+        .notes-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .notes-textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .notes-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .save-notes-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-notes-btn:hover {
+            background: #5568d3;
+        }
+
+        /* Notification Toast */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: #10b981;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+            display: none;
+        }
+
+        .notification.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .header-top {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-stats {
+                order: 2;
+            }
+
+            .search-container {
+                order: 1;
+                max-width: 100%;
+            }
+
+            .tracker-btn {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .job-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="header-top">
+            <h1>📋 Job Search Dashboard</h1>
+            <div class="filter-stats">
+                <div class="stat-badge active" data-filter="all" onclick="filterJobs('all')">
+                    📊 Total Jobs: <strong>{total_jobs}</strong>
+                </div>
+                <div class="stat-badge" data-filter="high-match" onclick="filterJobs('high-match')">
+                    🔥 High Match (90+): <strong>{high_match}</strong>
+                </div>
+                <div class="stat-badge" data-filter="corporate" onclick="filterJobs('corporate')">
+                    🏢 Corporate: <strong>{corporate}</strong>
+                </div>
+                <div class="stat-badge" data-filter="nonprofit" onclick="filterJobs('nonprofit')">
+                    💚 Nonprofit: <strong>{nonprofit}</strong>
+                </div>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search jobs..." onkeyup="searchJobs()">
+            </div>
+            <a href="tracker.html" class="tracker-btn">
+                📋 Job Match Tracker
+            </a>
+        </div>
+    </header>
+
+    <div class="container" id="jobsContainer">

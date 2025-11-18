@@ -186,3 +186,67 @@ requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.perplexity.ai
 ❌ Google Drive upload error: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7023815c9c10>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
 ⚠️  File saved locally but not uploaded to Google Drive
 ✅ Successfully uploaded to Google Drive!
+
+============================================================
+🚀 JOB SEARCH AUTOMATION - FULL RUN
+============================================================
+Started: 2025-11-18 08:00:01
+============================================================
+
+============================================================
+▶ Corporate Job Search
+============================================================
+⚠️ Corporate Job Search - COMPLETED WITH WARNINGS
+
+============================================================
+▶ Nonprofit Job Search
+============================================================
+⚠️ Nonprofit Job Search - COMPLETED WITH WARNINGS
+
+============================================================
+▶ Import Jobs to Database
+============================================================
+✅ Import Jobs to Database - COMPLETED
+
+============================================================
+▶ Build Dashboard
+============================================================
+✅ Build Dashboard - COMPLETED
+
+⚠️  Skipping Upload to Google Drive - gdrive_uploader.py not found
+
+============================================================
+🌐 DEPLOYING TO GITHUB
+============================================================
+
+============================================================
+🔄 AUTO-DEPLOYING TO GITHUB
+============================================================
+  ✓ Checking git status
+
+📦 Staging changes...
+  ✓ Added all files
+
+💾 Committing changes...
+  ✓ Committed with message: Auto-update dashboard - 2025-11-18 08:01:18
+
+🚀 Pushing to GitHub...
+  ✓ Pushed to origin/main
+
+❌ Push failed: fatal: unable to access 'https://github.com/BBridgeers/job-dashboard.git/': Could not resolve host: github.com
+
+
+============================================================
+📊 AUTOMATION SUMMARY
+============================================================
+✅ SUCCESS - Corporate Job Search
+✅ SUCCESS - Nonprofit Job Search
+✅ SUCCESS - Import Jobs to Database
+✅ SUCCESS - Build Dashboard
+❌ FAILED - Upload to Google Drive
+❌ FAILED - GitHub Deployment
+============================================================
+Total Time: 164.4 seconds
+Completed: 2025-11-18 08:02:45
+============================================================
+
