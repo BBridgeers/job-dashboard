@@ -3,554 +3,704 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📋 Job Search Dashboard</title>
+    <title>Strategic Match - Job Search Dashboard</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 15px; color: #333; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        header { background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #667eea; margin-bottom: 10px; font-size: 24px; }
-        .stats { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
-        .stat { background: #f0f4ff; padding: 10px 15px; border-radius: 8px; font-size: 14px; }
-        .tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .tab { background: white; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 500; transition: all 0.3s; }
-        .tab.active { background: #667eea; color: white; }
-        .job-card { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.2s; }
-        .job-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
-        .job-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px; gap: 10px; }
-        .job-title { font-size: 18px; font-weight: 600; color: #333; flex: 1; }
-        .match-badge { background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; white-space: nowrap; }
-        .job-company { color: #667eea; font-weight: 500; margin-bottom: 5px; }
-        .job-location { color: #666; font-size: 14px; margin-bottom: 5px; }
-        .job-salary { color: #059669; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
-        .job-brief { color: #555; line-height: 1.6; margin: 10px 0; font-size: 14px; }
-        .job-button { background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; transition: background 0.3s; margin-top: 10px; }
-        .job-button:hover { background: #5568d3; }
-        .type-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; margin-right: 8px; }
-        .corporate { background: #dbeafe; color: #1e40af; }
-        .nonprofit { background: #d1fae5; color: #065f46; }
-        footer { text-align: center; color: white; padding: 20px; font-size: 14px; }
-        @media (max-width: 768px) { .job-header { flex-direction: column; } .match-badge { align-self: flex-start; } }
-    </style>
-    <script>
-        function openJob(url, title, company) {
-            if (!url || url === '**' || url === '' || url === 'None' || url === 'null') {
-                const query = encodeURIComponent(title + ' ' + company + ' Dallas TX job');
-                window.open('https://www.google.com/search?q=' + query, '_blank');
-            } else {
-                window.open(url, '_blank');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .search-box {
+            position: relative;
+            width: 350px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            padding: 15px 0;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .tier-filter.tier1.active {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        }
+
+        .tier-filter.tier2.active {
+            background: linear-gradient(135deg, #C0C0C0 0%, #808080 100%);
+        }
+
+        .tier-filter.tier3.active {
+            background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+        }
+
+        .date-filter {
+            margin-left: auto;
+            position: relative;
+        }
+
+        .date-filter select {
+            padding: 10px 35px 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            background: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            appearance: none;
+            transition: all 0.3s;
+        }
+
+        .date-filter select:hover {
+            border-color: #667eea;
+        }
+
+        .date-filter::after {
+            content: '▼';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            font-size: 10px;
+            color: #999;
+        }
+
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Tier-specific card styling */
+        .job-card.tier-1 {
+            border: 3px solid #FFD700;
+            background: linear-gradient(135deg, #FFFACD 0%, #FFFFFF 100%);
+        }
+
+        .job-card.tier-2 {
+            border: 3px solid #C0C0C0;
+        }
+
+        .job-card.tier-3 {
+            border: 2px solid #e0e0e0;
+            padding: 15px;
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-badge.tier-1 {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+        }
+
+        .tier-badge.tier-2 {
+            background: linear-gradient(135deg, #C0C0C0 0%, #808080 100%);
+            color: #000;
+        }
+
+        .tier-badge.tier-3 {
+            background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+            color: #fff;
+        }
+
+        .job-header {
+            margin-bottom: 15px;
+            padding-right: 80px;
+        }
+
+        .job-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .job-company {
+            font-size: 16px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #4a5568;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .badge-corporate {
+            background: #e6f3ff;
+            color: #0066cc;
+        }
+
+        .badge-nonprofit {
+            background: #e6f7ed;
+            color: #00875a;
+        }
+
+        .badge-score {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* Tier 3 simplified layout */
+        .job-card.tier-3 .job-title {
+            font-size: 16px;
+        }
+
+        .job-card.tier-3 .job-meta {
+            margin: 10px 0;
+            padding: 10px 0;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .quick-link {
+            padding: 8px 15px;
+            background: #f7fafc;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #4a5568;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .quick-link:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-success {
+            background: #00875a;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #006644;
+        }
+
+        .expandable {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .expand-section {
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .job-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                justify-content: center;
+            }
+
+            .date-filter {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .date-filter select {
+                width: 100%;
             }
         }
-        function filterJobs(tab) {
-            const allJobs = document.querySelectorAll('.job-card');
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            allJobs.forEach(job => {
-                if (tab === 'all') {
-                    job.style.display = 'block';
-                } else {
-                    const jobType = job.dataset.type;
-                    job.style.display = jobType === tab ? 'block' : 'none';
-                }
-            });
-        }
-    </script>
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>📋 Job Search Dashboard</h1>
-            <p>Your personalized job matches in DFW</p>
-            <div class="stats"><div class="stat">📊 Total Jobs: <strong>29</strong></div><div class="stat">🔥 High Match (90+): <strong>5</strong></div><div class="stat">🏢 Corporate: <strong>7</strong></div><div class="stat">💚 Nonprofit: <strong>22</strong></div>
+            <div class="header-top">
+                <h1>🎯 Strategic Match</h1>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search jobs...">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">
+                    📊 Total Jobs (<span id="count-all">0</span>)
+                </button>
+                <button class="filter-btn" data-filter="high-match">
+                    ⭐ High Match 90+ (<span id="count-high">0</span>)
+                </button>
+                <button class="filter-btn" data-filter="corporate">
+                    🏢 Corporate (<span id="count-corporate">0</span>)
+                </button>
+                <button class="filter-btn" data-filter="nonprofit">
+                    💚 Nonprofit (<span id="count-nonprofit">0</span>)
+                </button>
+                <button class="filter-btn tier-filter tier1" data-filter="tier1">
+                    🥇 Tier 1 (<span id="count-tier1">0</span>)
+                </button>
+                <button class="filter-btn tier-filter tier2" data-filter="tier2">
+                    🥈 Tier 2 (<span id="count-tier2">0</span>)
+                </button>
+                <button class="filter-btn tier-filter tier3" data-filter="tier3">
+                    🥉 Tier 3 (<span id="count-tier3">0</span>)
+                </button>
+                <div class="date-filter">
+                    <select id="dateFilter">
+                        <option value="all">All Time</option>
+                        <option value="today" selected>Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="3days">Last 3 Days</option>
+                        <option value="week">Last 7 Days</option>
+                        <option value="2weeks">Last 14 Days</option>
+                        <option value="month">Last 30 Days</option>
+                    </select>
+                </div>
             </div>
         </header>
-        <div class="tabs">
-            <button class="tab active" onclick="filterJobs('all')">All Jobs</button>
-            <button class="tab" onclick="filterJobs('corporate')">🏢 Corporate</button>
-            <button class="tab" onclick="filterJobs('nonprofit')">💚 Nonprofit</button>
+
+        <div class="job-grid" id="jobGrid">
+            <!-- Jobs will be inserted here -->
         </div>
-        <div class="jobs-container">
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Development Director at Girls Inc. ($75</div>
-                    <div class="match-badge">95% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 seems low for "Director" title (probably because it's not the top development role)</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">3. Development Director at Girls Inc. ($75-90k) - leadership role but salary seems low for "Director" title (probably because it's not the top development role)
-
-*checks Result [1] again* Ah! The $152...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/14713', 'Development Director at Girls Inc. ($75', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="corporate">
-                <div class="job-header">
-                    <div class="job-title">Competitive landscape</div>
-                    <div class="match-badge">95% Match</div>
-                </div>
-                <div class="job-company">Analysis</div>
-                <div class="job-location">📍 as a data center hub (76% of Texas's data-center jobs) creates unique advantages for enterprise software companies.</div>
-                <div class="job-salary">💰 Benchmarks for Leadership Roles</div>
-                <span class="type-badge corporate">Corporate</span>
-                <div class="job-brief">8. Competitive landscape
-
-Let me start drafting my response.
-</think>
-
-# DFW Tech Sales & Leadership Job Market Strategic Analysis
-
-## Overall DFW Job Market Analysis
-
-Dallas-Fort Worth is experiencin...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/87862', 'Competitive landscape', 'Analysis')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Hiring best practices for nonprofits:</div>
-                    <div class="match-badge">95% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 | Ensuring financial sustainability and impact |</div>
-                <div class="job-salary">💰 and Benefits Context:</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">4. Hiring best practices for nonprofits:
-   - Mission-driven hiring (Result 5)
-   - Crafting mission-aligned job descriptions (Result 5)
-   - Using biographical interviews (Result 5)
-   - Identifying ...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/57409', 'Hiring best practices for nonprofits:', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Major Gifts Officer – Dallas Education Nonprofit (Match Score: 92)</div>
-                    <div class="match-badge">92% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">3. Major Gifts Officer – Dallas Education Nonprofit (Match Score: 92)
-
-Actually, let me sort them by match score:</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/41760', 'Major Gifts Officer – Dallas Education Nonprofit (Match Score: 92)', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="corporate">
-                <div class="job-header">
-                    <div class="job-title">Sales Director – Enterprise Software (Match Score: 90)</div>
-                    <div class="match-badge">90% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge corporate">Corporate</span>
-                <div class="job-brief">3. Sales Director – Enterprise Software (Match Score: 90)
-
-I'll need to provide detailed analysis for each of these three roles based on the information available in the search results and my knowledg...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/85947', 'Sales Director – Enterprise Software (Match Score: 90)', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="corporate">
-                <div class="job-header">
-                    <div class="job-title">Senior Account Executive – SaaS (Dallas</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">** Leading SaaS provider specializing in enterprise solutions for CRM and workflow automation</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 details, mission focus, and why it’s a strong fit for someone transitioning from corporate to nonprofit. All jobs were posted within the last 7 days and are mid-to-senior level with a $60K+ salary where available.</div>
-                <span class="type-badge corporate">Corporate</span>
-                <div class="job-brief"># DFW NONPROFIT JOB SEARCH RESULTS
-Generated: 2025-11-18 09:40 AM CST
-Models: sonar-pro (search) + sonar-reasoning (analysis)
-==========================================================================...</div>
-                <button class="job-button" onclick="openJob('**', 'Senior Account Executive – SaaS (Dallas', '** Leading SaaS provider specializing in enterprise solutions for CRM and workflow automation')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="corporate">
-                <div class="job-header">
-                    <div class="job-title">Sales Director – Enterprise Software (92 match score)</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">analysis</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 negotiation intelligence</div>
-                <span class="type-badge corporate">Corporate</span>
-                <div class="job-brief">3. Sales Director – Enterprise Software (92 match score)
-
-Let me analyze these in detail based on the search results and my knowledge as a career strategist.
-
-For the overall DFW job market analysis, ...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/76161', 'Sales Director – Enterprise Software (92 match score)', 'analysis')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Development Manager at Carroll Education Foundation ($65</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">1. Development Manager at Carroll Education Foundation ($65-80k) - perfect entry point for corporate transitioner</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/89459', 'Development Manager at Carroll Education Foundation ($65', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Major Gifts Officer at Big Thought ($70</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">2. Major Gifts Officer at Big Thought ($70-85k) - leverages sales background</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/64758', 'Major Gifts Officer at Big Thought ($70', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">For the TOP 3 highest</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">1. For the TOP 3 highest-match jobs, provide detailed analysis across 8 specific areas</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/19994', 'For the TOP 3 highest', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Provide additional information about the DFW nonprofit landscape, transferable skills, networking strategies, and key certifications</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 requirement</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">2. Provide additional information about the DFW nonprofit landscape, transferable skills, networking strategies, and key certifications
-
-However, the user has also included a "Current Limitations" sec...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/29977', 'Provide additional information about the DFW nonprofit landscape, transferable skills, networking strategies, and key certifications', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Provide general guidance on nonprofit career transition since specific job details are limited</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">4. Provide general guidance on nonprofit career transition since specific job details are limited
-
-Let me analyze the search results to see what information I can extract:
-
-Result [1]: Shows entry-lev...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/34417', 'Provide general guidance on nonprofit career transition since specific job details are limited', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Provide general frameworks for analyzing nonprofit development roles since specific job details are limited</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Context**: The $60K+ target is achievable for mid-level development roles in DFW nonprofits with budgets of $2M+, though competitive given current economic conditions</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">4. Provide general frameworks for analyzing nonprofit development roles since specific job details are limited
-
-I'll structure my response to be helpful despite the limitations of the search results, ...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/2835', 'Provide general frameworks for analyzing nonprofit development roles since specific job details are limited', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">For the TOP 3 highest</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">1. For the TOP 3 highest-match jobs, provide detailed analysis across 8 specific areas</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/72446', 'For the TOP 3 highest', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Provide additional information about the DFW nonprofit landscape, transferable skills, networking strategies, and key certifications</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 requirement</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">2. Provide additional information about the DFW nonprofit landscape, transferable skills, networking strategies, and key certifications
-
-However, the user has also included a "Current Limitations" sec...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/99356', 'Provide additional information about the DFW nonprofit landscape, transferable skills, networking strategies, and key certifications', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Provide general guidance on nonprofit career transition since specific job details are limited</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">4. Provide general guidance on nonprofit career transition since specific job details are limited
-
-Let me analyze the search results to see what information I can extract:
-
-Result [1]: Shows entry-lev...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/9885', 'Provide general guidance on nonprofit career transition since specific job details are limited', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Provide general frameworks for analyzing nonprofit development roles since specific job details are limited</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Context**: The $60K+ target is achievable for mid-level development roles in DFW nonprofits with budgets of $2M+, though competitive given current economic conditions</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">4. Provide general frameworks for analyzing nonprofit development roles since specific job details are limited
-
-I'll structure my response to be helpful despite the limitations of the search results, ...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/33806', 'Provide general frameworks for analyzing nonprofit development roles since specific job details are limited', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="corporate">
-                <div class="job-header">
-                    <div class="job-title">Dallas</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge corporate">Corporate</span>
-                <div class="job-brief">13. Dallas-Fort Worth added jobs at a steady pace in 2025, with low unemployment and strong wage growth
-
-Now, looking at the job listings provided, I notice these are all sales and customer success le...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/27653', 'Dallas', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="corporate">
-                <div class="job-header">
-                    <div class="job-title">Mid</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge corporate">Corporate</span>
-                <div class="job-brief">8. Mid-level software engineers in Dallas can expect to make between $130,000 and $140,000</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/18279', 'Mid', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="corporate">
-                <div class="job-header">
-                    <div class="job-title">Finally, I'll provide strategic recommendations for application prioritization</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 benchmarks for sales leadership roles</div>
-                <span class="type-badge corporate">Corporate</span>
-                <div class="job-brief">3. Finally, I'll provide strategic recommendations for application prioritization
-
-For the overall DFW job market analysis, I'll draw from the search results to highlight:
-- Growth trends in the DFW t...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/81504', 'Finally, I\'ll provide strategic recommendations for application prioritization', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Development Manager – Social Services Nonprofit (DFW) (90)</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">3. Development Manager – Social Services Nonprofit (DFW) (90)
-
-These will be my top 3 to analyze in detail.
-
-Now, I'll analyze each of these top 3 positions across the 8 requested dimensions:
-</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/53661', 'Development Manager – Social Services Nonprofit (DFW) (90)', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Role</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">2. Role-specific insights (fundraising goals, donor base, team structure)</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/12674', 'Role', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Transition strategy (corporate</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">5. Transition strategy (corporate-to-nonprofit resume translation)</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/97304', 'Transition strategy (corporate', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Interview preparation (nonprofit</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">6. Interview preparation (nonprofit-specific questions and frameworks)</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/74985', 'Interview preparation (nonprofit', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Potential challenges (funding uncertainty, work</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">7. Potential challenges (funding uncertainty, work-life balance)</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/80266', 'Potential challenges (funding uncertainty, work', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Growth and impact opportunities</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">8. Growth and impact opportunities
-
-Additionally, I need to provide:
-- DFW nonprofit landscape overview
-- Transferable skills from corporate to nonprofit
-- Networking strategies for nonprofit sector e...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/85619', 'Growth and impact opportunities', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Nonprofit hiring trends for 2025:</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 transparency is important (Result 1)</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">1. Nonprofit hiring trends for 2025:
-   - Mission alignment is critical (Result 5)
-   - Evolving candidate expectations (Result 1)
-   - Salary transparency is important (Result 1)
-   - AI is changing ...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/4029', 'Nonprofit hiring trends for 2025:', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Key challenges in nonprofit hiring:</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 dynamics (Result 1)</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">2. Key challenges in nonprofit hiring:
-   - Competition for talent (Result 1)
-   - Remote work expectations vs. in-person requirements (Result 1)
-   - Salary dynamics (Result 1)
-   - Need for strategi...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/86915', 'Key challenges in nonprofit hiring:', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-            <div class="job-card" data-type="nonprofit">
-                <div class="job-header">
-                    <div class="job-title">Job search strategies for nonprofit candidates:</div>
-                    <div class="match-badge">85% Match</div>
-                </div>
-                <div class="job-company">Strategic Match</div>
-                <div class="job-location">📍 Dallas-Fort Worth, TX</div>
-                <div class="job-salary">💰 Not specified</div>
-                <span class="type-badge nonprofit">Nonprofit</span>
-                <div class="job-brief">3. Job search strategies for nonprofit candidates:
-   - Use AI to advantage (Result 4)
-   - Customize resumes (Result 4)
-   - Network thoughtfully (Result 4)
-   - Consider opportunities beyond niche (...</div>
-                <button class="job-button" onclick="openJob('https://strategic-match.com/job/32575', 'Job search strategies for nonprofit candidates:', 'Strategic Match')">
-                    View Job Details →
-                </button>
-            </div>
-        </div>
-        <footer>
-            <p>Last updated: 2025-11-18 09:40 AM </p>
-            <p>Job Search Automation System v2.0</p>
-        </footer>
     </div>
+
+    <script>
+        // Sample job data - will be replaced with actual database data
+        const jobs = JSON.parse('{{JOBS_JSON}}');
+
+        let currentFilter = 'all';
+        let currentDateFilter = 'today';
+
+        function formatDate(dateStr) {
+            if (!dateStr) return 'Unknown';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function getDaysAgo(dateStr) {
+            if (!dateStr) return 999;
+            const date = new Date(dateStr);
+            const today = new Date();
+            const diffTime = Math.abs(today - date);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
+
+        function filterByDate(job) {
+            const daysAgo = getDaysAgo(job.date_added);
+
+            switch(currentDateFilter) {
+                case 'today': return daysAgo === 0;
+                case 'yesterday': return daysAgo === 1;
+                case '3days': return daysAgo <= 3;
+                case 'week': return daysAgo <= 7;
+                case '2weeks': return daysAgo <= 14;
+                case 'month': return daysAgo <= 30;
+                case 'all': return true;
+                default: return true;
+            }
+        }
+
+        function renderJobs() {
+            const grid = document.getElementById('jobGrid');
+            grid.innerHTML = '';
+
+            let filteredJobs = jobs.filter(job => {
+                // Date filter
+                if (!filterByDate(job)) return false;
+
+                // Type filter
+                if (currentFilter === 'corporate' && job.job_type !== 'Corporate') return false;
+                if (currentFilter === 'nonprofit' && job.job_type !== 'Nonprofit') return false;
+                if (currentFilter === 'high-match' && parseInt(job.match_score) < 90) return false;
+                if (currentFilter === 'tier1' && job.tier !== 1) return false;
+                if (currentFilter === 'tier2' && job.tier !== 2) return false;
+                if (currentFilter === 'tier3' && job.tier !== 3) return false;
+
+                // Search filter
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                if (searchTerm) {
+                    return job.title.toLowerCase().includes(searchTerm) ||
+                           job.company.toLowerCase().includes(searchTerm);
+                }
+
+                return true;
+            });
+
+            filteredJobs.forEach(job => {
+                const card = createJobCard(job);
+                grid.appendChild(card);
+            });
+
+            updateCounts();
+        }
+
+        function createJobCard(job) {
+            const card = document.createElement('div');
+            card.className = `job-card tier-${job.tier}`;
+            card.dataset.id = job.id;
+
+            const tier = job.tier || 3;
+            const tierLabel = tier === 1 ? '🥇 Tier 1' : tier === 2 ? '🥈 Tier 2' : '🥉 Tier 3';
+
+            let cardHTML = `
+                <div class="tier-badge tier-${tier}">${tierLabel}</div>
+                <div class="job-header">
+                    <div class="job-title">${job.title}</div>
+                    <div class="job-company">${job.company}</div>
+                </div>
+
+                <div class="job-meta">
+                    <span class="badge badge-${job.job_type.toLowerCase()}">${job.job_type}</span>
+                    ${job.match_score ? `<span class="badge badge-score">Match: ${job.match_score}%</span>` : ''}
+            `;
+
+            // Only show additional meta for Tier 1 & 2
+            if (tier <= 2) {
+                if (job.salary_range) {
+                    cardHTML += `<div class="meta-item">💰 ${job.salary_range}</div>`;
+                }
+                if (job.location) {
+                    cardHTML += `<div class="meta-item">📍 ${job.location}</div>`;
+                }
+                cardHTML += `<div class="meta-item">📅 ${formatDate(job.date_added)}</div>`;
+            }
+
+            cardHTML += `</div>`;
+
+            // Quick links (only for Tier 1 & 2)
+            if (tier <= 2 && job.company_overview) {
+                cardHTML += `<div class="quick-links">`;
+                if (job.company_overview) cardHTML += `<a href="#company-${job.id}" class="quick-link">🏢 Company</a>`;
+                if (job.why_this_role) cardHTML += `<a href="#role-${job.id}" class="quick-link">💼 Role</a>`;
+                if (tier === 1 && job.interview_prep) cardHTML += `<a href="#interview-${job.id}" class="quick-link">🎯 Interview</a>`;
+                if (tier === 1 && job.talking_points) cardHTML += `<a href="#salary-${job.id}" class="quick-link">💵 Salary</a>`;
+                if (tier === 1 && job.red_flags) cardHTML += `<a href="#flags-${job.id}" class="quick-link">⚠️ Red Flags</a>`;
+                cardHTML += `</div>`;
+            }
+
+            // Action buttons
+            cardHTML += `<div class="actions">`;
+
+            if (tier <= 2) {
+                cardHTML += `<button class="btn btn-secondary" onclick="toggleDetails(${job.id})">View Details</button>`;
+            }
+
+            if (job.url) {
+                cardHTML += `<button class="btn btn-secondary" onclick="window.open('${job.url}', '_blank')">View Listing</button>`;
+            }
+
+            cardHTML += `<button class="btn btn-success" onclick="applyToJob(${job.id})">APPLY NOW!</button>`;
+
+            if (tier <= 2) {
+                cardHTML += `<button class="btn btn-primary" onclick="trackJob(${job.id})">Track Match</button>`;
+            }
+
+            cardHTML += `</div>`;
+
+            // Expandable sections (only Tier 1 & 2)
+            if (tier <= 2) {
+                cardHTML += `<div class="expandable hidden" id="details-${job.id}">`;
+
+                if (job.company_overview) {
+                    cardHTML += `
+                        <div class="expand-section" id="company-${job.id}">
+                            <div class="section-title">🏢 Company Overview</div>
+                            <div class="section-content">${job.company_overview}</div>
+                        </div>
+                    `;
+                }
+
+                if (job.why_this_role) {
+                    cardHTML += `
+                        <div class="expand-section" id="role-${job.id}">
+                            <div class="section-title">💼 Why This Role</div>
+                            <div class="section-content">${job.why_this_role.replace(/\n/g, '<br>')}</div>
+                        </div>
+                    `;
+                }
+
+                if (tier === 1 && job.interview_prep) {
+                    cardHTML += `
+                        <div class="expand-section" id="interview-${job.id}">
+                            <div class="section-title">🎯 Interview Preparation</div>
+                            <div class="section-content">${job.interview_prep}</div>
+                        </div>
+                    `;
+                }
+
+                if (tier === 1 && job.talking_points) {
+                    cardHTML += `
+                        <div class="expand-section" id="salary-${job.id}">
+                            <div class="section-title">💵 Salary Intelligence</div>
+                            <div class="section-content">${job.talking_points.replace(/\n/g, '<br>')}</div>
+                        </div>
+                    `;
+                }
+
+                if (tier === 1 && job.red_flags) {
+                    cardHTML += `
+                        <div class="expand-section" id="flags-${job.id}">
+                            <div class="section-title">⚠️ Red Flags</div>
+                            <div class="section-content">${job.red_flags}</div>
+                        </div>
+                    `;
+                }
+
+                cardHTML += `</div>`;
+            }
+
+            card.innerHTML = cardHTML;
+            return card;
+        }
+
+        function toggleDetails(jobId) {
+            const details = document.getElementById(`details-${jobId}`);
+            details.classList.toggle('hidden');
+        }
+
+        function applyToJob(jobId) {
+            const job = jobs.find(j => j.id === jobId);
+            if (job && job.url) {
+                window.open(job.url, '_blank');
+            } else {
+                alert('Application link not available');
+            }
+        }
+
+        function trackJob(jobId) {
+            alert(`Tracking job #${jobId} - Feature coming soon!`);
+        }
+
+        function updateCounts() {
+            const all = jobs.filter(filterByDate).length;
+            const high = jobs.filter(j => filterByDate(j) && parseInt(j.match_score) >= 90).length;
+            const corporate = jobs.filter(j => filterByDate(j) && j.job_type === 'Corporate').length;
+            const nonprofit = jobs.filter(j => filterByDate(j) && j.job_type === 'Nonprofit').length;
+            const tier1 = jobs.filter(j => filterByDate(j) && j.tier === 1).length;
+            const tier2 = jobs.filter(j => filterByDate(j) && j.tier === 2).length;
+            const tier3 = jobs.filter(j => filterByDate(j) && j.tier === 3).length;
+
+            document.getElementById('count-all').textContent = all;
+            document.getElementById('count-high').textContent = high;
+            document.getElementById('count-corporate').textContent = corporate;
+            document.getElementById('count-nonprofit').textContent = nonprofit;
+            document.getElementById('count-tier1').textContent = tier1;
+            document.getElementById('count-tier2').textContent = tier2;
+            document.getElementById('count-tier3').textContent = tier3;
+        }
+
+        // Event listeners
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderJobs();
+            });
+        });
+
+        document.getElementById('dateFilter').addEventListener('change', function() {
+            currentDateFilter = this.value;
+            renderJobs();
+        });
+
+        document.getElementById('searchInput').addEventListener('input', renderJobs);
+
+        // Initial render
+        renderJobs();
+    </script>
 </body>
 </html>
