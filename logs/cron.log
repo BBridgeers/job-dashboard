@@ -1,0 +1,188 @@
+⚠️  Google Drive upload disabled (gdrive_uploader.py not found)
+
+================================================================================
+🚀 DFW CORPORATE/TECH JOB SEARCH AGENT
+================================================================================
+
+🔍 Searching for corporate/tech jobs in DFW...
+
+❌ Error: HTTPSConnectionPool(host='api.perplexity.ai', port=443): Max retries exceeded with url: /chat/completions (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x78f4792d5010>: Failed to resolve 'api.perplexity.ai' ([Errno -3] Temporary failure in name resolution)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x78f4792d5010>: Failed to resolve 'api.perplexity.ai' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.perplexity.ai', port=443): Max retries exceeded with url: /chat/completions (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x78f4792d5010>: Failed to resolve 'api.perplexity.ai' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/yoga/Documents/job_search_automation/job_search_agent_corporate_sonar_pro.py", line 214, in <module>
+    agent.run()
+  File "/mnt/c/Users/yoga/Documents/job_search_automation/job_search_agent_corporate_sonar_pro.py", line 189, in run
+    jobs_data = self.search_jobs()
+                ^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/yoga/Documents/job_search_automation/job_search_agent_corporate_sonar_pro.py", line 95, in search_jobs
+    response = requests.post(self.base_url, headers=self.headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.perplexity.ai', port=443): Max retries exceeded with url: /chat/completions (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x78f4792d5010>: Failed to resolve 'api.perplexity.ai' ([Errno -3] Temporary failure in name resolution)"))
+⚠️  Google Drive upload disabled (gdrive_uploader.py not found)
+
+================================================================================
+🚀 DFW NONPROFIT JOB SEARCH AGENT
+================================================================================
+
+🔍 Searching for nonprofit jobs in DFW...
+
+❌ Error: HTTPSConnectionPool(host='api.perplexity.ai', port=443): Max retries exceeded with url: /chat/completions (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x76cdf66343e0>: Failed to resolve 'api.perplexity.ai' ([Errno -3] Temporary failure in name resolution)"))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 492, in _make_request
+    raise new_e
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 1097, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x76cdf66343e0>: Failed to resolve 'api.perplexity.ai' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.perplexity.ai', port=443): Max retries exceeded with url: /chat/completions (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x76cdf66343e0>: Failed to resolve 'api.perplexity.ai' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/yoga/Documents/job_search_automation/job_search_agent_nonprofit_sonar_pro.py", line 223, in <module>
+    agent.run()
+  File "/mnt/c/Users/yoga/Documents/job_search_automation/job_search_agent_nonprofit_sonar_pro.py", line 198, in run
+    jobs_data = self.search_jobs()
+                ^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/yoga/Documents/job_search_automation/job_search_agent_nonprofit_sonar_pro.py", line 103, in search_jobs
+    response = requests.post(self.base_url, headers=self.headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.perplexity.ai', port=443): Max retries exceeded with url: /chat/completions (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x76cdf66343e0>: Failed to resolve 'api.perplexity.ai' ([Errno -3] Temporary failure in name resolution)"))
+
+📥 Importing corporate jobs from: job_search_results/job_search_corporate_sonar_2025-11-17.txt
+✅ Corporate: 0 new, 1 updated
+
+📥 Importing nonprofit jobs from: job_search_results/job_search_nonprofit_sonar_2025-11-17.txt
+✅ Nonprofit: 4 new, 0 updated
+
+📊 DATABASE STATS:
+   Total Jobs: 13
+   High Match (90+): 2
+   By Type: {'corporate': 2, 'nonprofit': 11}
+   By Status: {'new': 13}
+
+✅ IMPORT COMPLETE!
+🚀 Building Mobile-Optimized Dashboard...
+============================================================
+📊 Loaded 13 jobs from database
+✅ Dashboard created: index.html
+   📊 13 jobs displayed
+   🔥 2 high-match opportunities
+   🏢 2 corporate | 💚 11 nonprofit
+
+🌐 Open index.html in your browser to view the dashboard!
+
+📤 Uploading to Google Drive...
+❌ Google Drive upload error: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7023815c9c10>: Failed to resolve 'oauth2.googleapis.com' ([Errno -3] Temporary failure in name resolution)"))
+⚠️  File saved locally but not uploaded to Google Drive
+✅ Successfully uploaded to Google Drive!

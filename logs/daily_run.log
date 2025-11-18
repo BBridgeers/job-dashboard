@@ -1,3 +1,16 @@
 Job Search Automation Log
 Initialized: /mnt/c/Users/yoga/Documents/job_search_automation
 
+
+============================================================
+Traceback (most recent call last):
+  File "C:\Users\yoga\Documents\job_search_automation\run_all.py", line 99, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\yoga\Documents\job_search_automation\run_all.py", line 40, in main
+    print("\U0001f680 JOB SEARCH AUTOMATION - FULL RUN")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yoga\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 0: character maps to <undefined>
