@@ -12,3 +12,14 @@ __pycache__/
 venv/
 __pycache__/
 *.pyc
+# Tokens and credentials
+gdrive_token.pickle
+credentials.json
+google_credentials.json
+*.pickle
+*.token
+Perplexity_Corp_Job_Search.txt
+git-hub-key.txt
+
+# Database
+jobs.db
