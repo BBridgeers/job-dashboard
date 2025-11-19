@@ -1,75 +1,91 @@
 #!/usr/bin/env python3
-
-"""
-Strategic Match - Dashboard Builder
-Generates index.html with data from jobs.db including tier system
-"""
-
 import sqlite3
 import json
-from datetime import datetime
 
-def build_dashboard():
-    """Build Strategic Match dashboard from database"""
-    print("🎯 Building Strategic Match Dashboard")
-    print("=" * 60)
+conn = sqlite3.connect('jobs.db')
+conn.row_factory = sqlite3.Row
+cursor = conn.cursor()
 
-    # Connect to database
-    conn = sqlite3.connect('jobs.db')
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+cursor.execute("SELECT * FROM jobs ORDER BY tier ASC, match_score DESC")
+rows = cursor.fetchall()
 
-    # Fetch all jobs
-    cursor.execute("""
-        SELECT 
-            id, title, company, job_type, salary_range, location, match_score,
-            company_overview, why_this_role, interview_prep, talking_points,
-            red_flags, url, status, date_added, tier, search_type
-        FROM jobs
-        ORDER BY date_added DESC, tier ASC, match_score DESC
-    """)
+jobs = []
+for row in rows:
+    job = dict(row)
+    if not job.get('tier'):
+        job['tier'] = 3
+    for key in job:
+        if job[key] is None:
+            job[key] = ''
+    jobs.append(job)
 
-    rows = cursor.fetchall()
+conn.close()
 
-    # Convert to list of dicts
-    jobs = []
-    for row in rows:
-        job = dict(row)
-        # Ensure tier exists (default to 3 for old jobs)
-        if not job.get('tier'):
-            job['tier'] = 3
-        # Convert date to string
-        if job.get('date_added'):
-            job['date_added'] = str(job['date_added'])
-        jobs.append(job)
+tier1 = len([j for j in jobs if j.get('tier') == 1])
+tier2 = len([j for j in jobs if j.get('tier') == 2])
+tier3 = len([j for j in jobs if j.get('tier') == 3])
 
-    conn.close()
+print(f"Building dashboard with {len(jobs)} jobs")
+print(f"Tier 1: {tier1} | Tier 2: {tier2} | Tier 3: {tier3}")
 
-    print(f"📊 Loaded {len(jobs)} jobs from database")
+jobs_json = json.dumps(jobs)
 
-    # Count by tier
-    tier1 = len([j for j in jobs if j['tier'] == 1])
-    tier2 = len([j for j in jobs if j['tier'] == 2])
-    tier3 = len([j for j in jobs if j['tier'] == 3])
+html = f"""<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Strategic Match</title>
+<style>
+body{{font-family:sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);padding:20px;min-height:100vh}}
+.container{{max-width:1400px;margin:0 auto}}
+.header{{background:white;border-radius:15px;padding:30px;margin-bottom:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1)}}
+.header h1{{color:#667eea;font-size:32px}}
+.stats{{margin-top:15px;color:#666}}
+.jobs-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}}
+.job-card{{background:white;border-radius:12px;padding:25px;box-shadow:0 5px 20px rgba(0,0,0,0.1);transition:transform 0.3s}}
+.job-card:hover{{transform:translateY(-5px)}}
+.tier-1{{border-left:5px solid #FFD700}}
+.tier-2{{border-left:5px solid #C0C0C0}}
+.tier-3{{border-left:5px solid #CD7F32}}
+.job-title{{font-size:18px;font-weight:700;color:#333;margin-bottom:8px}}
+.job-company{{color:#667eea;margin-bottom:12px}}
+.job-meta{{color:#666;font-size:14px;margin-bottom:15px}}
+.btn{{display:inline-block;padding:10px 20px;background:#667eea;color:white;text-decoration:none;border-radius:8px;margin-top:10px}}
+.btn:hover{{background:#5568d3}}
+.tier-badge{{display:inline-block;padding:4px 10px;border-radius:10px;font-size:11px;font-weight:700;margin-bottom:10px}}
+.tier-1-badge{{background:#FFD700;color:#856404}}
+.tier-2-badge{{background:#C0C0C0;color:#495057}}
+.tier-3-badge{{background:#CD7F32;color:white}}
+</style></head><body>
+<div class="container">
+<div class="header">
+<h1>🎯 Strategic Match</h1>
+<div class="stats">
+<strong>Total Jobs: {len(jobs)}</strong> | 
+🏆 Tier 1: {tier1} | 
+🥈 Tier 2: {tier2} | 
+🥉 Tier 3: {tier3}
+</div>
+</div>
+<div class="jobs-grid" id="grid"></div>
+</div>
+<script>
+const jobs={jobs_json};
+document.getElementById('grid').innerHTML=jobs.map(j=>`
+<div class="job-card tier-${{j.tier||3}}">
+<span class="tier-badge tier-${{j.tier||3}}-badge">TIER ${{j.tier||3}}</span>
+<h3 class="job-title">${{j.title||'Untitled Position'}}</h3>
+<div class="job-company">${{j.company||'Unknown Company'}}</div>
+<div class="job-meta">
+${{j.location?'📍 '+j.location:''}} 
+${{j.salary_range?'💰 '+j.salary_range:''}}
+${{j.match_score?'⭐ Match: '+j.match_score+'%':''}}
+</div>
+${{j.why_this_role?'<p style="color:#666;font-size:14px;line-height:1.6">'+j.why_this_role.substring(0,150)+'...</p>':''}}
+${{j.url?'<a href="'+j.url+'" target="_blank" class="btn">View Job →</a>':''}}
+</div>
+`).join('');
+console.log('Loaded',jobs.length,'jobs');
+</script></body></html>"""
 
-    print(f"   Tier 1: {tier1} | Tier 2: {tier2} | Tier 3: {tier3}")
+with open('index.html', 'w') as f:
+    f.write(html)
 
-    # Read HTML template
-    with open('index.html', 'r', encoding='utf-8') as f:
-        html_template = f.read()
-
-    # Replace placeholder with actual data
-    jobs_json = json.dumps(jobs, ensure_ascii=False)
-    html_final = html_template.replace("'{{JOBS_JSON}}'", jobs_json)
-
-    # Save final dashboard
-    with open('index.html', 'w', encoding='utf-8') as f:
-        f.write(html_final)
-
-    print("\n✅ Dashboard built successfully!")
-    print(f"   File: index.html")
-    print(f"   Total jobs: {len(jobs)}")
-    print("=" * 60)
-
-if __name__ == "__main__":
-    build_dashboard()
+print("✅ Dashboard created: index.html")
