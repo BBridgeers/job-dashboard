@@ -675,6 +675,8 @@
 
     
     <script>
+        const API_BASE = "https://my-job-dashboard.onrender.com";
+
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
@@ -696,7 +698,7 @@
 
         async function updateStatus(id, newStatus) {
             try {
-                const res = await fetch('/api/update_status', {
+                const res = await fetch(`${API_BASE}/api/update_status`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({id: id, status: newStatus})
@@ -705,7 +707,6 @@
                 if (res.ok) {
                     console.log(`Synced Job ${id} to ${newStatus}`);
                     showToast(`✅ Status synced: ${newStatus}`);
-                    // Update UI elements if needed
                     const select = document.querySelector(`#status-${id}`);
                     if(select) select.value = newStatus;
                 } else {
@@ -713,14 +714,13 @@
                 }
             } catch (e) {
                 console.error(e);
-                showToast('❌ Connection error');
+                showToast('❌ Connection error (Check Cloud Server)');
             }
         }
 
         async function saveNote(id, note) {
-            // Debounced save note
             try {
-                await fetch('/api/save_note', {
+                await fetch(`${API_BASE}/api/save_note`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({id: id, note: note})
@@ -744,9 +744,8 @@
         function filterJobs(criteria) {
             const cards = document.querySelectorAll('.job-card');
             const btns = document.querySelectorAll('.badge-filter');
-
             btns.forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event.target) event.target.classList.add('active');
 
             cards.forEach(card => {
                 const tags = card.dataset.tags.toLowerCase();
@@ -773,11 +772,12 @@
             el.style.display = el.style.display === 'none' ? 'block' : 'none';
         }
 
-        // Auto-save notes listeners
-        document.querySelectorAll('.notes-area').forEach(area => {
-            area.addEventListener('change', (e) => {
-                const id = e.target.id.replace('note-', '');
-                saveNote(id, e.target.value);
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.notes-area').forEach(area => {
+                area.addEventListener('change', (e) => {
+                    const id = e.target.id.replace('note-', '');
+                    saveNote(id, e.target.value);
+                });
             });
         });
     </script>

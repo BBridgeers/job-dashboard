@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
-Strategic Match - MASTER DASHBOARD BUILDER (With API Wiring)
+Strategic Match - MASTER DASHBOARD BUILDER (Cloud Sync)
 Generates:
-1. index.html (Main Dashboard - Grid View)
-2. tracker.html (Tracker Page - Vertical Stack + Table)
+1. index.html (Main Dashboard)
+2. tracker.html (Tracker Page)
+Connects to Render.com Backend for REAL-TIME SYNC across devices.
 """
 import sqlite3
 import json
 from datetime import datetime
+
+# --- CLOUD CONFIGURATION ---
+API_BASE = "https://my-job-dashboard.onrender.com" 
 
 def db_get_jobs():
     try:
@@ -24,6 +28,7 @@ def db_get_jobs():
             if not j.get('match_score'): j['match_score'] = 0
             j['app_url'] = j.get('application_url') if j.get('application_url') else j.get('url', '#')
             j['list_url'] = j.get('url', '#')
+
             tags = []
             tags.append(f"Tier {j['tier']}")
             if j['match_score'] >= 90: tags.append("High Match (90+)")
@@ -41,7 +46,7 @@ def db_get_jobs():
         return []
 
 def build_files():
-    print("🚀 Building Dashboard with API Wiring...")
+    print("🚀 Building Dashboard with CLOUD SYNC Wiring...")
 
     jobs = db_get_jobs()
     jobs_json = json.dumps(jobs)
@@ -117,83 +122,83 @@ def build_files():
     </style>
     """
 
-    # WIRED JS - Points to /api/ endpoints
-    wired_js = """
+    # --- CLOUD-WIRED JS ---
+    # Points to the Render URL for persistence
+    wired_js = f"""
     <script>
+        const API_BASE = "{API_BASE}";
+
         let lastScroll = 0;
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () => {{
             const currentScroll = window.pageYOffset;
             const header = document.querySelector('.header');
-            if (currentScroll > lastScroll && currentScroll > 100) {
+            if (currentScroll > lastScroll && currentScroll > 100) {{
                 header.classList.add('hidden');
-            } else {
+            }} else {{
                 header.classList.remove('hidden');
-            }
+            }}
             lastScroll = currentScroll;
-        });
+        }});
 
-        function showToast(msg) {
+        function showToast(msg) {{
             const toast = document.getElementById('toast');
             toast.innerText = msg;
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 3000);
-        }
+        }}
 
-        async function updateStatus(id, newStatus) {
-            try {
-                const res = await fetch('/api/update_status', {
+        async function updateStatus(id, newStatus) {{
+            try {{
+                const res = await fetch(`${{API_BASE}}/api/update_status`, {{
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({id: id, status: newStatus})
-                });
+                    headers: {{'Content-Type': 'application/json'}},
+                    body: JSON.stringify({{id: id, status: newStatus}})
+                }});
 
-                if (res.ok) {
-                    console.log(`Synced Job ${id} to ${newStatus}`);
-                    showToast(`✅ Status synced: ${newStatus}`);
-                    // Update UI elements if needed
-                    const select = document.querySelector(`#status-${id}`);
+                if (res.ok) {{
+                    console.log(`Synced Job ${{id}} to ${{newStatus}}`);
+                    showToast(`✅ Status synced: ${{newStatus}}`);
+                    const select = document.querySelector(`#status-${{id}}`);
                     if(select) select.value = newStatus;
-                } else {
+                }} else {{
                     showToast('❌ Error saving status');
-                }
-            } catch (e) {
+                }}
+            }} catch (e) {{
                 console.error(e);
-                showToast('❌ Connection error');
-            }
-        }
+                showToast('❌ Connection error (Check Cloud Server)');
+            }}
+        }}
 
-        async function saveNote(id, note) {
-            // Debounced save note
-            try {
-                await fetch('/api/save_note', {
+        async function saveNote(id, note) {{
+            try {{
+                await fetch(`${{API_BASE}}/api/save_note`, {{
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({id: id, note: note})
-                });
-            } catch(e) { console.error(e); }
-        }
+                    headers: {{'Content-Type': 'application/json'}},
+                    body: JSON.stringify({{id: id, note: note}})
+                }});
+            }} catch(e) {{ console.error(e); }}
+        }}
 
-        function markApplied(id, url) {
+        function markApplied(id, url) {{
             updateStatus(id, 'Applied');
             window.open(url, '_blank');
-        }
+        }}
 
-        function markViewed(id, url) {
-            const select = document.querySelector(`#status-${id}`);
-            if(select && select.value === 'New') {
+        function markViewed(id, url) {{
+            const select = document.querySelector(`#status-${{id}}`);
+            if(select && select.value === 'New') {{
                 updateStatus(id, 'Viewed');
-            }
+            }}
             window.open(url, '_blank');
-        }
+        }}
 
-        function filterJobs(criteria) {
+        function filterJobs(criteria) {{
             const cards = document.querySelectorAll('.job-card');
             const btns = document.querySelectorAll('.badge-filter');
-
             btns.forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event.target) event.target.classList.add('active');
 
-            cards.forEach(card => {
+            cards.forEach(card => {{
                 const tags = card.dataset.tags.toLowerCase();
                 let match = true;
                 if (criteria === 'high' && !tags.includes('high')) match = false;
@@ -203,28 +208,29 @@ def build_files():
                 if (criteria === 't2' && !tags.includes('tier 2')) match = false;
                 if (criteria === 't3' && !tags.includes('tier 3')) match = false;
                 card.style.display = match ? 'flex' : 'none';
-            });
-        }
+            }});
+        }}
 
-        function searchJobs(query) {
+        function searchJobs(query) {{
             const cards = document.querySelectorAll('.job-card');
-            cards.forEach(card => {
+            cards.forEach(card => {{
                 card.style.display = card.innerText.toLowerCase().includes(query.toLowerCase()) ? 'flex' : 'none';
-            });
-        }
+            }});
+        }}
 
-        function toggleSection(id) {
+        function toggleSection(id) {{
             const el = document.getElementById(id);
             el.style.display = el.style.display === 'none' ? 'block' : 'none';
-        }
+        }}
 
-        // Auto-save notes listeners
-        document.querySelectorAll('.notes-area').forEach(area => {
-            area.addEventListener('change', (e) => {
-                const id = e.target.id.replace('note-', '');
-                saveNote(id, e.target.value);
-            });
-        });
+        document.addEventListener('DOMContentLoaded', () => {{
+            document.querySelectorAll('.notes-area').forEach(area => {{
+                area.addEventListener('change', (e) => {{
+                    const id = e.target.id.replace('note-', '');
+                    saveNote(id, e.target.value);
+                }});
+            }});
+        }});
     </script>
     """
 
@@ -369,7 +375,7 @@ def build_files():
     with open('index.html', 'w', encoding='utf-8') as f: f.write(index_html)
     with open('tracker.html', 'w', encoding='utf-8') as f: f.write(tracker_html)
 
-    print("✅ Generated API-Wired index.html and tracker.html")
+    print("✅ Generated Cloud-Wired index.html and tracker.html")
 
 def render_job_card(j):
     quick_links = []
