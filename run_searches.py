@@ -20,7 +20,7 @@ def run_search(script_name, search_type):
             [sys.executable, script_name],
             capture_output=True,
             text=True,
-            timeout=120  # 2 minute timeout per search
+            timeout=300  # 2 minute timeout per search
         )
 
         print(result.stdout)

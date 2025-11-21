@@ -1,0 +1,387 @@
+# STRATEGIC MATCH - DFW CORPORATE/TECH JOBS
+Generated: 2025-11-20 08:55 PM CST
+Search Type: Corporate
+Model: sonar-pro (3-tier structured)
+Focus: AI/Automation, SaaS, EdTech, Fintech, Healthtech
+Sources: 20+ job boards
+================================================================================
+
+================================
+
+SECTION 1: ALL JOB LISTINGS
+================================
+
+TOP 5 MATCHES (TIER 1) - FULL DETAILS
+---
+
+1. Customer Success Manager - LiveKit
+   - Match Score: 96
+   - Salary: $150,000–$240,000
+   - Location: Remote (US-based, worldwide)
+   - Company Overview: LiveKit is a rapidly growing AI infrastructure startup (founded 2021) powering multimodal AI interfaces for audio/visual interaction. With over 3 billion calls annually and 100,000+ developers, LiveKit partners with major industry players like OpenAI, Spotify, and Meta. The company is known for its open-source ethos, strong technical team, and focus on scalable, developer-centric solutions in the AI/automation space. Backed by top investors, LiveKit is at the forefront of real-time communications and AI enablement[4].
+   - Role Insights: As a Customer Success Manager, you’ll drive adoption and engagement of LiveKit’s platform, partner closely with Account Executives, support customer needs, and proactively identify expansion opportunities. Responsibilities include onboarding, enablement, success planning, monitoring customer health, and acting as the voice of the customer internally. You’ll also help build scalable CS playbooks and processes, working in a fast-paced, early-stage environment[4].
+   - Key Requirements: 3–6 years in Customer Success, Solutions Engineering, or Account Management (SaaS/API/dev tools). Strong technical aptitude, proven ability to drive adoption/retention, experience with CRM/CS tools (Salesforce, HubSpot, Gainsight), and excellent relationship-building skills. Must be proactive, organized, and comfortable with ambiguity in a startup setting[4].
+   - URL: [Direct application link][4]
+
+2. Director of Customer Success - Confidential AI-Driven GovTech Startup (via Robert Half)
+   - Match Score: 92
+   - Salary: $85,000–$120,000
+   - Location: Remote (HQ: Miami, FL)
+   - Company Overview: This Miami-based Series A+ startup leverages advanced AI to streamline government services (passports, visas, vehicle registration) via a trusted courier marketplace. The company is building a world-class team focused on technology, empathy, and efficiency, aiming to redefine the citizen experience in public sector tech. Strong growth, high-profile investors, and a culture of innovation and psychological safety[1].
+   - Role Insights: Lead centralized customer support operations, streamline/document workflows, develop training programs, collaborate cross-functionally, and monitor team/customer metrics. The role is integral to customer satisfaction and retention, with a focus on scaling team capabilities and aligning with marketing/ops for improved engagement[1].
+   - Key Requirements: 8+ years in customer success/operations, SaaS/AI/automation background preferred, strong leadership and workflow optimization skills, experience with cross-functional teams, and data-driven decision-making. Must be adept at scaling teams and building high-performance cultures[1].
+   - URL: [Direct application link][1]
+
+3. Senior Account Manager - Agency (Healthcare/Fintech) - Confidential via Robert Half
+   - Match Score: 88
+   - Salary: $90,000–$120,000
+   - Location: Hybrid (Central CT, open to remote for top candidates)
+   - Company Overview: Leading agency serving B2B healthcare and financial services clients, known for strategic client partnerships and delivering measurable marketing outcomes. The agency has a strong reputation for innovation, cross-functional collaboration, and client retention, with a growing portfolio in healthtech and fintech verticals[1].
+   - Role Insights: Manage day-to-day client needs, oversee onboarding/project intake, present/defend agency work, monitor satisfaction/profitability, and resolve conflicts. The role is strategic and client-facing, requiring a consultative approach and ability to drive long-term client value[1].
+   - Key Requirements: 5+ years account management (healthcare/fintech), proven client retention/expansion, strong communication and presentation skills, experience with cross-functional teams, and a strategic mindset. Agency background preferred[1].
+   - URL: [Direct application link][1]
+
+4. Retention Specialist - Solve (Remote, TX)
+   - Match Score: 85
+   - Salary: $75,000–$90,000
+   - Location: Remote (TX preferred)
+   - Company Overview: Solve is a tech-enabled platform focused on customer retention and relationship management for B2B SaaS and service companies. Known for its empathetic, data-driven approach, Solve partners with enterprise clients to reduce churn and maximize customer lifetime value. The company is growing rapidly, with a strong emphasis on remote-first culture and employee development[3].
+   - Role Insights: Solve customer challenges, regain confidence, build rapport, and create lasting relationships. The role focuses on proactive retention strategies, empathetic communication, and problem-solving to ensure high customer satisfaction and loyalty[3].
+   - Key Requirements: 5+ years in customer success/retention, SaaS experience, strong empathy and communication skills, ability to handle complex customer issues, and data-driven mindset. Experience with CRM tools required[3].
+   - URL: [Direct application link][3]
+
+5. Customer Success Manager - Robert Half (Dallas, TX)
+   - Match Score: 82
+   - Salary: $80,000–$110,000
+   - Location: Dallas, TX (onsite/hybrid)
+   - Company Overview: Robert Half is a global leader in professional staffing and consulting, with a dedicated technology and customer experience practice. The company partners with leading SaaS, fintech, and healthtech firms to deliver high-impact talent solutions. Known for its strong reputation, robust training, and career advancement opportunities[1].
+   - Role Insights: Manage customer relationships, drive retention/expansion, collaborate with cross-functional teams, and monitor satisfaction metrics. The role emphasizes workflow optimization, training, and alignment with marketing/ops for improved engagement and customer outcomes[1].
+   - Key Requirements: 7+ years in customer success/account management, SaaS/tech background, strong relationship-building and analytical skills, experience with workflow/process improvement, and leadership potential[1].
+   - URL: [Direct application link][1]
+
+POSITIONS 6-10 (TIER 2) - CORE DETAILS
+---
+
+6. Senior Product Manager (Platform & Configuration Tools) - SafetyChain Software
+   - Match Score: 78
+   - Salary: $120,000–$150,000
+   - Location: Addison, TX (Hybrid/Remote)
+   - Company Overview: SafetyChain Software delivers SaaS solutions for compliance, automation, and quality management in food/healthtech sectors. Series B, strong market presence in regulated industries[6].
+   - Role Insights: Lead product delivery, manage platform configuration, collaborate with engineering, and drive customer adoption[6].
+   - Key Requirements: 7+ years in B2B SaaS product management, technical proficiency, experience with data models/schemas[6].
+   - URL: [Direct application link][6]
+
+7. Regional Sales Manager (North Texas) - Confidential (Remote Jobs USA)
+   - Match Score: 74
+   - Salary: $100,000–$130,000
+   - Location: Dallas/Fort Worth, TX (Remote)
+   - Company Overview: Fast-growing SaaS/automation provider with a focus on workflow solutions for enterprise clients. Series A+, strong product-market fit, remote-first[7].
+   - Role Insights: Manage key accounts, drive adoption/expansion, collaborate with product/CS, and support renewals[7].
+   - Key Requirements: 8+ years in SaaS account management, strong relationship and expansion skills, not pure hunter[7].
+   - URL: [Direct application link][7]
+
+8. Customer Success Associate - Fancy & Funky
+   - Match Score: 70
+   - Salary: $75,000–$85,000
+   - Location: Remote (US)
+   - Company Overview: Boutique SaaS provider for creative industries, focusing on customer engagement and retention[3].
+   - Role Insights: Support customer onboarding, resolve issues, and maintain records[3].
+   - Key Requirements: 3+ years in customer success, strong communication, SaaS experience preferred[3].
+   - URL: [Direct application link][3]
+
+9. Account Manager - Global Payments (Fintech)
+   - Match Score: 68
+   - Salary: $80,000–$100,000
+   - Location: Dallas, TX (Hybrid)
+   - Company Overview: Global Payments is a leading fintech company specializing in payment solutions for SMBs and enterprises. Publicly traded, strong reputation, and robust technology stack[2].
+   - Role Insights: Manage client relationships, upsell/cross-sell, maintain CRM records, and stay current on fintech trends[2].
+   - Key Requirements: 5+ years in account management, fintech/SaaS experience, CRM proficiency[2].
+   - URL: [Direct application link][2]
+
+10. Customer Success Manager - RemoteOK (LiveKit)
+    - Match Score: 65
+    - Salary: $150,000–$195,000
+    - Location: Remote (Worldwide)
+    - Company Overview: See LiveKit above; listing via RemoteOK[4].
+    - Role Insights: See LiveKit above[4].
+    - Key Requirements: See LiveKit above[4].
+    - URL: [Direct application link][4]
+
+ALL OTHER MATCHES (TIER 3) - BASIC LIST
+---
+
+11. Chat Representative - Fancy & Funky - Match: 60
+12. Customer Success Associate - Remote SaaS Startup - Match: 58
+13. Account Manager - Confidential EdTech - Match: 55
+14. Customer Experience Director - Healthtech Platform - Match: 54
+15. Customer Success Manager - B2B SaaS (Remote) - Match: 52
+16. Strategic Account Manager - Fintech SaaS - Match: 50
+17. Customer Success Director - Series B EdTech - Match: 48
+18. Customer Success Manager - RPA/Automation SaaS - Match: 47
+19. Customer Success Lead - Hybrid DFW - Match: 45
+20. Customer Experience Manager - Remote SaaS - Match: 43
+
+================================
+
+SECTION 2: STRATEGIC ANALYSIS (TOP 5 ONLY)
+================================
+
+---START_JOB_1---
+TITLE: Customer Success Manager
+COMPANY: LiveKit
+MATCH_SCORE: 96
+TIER: 1
+
+---COMPANY_OVERVIEW---
+LiveKit is a high-growth, venture-backed startup (founded 2021) specializing in real-time AI infrastructure for multimodal audio/visual applications. The company supports over 3 billion calls annually and serves 100,000+ developers, including major clients like OpenAI, Spotify, and Meta. LiveKit is recognized for its open-source approach, rapid innovation, and developer-first culture. The tech stack is modern (TypeScript, Go, cloud-native), with a strong focus on AI/automation and scalable communications. Competitors include Twilio, Agora, and Daily.co, but LiveKit distinguishes itself with deep AI integration and a robust open-source community. The company is Series A+ with strong investor backing and a trajectory toward market leadership in AI-powered communications.
+
+---ROLE_INSIGHTS---
+You’ll join as one of the early Customer Success Managers, reporting to the Head of Customer Success. The team is lean, cross-functional, and highly technical. Day-to-day, you’ll partner closely with Account Executives, guide onboarding, drive product adoption, and proactively manage customer health. You’ll have decision authority on customer engagement strategies and contribute to building CS processes/playbooks. The role is remote with flexible hours, minimal travel, and high visibility across product, engineering, and leadership. You’ll influence both tactical and strategic CS initiatives in a fast-paced, startup environment.
+
+---KEY_REQUIREMENTS---
+Must have 3–6 years in SaaS/API/dev tools Customer Success or Account Management, strong technical aptitude, and experience with CRM/CS tools (Salesforce, HubSpot, Gainsight). Proven track record in driving adoption, retention, and expansion. Excellent communication and relationship-building skills, ability to engage technical and executive stakeholders, and comfort with ambiguity/startup pace. Highly organized, proactive, and empathetic.
+
+---INTERVIEW_PREP---
+Expect scenario-based questions on customer onboarding, adoption strategies, and handling technical objections. Be ready for a case study on driving expansion or reducing churn. Technical assessment may include product walkthroughs or API familiarity. Highlight experience with cross-functional collaboration and building scalable CS processes. Prepare to discuss metrics-driven success and how you’ve influenced product/engineering teams.
+
+---SALARY_INTEL---
+Market rates for early-stage AI/automation SaaS CSMs range from $140k–$180k base, with total comp (including equity) up to $240k. Negotiation leverage is strong for candidates with deep technical and strategic CS experience. Expect equity, health/vision/dental, and flexible PTO. Benefits are competitive with other Series A+ startups; equity may be significant given company growth.
+
+---APPLICATION_STRATEGY---
+Emphasize keywords: “AI infrastructure,” “multimodal communications,” “customer adoption,” “expansion,” “open-source,” “developer relations,” “cross-functional.” Cover letter should highlight technical acumen, startup experience, and ability to build scalable CS processes. Seek referrals from current employees or developer community. Submit application early in the week for best ATS visibility.
+
+---RED_FLAGS---
+Potential red flags include early-stage process ambiguity, high expectations for technical learning, and possible resource constraints. Some Glassdoor reviews mention rapid pace and evolving priorities. Clarify onboarding/training support and expectations for after-hours work.
+
+---CULTURAL_FIT---
+Culture is fast-paced, highly collaborative, and developer-centric. Values include transparency, innovation, and customer obsession. Remote/hybrid work is standard, with strong async communication. Leadership is accessible, and team dynamics favor autonomy and initiative. Ideal for self-starters who thrive in ambiguity and value direct impact.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles at Twilio, Agora, and Daily.co, but LiveKit offers unique exposure to cutting-edge AI/automation and open-source. Opportunity to shape CS function from the ground up. Alternatives may offer more structure but less influence and technical depth.
+
+---SKILLS_GAP_ANALYSIS---
+Your B2B SaaS CS/AM background aligns well. If lacking deep API or developer tool experience, position your learning agility and past technical upskilling. Highlight experience with cross-functional teams and process building. Address any gaps in AI/automation by referencing adjacent experience and willingness to learn.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections in the AI and developer tools space. Engage with LiveKit’s open-source community and developer forums. Seek informational interviews with current or former LiveKit employees. Consider reaching out to investors or advisors for warm intros.
+
+---DECISION_TIMELINE---
+Apply ASAP; early-stage startups move quickly. Expect initial response within 1 week, with 2–3 rounds of interviews. Offers typically extended within 3–4 weeks. Follow up after 5 business days if no response.
+
+---CAREER_TRAJECTORY---
+This role positions you for future leadership in AI/automation CS or product roles. Skills gained: technical CS, process building, cross-functional influence. Next steps could include Head of CS, VP CS, or transition to product/solutions leadership. Strong 3–5 year outlook in high-growth sector.
+
+---WHY_THIS_ROLE---
+Your extensive B2B SaaS CS/AM experience is a strong fit for LiveKit’s needs. Unique fit factors: ability to build CS from scratch, influence product/engineering, and work at the intersection of AI and communications. Risk: early-stage ambiguity; reward: high impact, equity, and career acceleration.
+
+---FULL_DESCRIPTION---
+You’ll drive adoption and engagement of LiveKit’s AI-powered platform, partnering with Account Executives to ensure customer success. Responsibilities include onboarding, enablement, success planning, monitoring customer health, and acting as the voice of the customer. You’ll proactively identify expansion opportunities, build scalable CS processes, and collaborate with product/engineering. Success metrics: adoption, retention, expansion, and customer satisfaction. “Great” looks like building trusted relationships, influencing product direction, and scaling CS best practices in a dynamic, high-growth environment.
+---END_JOB_1---
+
+---START_JOB_2---
+TITLE: Director of Customer Success
+COMPANY: Confidential AI-Driven GovTech Startup (via Robert Half)
+MATCH_SCORE: 92
+TIER: 1
+
+---COMPANY_OVERVIEW---
+This Miami-based Series A+ startup is transforming government services through advanced AI and automation, streamlining processes like passports, visas, and vehicle registration. The company operates a trusted courier marketplace and is recognized for its blend of technology, empathy, and operational efficiency. Backed by high-profile investors, it’s scaling rapidly with a focus on psychological safety, high performance, and redefining the public sector experience. Tech stack includes AI/ML, cloud platforms, and modern SaaS tools. Competitors include govtech and civic tech startups, but few match its AI-first approach.
+
+---ROLE_INSIGHTS---
+You’ll lead centralized customer support operations, reporting to the COO. The role involves streamlining/documenting workflows, developing scalable training programs, and collaborating with marketing/ops to align customer engagement. You’ll monitor team performance and customer satisfaction, drive retention, and scale team capabilities. Decision authority over CS processes, with high cross-functional exposure. Remote, with occasional travel for team meetings.
+
+---KEY_REQUIREMENTS---
+8+ years in customer success/operations, ideally in SaaS, AI, or automation. Strong leadership and workflow optimization skills, experience scaling teams, and cross-functional collaboration. Data-driven decision-making and ability to build high-performance cultures are essential. Experience in public sector or govtech is a plus.
+
+---INTERVIEW_PREP---
+Prepare for behavioral questions on scaling CS teams, workflow/process improvement, and cross-functional leadership. Expect scenario-based questions on customer retention and satisfaction metrics. May include a case study on optimizing support operations or implementing training programs. Highlight experience with AI/automation and public sector clients if relevant.
+
+---SALARY_INTEL---
+$85k–$120k base, with potential for bonus/equity. Negotiation leverage for candidates with AI/automation or govtech experience. Benefits include health, dental, vision, and remote work flexibility. Total comp is competitive for Series A+ govtech startups, with upside potential as company grows.
+
+---APPLICATION_STRATEGY---
+Emphasize “AI-driven customer success,” “workflow optimization,” “team scaling,” “public sector transformation,” and “cross-functional leadership.” Cover letter should highlight experience in high-growth SaaS/AI environments and building scalable CS functions. Seek referrals from investors or current team. Apply early for best visibility.
+
+---RED_FLAGS---
+Potential red flags: early-stage process ambiguity, evolving priorities, and resource constraints typical of startups. Clarify expectations for team size, support, and KPIs. Some Glassdoor reviews mention rapid change and high expectations.
+
+---CULTURAL_FIT---
+Culture values innovation, empathy, and efficiency. Remote-first with strong async communication. Leadership emphasizes psychological safety and high performance. Team is diverse, mission-driven, and collaborative. Ideal for proactive leaders comfortable with ambiguity and rapid scaling.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles at govtech startups, but few offer this level of AI/automation integration. Unique opportunity to shape CS in a high-impact, public sector context. Alternatives may offer more structure but less innovation.
+
+---SKILLS_GAP_ANALYSIS---
+Your SaaS CS/AM and team leadership experience align well. If lacking direct govtech exposure, position your adaptability and experience scaling CS in regulated/complex environments. Highlight workflow/process improvement and data-driven decision-making.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections in govtech, AI, and SaaS. Engage with civic tech forums and public sector innovation groups. Seek warm intros via investors or advisors. Target informational interviews with current leadership.
+
+---DECISION_TIMELINE---
+Apply within the week; startups move quickly. Expect initial response in 5–7 days, with 2–3 interview rounds. Offers typically extended within 3–4 weeks. Follow up after 1 week if no response.
+
+---CAREER_TRAJECTORY---
+Role positions you for VP CS or COO in govtech/AI. Skills gained: public sector CS, team scaling, workflow optimization. Next steps: broader operational leadership or transition to product/strategy. Strong 3–5 year outlook in civic tech.
+
+---WHY_THIS_ROLE---
+Your background in SaaS CS/AM and scaling teams is a strong fit. Unique fit: ability to lead in AI-driven govtech, shape CS from the ground up, and drive public sector innovation. Risk: early-stage ambiguity; reward: high impact, mission-driven work, and career acceleration.
+
+---FULL_DESCRIPTION---
+Lead centralized customer support, streamline/document workflows, develop training, and align with marketing/ops. Monitor team/customer metrics, drive retention, and scale team capabilities. Success metrics: customer satisfaction, retention, team performance. “Great” means building a high-performance, empathetic CS team that drives measurable outcomes and supports rapid company growth.
+---END_JOB_2---
+
+---START_JOB_3---
+TITLE: Senior Account Manager - Agency (Healthcare/Fintech)
+COMPANY: Confidential via Robert Half
+MATCH_SCORE: 88
+TIER: 1
+
+---COMPANY_OVERVIEW---
+This agency is a leader in B2B marketing for healthcare and fintech clients, known for strategic client partnerships and delivering measurable results. The agency is growing, with a strong reputation for innovation, cross-functional collaboration, and client retention. Tech stack includes modern CRM, analytics, and marketing automation tools. Competitors include large and boutique agencies, but this firm stands out for its sector focus and consultative approach.
+
+---ROLE_INSIGHTS---
+You’ll manage day-to-day client needs, oversee onboarding and project intake, present/defend agency work, and monitor satisfaction/profitability. Reporting to the Director of Client Services, you’ll lead strategic client relationships and collaborate with analytics, creative, and marketing teams. The role is hybrid, with flexibility for remote work for top candidates. No travel required beyond client meetings.
+
+---KEY_REQUIREMENTS---
+5+ years in account management (healthcare/fintech), proven client retention/expansion, strong communication and presentation skills, experience with cross-functional teams, and a strategic mindset. Agency experience preferred.
+
+---INTERVIEW_PREP---
+Expect questions on client retention, conflict resolution, and strategic account growth. Be ready to present a case study on driving measurable outcomes for a healthcare/fintech client. Highlight experience with cross-functional teams and consultative selling. May include a presentation or role-play.
+
+---SALARY_INTEL---
+$90k–$120k base, with bonus potential. Market rates for agency AMs in healthtech/fintech. Benefits include health, dental, vision, and hybrid work flexibility. Negotiation leverage for candidates with deep sector experience and proven client growth.
+
+---APPLICATION_STRATEGY---
+Emphasize “strategic account management,” “healthcare/fintech,” “client retention,” and “cross-functional collaboration.” Cover letter should highlight measurable outcomes and consultative approach. Seek referrals from agency network or industry contacts. Apply early in the week.
+
+---RED_FLAGS---
+Potential red flags: agency pace, client demands, and possible scope creep. Clarify expectations for client load and support resources. Some reviews mention high performance expectations.
+
+---CULTURAL_FIT---
+Culture is fast-paced, collaborative, and client-focused. Values include innovation, measurable results, and teamwork. Hybrid/remote flexibility, with strong emphasis on communication and accountability. Leadership is supportive, with opportunities for growth.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles at large agencies, but this firm offers more sector focus and consultative depth. Unique opportunity to build long-term client relationships in healthtech/fintech. Alternatives may offer broader portfolios but less specialization.
+
+---SKILLS_GAP_ANALYSIS---
+Your SaaS CS/AM experience aligns well, especially if you’ve worked with healthcare/fintech clients. If lacking agency background, position your adaptability and consultative approach. Highlight experience with cross-functional teams and measurable outcomes.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections in agency, healthtech, and fintech. Engage with industry groups and former colleagues. Seek referrals from current or former agency employees. Target informational interviews with Director of Client Services.
+
+---DECISION_TIMELINE---
+Apply within 3–5 days; agencies move quickly. Expect initial response in 1 week, with 2–3 interview rounds. Offers typically extended within 3–4 weeks. Follow up after 1 week if no response.
+
+---CAREER_TRAJECTORY---
+Role positions you for Director of Client Services or Strategic Account Director. Skills gained: sector expertise, strategic account growth, cross-functional leadership. Next steps: broader agency leadership or transition to client-side CS/AM. Strong 3–5 year outlook.
+
+---WHY_THIS_ROLE---
+Your B2B SaaS CS/AM and retention experience is a strong fit. Unique fit: sector focus, strategic client partnerships, and opportunity to drive measurable outcomes. Risk: agency pace; reward: career growth and sector expertise.
+
+---FULL_DESCRIPTION---
+Manage day-to-day client needs, oversee onboarding/project intake, present/defend agency work, monitor satisfaction/profitability, and resolve conflicts. Collaborate with analytics, creative, and marketing teams to deliver measurable outcomes. Success metrics: client retention, satisfaction, and account growth. “Great” means building trusted, long-term client relationships and driving strategic value.
+---END_JOB_3---
+
+---START_JOB_4---
+TITLE: Retention Specialist
+COMPANY: Solve
+MATCH_SCORE: 85
+TIER: 1
+
+---COMPANY_OVERVIEW---
+Solve is a tech-enabled platform specializing in customer retention and relationship management for B2B SaaS and service companies. The company is known for its empathetic, data-driven approach and partners with enterprise clients to reduce churn and maximize customer lifetime value. Solve is growing rapidly, with a strong remote-first culture and focus on employee development. Competitors include ChurnZero, Gainsight, and Totango.
+
+---ROLE_INSIGHTS---
+You’ll solve customer challenges, regain confidence, build rapport, and create lasting relationships. Reporting to the Head of Customer Success, you’ll focus on proactive retention strategies, empathetic communication, and problem-solving. The role is fully remote, with flexible hours and no travel. High autonomy and opportunity to influence retention processes.
+
+---KEY_REQUIREMENTS---
+5+ years in customer success/retention, SaaS experience, strong empathy and communication skills, ability to handle complex customer issues, and data-driven mindset. Experience with CRM tools required.
+
+---INTERVIEW_PREP---
+Expect scenario-based questions on handling difficult customers, regaining trust, and reducing churn. May include a case study on retention strategy. Highlight experience with SaaS retention and data-driven decision-making. Prepare to discuss metrics and outcomes.
+
+---SALARY_INTEL---
+$75k–$90k base, with bonus potential. Market rates for retention specialists in SaaS. Benefits include health, dental, vision, and remote work. Negotiation leverage for candidates with deep SaaS retention experience.
+
+---APPLICATION_STRATEGY---
+Emphasize “customer retention,” “relationship management,” “SaaS,” “data-driven,” and “empathy.” Cover letter should highlight experience reducing churn and building lasting relationships. Seek referrals from current team or SaaS network. Apply early for best visibility.
+
+---RED_FLAGS---
+Potential red flags: high expectations for empathy and problem-solving, possible resource constraints in a fast-growing company. Clarify support resources and KPIs.
+
+---CULTURAL_FIT---
+Culture is empathetic, data-driven, and remote-first. Values include customer obsession, continuous improvement, and autonomy. Team is collaborative, with strong support for professional development. Leadership is accessible and values feedback.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles at ChurnZero, Gainsight, Totango, but Solve offers more autonomy and influence over retention strategy. Unique opportunity to shape retention processes in a growing company.
+
+---SKILLS_GAP_ANALYSIS---
+Your SaaS CS/AM and retention experience align well. If lacking experience with specific retention platforms, position your learning agility and data-driven mindset. Highlight empathy and problem-solving skills.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections in SaaS CS and retention. Engage with SaaS customer success forums. Seek referrals from current employees. Target informational interviews with Head of Customer Success.
+
+---DECISION_TIMELINE---
+Apply within 3–5 days; expect response within 1 week. 2–3 interview rounds. Offers typically extended within 3–4 weeks. Follow up after 1 week if no response.
+
+---CAREER_TRAJECTORY---
+Role positions you for Senior Retention Manager or Head of Retention. Skills gained: SaaS retention strategy, data-driven decision-making, customer relationship management. Next steps: broader CS leadership or transition to product/strategy. Strong 3–5 year outlook.
+
+---WHY_THIS_ROLE---
+Your B2B SaaS retention and relationship-building experience is a strong fit. Unique fit: opportunity to shape retention strategy, high autonomy, and remote flexibility. Risk: resource constraints; reward: career growth and impact.
+
+---FULL_DESCRIPTION---
+Solve customer challenges, regain confidence, build rapport, and create lasting relationships. Focus on proactive retention strategies, empathetic communication, and problem-solving. Success metrics: reduced churn, increased customer satisfaction, and long-term loyalty. “Great” means building trust, influencing retention processes, and driving measurable outcomes.
+---END_JOB_4---
+
+---START_JOB_5---
+TITLE: Customer Success Manager
+COMPANY: Robert Half (Dallas, TX)
+MATCH_SCORE: 82
+TIER: 1
+
+---COMPANY_OVERVIEW---
+Robert Half is a global leader in professional staffing and consulting, with a dedicated technology and customer experience practice. The company partners with leading SaaS, fintech, and healthtech firms to deliver high-impact talent solutions. Known for its strong reputation, robust training, and career advancement opportunities, Robert Half is publicly traded and has a longstanding presence in the DFW market. Tech stack includes modern CRM and analytics tools.
+
+---ROLE_INSIGHTS---
+You’ll manage customer relationships, drive retention/expansion, collaborate with cross-functional teams, and monitor satisfaction metrics. Reporting to the Director of Customer Success, you’ll optimize workflows, develop training, and align with marketing/ops for improved engagement. The role is onsite/hybrid in Dallas, with some flexibility for remote work.
+
+---KEY_REQUIREMENTS---
+7+ years in customer success/account management, SaaS/tech background, strong relationship-building and analytical skills, experience with workflow/process improvement, and leadership potential.
+
+---INTERVIEW_PREP---
+Expect questions on customer retention, workflow optimization, and cross-functional collaboration. May include a case study on improving customer satisfaction or process improvement. Highlight experience with SaaS clients and measurable outcomes.
+
+---SALARY_INTEL---
+$80k–$110k base, with bonus potential. Market rates for CS managers in DFW SaaS/tech. Benefits include health, dental, vision, and hybrid work. Negotiation leverage for candidates with deep SaaS/tech experience.
+
+---APPLICATION_STRATEGY---
+Emphasize “customer success,” “workflow optimization,” “SaaS/tech,” “cross-functional collaboration,” and “retention/expansion.” Cover letter should highlight process improvement and measurable outcomes. Seek referrals from DFW network or current team. Apply early in the week.
+
+---RED_FLAGS---
+Potential red flags: possible client load, expectations for rapid process improvement, and hybrid work requirements. Clarify support resources and KPIs.
+
+---CULTURAL_FIT---
+Culture is professional, collaborative, and performance-driven. Values include customer focus, innovation, and teamwork. Hybrid/onsite work, with strong emphasis on training and career growth. Leadership is supportive, with clear advancement paths.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles at other staffing/consulting firms, but Robert Half offers more tech/SaaS exposure and career advancement. Unique opportunity to work with leading SaaS clients in DFW.
+
+---SKILLS_GAP_ANALYSIS---
+Your SaaS CS/AM and process improvement experience align well. If lacking staffing/consulting exposure, position your adaptability and client-facing skills. Highlight workflow optimization and leadership potential.
+
+---NETWORK_LEVERAGE---
+Leverage DFW LinkedIn network, alumni, and industry contacts. Engage with Robert Half recruiters. Seek referrals from current employees. Target informational interviews with Director of Customer Success.
+
+---DECISION_TIMELINE---
+Apply within 3–5 days; expect response within 1 week. 2–3 interview rounds. Offers typically extended within 3–4 weeks. Follow up after 1 week if no response.
+
+---CAREER_TRAJECTORY---
+Role positions you for Senior CS Manager or Director of Customer Success. Skills gained: workflow optimization, cross-functional leadership, SaaS client management. Next steps: broader CS leadership or transition to product/strategy. Strong 3–5 year outlook.
+
+---WHY_THIS_ROLE---
+Your B2B SaaS CS/AM and workflow optimization experience is a strong fit. Unique fit: exposure to leading SaaS clients, career advancement, and process improvement. Risk: hybrid work; reward: career growth and impact.
+
+---FULL_DESCRIPTION---
+Manage customer relationships, drive retention/expansion, collaborate with cross-functional teams, and monitor satisfaction metrics. Optimize workflows, develop training, and align with marketing/ops. Success metrics: retention, satisfaction, and process improvement. “Great” means building strong client relationships, driving measurable outcomes, and advancing within the organization.
+---END_JOB_5---
