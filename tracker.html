@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Tracker</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #6366f1; --bg-grad: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); --card-bg: #ffffff; --text-main: #1e293b; --text-sub: #64748b; --success: #10b981; --blue-company: #1e40af; --tag-bg: #fee2e2; --tag-text: #991b1b; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-grad); color: var(--text-main); margin: 0; padding-top: 140px; min-height: 100vh; }
+        .header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 15px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; transition: transform 0.3s ease; }
+        .header.hidden { transform: translateY(-100%); }
+        .header-content { max-width: 1600px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; }
+        .filter-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .badge-filter { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid #e2e8f0; background: white; transition: all 0.2s; display: flex; align-items: center; gap: 6px; color: var(--text-sub); }
+        .badge-filter:hover, .badge-filter.active { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-1px); box-shadow: 0 2px 5px rgba(99, 102, 241, 0.3); }
+        .header-right { display: flex; align-items: center; gap: 15px; flex-grow: 1; justify-content: flex-end; }
+        .search-bar { position: relative; width: 300px; }
+        .search-input { width: 100%; padding: 8px 15px 8px 35px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; }
+        .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 12px; }
+        .tracker-btn { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3); transition: transform 0.2s; white-space: nowrap; }
+        .tracker-btn:hover { transform: scale(1.05); }
+        .grid-container { max-width: 1600px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
+        .job-card { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; position: relative; border: 1px solid #f1f5f9; display: flex; flex-direction: column; }
+        .job-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1); }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+        .filter-tag { background: var(--tag-bg); color: var(--tag-text); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; }
+        .job-title { font-size: 16px; font-weight: 700; color: #0f172a; margin: 0 0 5px 0; line-height: 1.4; }
+        .job-location { font-size: 12px; color: #64748b; margin-bottom: 2px; }
+        .company-name { font-size: 13px; font-weight: 700; color: var(--blue-company); margin-bottom: 8px; }
+        .match-summary { font-size: 12px; color: var(--success); font-weight: 600; margin-bottom: 15px; line-height: 1.4; background: #ecfdf5; padding: 6px 10px; border-radius: 6px; }
+        .quick-links { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+        .ql-btn { font-size: 11px; padding: 4px 8px; border-radius: 12px; background: #f1f5f9; color: #475569; cursor: pointer; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .ql-btn:hover { background: #e2e8f0; color: #1e293b; }
+        .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+        .btn-3d { padding: 8px; border: none; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; text-align: center; text-decoration: none; transition: transform 0.1s; color: white; display: flex; align-items: center; justify-content: center; }
+        .btn-3d:active { transform: scale(0.95); }
+        .btn-details { background: linear-gradient(to bottom, #6366f1, #4f46e5); box-shadow: 0 3px 0 #3730a3; }
+        .btn-listing { background: linear-gradient(to bottom, #3b82f6, #2563eb); box-shadow: 0 3px 0 #1d4ed8; }
+        .btn-apply { background: linear-gradient(to bottom, #10b981, #059669); box-shadow: 0 3px 0 #047857; }
+        .btn-track { background: linear-gradient(to bottom, #f59e0b, #d97706); box-shadow: 0 3px 0 #b45309; }
+        .status-row { margin-top: 15px; padding-top: 15px; border-top: 1px solid #f1f5f9; }
+        .status-select { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 12px; font-weight: 600; color: #334155; }
+        .notes-area { width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: inherit; font-size: 12px; resize: vertical; min-height: 40px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 2000; align-items: center; justify-content: center; }
+        .modal-content { background: white; width: 90%; max-width: 800px; max-height: 90vh; border-radius: 20px; overflow-y: auto; padding: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); animation: modalSlide 0.3s ease; }
+        @keyframes modalSlide { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .toast { position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(100px); transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 3000; }
+        .toast.show { transform: translateY(0); }
+        .vertical-stack { max-width: 800px; margin: 0 auto 40px auto; display: flex; flex-direction: column; gap: 15px; }
+        .status-section { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .status-header { background: #f8fafc; padding: 12px 20px; font-weight: 700; color: #475569; font-size: 13px; text-transform: uppercase; display: flex; justify-content: space-between; cursor: pointer; border-bottom: 1px solid #e2e8f0; }
+        .status-header:hover { background: #f1f5f9; }
+        .status-content { padding: 0; display: block; }
+        .v-card { padding: 12px 20px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .v-card:last-child { border-bottom: none; }
+        .v-card:hover { background: #f8fafc; }
+        .v-info { display: flex; flex-direction: column; gap: 2px; }
+        .v-title { font-weight: 600; font-size: 14px; color: #1e293b; }
+        .v-company { font-size: 12px; color: #64748b; }
+        .v-date { font-size: 11px; color: #94a3b8; }
+        @media (max-width: 768px) { body { padding-top: 180px; } .header-content { flex-direction: column; align-items: stretch; } .header-right { justify-content: space-between; width: 100%; } .search-bar { width: 100%; max-width: none; } .filter-badges { overflow-x: auto; padding-bottom: 5px; } }
+    </style>
+    
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <a href="index.html" class="badge-filter" style="color:var(--primary)">← Back to Dashboard</a>
+            <h2>📋 Application Tracker</h2>
+        </div>
+    </div>
+
+    <div style="padding: 20px; max-width: 1000px; margin: 0 auto;">
+        <h3 style="color:#64748b; margin-bottom:20px;">Pipeline Stages</h3>
+
+        <div class="vertical-stack">
+            
+    <div class="status-section">
+        <div class="status-header" onclick="toggleSection('sec-New')">
+            <span>New</span>
+            <span style="background:#e2e8f0; padding:2px 8px; border-radius:10px; font-size:11px;">0</span>
+        </div>
+        <div id="sec-New" class="status-content" style="display:none">
+            <div style="padding:15px; font-size:13px; color:#94a3b8;">No jobs in this stage</div>
+        </div>
+    </div>
+    
+            
+    <div class="status-section">
+        <div class="status-header" onclick="toggleSection('sec-Viewed')">
+            <span>Viewed</span>
+            <span style="background:#e2e8f0; padding:2px 8px; border-radius:10px; font-size:11px;">0</span>
+        </div>
+        <div id="sec-Viewed" class="status-content" style="display:none">
+            <div style="padding:15px; font-size:13px; color:#94a3b8;">No jobs in this stage</div>
+        </div>
+    </div>
+    
+            
+    <div class="status-section">
+        <div class="status-header" onclick="toggleSection('sec-Applied')">
+            <span>Applied</span>
+            <span style="background:#e2e8f0; padding:2px 8px; border-radius:10px; font-size:11px;">0</span>
+        </div>
+        <div id="sec-Applied" class="status-content" style="display:none">
+            <div style="padding:15px; font-size:13px; color:#94a3b8;">No jobs in this stage</div>
+        </div>
+    </div>
+    
+            
+    <div class="status-section">
+        <div class="status-header" onclick="toggleSection('sec-Interview')">
+            <span>Interview</span>
+            <span style="background:#e2e8f0; padding:2px 8px; border-radius:10px; font-size:11px;">0</span>
+        </div>
+        <div id="sec-Interview" class="status-content" style="display:none">
+            <div style="padding:15px; font-size:13px; color:#94a3b8;">No jobs in this stage</div>
+        </div>
+    </div>
+    
+            
+    <div class="status-section">
+        <div class="status-header" onclick="toggleSection('sec-Offer')">
+            <span>Offer</span>
+            <span style="background:#e2e8f0; padding:2px 8px; border-radius:10px; font-size:11px;">0</span>
+        </div>
+        <div id="sec-Offer" class="status-content" style="display:none">
+            <div style="padding:15px; font-size:13px; color:#94a3b8;">No jobs in this stage</div>
+        </div>
+    </div>
+    
+            
+    <div class="status-section">
+        <div class="status-header" onclick="toggleSection('sec-Rejected')">
+            <span>Rejected</span>
+            <span style="background:#e2e8f0; padding:2px 8px; border-radius:10px; font-size:11px;">0</span>
+        </div>
+        <div id="sec-Rejected" class="status-content" style="display:none">
+            <div style="padding:15px; font-size:13px; color:#94a3b8;">No jobs in this stage</div>
+        </div>
+    </div>
+    
+        </div>
+
+        <h3 style="margin-top: 40px; color:#64748b; margin-bottom:20px;">All Applications Table</h3>
+        <table style="width:100%; border-collapse:collapse; background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 6px rgba(0,0,0,0.05); border:1px solid #e2e8f0;">
+            <thead style="background:#f8fafc; text-align:left; border-bottom:1px solid #e2e8f0;">
+                <tr>
+                    <th style="padding:12px 20px; font-size:13px; color:#64748b;">Status</th>
+                    <th style="padding:12px 20px; font-size:13px; color:#64748b;">Job Title</th>
+                    <th style="padding:12px 20px; font-size:13px; color:#64748b;">Company</th>
+                    <th style="padding:12px 20px; font-size:13px; color:#64748b;">Added</th>
+                    <th style="padding:12px 20px; font-size:13px; color:#64748b;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Development Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">North Texas Food Bank</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Community Engagement Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">Dallas Independent School District</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Volunteer Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">American Red Cross</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Program Manager, Youth Development</td>
+        <td style="padding:12px 20px; font-size:13px;">YMCA of Metropolitan Dallas</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Donor Relations Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">Dallas Children’s Theater</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Strategic Partnerships Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">Dallas Museum of Art</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Volunteer Coordinator</td>
+        <td style="padding:12px 20px; font-size:13px;">Dallas Arboretum and Botanical Garden</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Program Director, Education</td>
+        <td style="padding:12px 20px; font-size:13px;">Dallas Public Library</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Major Gifts Officer</td>
+        <td style="padding:12px 20px; font-size:13px;">Dallas Symphony Orchestra</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Community Engagement Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">Dallas Zoo</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Sarah Chen</td>
+        <td style="padding:12px 20px; font-size:13px;">Director of Customer Success (Example SaaS Co)</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Michael Rodriguez</td>
+        <td style="padding:12px 20px; font-size:13px;">VP of Customer Experience</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Jessica Williams</td>
+        <td style="padding:12px 20px; font-size:13px;">Talent Acquisition Partner</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Community Education & Outreach Manager, South Central Chapter</td>
+        <td style="padding:12px 20px; font-size:13px;">Parkinson's Foundation</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Community Relationship Manager (Remote - Dallas or Houston, TX Candidates Only)</td>
+        <td style="padding:12px 20px; font-size:13px;">Equitable Hiring Group</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Volunteer & Operations Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">Member Engagement (Remote)</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Development Manager (Relationship-Based)</td>
+        <td style="padding:12px 20px; font-size:13px;">SAFE Alliance</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Program Manager, Youth Development</td>
+        <td style="padding:12px 20px; font-size:13px;">Big Brothers Big Sisters of North Texas</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Donor Relations Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">Communities Foundation of Texas</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Strategic Partnerships Manager</td>
+        <td style="padding:12px 20px; font-size:13px;">Dallas Foundation</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Volunteer Coordinator</td>
+        <td style="padding:12px 20px; font-size:13px;">Feeding America</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Program Director, Education</td>
+        <td style="padding:12px 20px; font-size:13px;">United Way of Metropolitan Dallas</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+    <tr style="border-bottom:1px solid #f1f5f9;">
+        <td style="padding:12px 20px;"><span class="filter-tag">to_apply</span></td>
+        <td style="padding:12px 20px; font-weight:600; font-size:14px;">Major Gifts Officer (Relationship-Focused)</td>
+        <td style="padding:12px 20px; font-size:13px;">American Heart Association</td>
+        <td style="padding:12px 20px; color:#64748b; font-size:12px;">2025-11-20</td>
+        <td style="padding:12px 20px;"><a href="index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:12px;">View</a></td>
+    </tr>
+    
+            </tbody>
+        </table>
+    </div>
+
+    
+    <script>
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        async function updateStatus(id, newStatus) {
+            try {
+                const res = await fetch('/api/update_status', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id: id, status: newStatus})
+                });
+
+                if (res.ok) {
+                    console.log(`Synced Job ${id} to ${newStatus}`);
+                    showToast(`✅ Status synced: ${newStatus}`);
+                    // Update UI elements if needed
+                    const select = document.querySelector(`#status-${id}`);
+                    if(select) select.value = newStatus;
+                } else {
+                    showToast('❌ Error saving status');
+                }
+            } catch (e) {
+                console.error(e);
+                showToast('❌ Connection error');
+            }
+        }
+
+        async function saveNote(id, note) {
+            // Debounced save note
+            try {
+                await fetch('/api/save_note', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id: id, note: note})
+                });
+            } catch(e) { console.error(e); }
+        }
+
+        function markApplied(id, url) {
+            updateStatus(id, 'Applied');
+            window.open(url, '_blank');
+        }
+
+        function markViewed(id, url) {
+            const select = document.querySelector(`#status-${id}`);
+            if(select && select.value === 'New') {
+                updateStatus(id, 'Viewed');
+            }
+            window.open(url, '_blank');
+        }
+
+        function filterJobs(criteria) {
+            const cards = document.querySelectorAll('.job-card');
+            const btns = document.querySelectorAll('.badge-filter');
+
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                const tags = card.dataset.tags.toLowerCase();
+                let match = true;
+                if (criteria === 'high' && !tags.includes('high')) match = false;
+                if (criteria === 'corp' && !tags.includes('corporate')) match = false;
+                if (criteria === 'nonprofit' && !tags.includes('nonprofit')) match = false;
+                if (criteria === 't1' && !tags.includes('tier 1')) match = false;
+                if (criteria === 't2' && !tags.includes('tier 2')) match = false;
+                if (criteria === 't3' && !tags.includes('tier 3')) match = false;
+                card.style.display = match ? 'flex' : 'none';
+            });
+        }
+
+        function searchJobs(query) {
+            const cards = document.querySelectorAll('.job-card');
+            cards.forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(query.toLowerCase()) ? 'flex' : 'none';
+            });
+        }
+
+        function toggleSection(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Auto-save notes listeners
+        document.querySelectorAll('.notes-area').forEach(area => {
+            area.addEventListener('change', (e) => {
+                const id = e.target.id.replace('note-', '');
+                saveNote(id, e.target.value);
+            });
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,175 +1,832 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Strategic Match PRO</title>
-<style>
-:root { --bg: #f8fafc; --primary: #6366f1; --text: #1e293b; }
-body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
-.container { max-width: 1800px; margin: 0 auto; }
-
-/* Header & Filters */
-.header { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }
-.top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.title h1 { margin: 0; font-size: 24px; color: var(--primary); }
-
-.filter-bar { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 15px; border-top: 1px solid #e2e8f0; }
-.filter-btn { padding: 8px 16px; border: 1px solid #e2e8f0; background: white; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
-.filter-btn:hover { background: #f8fafc; }
-.filter-btn.active { background: #eef2ff; border-color: var(--primary); color: var(--primary); }
-
-/* Tier Badges for Buttons */
-.tb-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-.dot-1 { background: #f59e0b; }
-.dot-2 { background: #94a3b8; }
-.dot-3 { background: #d97706; }
-
-/* Kanban */
-.kanban { display: grid; grid-template-columns: repeat(5, minmax(280px, 1fr)); gap: 16px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 20px; }
-.column { background: #eef2ff; border-radius: 12px; padding: 16px; min-width: 280px; border: 1px solid #e0e7ff; }
-.col-header { font-weight: 700; margin-bottom: 16px; display: flex; justify-content: space-between; color: #4338ca; text-transform: uppercase; font-size: 12px; }
-.col-count { background: #c7d2fe; padding: 2px 8px; border-radius: 12px; color: #312e81; }
-
-/* Cards */
-.card { background: white; padding: 16px; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); cursor: grab; border-left: 4px solid transparent; }
-.card:hover { transform: translateY(-2px); box-shadow: 0 8px 16px -4px rgba(0,0,0,0.1); }
-.card.tier-1 { border-left-color: #f59e0b; }
-.card.tier-2 { border-left-color: #94a3b8; }
-.card.tier-3 { border-left-color: #d97706; }
-
-.card-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
-.match { font-weight: 800; color: #059669; font-size: 13px; background: #d1fae5; padding: 2px 6px; border-radius: 4px; }
-.role { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
-.company { color: #64748b; font-size: 13px; margin-bottom: 12px; }
-
-/* Quick Links */
-.quick-links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; pt: 12px; border-top: 1px solid #f1f5f9; }
-.q-link { font-size: 11px; padding: 4px 8px; border-radius: 6px; font-weight: 600; cursor: pointer; }
-.ql-prep { background: #e0e7ff; color: #4338ca; }
-.ql-talk { background: #dcfce7; color: #166534; }
-.ql-flag { background: #fee2e2; color: #991b1b; }
-.ql-view { background: #f3f4f6; color: #4b5563; margin-left: auto; }
-
-/* Modal */
-.modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:999; }
-.modal-content { background:white; width:800px; max-height:90vh; overflow-y:auto; padding:30px; border-radius:16px; }
-</style>
+    <title>Job Match Dashboard</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #6366f1; --bg-grad: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); --card-bg: #ffffff; --text-main: #1e293b; --text-sub: #64748b; --success: #10b981; --blue-company: #1e40af; --tag-bg: #fee2e2; --tag-text: #991b1b; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-grad); color: var(--text-main); margin: 0; padding-top: 140px; min-height: 100vh; }
+        .header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 15px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1000; transition: transform 0.3s ease; }
+        .header.hidden { transform: translateY(-100%); }
+        .header-content { max-width: 1600px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; }
+        .filter-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .badge-filter { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid #e2e8f0; background: white; transition: all 0.2s; display: flex; align-items: center; gap: 6px; color: var(--text-sub); }
+        .badge-filter:hover, .badge-filter.active { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-1px); box-shadow: 0 2px 5px rgba(99, 102, 241, 0.3); }
+        .header-right { display: flex; align-items: center; gap: 15px; flex-grow: 1; justify-content: flex-end; }
+        .search-bar { position: relative; width: 300px; }
+        .search-input { width: 100%; padding: 8px 15px 8px 35px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; }
+        .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 12px; }
+        .tracker-btn { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3); transition: transform 0.2s; white-space: nowrap; }
+        .tracker-btn:hover { transform: scale(1.05); }
+        .grid-container { max-width: 1600px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
+        .job-card { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; position: relative; border: 1px solid #f1f5f9; display: flex; flex-direction: column; }
+        .job-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1); }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+        .filter-tag { background: var(--tag-bg); color: var(--tag-text); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; }
+        .job-title { font-size: 16px; font-weight: 700; color: #0f172a; margin: 0 0 5px 0; line-height: 1.4; }
+        .job-location { font-size: 12px; color: #64748b; margin-bottom: 2px; }
+        .company-name { font-size: 13px; font-weight: 700; color: var(--blue-company); margin-bottom: 8px; }
+        .match-summary { font-size: 12px; color: var(--success); font-weight: 600; margin-bottom: 15px; line-height: 1.4; background: #ecfdf5; padding: 6px 10px; border-radius: 6px; }
+        .quick-links { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+        .ql-btn { font-size: 11px; padding: 4px 8px; border-radius: 12px; background: #f1f5f9; color: #475569; cursor: pointer; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .ql-btn:hover { background: #e2e8f0; color: #1e293b; }
+        .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+        .btn-3d { padding: 8px; border: none; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; text-align: center; text-decoration: none; transition: transform 0.1s; color: white; display: flex; align-items: center; justify-content: center; }
+        .btn-3d:active { transform: scale(0.95); }
+        .btn-details { background: linear-gradient(to bottom, #6366f1, #4f46e5); box-shadow: 0 3px 0 #3730a3; }
+        .btn-listing { background: linear-gradient(to bottom, #3b82f6, #2563eb); box-shadow: 0 3px 0 #1d4ed8; }
+        .btn-apply { background: linear-gradient(to bottom, #10b981, #059669); box-shadow: 0 3px 0 #047857; }
+        .btn-track { background: linear-gradient(to bottom, #f59e0b, #d97706); box-shadow: 0 3px 0 #b45309; }
+        .status-row { margin-top: 15px; padding-top: 15px; border-top: 1px solid #f1f5f9; }
+        .status-select { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 12px; font-weight: 600; color: #334155; }
+        .notes-area { width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: inherit; font-size: 12px; resize: vertical; min-height: 40px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 2000; align-items: center; justify-content: center; }
+        .modal-content { background: white; width: 90%; max-width: 800px; max-height: 90vh; border-radius: 20px; overflow-y: auto; padding: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); animation: modalSlide 0.3s ease; }
+        @keyframes modalSlide { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .toast { position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(100px); transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 3000; }
+        .toast.show { transform: translateY(0); }
+        .vertical-stack { max-width: 800px; margin: 0 auto 40px auto; display: flex; flex-direction: column; gap: 15px; }
+        .status-section { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .status-header { background: #f8fafc; padding: 12px 20px; font-weight: 700; color: #475569; font-size: 13px; text-transform: uppercase; display: flex; justify-content: space-between; cursor: pointer; border-bottom: 1px solid #e2e8f0; }
+        .status-header:hover { background: #f1f5f9; }
+        .status-content { padding: 0; display: block; }
+        .v-card { padding: 12px 20px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .v-card:last-child { border-bottom: none; }
+        .v-card:hover { background: #f8fafc; }
+        .v-info { display: flex; flex-direction: column; gap: 2px; }
+        .v-title { font-weight: 600; font-size: 14px; color: #1e293b; }
+        .v-company { font-size: 12px; color: #64748b; }
+        .v-date { font-size: 11px; color: #94a3b8; }
+        @media (max-width: 768px) { body { padding-top: 180px; } .header-content { flex-direction: column; align-items: stretch; } .header-right { justify-content: space-between; width: 100%; } .search-bar { width: 100%; max-width: none; } .filter-badges { overflow-x: auto; padding-bottom: 5px; } }
+    </style>
+    
 </head>
 <body>
-
-<div class="container">
     <div class="header">
-        <div class="top-row">
-            <div class="title"><h1>🚀 Strategic Match PRO</h1></div>
-            <div style="color:#64748b; font-weight:600">Total Jobs: 23</div>
-        </div>
+        <div class="header-content">
+            <div class="filter-badges">
+                <div class="badge-filter active" onclick="filterJobs('all')">📊 Total: 23</div>
+                <div class="badge-filter" onclick="filterJobs('t1')">🥇 Tier 1: 5</div>
+                <div class="badge-filter" onclick="filterJobs('t2')">🥈 Tier 2: 5</div>
+                <div class="badge-filter" onclick="filterJobs('t3')">🥉 Tier 3: 13</div>
+                <div class="badge-filter" onclick="filterJobs('high')">🔥 High Match: 0</div>
+                <div class="badge-filter" onclick="filterJobs('corp')">🏢 Corporate: 9</div>
+                <div class="badge-filter" onclick="filterJobs('nonprofit')">💚 Nonprofit: 14</div>
+            </div>
 
-        <div class="filter-bar">
-            <button class="filter-btn active" onclick="filterTier('all', this)">All Jobs</button>
-            <button class="filter-btn" onclick="filterTier(1, this)">
-                <span class="tb-dot dot-1"></span> Tier 1: Richest (5)
-            </button>
-            <button class="filter-btn" onclick="filterTier(2, this)">
-                <span class="tb-dot dot-2"></span> Tier 2: Semi (5)
-            </button>
-            <button class="filter-btn" onclick="filterTier(3, this)">
-                <span class="tb-dot dot-3"></span> Tier 3: Basic (13)
-            </button>
+            <div class="header-right">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search jobs..." onkeyup="searchJobs(this.value)">
+                </div>
+                <a href="tracker.html" class="tracker-btn">📋 Job Match Tracker</a>
+            </div>
         </div>
     </div>
 
-    <div class="kanban" id="kanban"></div>
-</div>
+    <div class="grid-container">
+        
+    <div class="job-card" data-tags="Tier 1,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 1</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Development Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">North Texas Food Bank</div>
+        <div class="match-summary">🎯 72% Match</div>
+        <div class="quick-links"></div>
 
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal-content" id="modal-body"></div></div>
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(1, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(1, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(1, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
 
-<script>
-const jobs = [{"id": 1, "title": "Development Manager", "company": "North Texas Food Bank", "location": "See details", "salary_range": "See details", "url": "", "match_score": 72, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 2, "title": "Community Engagement Manager", "company": "Dallas Independent School District", "location": "See details", "salary_range": "See details", "url": "", "match_score": 70, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 3, "title": "Volunteer Manager", "company": "American Red Cross", "location": "See details", "salary_range": "See details", "url": "", "match_score": 68, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 4, "title": "Program Manager, Youth Development", "company": "YMCA of Metropolitan Dallas", "location": "See details", "salary_range": "See details", "url": "", "match_score": 66, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 5, "title": "Donor Relations Manager", "company": "Dallas Children\u2019s Theater", "location": "See details", "salary_range": "See details", "url": "", "match_score": 64, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 6, "title": "Strategic Partnerships Manager", "company": "Dallas Museum of Art", "location": "See details", "salary_range": "See details", "url": "", "match_score": 62, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 7, "title": "Volunteer Coordinator", "company": "Dallas Arboretum and Botanical Garden", "location": "See details", "salary_range": "See details", "url": "", "match_score": 60, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 8, "title": "Program Director, Education", "company": "Dallas Public Library", "location": "See details", "salary_range": "See details", "url": "", "match_score": 58, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 9, "title": "Major Gifts Officer", "company": "Dallas Symphony Orchestra", "location": "See details", "salary_range": "See details", "url": "", "match_score": 56, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 10, "title": "Community Engagement Manager", "company": "Dallas Zoo", "location": "See details", "salary_range": "See details", "url": "", "match_score": 54, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 11, "title": "Sarah Chen", "company": "Director of Customer Success (Example SaaS Co)", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 12, "title": "Michael Rodriguez", "company": "VP of Customer Experience", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 13, "title": "Jessica Williams", "company": "Talent Acquisition Partner", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 14, "title": "Community Education & Outreach Manager, South Central Chapter", "company": "Parkinson's Foundation", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "The Parkinson\u2019s Foundation is a national nonprofit dedicated to improving care and advancing research for people with Parkinson\u2019s disease. The South Central Chapter serves Texas, Oklahoma, and Arkansas, offering education, outreach, and support programs. The organization is funded by individual donors, foundations, and corporate partnerships, with a strong reputation for community impact and mission-driven programming. The Foundation has a robust board and a history of financial stability, making it a respected leader in the nonprofit sector.", "why_this_role": "", "interview_prep": "Be prepared to discuss your experience in community outreach, program development, and stakeholder engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as the Parkinson\u2019s Foundation is dedicated to improving care and advancing research for people with Parkinson\u2019s disease. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of individuals affected by Parkinson\u2019s.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit outreach, community engagement, and program development. Strong stakeholder relationship skills, ability to collaborate with diverse partners, and a passion for mission-driven work. CVA certification is a strong plus. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": ""}, {"id": 15, "title": "Community Relationship Manager (Remote - Dallas or Houston, TX Candidates Only)", "company": "Equitable Hiring Group", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "Equitable Hiring Group partners with nonprofits to advance diversity, equity, and inclusion in hiring. The organization supports mission-driven organizations in building equitable teams and fostering inclusive workplace cultures. Funding comes from nonprofit clients and foundation grants. The organization has a strong reputation for community impact and is recognized for its innovative approach to nonprofit hiring.", "why_this_role": "", "interview_prep": "Be prepared to discuss your experience in nonprofit operations, community engagement, and relationship management. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as Equitable Hiring Group is dedicated to advancing diversity and inclusion in nonprofit hiring. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of nonprofit professionals and the communities they serve.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit operations, community engagement, and relationship management. Strong project management and communication skills. CVA certification is highly valued. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": ""}, {"id": 16, "title": "Volunteer & Operations Manager", "company": "Member Engagement (Remote)", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "This association supports nonprofit professionals through networking, training, and advocacy. The organization is funded by membership dues and grants, with a focus on community building and professional development. The association has a strong reputation for supporting nonprofit professionals and fostering inclusive workplace cultures.", "why_this_role": "", "interview_prep": "Be prepared to discuss your experience in volunteer management, operations, and community engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as the association is dedicated to supporting nonprofit professionals and fostering inclusive workplace cultures. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of nonprofit professionals and the communities they serve.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit volunteer management, operations, and community engagement. Strong organizational and interpersonal skills. CVA certification is preferred. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": ""}, {"id": 17, "title": "Development Manager (Relationship-Based)", "company": "SAFE Alliance", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "SAFE Alliance provides shelter and support services for survivors of domestic violence and sexual assault. The organization is funded by government grants, individual donors, and foundations, with a strong commitment to community impact and survivor empowerment. The organization has a strong reputation for supporting survivors and fostering inclusive workplace cultures.", "why_this_role": "", "interview_prep": "Be prepared to discuss your experience in nonprofit development, donor relations, and community engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as SAFE Alliance is dedicated to supporting survivors and fostering inclusive workplace cultures. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of survivors and the communities they serve.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit development, donor relations, and community engagement. Strong relationship-building skills. CVA certification is a plus. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": ""}, {"id": 18, "title": "Program Manager, Youth Development", "company": "Big Brothers Big Sisters of North Texas", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "Big Brothers Big Sisters of North Texas provides mentoring and enrichment programs for youth. The organization is funded by individual donors, corporate sponsors, and government grants, with a strong focus on youth development and community impact. The organization has a strong reputation for supporting youth and fostering inclusive workplace cultures.", "why_this_role": "", "interview_prep": "Be prepared to discuss your experience in nonprofit program management, youth development, and volunteer coordination. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as Big Brothers Big Sisters of North Texas is dedicated to supporting youth and fostering inclusive workplace cultures. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of youth and the communities they serve.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit program management, youth development, and volunteer coordination. Strong leadership and communication skills. CVA certification is preferred. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": ""}, {"id": 19, "title": "Donor Relations Manager", "company": "Communities Foundation of Texas", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 20, "title": "Strategic Partnerships Manager", "company": "Dallas Foundation", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 21, "title": "Volunteer Coordinator", "company": "Feeding America", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 22, "title": "Program Director, Education", "company": "United Way of Metropolitan Dallas", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}, {"id": 23, "title": "Major Gifts Officer (Relationship-Focused)", "company": "American Heart Association", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": "", "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": ""}];
-const cols = ['to_apply', 'applied', 'interview', 'offer', 'rejected'];
-const labels = {'to_apply':'To Apply', 'applied':'Applied', 'interview':'Interview', 'offer':'Offer', 'rejected':'Rejected'};
-let currentTier = 'all';
+        <div class="status-row">
+            <select id="status-1" class="status-select" onchange="updateStatus(1, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-1" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 1</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Community Engagement Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Dallas Independent School District</div>
+        <div class="match-summary">🎯 70% Match</div>
+        <div class="quick-links"></div>
 
-function init() { renderKanban(); }
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(2, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(2, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(2, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
 
-function filterTier(tier, btn) {
-    currentTier = tier;
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderKanban();
-}
+        <div class="status-row">
+            <select id="status-2" class="status-select" onchange="updateStatus(2, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-2" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 1</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Volunteer Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">American Red Cross</div>
+        <div class="match-summary">🎯 68% Match</div>
+        <div class="quick-links"></div>
 
-function renderKanban() {
-    const board = document.getElementById('kanban');
-    const filtered = currentTier === 'all' ? jobs : jobs.filter(j => j.tier == currentTier);
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(3, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(3, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(3, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
 
-    board.innerHTML = cols.map(c => {
-        const colJobs = filtered.filter(j => j.status === c);
-        return `
-        <div class="column" ondrop="drop(event, '${c}')" ondragover="allowDrop(event)">
-            <div class="col-header">${labels[c]} <span class="col-count">${colJobs.length}</span></div>
-            <div class="cards">
-                ${colJobs.map(j => cardHTML(j)).join('')}
+        <div class="status-row">
+            <select id="status-3" class="status-select" onchange="updateStatus(3, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-3" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 1</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Program Manager, Youth Development</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">YMCA of Metropolitan Dallas</div>
+        <div class="match-summary">🎯 66% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(4, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(4, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(4, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-4" class="status-select" onchange="updateStatus(4, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-4" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 1</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Donor Relations Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Dallas Children’s Theater</div>
+        <div class="match-summary">🎯 64% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(5, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(5, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(5, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-5" class="status-select" onchange="updateStatus(5, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-5" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 2</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Strategic Partnerships Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Dallas Museum of Art</div>
+        <div class="match-summary">🎯 62% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(6, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(6, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(6, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-6" class="status-select" onchange="updateStatus(6, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-6" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 2</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Volunteer Coordinator</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Dallas Arboretum and Botanical Garden</div>
+        <div class="match-summary">🎯 60% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(7, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(7, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(7, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-7" class="status-select" onchange="updateStatus(7, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-7" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 2</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Program Director, Education</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Dallas Public Library</div>
+        <div class="match-summary">🎯 58% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(8, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(8, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(8, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-8" class="status-select" onchange="updateStatus(8, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-8" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 2</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Major Gifts Officer</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Dallas Symphony Orchestra</div>
+        <div class="match-summary">🎯 56% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(9, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(9, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(9, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-9" class="status-select" onchange="updateStatus(9, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-9" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 2</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Community Engagement Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Dallas Zoo</div>
+        <div class="match-summary">🎯 54% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(10, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(10, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(10, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-10" class="status-select" onchange="updateStatus(10, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-10" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Sarah Chen</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Director of Customer Success (Example SaaS Co)</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(11, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(11, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(11, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-11" class="status-select" onchange="updateStatus(11, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-11" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Michael Rodriguez</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">VP of Customer Experience</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(12, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(12, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(12, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-12" class="status-select" onchange="updateStatus(12, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-12" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Jessica Williams</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Talent Acquisition Partner</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(13, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(13, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(13, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-13" class="status-select" onchange="updateStatus(13, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-13" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Community Education & Outreach Manager, South Central Chapter</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Parkinson's Foundation</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(14, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(14, 'Talking Points')">🗣️ Talk</div><div class="ql-btn" onclick="openModal(14, 'Red Flags')">🚩 Flags</div><div class="ql-btn" onclick="openModal(14, 'Company Overview')">🏢 Info</div></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(14, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(14, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(14, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-14" class="status-select" onchange="updateStatus(14, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-14" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Community Relationship Manager (Remote - Dallas or Houston, TX Candidates Only)</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Equitable Hiring Group</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(15, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(15, 'Talking Points')">🗣️ Talk</div><div class="ql-btn" onclick="openModal(15, 'Red Flags')">🚩 Flags</div><div class="ql-btn" onclick="openModal(15, 'Company Overview')">🏢 Info</div></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(15, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(15, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(15, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-15" class="status-select" onchange="updateStatus(15, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-15" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Volunteer & Operations Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Member Engagement (Remote)</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(16, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(16, 'Talking Points')">🗣️ Talk</div><div class="ql-btn" onclick="openModal(16, 'Red Flags')">🚩 Flags</div><div class="ql-btn" onclick="openModal(16, 'Company Overview')">🏢 Info</div></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(16, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(16, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(16, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-16" class="status-select" onchange="updateStatus(16, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-16" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Development Manager (Relationship-Based)</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">SAFE Alliance</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(17, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(17, 'Talking Points')">🗣️ Talk</div><div class="ql-btn" onclick="openModal(17, 'Red Flags')">🚩 Flags</div><div class="ql-btn" onclick="openModal(17, 'Company Overview')">🏢 Info</div></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(17, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(17, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(17, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-17" class="status-select" onchange="updateStatus(17, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-17" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Program Manager, Youth Development</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Big Brothers Big Sisters of North Texas</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(18, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(18, 'Talking Points')">🗣️ Talk</div><div class="ql-btn" onclick="openModal(18, 'Red Flags')">🚩 Flags</div><div class="ql-btn" onclick="openModal(18, 'Company Overview')">🏢 Info</div></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(18, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(18, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(18, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-18" class="status-select" onchange="updateStatus(18, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-18" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Donor Relations Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Communities Foundation of Texas</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(19, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(19, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(19, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-19" class="status-select" onchange="updateStatus(19, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-19" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Strategic Partnerships Manager</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Dallas Foundation</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(20, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(20, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(20, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-20" class="status-select" onchange="updateStatus(20, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-20" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Volunteer Coordinator</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">Feeding America</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(21, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(21, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(21, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-21" class="status-select" onchange="updateStatus(21, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-21" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Nonprofit</span>
+        </div>
+        <div class="job-title">Program Director, Education</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">United Way of Metropolitan Dallas</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(22, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(22, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(22, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-22" class="status-select" onchange="updateStatus(22, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-22" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Corporate">
+        <div class="card-tags">
+            <span class="filter-tag">Tier 3</span><span class="filter-tag">Corporate</span>
+        </div>
+        <div class="job-title">Major Gifts Officer (Relationship-Focused)</div>
+        <div class="job-location">📍 See details</div>
+        <div class="company-name">American Heart Association</div>
+        <div class="match-summary">🎯 0% Match</div>
+        <div class="quick-links"></div>
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(23, null)">📄 Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(23, '')">🔗 Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(23, '')">🚀 Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">📋 Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-23" class="status-select" onchange="updateStatus(23, this.value)">
+                <option value="New" >New</option><option value="Viewed" >Viewed</option><option value="Applied" >Applied</option><option value="Phone Screen" >Phone Screen</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-23" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    </div>
+
+    <div id="toast" class="toast">Notification</div>
+
+    <div id="modal" class="modal" onclick="if(event.target===this)document.getElementById('modal').style.display='none'">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    
+    <script>
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        async function updateStatus(id, newStatus) {
+            try {
+                const res = await fetch('/api/update_status', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id: id, status: newStatus})
+                });
+
+                if (res.ok) {
+                    console.log(`Synced Job ${id} to ${newStatus}`);
+                    showToast(`✅ Status synced: ${newStatus}`);
+                    // Update UI elements if needed
+                    const select = document.querySelector(`#status-${id}`);
+                    if(select) select.value = newStatus;
+                } else {
+                    showToast('❌ Error saving status');
+                }
+            } catch (e) {
+                console.error(e);
+                showToast('❌ Connection error');
+            }
+        }
+
+        async function saveNote(id, note) {
+            // Debounced save note
+            try {
+                await fetch('/api/save_note', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id: id, note: note})
+                });
+            } catch(e) { console.error(e); }
+        }
+
+        function markApplied(id, url) {
+            updateStatus(id, 'Applied');
+            window.open(url, '_blank');
+        }
+
+        function markViewed(id, url) {
+            const select = document.querySelector(`#status-${id}`);
+            if(select && select.value === 'New') {
+                updateStatus(id, 'Viewed');
+            }
+            window.open(url, '_blank');
+        }
+
+        function filterJobs(criteria) {
+            const cards = document.querySelectorAll('.job-card');
+            const btns = document.querySelectorAll('.badge-filter');
+
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                const tags = card.dataset.tags.toLowerCase();
+                let match = true;
+                if (criteria === 'high' && !tags.includes('high')) match = false;
+                if (criteria === 'corp' && !tags.includes('corporate')) match = false;
+                if (criteria === 'nonprofit' && !tags.includes('nonprofit')) match = false;
+                if (criteria === 't1' && !tags.includes('tier 1')) match = false;
+                if (criteria === 't2' && !tags.includes('tier 2')) match = false;
+                if (criteria === 't3' && !tags.includes('tier 3')) match = false;
+                card.style.display = match ? 'flex' : 'none';
+            });
+        }
+
+        function searchJobs(query) {
+            const cards = document.querySelectorAll('.job-card');
+            cards.forEach(card => {
+                card.style.display = card.innerText.toLowerCase().includes(query.toLowerCase()) ? 'flex' : 'none';
+            });
+        }
+
+        function toggleSection(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Auto-save notes listeners
+        document.querySelectorAll('.notes-area').forEach(area => {
+            area.addEventListener('change', (e) => {
+                const id = e.target.id.replace('note-', '');
+                saveNote(id, e.target.value);
+            });
+        });
+    </script>
+    
+    <script>
+    function openModal(id, section) {
+        const jobs = [{"id": 1, "title": "Development Manager", "company": "North Texas Food Bank", "location": "See details", "salary_range": "See details", "url": "", "match_score": 72, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 1", "Nonprofit"]}, {"id": 2, "title": "Community Engagement Manager", "company": "Dallas Independent School District", "location": "See details", "salary_range": "See details", "url": "", "match_score": 70, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 1", "Nonprofit"]}, {"id": 3, "title": "Volunteer Manager", "company": "American Red Cross", "location": "See details", "salary_range": "See details", "url": "", "match_score": 68, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 1", "Nonprofit"]}, {"id": 4, "title": "Program Manager, Youth Development", "company": "YMCA of Metropolitan Dallas", "location": "See details", "salary_range": "See details", "url": "", "match_score": 66, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 1", "Nonprofit"]}, {"id": 5, "title": "Donor Relations Manager", "company": "Dallas Children\u2019s Theater", "location": "See details", "salary_range": "See details", "url": "", "match_score": 64, "tier": 1, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 1", "Corporate"]}, {"id": 6, "title": "Strategic Partnerships Manager", "company": "Dallas Museum of Art", "location": "See details", "salary_range": "See details", "url": "", "match_score": 62, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 2", "Corporate"]}, {"id": 7, "title": "Volunteer Coordinator", "company": "Dallas Arboretum and Botanical Garden", "location": "See details", "salary_range": "See details", "url": "", "match_score": 60, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 2", "Nonprofit"]}, {"id": 8, "title": "Program Director, Education", "company": "Dallas Public Library", "location": "See details", "salary_range": "See details", "url": "", "match_score": 58, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 2", "Nonprofit"]}, {"id": 9, "title": "Major Gifts Officer", "company": "Dallas Symphony Orchestra", "location": "See details", "salary_range": "See details", "url": "", "match_score": 56, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 2", "Corporate"]}, {"id": 10, "title": "Community Engagement Manager", "company": "Dallas Zoo", "location": "See details", "salary_range": "See details", "url": "", "match_score": 54, "tier": 2, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 2", "Nonprofit"]}, {"id": 11, "title": "Sarah Chen", "company": "Director of Customer Success (Example SaaS Co)", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Corporate"]}, {"id": 12, "title": "Michael Rodriguez", "company": "VP of Customer Experience", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Corporate"]}, {"id": 13, "title": "Jessica Williams", "company": "Talent Acquisition Partner", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Corporate"]}, {"id": 14, "title": "Community Education & Outreach Manager, South Central Chapter", "company": "Parkinson's Foundation", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "The Parkinson\u2019s Foundation is a national nonprofit dedicated to improving care and advancing research for people with Parkinson\u2019s disease. The South Central Chapter serves Texas, Oklahoma, and Arkansas, offering education, outreach, and support programs. The organization is funded by individual donors, foundations, and corporate partnerships, with a strong reputation for community impact and mission-driven programming. The Foundation has a robust board and a history of financial stability, making it a respected leader in the nonprofit sector.", "why_this_role": null, "interview_prep": "Be prepared to discuss your experience in community outreach, program development, and stakeholder engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as the Parkinson\u2019s Foundation is dedicated to improving care and advancing research for people with Parkinson\u2019s disease. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of individuals affected by Parkinson\u2019s.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit outreach, community engagement, and program development. Strong stakeholder relationship skills, ability to collaborate with diverse partners, and a passion for mission-driven work. CVA certification is a strong plus. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Nonprofit"]}, {"id": 15, "title": "Community Relationship Manager (Remote - Dallas or Houston, TX Candidates Only)", "company": "Equitable Hiring Group", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "Equitable Hiring Group partners with nonprofits to advance diversity, equity, and inclusion in hiring. The organization supports mission-driven organizations in building equitable teams and fostering inclusive workplace cultures. Funding comes from nonprofit clients and foundation grants. The organization has a strong reputation for community impact and is recognized for its innovative approach to nonprofit hiring.", "why_this_role": null, "interview_prep": "Be prepared to discuss your experience in nonprofit operations, community engagement, and relationship management. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as Equitable Hiring Group is dedicated to advancing diversity and inclusion in nonprofit hiring. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of nonprofit professionals and the communities they serve.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit operations, community engagement, and relationship management. Strong project management and communication skills. CVA certification is highly valued. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Nonprofit"]}, {"id": 16, "title": "Volunteer & Operations Manager", "company": "Member Engagement (Remote)", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "This association supports nonprofit professionals through networking, training, and advocacy. The organization is funded by membership dues and grants, with a focus on community building and professional development. The association has a strong reputation for supporting nonprofit professionals and fostering inclusive workplace cultures.", "why_this_role": null, "interview_prep": "Be prepared to discuss your experience in volunteer management, operations, and community engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as the association is dedicated to supporting nonprofit professionals and fostering inclusive workplace cultures. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of nonprofit professionals and the communities they serve.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit volunteer management, operations, and community engagement. Strong organizational and interpersonal skills. CVA certification is preferred. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Nonprofit"]}, {"id": 17, "title": "Development Manager (Relationship-Based)", "company": "SAFE Alliance", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "SAFE Alliance provides shelter and support services for survivors of domestic violence and sexual assault. The organization is funded by government grants, individual donors, and foundations, with a strong commitment to community impact and survivor empowerment. The organization has a strong reputation for supporting survivors and fostering inclusive workplace cultures.", "why_this_role": null, "interview_prep": "Be prepared to discuss your experience in nonprofit development, donor relations, and community engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as SAFE Alliance is dedicated to supporting survivors and fostering inclusive workplace cultures. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of survivors and the communities they serve.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit development, donor relations, and community engagement. Strong relationship-building skills. CVA certification is a plus. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Nonprofit"]}, {"id": 18, "title": "Program Manager, Youth Development", "company": "Big Brothers Big Sisters of North Texas", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "Big Brothers Big Sisters of North Texas provides mentoring and enrichment programs for youth. The organization is funded by individual donors, corporate sponsors, and government grants, with a strong focus on youth development and community impact. The organization has a strong reputation for supporting youth and fostering inclusive workplace cultures.", "why_this_role": null, "interview_prep": "Be prepared to discuss your experience in nonprofit program management, youth development, and volunteer coordination. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "talking_points": "The mission alignment with your values is strong, as Big Brothers Big Sisters of North Texas is dedicated to supporting youth and fostering inclusive workplace cultures. The corporate-to-nonprofit transition is a good fit, with opportunities to leverage your relationship management and program development skills. The community impact potential is significant, with the chance to make a tangible difference in the lives of youth and the communities they serve.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "key_requirements": "Experience in nonprofit program management, youth development, and volunteer coordination. Strong leadership and communication skills. CVA certification is preferred. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Nonprofit"]}, {"id": 19, "title": "Donor Relations Manager", "company": "Communities Foundation of Texas", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Corporate"]}, {"id": 20, "title": "Strategic Partnerships Manager", "company": "Dallas Foundation", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Corporate"]}, {"id": 21, "title": "Volunteer Coordinator", "company": "Feeding America", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Nonprofit"]}, {"id": 22, "title": "Program Director, Education", "company": "United Way of Metropolitan Dallas", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Nonprofit"]}, {"id": 23, "title": "Major Gifts Officer (Relationship-Focused)", "company": "American Heart Association", "location": "See details", "salary_range": "See details", "url": "", "match_score": 0, "tier": 3, "status": "to_apply", "date_added": "2025-11-20", "company_overview": "", "why_this_role": null, "interview_prep": "", "talking_points": "", "red_flags": "", "key_requirements": "", "full_description": "", "search_type": null, "app_url": "", "list_url": "", "tags": ["Tier 3", "Corporate"]}];
+        const job = jobs.find(j => j.id == id);
+        const content = document.getElementById('modal-content');
+
+        let html = `
+            <h2 style="margin-bottom:5px">${job.title}</h2>
+            <h3 style="color:var(--blue-company); margin-top:0">${job.company}</h3>
+            <div style="margin-bottom:20px">
+                ${job.tags.map(t => `<span class="filter-tag">${t}</span>`).join(' ')}
             </div>
-        </div>`;
-    }).join('');
-}
+            <hr style="border:0; border-top:1px solid #e2e8f0; margin:20px 0;">
+        `;
 
-function cardHTML(j) {
-    const hasPrep = j.interview_prep && j.interview_prep.length > 5;
-    const hasTalk = j.talking_points && j.talking_points.length > 5;
-    const hasFlags = j.red_flags && j.red_flags.length > 5;
+        const fields = [
+            ['Company Overview', job.company_overview],
+            ['Role Insights', job.role_insights || job.why_this_role],
+            ['Key Requirements', job.key_requirements],
+            ['Interview Prep', job.interview_prep],
+            ['Talking Points', job.talking_points],
+            ['Red Flags', job.red_flags],
+            ['Full Description', job.full_description]
+        ];
 
-    return `
-    <div class="card tier-${j.tier}" draggable="true" ondragstart="drag(event, ${j.id})">
-        <div class="card-header">
-            <span class="match">${j.match_score}%</span>
-            <span style="font-size:10px; font-weight:700; color:#9ca3af">TIER ${j.tier}</span>
-        </div>
-        <div class="role">${j.title}</div>
-        <div class="company">${j.company}</div>
-        <div class="quick-links">
-            ${hasPrep ? `<span class="q-link ql-prep" onclick="openModal(${j.id}, 'prep')">Prep</span>` : ''}
-            ${hasTalk ? `<span class="q-link ql-talk" onclick="openModal(${j.id}, 'talk')">Talk</span>` : ''}
-            ${hasFlags ? `<span class="q-link ql-flag" onclick="openModal(${j.id}, 'flags')">Flags</span>` : ''}
-            <span class="q-link ql-view" onclick="openModal(${j.id})">View →</span>
-        </div>
-    </div>`;
-}
+        fields.forEach(([label, text]) => {
+            if(text && text.length > 5) {
+                const isTarget = section && label.toLowerCase().includes(section.split(' ')[0].toLowerCase());
+                html += `<div id="${label}" style="padding:15px; margin-bottom:15px; background:${isTarget ? '#e0e7ff' : '#f8fafc'}; border-radius:10px; border:1px solid ${isTarget ? '#6366f1' : '#e2e8f0'};">
+                    <h4 style="margin-top:0; color:#475569; text-transform:uppercase; font-size:12px;">${label}</h4>
+                    <p style="white-space: pre-line; font-size:14px; line-height:1.6;">${text}</p>
+                </div>`;
+            }
+        });
 
-function allowDrop(ev) { ev.preventDefault(); }
-function drag(ev, id) { ev.dataTransfer.setData("text", id); }
-function drop(ev, status) {
-    ev.preventDefault();
-    const id = ev.dataTransfer.getData("text");
-    const job = jobs.find(j => j.id == id);
-    if(job) {
-        job.status = status;
-        renderKanban();
+        content.innerHTML = html;
+        document.getElementById('modal').style.display = 'flex';
+
+        if(section) {
+            setTimeout(() => {
+                const el = document.getElementById(section); 
+                if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+            }, 100);
+        }
     }
-}
-
-function openModal(id, section=null) {
-    const j = jobs.find(j => j.id == id);
-    document.getElementById('modal-body').innerHTML = `
-        <h2>${j.title}</h2>
-        <h3 style="color:#6366f1">${j.company}</h3>
-        <div style="margin:20px 0; background:#f8fafc; padding:15px; border-radius:8px;">
-            <div>📍 ${j.location} | 💰 ${j.salary_range}</div>
-            <div style="margin-top:8px">🔗 <a href="${j.url}" target="_blank">Link</a></div>
-        </div>
-        ${j.company_overview ? `<h4>🏢 Overview</h4><p>${j.company_overview}</p>` : ''}
-        ${j.interview_prep ? `<div id="sec-prep"><h4>⚡ Interview Prep</h4><p>${j.interview_prep}</p></div>` : ''}
-        ${j.talking_points ? `<div id="sec-talk"><h4>🗣️ Talking Points</h4><p>${j.talking_points}</p></div>` : ''}
-        ${j.red_flags ? `<div id="sec-flags"><h4>🚩 Red Flags</h4><p>${j.red_flags}</p></div>` : ''}
-        ${j.full_description ? `<div id="sec-desc"><h4>📄 Full Description</h4><p>${j.full_description}</p></div>` : ''}
-    `;
-    document.getElementById('modal').style.display = 'flex';
-    if(section) document.getElementById('sec-'+section).scrollIntoView({behavior:'smooth'});
-}
-function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
-init();
-</script>
+    </script>
 </body>
 </html>
