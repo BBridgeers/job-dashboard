@@ -1,280 +1,185 @@
 #!/usr/bin/env python3
-
 """
-Strategic Match - Final Robust Parser
-Handles duplicates, proper dates, and commits
+Strategic Match - HARMONIZED MIGRATION PARSER
+Aligned with 'SECTION 2' Rich Data Format
 """
-
 import sqlite3
 import re
-from pathlib import Path
+import os
+import glob
 from datetime import datetime
 from difflib import SequenceMatcher
 
 def similarity(a, b):
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
-def extract_tier1_jobs(content):
-    """Extract Tier 1 jobs from bullet format"""
-    jobs = []
+def parse_rich_data(content):
+    """Extract rich data blocks from SECTION 2"""
+    rich_jobs = []
 
-    tier1_match = re.search(r'TOP 5 MATCHES.*?POSITIONS 6-10', content, re.DOTALL | re.IGNORECASE)
-    if not tier1_match:
-        return jobs
+    # Find all "---START_JOB_X--- ... ---END_JOB_X---" blocks
+    blocks = re.findall(r'---START_JOB_\d+---(.*?)---END_JOB_\d+---', content, re.DOTALL)
 
-    tier1_section = tier1_match.group(0)
-    job_pattern = r'\n(\d+)\. (.+?)\n'
-    job_matches = list(re.finditer(job_pattern, tier1_section))
+    for block in blocks:
+        job = {}
 
-    for i, match in enumerate(job_matches):
-        title = match.group(2).strip()
-        start_pos = match.end()
-        if i < len(job_matches) - 1:
-            end_pos = job_matches[i+1].start()
-        else:
-            end_pos = len(tier1_section)
+        # Extract Title/Company for matching
+        t_m = re.search(r'TITLE:\s*(.+)', block)
+        c_m = re.search(r'COMPANY:\s*(.+)', block)
+        if t_m: job['title'] = t_m.group(1).strip()
+        if c_m: job['company'] = c_m.group(1).strip()
 
-        block = tier1_section[start_pos:end_pos]
+        # Extract Fields using exact markers
+        markers = {
+            'company_overview': r'---COMPANY_OVERVIEW---\s*(.*?)\s*(?=---)',
+            'role_insights': r'---ROLE_INSIGHTS---\s*(.*?)\s*(?=---)',
+            'key_requirements': r'---KEY_REQUIREMENTS---\s*(.*?)\s*(?=---)',
+            'interview_prep': r'---INTERVIEW_PREP---\s*(.*?)\s*(?=---)',
+            'talking_points': r'---WHY_THIS_ROLE---\s*(.*?)\s*(?=---)', # Mapping Why -> Talking/Why
+            'red_flags': r'---RED_FLAGS---\s*(.*?)\s*(?=---)',
+            'full_description': r'---FULL_DESCRIPTION---\s*(.*?)\s*(?=---)'
+        }
 
-        job = {'title': title, 'tier': 1}
+        for field, regex in markers.items():
+            match = re.search(regex, block, re.DOTALL)
+            if match:
+                job[field] = match.group(1).strip()
+            else:
+                job[field] = ""
 
-        score_match = re.search(r'Match Score:\s*(\d+)', block)
-        if score_match:
-            job['match_score'] = score_match.group(1)
+        if 'title' in job:
+            rich_jobs.append(job)
 
-        salary_match = re.search(r'Salary:\s*(.+?)\n', block)
-        if salary_match:
-            job['salary_range'] = salary_match.group(1).strip()
+    return rich_jobs
 
-        loc_match = re.search(r'Location:\s*(.+?)\n', block)
-        if loc_match:
-            job['location'] = loc_match.group(1).strip()
+def migrate():
+    print("🚀 Starting End-to-End Harmonized Migration...")
 
-        overview_match = re.search(r'Company Overview:\s*(.+?)\n\s*-\s*Role', block, re.DOTALL)
-        if overview_match:
-            job['company_overview'] = overview_match.group(1).strip()
-
-        role_match = re.search(r'Role Insights:\s*(.+?)\n\s*-\s*Key', block, re.DOTALL)
-        if role_match:
-            job['why_this_role'] = role_match.group(1).strip()
-            job['full_description'] = role_match.group(1).strip()
-
-        req_match = re.search(r'Key Requirements:\s*(.+?)\n\s*-\s*URL', block, re.DOTALL)
-        if req_match:
-            job['key_requirements'] = req_match.group(1).strip()
-
-        url_match = re.search(r'URL:\s*(.+?)(?:\n|$)', block)
-        if url_match:
-            job['url'] = url_match.group(1).strip()
-
-        jobs.append(job)
-
-    return jobs
-
-def extract_tier2_jobs(content):
-    """Extract Tier 2 jobs"""
-    jobs = []
-
-    tier2_match = re.search(r'POSITIONS 6-10.*?(?:ALL OTHER|SECTION 2|$)', content, re.DOTALL | re.IGNORECASE)
-    if not tier2_match:
-        return jobs
-
-    tier2_section = tier2_match.group(0)
-    job_pattern = r'\n(\d+)\. (.+?)\n'
-    job_matches = list(re.finditer(job_pattern, tier2_section))
-
-    for i, match in enumerate(job_matches):
-        job_num = int(match.group(1))
-        if job_num < 6 or job_num > 10:
-            continue
-
-        title = match.group(2).strip()
-        start_pos = match.end()
-        if i < len(job_matches) - 1:
-            end_pos = job_matches[i+1].start()
-        else:
-            end_pos = len(tier2_section)
-
-        block = tier2_section[start_pos:end_pos]
-
-        job = {'title': title, 'tier': 2}
-
-        score_match = re.search(r'Match Score:\s*(\d+)', block)
-        if score_match:
-            job['match_score'] = score_match.group(1)
-
-        salary_match = re.search(r'Salary:\s*(.+?)\n', block)
-        if salary_match:
-            job['salary_range'] = salary_match.group(1).strip()
-
-        loc_match = re.search(r'Location:\s*(.+?)\n', block)
-        if loc_match:
-            job['location'] = loc_match.group(1).strip()
-
-        overview_match = re.search(r'Company Overview:\s*(.+?)\n\s*-\s*Role', block, re.DOTALL)
-        if overview_match:
-            job['company_overview'] = overview_match.group(1).strip()
-
-        role_match = re.search(r'Role Insights:\s*(.+?)\n\s*-\s*Key', block, re.DOTALL)
-        if role_match:
-            job['why_this_role'] = role_match.group(1).strip()
-
-        req_match = re.search(r'Key Requirements:\s*(.+?)\n\s*-\s*URL', block, re.DOTALL)
-        if req_match:
-            job['key_requirements'] = req_match.group(1).strip()
-
-        url_match = re.search(r'URL:\s*(.+?)(?:\n|$)', block)
-        if url_match:
-            job['url'] = url_match.group(1).strip()
-
-        jobs.append(job)
-
-    return jobs
-
-def migrate_final(db_path='jobs.db', results_dir='job_search_results'):
-    """Final robust migration"""
-    print("🎯 Strategic Match - Final Parser")
-    print("=" * 60)
-
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
+    # Initialize DB
+    conn = sqlite3.connect('jobs.db')
     cursor = conn.cursor()
 
-    cursor.execute("SELECT id, title, company, url FROM jobs")
-    db_jobs = {row['id']: {'title': row['title'], 'company': row['company'], 'url': row['url']} for row in cursor.fetchall()}
+    # Ensure schema exists
+    cursor.execute("""CREATE TABLE IF NOT EXISTS jobs (
+        id INTEGER PRIMARY KEY,
+        title TEXT, company TEXT, location TEXT, salary_range TEXT, url TEXT, 
+        match_score INTEGER, tier INTEGER, status TEXT, date_added TEXT,
+        company_overview TEXT, why_this_role TEXT, interview_prep TEXT, 
+        talking_points TEXT, red_flags TEXT, key_requirements TEXT, full_description TEXT,
+        search_type TEXT
+    )""")
 
-    print(f"📊 Database has {len(db_jobs)} jobs\n")
+    all_jobs = []
+    files = glob.glob("job_search_results/*.txt")
 
-    # Build URL index
-    url_to_id = {job['url']: job_id for job_id, job in db_jobs.items() if job.get('url')}
-
-    results_path = Path(results_dir)
-    txt_files = sorted(results_path.glob('job_search_*_2025-11-18.txt'))
-
-    if not txt_files:
-        print("⚠️  No files found for 2025-11-18")
-        print("   Looking for any recent files...")
-        txt_files = sorted(results_path.glob('job_search_*_2025-11-*.txt'))[-2:]
-
-    print(f"Found {len(txt_files)} TXT files\n")
-
-    total_updated = 0
-    total_inserted = 0
-
-    today = datetime.now().strftime('%Y-%m-%d')
-
-    for txt_file in txt_files:
-        print(f"📄 {txt_file.name}")
-
-        with open(txt_file, 'r', encoding='utf-8') as f:
+    for filepath in files:
+        print(f"📂 Parsing: {filepath}")
+        with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
 
-        search_type = 'nonprofit' if 'nonprofit' in txt_file.name.lower() else 'corporate'
+        # 1. Parse Rich Data (Section 2)
+        rich_data_list = parse_rich_data(content)
 
-        tier1_jobs = extract_tier1_jobs(content)
-        tier2_jobs = extract_tier2_jobs(content)
+        # 2. Parse Standard Jobs (Section 1 / Basic List)
+        # Look for numbered list items: "1. **Title** - Company"
+        matches = re.findall(r'(?:^|\n)(\d+)\.\s*\*\*([^\*]+)\*\*\s*-\s*([^\n]+)', content)
 
-        all_jobs = tier1_jobs + tier2_jobs
+        for _, title, rest in matches:
+            job = {}
+            job['title'] = title.strip()
 
-        print(f"  Tier 1: {len(tier1_jobs)} | Tier 2: {len(tier2_jobs)}\n")
-
-        for job in all_jobs:
-            if not job.get('title'):
-                continue
-
-            # Extract company from title
-            if not job.get('company'):
-                title_parts = job['title'].split('–')
-                if len(title_parts) >= 2:
-                    job['company'] = title_parts[-1].strip()
-                else:
-                    job['company'] = 'Unknown'
-
-            tier = job.get('tier', 3)
-            url = job.get('url', '').strip()
-
-            # Check duplicate URL
-            if url and url in url_to_id:
-                existing_id = url_to_id[url]
-                cursor.execute("""
-                    UPDATE jobs SET
-                        tier = ?, date_added = ?, last_seen = ?,
-                        search_type = ?, is_top_match = ?
-                    WHERE id = ?
-                """, (tier, today, today, search_type, 1 if tier == 1 else 0, existing_id))
-                print(f"  ✅ Updated (URL match) Tier {tier}: {job['title'][:50]}")
-                total_updated += 1
-                conn.commit()
-                continue
-
-            # Fuzzy match on title
-            best_match_id = None
-            best_sim = 0.0
-
-            for db_id, db_job in db_jobs.items():
-                sim = similarity(job['title'], db_job['title'])
-                if sim > best_sim and sim > 0.8:
-                    best_sim = sim
-                    best_match_id = db_id
-
-            if best_match_id:
-                cursor.execute("""
-                    UPDATE jobs SET
-                        salary_range = COALESCE(?, salary_range),
-                        location = COALESCE(?, location),
-                        company_overview = COALESCE(?, company_overview),
-                        why_this_role = COALESCE(?, why_this_role),
-                        key_requirements = COALESCE(?, key_requirements),
-                        url = COALESCE(?, url),
-                        tier = ?, date_added = ?, last_seen = ?,
-                        search_type = ?, is_top_match = ?
-                    WHERE id = ?
-                """, (
-                    job.get('salary_range'), job.get('location'),
-                    job.get('company_overview'), job.get('why_this_role'),
-                    job.get('key_requirements'), job.get('url'),
-                    tier, today, today, search_type, 1 if tier == 1 else 0,
-                    best_match_id
-                ))
-                print(f"  ✅ Updated (title match) Tier {tier}: {job['title'][:50]}")
-                total_updated += 1
-                conn.commit()
-            else:
-                # Insert new
+            # Parse Company & Match from "Company - Match: 95"
+            if "Match:" in rest:
+                parts = rest.split("Match:")
+                job['company'] = parts[0].strip(" -")
                 try:
-                    cursor.execute("""
-                        INSERT INTO jobs (
-                            title, company, job_type, match_score, tier,
-                            date_added, first_seen, last_seen, search_type,
-                            salary_range, location, company_overview,
-                            why_this_role, key_requirements, url,
-                            status, is_top_match
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'New', ?)
-                    """, (
-                        job['title'], job['company'], search_type.capitalize(),
-                        job.get('match_score', 0), tier,
-                        today, today, today, search_type,
-                        job.get('salary_range'), job.get('location'),
-                        job.get('company_overview'), job.get('why_this_role'),
-                        job.get('key_requirements'), job.get('url'),
-                        1 if tier == 1 else 0
-                    ))
-                    print(f"  ✨ Inserted Tier {tier}: {job['title'][:50]}")
-                    total_inserted += 1
-                    conn.commit()
-                    if url:
-                        url_to_id[url] = cursor.lastrowid
-                except sqlite3.IntegrityError:
-                    print(f"  ⚠️  Skipped (duplicate): {job['title'][:50]}")
-                    continue
+                    score_str = re.search(r'(\d+)', parts[1])
+                    job['match_score'] = int(score_str.group(1)) if score_str else 0
+                except:
+                    job['match_score'] = 0
+            else:
+                job['company'] = rest.strip()
+                job['match_score'] = 0
 
-        print("-" * 60)
+            # Default fields
+            job['location'] = "See details"
+            job['salary_range'] = "See details"
+            job['url'] = ""
+            job['status'] = 'to_apply'
+            job['date_added'] = datetime.now().strftime("%Y-%m-%d")
 
+            # 3. Merge Rich Data if available
+            # Find best match in rich_data_list
+            best_match = None
+            best_score = 0.0
+
+            for rich in rich_data_list:
+                score = similarity(job['title'], rich['title']) + similarity(job['company'], rich['company'])
+                if score > 1.6: # High confidence match
+                    best_match = rich
+                    break
+
+            if best_match:
+                # Merge fields
+                job.update(best_match)
+
+            all_jobs.append(job)
+
+    # 4. SORT BY MATCH SCORE (Global Ranking)
+    all_jobs.sort(key=lambda x: x.get('match_score', 0), reverse=True)
+
+    # 5. ASSIGN TIERS & INSERT
+    print(f"📊 Processing {len(all_jobs)} total jobs...")
+
+    # Clear old data to prevent duplicates/conflicts during this heavy dev phase
+    # cursor.execute("DELETE FROM jobs") 
+
+    count = 0
+    for i, job in enumerate(all_jobs):
+        rank = i + 1
+        if rank <= 5: job['tier'] = 1
+        elif rank <= 10: job['tier'] = 2
+        else: job['tier'] = 3
+
+        # Upsert based on Title+Company
+        cursor.execute("SELECT id FROM jobs WHERE title = ? AND company = ?", (job['title'], job['company']))
+        exists = cursor.fetchone()
+
+        if exists:
+            # Update existing
+            cursor.execute("""
+                UPDATE jobs SET 
+                tier=?, match_score=?, company_overview=?, interview_prep=?, 
+                talking_points=?, red_flags=?, key_requirements=?, full_description=?
+                WHERE id=?
+            """, (
+                job['tier'], job['match_score'], 
+                job.get('company_overview',''), job.get('interview_prep',''),
+                job.get('talking_points',''), job.get('red_flags',''),
+                job.get('key_requirements',''), job.get('full_description',''),
+                exists[0]
+            ))
+        else:
+            # Insert new
+            cursor.execute("""
+                INSERT INTO jobs (
+                    title, company, location, salary_range, url, match_score, 
+                    tier, status, date_added, 
+                    company_overview, interview_prep, talking_points, red_flags, 
+                    key_requirements, full_description
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                job['title'], job['company'], job['location'], job['salary_range'], 
+                job['url'], job['match_score'], job['tier'], 'to_apply', job['date_added'],
+                job.get('company_overview',''), job.get('interview_prep',''),
+                job.get('talking_points',''), job.get('red_flags',''),
+                job.get('key_requirements',''), job.get('full_description','')
+            ))
+        count += 1
+
+    conn.commit()
     conn.close()
-
-    print("\n" + "=" * 60)
-    print(f"🎉 Updated: {total_updated} | Inserted: {total_inserted}")
-    print("=" * 60)
+    print(f"✅ END-TO-END MIGRATION SUCCESS: {count} jobs aligned.")
 
 if __name__ == "__main__":
-    migrate_final()
+    migrate()
