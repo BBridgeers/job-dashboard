@@ -8,18 +8,18 @@ import json
 
 def build_dashboard():
     print("🎯 Building ULTIMATE PRO Dashboard (Kanban + Table)...")
-    
+
     conn = sqlite3.connect('jobs.db')
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    
+
     # Get all columns dynamically to prevent errors
     cursor.execute("PRAGMA table_info(jobs)")
     columns = [col[1] for col in cursor.fetchall()]
-    
+
     # Select ALL available columns
     cursor.execute(f"SELECT * FROM jobs ORDER BY tier ASC, match_score DESC, date_added DESC")
-    
+
     jobs = []
     for row in cursor.fetchall():
         job = dict(row)
@@ -97,6 +97,7 @@ tr:hover {{ background: #f8fafc; }}
 .modal {{ display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:999; }}
 .modal-content {{ background:white; width:800px; max-height:90vh; overflow-y:auto; padding:30px; border-radius:16px; }}
 .m-section {{ margin-bottom: 20px; padding: 15px; background: #f8fafc; border-radius: 8px; }}
+.m-section h4 {{ margin-top: 0; margin-bottom: 10px; color: #475569; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }}
 </style>
 </head>
 <body>
@@ -217,6 +218,7 @@ function openModal(id, section=null) {{
         ${{j.interview_prep ? `<div id="sec-prep" class="m-section" style="${{section==='prep'?'border:2px solid blue':''}}"><h4>⚡ Interview Prep</h4><p>${{j.interview_prep}}</p></div>` : ''}}
         ${{j.talking_points ? `<div id="sec-talk" class="m-section" style="${{section==='talk'?'border:2px solid green':''}}"><h4>🗣️ Talking Points</h4><p>${{j.talking_points}}</p></div>` : ''}}
         ${{j.red_flags ? `<div id="sec-flags" class="m-section" style="${{section==='flags'?'border:2px solid red':''}}"><h4>🚩 Red Flags</h4><p>${{j.red_flags}}</p></div>` : ''}}
+        ${{j.key_requirements ? `<div class="m-section"><h4>📋 Requirements</h4><p>${{j.key_requirements}}</p></div>` : ''}}
         ${{j.full_description ? `<div class="m-section"><h4>📄 Full Description</h4><p>${{j.full_description}}</p></div>` : ''}}
     `;
     document.getElementById('modal').style.display = 'flex';
@@ -231,7 +233,7 @@ init();
 
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html)
-    
+
     print("✅ PRO Dashboard Created Successfully!")
 
 if __name__ == "__main__":
