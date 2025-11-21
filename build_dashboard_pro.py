@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Strategic Match - MASTER DASHBOARD BUILDER (Final Polish)
+Strategic Match - MASTER DASHBOARD BUILDER (Robust Fix)
 """
 import sqlite3
 import json
@@ -18,10 +18,17 @@ def db_get_jobs():
         jobs = []
         for r in rows:
             j = dict(r)
+            # Safe Defaults
             if not j.get('tier'): j['tier'] = 3
             if not j.get('status'): j['status'] = 'New'
             if not j.get('match_score'): j['match_score'] = 0
-            # Fix URL to ensure it has https
+
+            # Safe Strings (Fixes NoneType Error)
+            for k in ['company_overview', 'role_insights', 'key_requirements', 
+                      'interview_prep', 'talking_points', 'red_flags', 'full_description']:
+                if j.get(k) is None: j[k] = ""
+
+            # Fix URL
             raw_url = j.get('url', '#')
             if raw_url and not raw_url.startswith('http') and raw_url != '#':
                 raw_url = 'https://' + raw_url
@@ -29,13 +36,8 @@ def db_get_jobs():
             j['list_url'] = raw_url
 
             tags = []
-            # Tier Tag
             tags.append(f"Tier {j['tier']}")
-
-            # Match Tag
             if j['match_score'] >= 90: tags.append("High Match")
-
-            # Type Tag
             if 'corporate' in str(j.get('search_type','')).lower(): tags.append("Corporate")
             elif 'nonprofit' in str(j.get('search_type','')).lower(): tags.append("Nonprofit")
 
@@ -48,7 +50,7 @@ def db_get_jobs():
         return []
 
 def build_files():
-    print("🚀 Building Polished Dashboard...")
+    print("🚀 Building Polished Dashboard (Robust)...")
 
     jobs = db_get_jobs()
     jobs_json = json.dumps(jobs)
@@ -65,7 +67,7 @@ def build_files():
     <style>
         :root { 
             --primary: #4f46e5; 
-            --bg-color: #e2e8f0; /* Nice Contrast Slate */
+            --bg-color: #e2e8f0; 
             --card-bg: #ffffff; 
             --text-main: #0f172a;
             --blue-company: #1e40af;
@@ -79,8 +81,6 @@ def build_files():
             padding-top: 160px; 
             min-height: 100vh;
         }
-
-        /* --- HEADER --- */
         .header {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -92,7 +92,6 @@ def build_files():
             transition: transform 0.3s ease;
         }
         .header.hidden { transform: translateY(-100%); }
-
         .app-title {
             font-size: 24px;
             font-weight: 800;
@@ -100,7 +99,6 @@ def build_files():
             margin-bottom: 15px;
             letter-spacing: -0.5px;
         }
-
         .header-content {
             max-width: 1600px;
             margin: 0 auto;
@@ -108,7 +106,6 @@ def build_files():
             flex-direction: column;
             gap: 15px;
         }
-
         .controls-row {
             display: flex;
             justify-content: space-between;
@@ -116,8 +113,6 @@ def build_files():
             flex-wrap: wrap;
             gap: 20px;
         }
-
-        /* SWAPPED: Search Left, Filters Right */
         .search-section {
             flex: 1;
             max-width: 400px;
@@ -136,7 +131,6 @@ def build_files():
             left: 12px; top: 50%; transform: translateY(-50%);
             color: #94a3b8;
         }
-
         .filter-badges {
             display: flex;
             gap: 8px;
@@ -158,7 +152,6 @@ def build_files():
             color: white;
             border-color: var(--text-main);
         }
-
         .tracker-link {
             margin-left: auto;
             background: #0f172a;
@@ -169,8 +162,6 @@ def build_files():
             font-weight: 700;
             font-size: 13px;
         }
-
-        /* --- JOB CARD --- */
         .grid-container {
             max-width: 1600px;
             margin: 0 auto;
@@ -179,7 +170,6 @@ def build_files():
             grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 25px;
         }
-
         .job-card {
             background: white;
             border-radius: 12px;
@@ -195,17 +185,14 @@ def build_files():
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
             border-color: var(--primary);
         }
-
-        /* COLOR CODED TAGS */
         .card-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
         .tag { font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-        .tag-tier-1 { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; } /* Gold */
-        .tag-tier-2 { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; } /* Silver */
-        .tag-tier-3 { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; } /* Bronze */
-        .tag-high { background: #dcfce7; color: #166534; border: 1px solid #86efac; } /* Green */
-        .tag-corp { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; } /* Blue */
-        .tag-nonprofit { background: #ccfbf1; color: #0f766e; border: 1px solid #5eead4; } /* Teal */
+        .tag-tier-1 { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+        .tag-tier-2 { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+        .tag-tier-3 { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+        .tag-high { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+        .tag-corp { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .tag-nonprofit { background: #ccfbf1; color: #0f766e; border: 1px solid #5eead4; }
 
         .job-title {
             font-size: 18px;
@@ -214,16 +201,12 @@ def build_files():
             margin: 0 0 4px 0;
             line-height: 1.3;
         }
-
         .company-name {
             font-size: 14px;
             font-weight: 600;
             color: var(--blue-company);
             margin-bottom: 12px;
         }
-
-        /* Removed redundant "See details" line */
-
         .quick-links {
             display: flex;
             gap: 6px;
@@ -242,7 +225,6 @@ def build_files():
             transition: all 0.1s;
         }
         .ql-btn:hover { background: #e2e8f0; color: #0f172a; border-color: #cbd5e1; }
-
         .action-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -263,12 +245,10 @@ def build_files():
             transition: transform 0.1s;
         }
         .btn-3d:active { transform: translateY(2px); box-shadow: none; }
-
         .btn-details { background: #4f46e5; }
         .btn-listing { background: #3b82f6; }
         .btn-apply { background: #10b981; }
         .btn-track { background: #f59e0b; }
-
         .status-row {
             margin-top: 15px;
             padding-top: 15px;
@@ -276,13 +256,10 @@ def build_files():
         }
         .status-select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-weight: 600; }
         .notes-area { width: 100%; margin-top: 8px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; resize: vertical; min-height: 40px; }
-
-        /* MODAL & TOAST */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; }
         .modal-content { background: white; width: 90%; max-width: 700px; max-height: 85vh; border-radius: 12px; padding: 30px; overflow-y: auto; }
         .toast { position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; transform: translateY(100px); transition: transform 0.3s; }
         .toast.show { transform: translateY(0); }
-
         @media (max-width: 768px) { 
             .controls-row { flex-direction: column; align-items: stretch; }
             .search-section, .tracker-link { width: 100%; max-width: none; }
@@ -294,7 +271,6 @@ def build_files():
     wired_js = f"""
     <script>
         const API_BASE = "{API_BASE}";
-        // ... (Same JS logic as before for sync) ...
         let lastScroll = 0;
         window.addEventListener('scroll', () => {{
             const currentScroll = window.pageYOffset;
@@ -306,14 +282,12 @@ def build_files():
             }}
             lastScroll = currentScroll;
         }});
-
         function showToast(msg) {{
             const toast = document.getElementById('toast');
             toast.innerText = msg;
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 3000);
         }}
-
         async function updateStatus(id, newStatus) {{
             try {{
                 const res = await fetch(`${{API_BASE}}/api/update_status`, {{
@@ -324,7 +298,6 @@ def build_files():
                 if (res.ok) showToast(`✅ Status synced: ${{newStatus}}`);
             }} catch (e) {{ console.error(e); }}
         }}
-
         async function saveNote(id, note) {{
             try {{
                 await fetch(`${{API_BASE}}/api/save_note`, {{
@@ -334,16 +307,13 @@ def build_files():
                 }});
             }} catch(e) {{ }}
         }}
-
         function markApplied(id, url) {{ updateStatus(id, 'Applied'); window.open(url, '_blank'); }}
         function markViewed(id, url) {{ updateStatus(id, 'Viewed'); window.open(url, '_blank'); }}
-
         function filterJobs(criteria) {{
             const cards = document.querySelectorAll('.job-card');
             const btns = document.querySelectorAll('.badge-filter');
             btns.forEach(b => b.classList.remove('active'));
             if(event.target) event.target.classList.add('active');
-
             cards.forEach(card => {{
                 const tags = card.dataset.tags.toLowerCase();
                 let match = true;
@@ -356,14 +326,12 @@ def build_files():
                 card.style.display = match ? 'flex' : 'none';
             }});
         }}
-
         function searchJobs(query) {{
             const cards = document.querySelectorAll('.job-card');
             cards.forEach(card => {{
                 card.style.display = card.innerText.toLowerCase().includes(query.toLowerCase()) ? 'flex' : 'none';
             }});
         }}
-
         document.addEventListener('DOMContentLoaded', () => {{
             document.querySelectorAll('.notes-area').forEach(area => {{
                 area.addEventListener('change', (e) => {{
@@ -385,15 +353,11 @@ def build_files():
     <div class="header">
         <div class="header-content">
             <div class="app-title">Strategic Match 🚀</div>
-
             <div class="controls-row">
-                <!-- SWAPPED: Search First -->
                 <div class="search-section">
                     <span class="search-icon">🔍</span>
-                    <input type="text" class="search-input" placeholder="Search by title, company, or keyword..." onkeyup="searchJobs(this.value)">
+                    <input type="text" class="search-input" placeholder="Search jobs..." onkeyup="searchJobs(this.value)">
                 </div>
-
-                <!-- Filters Second -->
                 <div class="filter-badges">
                     <div class="badge-filter active" onclick="filterJobs('all')">All Jobs ({total})</div>
                     <div class="badge-filter" onclick="filterJobs('t1')">Tier 1 ({t1})</div>
@@ -403,29 +367,23 @@ def build_files():
                     <div class="badge-filter" onclick="filterJobs('corp')">🏢 Corporate</div>
                     <div class="badge-filter" onclick="filterJobs('nonprofit')">💚 Nonprofit</div>
                 </div>
-
                 <a href="tracker.html" class="tracker-link">📋 Tracker</a>
             </div>
         </div>
     </div>
-
     <div class="grid-container">
         {''.join([render_job_card(j) for j in jobs])}
     </div>
-
     <div id="toast" class="toast">Notification</div>
-
     <div id="modal" class="modal" onclick="if(event.target===this)document.getElementById('modal').style.display='none'">
         <div id="modal-content" class="modal-content"></div>
     </div>
-
     {wired_js}
     <script>
     function openModal(id, section) {{
         const jobs = {jobs_json};
         const job = jobs.find(j => j.id == id);
         const content = document.getElementById('modal-content');
-
         let html = `
             <h2 style="margin-bottom:5px">${{job.title}}</h2>
             <h3 style="color:var(--blue-company); margin-top:0">${{job.company}}</h3>
@@ -434,17 +392,15 @@ def build_files():
             </div>
             <hr style="border:0; border-top:1px solid #e2e8f0; margin:20px 0;">
         `;
-
         const fields = [
             ['Company Overview', job.company_overview],
-            ['Role Insights', job.role_insights || job.why_this_role],
+            ['Role Insights', job.role_insights],
             ['Key Requirements', job.key_requirements],
             ['Interview Prep', job.interview_prep],
             ['Talking Points', job.talking_points],
             ['Red Flags', job.red_flags],
             ['Full Description', job.full_description]
         ];
-
         let hasData = false;
         fields.forEach(([label, text]) => {{
             if(text && text.length > 10) {{
@@ -455,11 +411,9 @@ def build_files():
                 </div>`;
             }}
         }});
-
         if(!hasData) {{
-            html += `<div style="padding:20px; text-align:center; color:#64748b;">No rich analysis data available for this role. <br> Check the full listing URL below.</div>`;
+            html += `<div style="padding:20px; text-align:center; color:#64748b;">No rich analysis data available for this role.</div>`;
         }}
-
         content.innerHTML = html;
         document.getElementById('modal').style.display = 'flex';
     }}
@@ -467,11 +421,9 @@ def build_files():
 </body>
 </html>"""
 
-    # Tracker HTML (simplified for brevity but included)
     tracker_html = f"""<!DOCTYPE html><html><head><title>Tracker</title>{common_head}</head><body>
     <div class="header"><div class="header-content"><a href="index.html" style="text-decoration:none; font-weight:700; color:#475569;">← Back to Dashboard</a><h2>Pipeline Tracker</h2></div></div>
     <div style="padding:30px; max-width:800px; margin:0 auto;">
-        <!-- Vertical Stack logic same as before -->
         <p style="text-align:center; color:#64748b;">Tracker View (Vertical Stack)</p>
     </div>
     {wired_js}
@@ -485,10 +437,7 @@ def render_job_card(j):
     quick_links = []
     if len(j.get('interview_prep', '')) > 10: quick_links.append(('⚡ Prep', 'Interview Prep'))
     if len(j.get('talking_points', '')) > 10: quick_links.append(('🗣️ Talk', 'Talking Points'))
-
     ql_html = ''.join([f'<div class="ql-btn" onclick="openModal({j["id"]}, \'{sec}\')">{label}</div>' for label, sec in quick_links])
-
-    # Dynamic Tag Coloring
     tag_html = ''
     for t in j['tags']:
         cls = 'tag-tier-3'
@@ -498,26 +447,19 @@ def render_job_card(j):
         elif 'corp' in t.lower(): cls = 'tag-corp'
         elif 'nonprofit' in t.lower(): cls = 'tag-nonprofit'
         tag_html += f'<span class="tag {cls}">{t}</span>'
-
     status_opts = ''.join([f'<option value="{s}" {"selected" if j["status"]==s else ""}>{s}</option>' for s in ["New", "Applied", "Interview", "Offer", "Rejected"]])
-
     return f"""
     <div class="job-card" data-tags="{','.join(j['tags'])}">
         <div class="card-tags">{tag_html}</div>
         <div class="job-title">{j['title']}</div>
         <div class="company-name">{j['company']}</div>
-
-        <div class="quick-links">
-            {ql_html}
-        </div>
-
+        <div class="quick-links">{ql_html}</div>
         <div class="action-buttons">
             <button class="btn-3d btn-details" onclick="openModal({j['id']}, null)">Details</button>
             <button class="btn-3d btn-listing" onclick="markViewed({j['id']}, '{j['list_url']}')">Listing</button>
             <button class="btn-3d btn-apply" onclick="markApplied({j['id']}, '{j['app_url']}')">APPLY</button>
             <a href="tracker.html" class="btn-3d btn-track">Track</a>
         </div>
-
         <div class="status-row">
             <select id="status-{j['id']}" class="status-select" onchange="updateStatus({j['id']}, this.value)">
                 {status_opts}
