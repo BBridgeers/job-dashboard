@@ -1,0 +1,83 @@
+****The following 6 "Core" Data Fields MUST be satisified for (TIERS 1-3) OR All found MATCHES with eaches ASSOCIATED CARD CONTAINING THE FOLLOWING****
+
+MATCH_SCORE
+
+JOB TITLE
+
+COMPANY NAME
+
+Salary (If not provided then Estimated)
+
+ BULLETED Job Description Summary
+ 
+ BULLETED Why I am a good fit?
+
+_________________________________________________________________________________________________________
+
+
+(Applied Research) ****ONLY "TIER 1 (Matches 1-5) & TIER 2 (Matches 6-10)" OR TOP 10 MATCH RESULTS FROM (BOTH) THE CORPORATE AND NON PROFIT SEARCHES (THUS FULL "APPLIED RESEARCH" DATA WILL APPLY TO A MAX DAILY TOTAL OF 20 MATCHES PER DAILY RUN)****:
+
+COMPANY_OVERVIEW (Financial Health, Funding, stage, reputation, Company Mission, Strategic Goals, Culture & Values, Recent News/Press)
+
+ROLE_INSIGHTS (Team structure, Role Core Responsibilities, Salary Intelligence, Key Success Metrics (KPIs), Required Tech Stack, Soft Skills Priority)
+
+KEY_REQUIREMENTS (Must-haves vs nice-to-haves)
+
+SALARY_INTEL (Market rate & leverage)
+
+APPLICATION_STRATEGY (Hiring Manager Profile (if found)/LinkedIn Conection Suggestion, Resume keywords, "In" angles)
+
+RED_FLAGS (Turnover, funding issues, risks)
+
+CULTURAL_FIT (Pace, style, values)
+
+COMPETITIVE_LANDSCAPE (List of top 5 competitors, market position vs. competitiors in space)
+
+SKILLS_GAP_ANALYSIS (What you're missing & how to pivot or address during interview process)
+
+NETWORK_LEVERAGE (Who to contact & LinkedIn Conection Suggestion, alumni, board members)
+
+DECISION_TIMELINE (Urgency, hiring process speed)
+
+CAREER_TRAJECTORY (Exit opps, growth path (future roles)
+
+__________________________________________________________________________________________________________________________
+
+
+(Text Content Gen) ****"APPLICATION PACK" GENERATION WILL ONLY OCCUR AND BE PROVIDED IN EACH JOB CARD FOR ONLY TIER-1 RESULTS - OR SOLELY FOR THE TOP 5 JOB MATCHES FOR BOTH THE CORPORATE AND NON PROFIT SEARCHES - FOR A MAX DAILY TOTAL OF 10 JOB MATCHES****
+
+Resume & Cover Letter Related 
+
+ATS Optimized Job-Specific Resume (Keywords): A list of the most critical keywords from the job description to weave into your resume.
+
+ATS Optimized Tailored Resume "Summary" Section: A 2-3 sentence summary for the top of your resume, tailored to this specific job.
+
+ATS Optimized Tailored (HUMANIZED) Cover Letter - First Draft: A complete, tailored cover letter draft.
+
+"Why Me?" Bullet Points: 3-5 bullet points explaining why you are the perfect fit.
+
+"Why Them?" Bullet Points: 3-5 bullet points explaining your interest in the company.
+
+Interview Related
+
+Interview Prep - Strategic Talking Points
+
+Interview Prep - Key Questions: 5 (Behavioral), 5 (Technical), 5 (Cultural)
+
+Interview Prep - STAR Story Hooks: 3 STAR-method story ideas from your background that match the role.
+
+Salary Intelligence & Leverage
+
+Additonal Questions to Ask Them
+
+Communications (Drafts)
+
+Recruiter/Hiring Manager Email: A short, concise email to send with your application.
+
+Interview Follow-Up (Thank You Email (Draft)): A template for a post-interview thank you note.
+
+30-60-90 Day Plan - Outline: A high-level outline for a 30-60-90 day plan.
+
+
+____________________________________________________________________________________________________________________________
+

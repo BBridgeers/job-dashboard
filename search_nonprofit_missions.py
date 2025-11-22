@@ -96,89 +96,94 @@ For positions 11+, provide ONLY 3 data points:
 [Continue for all remaining jobs found]
 
 
-SECTION 2: STRATEGIC ANALYSIS (TOP 5 ONLY)
-================================
-For ONLY the TOP 5 jobs, provide deep strategic intelligence:
 
----START_JOB_1---
-TITLE: [Exact job title from SECTION 1]
-COMPANY: [Organization name]
-MATCH_SCORE: [0-100]
-TIER: 1
+SECTION 2: DEEP DIVE ANALYSIS (TIER 1 & TIER 2)
+===============================================
 
+For Jobs 1-5 (TIER 1), provide ALL DATA FIELDS below (Applied Research + Application Pack).
+For Jobs 6-10 (TIER 2), provide ONLY the "APPLIED RESEARCH" fields.
+
+---START_JOB_X---
+TITLE: [Exact Title]
+COMPANY: [Company]
+TIER: [1 or 2]
+
+# === APPLIED RESEARCH (TIER 1 & 2) ===
 ---COMPANY_OVERVIEW---
-[500-800 chars: Mission, programs, funding sources, community impact, organizational size, reputation, board composition, financial health]
+[Financial Health, Funding, Mission, Values, Press]
 
 ---ROLE_INSIGHTS---
-[400-600 chars: Team structure, reporting lines, day-to-day activities, program ownership, community engagement approach]
+[Team structure, Core Responsibilities, Success Metrics, Tech Stack]
 
 ---KEY_REQUIREMENTS---
-[300-400 chars: Must-have skills, experience, certifications (CVA relevance), cultural competencies, mission alignment]
-
----INTERVIEW_PREP---
-[400-500 chars: Common nonprofit interview questions, mission alignment questions, scenario-based questions, presentation expectations]
+[Must-haves vs Nice-to-haves]
 
 ---SALARY_INTEL---
-[400-500 chars: Nonprofit salary ranges for role, total compensation including benefits, negotiation approach for mission-driven orgs]
+[Market rate, leverage, negotiation data]
 
 ---APPLICATION_STRATEGY---
-[400-500 chars: Resume keywords emphasizing impact, cover letter mission connection, volunteer experience to highlight, corporate-to-nonprofit transition positioning]
+[Resume keywords, specific angles]
 
 ---RED_FLAGS---
-[250-350 chars: Warning signs about funding instability, turnover, mission drift, unrealistic expectations for nonprofit roles]
+[Turnover, risks, funding issues]
 
 ---CULTURAL_FIT---
-[400-500 chars: Work style in nonprofit vs corporate, pace differences, values-driven culture, community engagement expectations, work-life integration]
+[Pace, style, values alignment]
 
 ---COMPETITIVE_LANDSCAPE---
-[300-400 chars: Similar roles at other DFW nonprofits, what makes this organization unique, alternative opportunities in the sector]
+[Market position, competitors]
 
 ---SKILLS_GAP_ANALYSIS---
-[350-450 chars: Corporate skills that transfer well, nonprofit-specific skills to develop, how to position corporate experience as strength]
+[Missing skills & how to pivot]
 
 ---NETWORK_LEVERAGE---
-[250-350 chars: DFW nonprofit networks to join, CVA community connections, board members to research, nonprofit conferences/events]
+[Who to contact, alumni, board]
 
 ---DECISION_TIMELINE---
-[200-300 chars: Nonprofit hiring timelines (often slower), when to follow up, board approval processes, start date flexibility]
+[Urgency, hiring speed]
 
 ---CAREER_TRAJECTORY---
-[300-400 chars: Growth path in nonprofit sector, leadership opportunities, how this role builds nonprofit career, long-term impact potential]
+[Exit opps, growth path]
 
----WHY_THIS_ROLE---
-[400-500 chars: Mission alignment with your values, corporate-to-nonprofit transition fit, community impact potential, career fulfillment factors]
+# === APPLICATION PACK (TIER 1 ONLY - JOBS 1-5) ===
+---RESUME_KEYWORDS---
+[ATS keyword list]
 
----FULL_DESCRIPTION---
-[600-800 chars: Complete role responsibilities, community engagement activities, program management scope, success metrics for nonprofit context]
----END_JOB_1---
+---RESUME_SUMMARY---
+[Tailored summary text]
 
----START_JOB_2---
-TIER: 1
-[Same 15-section structure]
----END_JOB_2---
+---COVER_LETTER_DRAFT---
+[Full tailored draft]
 
----START_JOB_3---
-TIER: 1
-[Same 15-section structure]
----END_JOB_3---
+---WHY_ME_BULLETS---
+[3-5 value prop bullets]
 
----START_JOB_4---
-TIER: 1
-[Same 15-section structure]
----END_JOB_4---
+---WHY_THEM_BULLETS---
+[3-5 company interest bullets]
 
----START_JOB_5---
-TIER: 1
-[Same 15-section structure]
----END_JOB_5---
+---INTERVIEW_PREP---
+[15 Qs: 5 Behavioral, 5 Technical, 5 Cultural]
 
-CRITICAL RULES:
-- Use EXACT markers: ---SECTION_NAME---
-- NO extra formatting (no **, no ##, just plain text after markers)
-- All 15 sections MUST be present for each job
-- Stay within character limits
-- Focus on mission alignment and community impact in analysis
-- Maintain ---START_JOB_X--- and ---END_JOB_X--- boundaries
+---STAR_HOOKS---
+[3 Story ideas]
+
+---TALKING_POINTS---
+[Negotiation strategy]
+
+---QUESTIONS_TO_ASK---
+[3-5 smart questions for them]
+
+---RECRUITER_EMAIL---
+[Outreach draft]
+
+---THANK_YOU_EMAIL---
+[Post-interview draft]
+
+---30_60_90_PLAN---
+[High-level outline]
+
+---END_JOB_X---
+
 """
 
     payload = {
@@ -213,47 +218,4 @@ CRITICAL RULES:
         return None
 
 def main():
-    """Run nonprofit job search"""
-
-    # Load API key
-    try:
-        with open('credentials.json', 'r') as f:
-            import json
-            creds = json.load(f)
-            api_key = creds['perplexity_api_key']
-    except FileNotFoundError:
-        print("❌ credentials.json not found!")
-        return
-
-    # Ensure output directory exists
-    output_dir = Path('job_search_results')
-    output_dir.mkdir(exist_ok=True)
-
-    timestamp = datetime.now().strftime("%Y-%m-%d")
-
-    print("🔍 Running NONPROFIT/MISSION search...")
-    print("   Focus: Education, Youth, Community Development")
-    print("   Sources: 24+ nonprofit job boards (including DFW-specific)")
-    print("")
-
-    result = search_nonprofit_jobs(api_key)
-
-    if result:
-        filename = output_dir / f"job_search_nonprofit_sonar_{timestamp}.txt"
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write(f"# STRATEGIC MATCH - DFW NONPROFIT JOBS\n")
-            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %I:%M %p')} CST\n")
-            f.write(f"Search Type: Nonprofit\n")
-            f.write(f"Model: sonar-pro (3-tier structured)\n")
-            f.write(f"Focus: Education, Youth Development, Community Impact\n")
-            f.write(f"Sources: 24+ nonprofit-specific boards\n")
-            f.write("=" * 80 + "\n\n")
-            f.write(result)
-
-        print(f"✅ Saved: {filename}")
-        print(f"   Ready for: python3 migrate_structured.py")
-    else:
-        print("❌ Search failed")
-
-if __name__ == "__main__":
-    main()
+    

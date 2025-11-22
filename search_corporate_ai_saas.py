@@ -91,88 +91,94 @@ For positions 11+, provide ONLY 3 data points:
 [Continue for all remaining jobs found]
 
 
-SECTION 2: STRATEGIC ANALYSIS (TOP 5 ONLY)
-================================
-For ONLY the TOP 5 jobs, provide deep strategic intelligence:
 
----START_JOB_1---
-TITLE: [Exact job title from SECTION 1]
-COMPANY: [Company name]
-MATCH_SCORE: [0-100]
-TIER: 1
+SECTION 2: DEEP DIVE ANALYSIS (TIER 1 & TIER 2)
+===============================================
 
+For Jobs 1-5 (TIER 1), provide ALL DATA FIELDS below (Applied Research + Application Pack).
+For Jobs 6-10 (TIER 2), provide ONLY the "APPLIED RESEARCH" fields.
+
+---START_JOB_X---
+TITLE: [Exact Title]
+COMPANY: [Company]
+TIER: [1 or 2]
+
+# === APPLIED RESEARCH (TIER 1 & 2) ===
 ---COMPANY_OVERVIEW---
-[500-800 chars: Company stage, funding, market position, reputation, growth trajectory, tech stack, competitors, AI/automation focus if applicable]
+[Financial Health, Funding, Mission, Values, Press]
 
 ---ROLE_INSIGHTS---
-[400-600 chars: Team structure, reporting lines, day-to-day, P&L ownership, decision authority, travel requirements]
+[Team structure, Core Responsibilities, Success Metrics, Tech Stack]
 
 ---KEY_REQUIREMENTS---
-[300-400 chars: Must-have skills, years experience, certifications, technical proficiencies, soft skills]
-
----INTERVIEW_PREP---
-[400-500 chars: Common questions for this role type, what they evaluate, presentation tips, case study prep, technical assessments]
+[Must-haves vs Nice-to-haves]
 
 ---SALARY_INTEL---
-[400-500 chars: Market rates, negotiation leverage, total comp breakdown (base/bonus/equity), benefits to expect]
+[Market rate, leverage, negotiation data]
 
 ---APPLICATION_STRATEGY---
-[400-500 chars: Resume keywords to emphasize, cover letter angle, referral opportunities, ATS optimization, when to apply]
+[Resume keywords, specific angles]
 
 ---RED_FLAGS---
-[250-350 chars: Warning signs, Glassdoor concerns, high turnover indicators, unrealistic expectations]
+[Turnover, risks, funding issues]
 
 ---CULTURAL_FIT---
-[400-500 chars: Work style, pace, values alignment, remote/hybrid culture, team dynamics, leadership style]
+[Pace, style, values alignment]
 
 ---COMPETITIVE_LANDSCAPE---
-[300-400 chars: Similar roles at other companies, what makes this unique, alternative opportunities]
+[Market position, competitors]
 
 ---SKILLS_GAP_ANALYSIS---
-[350-450 chars: What you have that matches, what you're missing, how to position gaps as growth opportunities]
+[Missing skills & how to pivot]
 
 ---NETWORK_LEVERAGE---
-[250-350 chars: LinkedIn connections, alumni network, industry contacts, recruiters to engage, informational interview targets]
+[Who to contact, alumni, board]
 
 ---DECISION_TIMELINE---
-[200-300 chars: Urgency to apply, follow-up schedule, expected response times, offer deadline expectations]
+[Urgency, hiring speed]
 
 ---CAREER_TRAJECTORY---
-[300-400 chars: How this advances your path, next role after this, skills you'll build, 3-5 year outlook]
+[Exit opps, growth path]
 
----WHY_THIS_ROLE---
-[400-500 chars: Compelling reasons for YOUR background, unique fit factors, risk/reward assessment]
+# === APPLICATION PACK (TIER 1 ONLY - JOBS 1-5) ===
+---RESUME_KEYWORDS---
+[ATS keyword list]
 
----FULL_DESCRIPTION---
-[600-800 chars: Complete responsibilities, day-to-day activities, success metrics, what "great" looks like]
----END_JOB_1---
+---RESUME_SUMMARY---
+[Tailored summary text]
 
----START_JOB_2---
-TIER: 1
-[Same 15-section structure]
----END_JOB_2---
+---COVER_LETTER_DRAFT---
+[Full tailored draft]
 
----START_JOB_3---
-TIER: 1
-[Same 15-section structure]
----END_JOB_3---
+---WHY_ME_BULLETS---
+[3-5 value prop bullets]
 
----START_JOB_4---
-TIER: 1
-[Same 15-section structure]
----END_JOB_4---
+---WHY_THEM_BULLETS---
+[3-5 company interest bullets]
 
----START_JOB_5---
-TIER: 1
-[Same 15-section structure]
----END_JOB_5---
+---INTERVIEW_PREP---
+[15 Qs: 5 Behavioral, 5 Technical, 5 Cultural]
 
-CRITICAL RULES:
-- Use EXACT markers: ---SECTION_NAME---
-- NO extra formatting (no **, no ##, just plain text after markers)
-- All 15 sections MUST be present for each job
-- Stay within character limits
-- Maintain ---START_JOB_X--- and ---END_JOB_X--- boundaries
+---STAR_HOOKS---
+[3 Story ideas]
+
+---TALKING_POINTS---
+[Negotiation strategy]
+
+---QUESTIONS_TO_ASK---
+[3-5 smart questions for them]
+
+---RECRUITER_EMAIL---
+[Outreach draft]
+
+---THANK_YOU_EMAIL---
+[Post-interview draft]
+
+---30_60_90_PLAN---
+[High-level outline]
+
+---END_JOB_X---
+
 """
 
     payload = {
@@ -207,47 +213,4 @@ CRITICAL RULES:
         return None
 
 def main():
-    """Run corporate job search"""
-
-    # Load API key
-    try:
-        with open('credentials.json', 'r') as f:
-            import json
-            creds = json.load(f)
-            api_key = creds['perplexity_api_key']
-    except FileNotFoundError:
-        print("❌ credentials.json not found!")
-        return
-
-    # Ensure output directory exists
-    output_dir = Path('job_search_results')
-    output_dir.mkdir(exist_ok=True)
-
-    timestamp = datetime.now().strftime("%Y-%m-%d")
-
-    print("🔍 Running CORPORATE/TECH search...")
-    print("   Focus: AI/Automation, SaaS, EdTech, Fintech, Healthtech")
-    print("   Sources: 20+ job boards")
-    print("")
-
-    result = search_corporate_jobs(api_key)
-
-    if result:
-        filename = output_dir / f"job_search_corporate_sonar_{timestamp}.txt"
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write(f"# STRATEGIC MATCH - DFW CORPORATE/TECH JOBS\n")
-            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %I:%M %p')} CST\n")
-            f.write(f"Search Type: Corporate\n")
-            f.write(f"Model: sonar-pro (3-tier structured)\n")
-            f.write(f"Focus: AI/Automation, SaaS, EdTech, Fintech, Healthtech\n")
-            f.write(f"Sources: 20+ job boards\n")
-            f.write("=" * 80 + "\n\n")
-            f.write(result)
-
-        print(f"✅ Saved: {filename}")
-        print(f"   Ready for: python3 migrate_structured.py")
-    else:
-        print("❌ Search failed")
-
-if __name__ == "__main__":
-    main()
+    

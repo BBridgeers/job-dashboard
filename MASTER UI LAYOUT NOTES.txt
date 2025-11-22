@@ -1,0 +1,141 @@
+🎯 Clarifying Questions
+1. Dashboard Layout & Navigation
+Main Tracker Application Button: Should this be in the header (always visible) (when header is not collapsed for mobile optimization purposes)
+Answer: Main "Application Tracker" Button: Should navigate to a dedicated tracker .html page. There should also be a "App Tracker" button on each of the Job Listing Cards too, that when clicked routes you to the .html Tracker page (filtered to that specifc listing/opportunities realted data) 
+2. Status Management & Dropdowns
+Status Options: What statuses do you want in the dropdown? ("New", "Applied", "Phone Scree", "Interview(s) Scheduled", "Offer Extended", "Not a Fit" (Meaning Rejected during interview process), "Not Interested")
+Answer: these all will work for now- we can add in future if I find I need something else 
+Location on page: The current status dropdown selection should be visible on the immediately visible card view for each job. 
+3. Auto-Status Updates from Actions
+Answers:
+"Apply Now" button clicked → Status changes to "Applied" + timestamp recorded. ✅ Correct? YES
+"View Job Listing" button clicked → Yes track as "Viewed" and is then no longer tracked as "New"
+Should these auto-updates show a confirmation notification ("✅ Status updated to Applied")? Sure that would be great.
+4. Application Link Requirements
+Answers:
+"View Job Listing" = Link to original job posting page (read-only) 
+"APPLY NOW" = YES Direct link to the application start/submit page. (different URL from job listing in some case maybe...) but in most cases is found at the bottom of the live page lisiting via a click button if not already found on listing page directly at bottom)
+Are these two separate URLs in your data, or is "APPLY NOW" just the same as "View Job Listing"? ***They may be in some cases. How best do we handle this? Can we handle this?***
+5. Tracker Data Display
+What tracker data per job? 
+Answers: Application (Tracker) Data as it relates job where I suggest we create a grouping/cluster of smaller hyperlimnked or quick jump "buutons"/text realted too the job details txt data/infomration that will be availble for each (some will have more than others (like Top 3 will have a lot more than others for insatnce) those buttons will be the section titles used iside or under the "View Job Details" button where ALL or most Job realted detail rests. Is this idea understood/are you following me here?
+Tracker page vs Dashboard: Should tracker be a separate page (tracker.html)? 
+ANSWER: YES, it should be a seperate standalone seperate page (tracker.html)
+6. Notes Field
+Do you want an editable notes field per job that you can update from the dashboard? 
+Answer: YES THIS IS A GREAT IDEA. 
+
+Header Section Changes:
+"ALL should be LIVE/ACTIVE Buttons" (That execute a filtered view below of each's related job opportunities) → The stats badges (Total Jobs, High Match, Corporate, Nonprofit) should be clickable filters/navigation
+"Native Text Search" → Add a search box in the header to filter jobs by keyword (In top right corner of the collapsable header)
+Job Card Section:
+Job Listing/Opportunity Information should appear in this Order (top-bttm) : Filter Tag {which could be "High Match (90+)" or "Corporate" or "Nonprofit" (Location: Top Left of each matches box , Color: light red) then below tag(s) the Job Title/description (black text), then below Title the Location Details, then below Location the Hiring Company Name (or hiring on behalf of) Text Color: Deep Blue, then Company Name that the Brief 2-3 Sentence Match/Opportunity Summary & Why it is a good fit (Text Color: Green)
+Then at bottom the each job's card will be the row of MAIN corresponding action BUTTONS (should be bubble 3D in appearance) {Button Descriptions should be as follows and left in left to right order}: "View Job Details" "View Job Listing" "APPLY NOW!" & "Track Match") 
+I want to create a set/grouping of 1-2 word "quick" links (that will jump to corresponding/related "rich" data/information found under/in "View Job Details" and these "quick link/jump" buttons  placed between a jobs 2-3 sentence summary and the bottom row of MAIN BUTTONS? What are your thoughts here? Do you understand my suggestion? 
+Then at the Bottom of each card the "MAIN" action buttons are to be Labeled as follows (lefft to right) at the bottom row of each card: "View Job Details" "View Job Listing" "APPLY NOW!" & "Track Match") 
+🤔 Clarifications Needed:
+Question 1: Header Stats also act as Filter Buttons "Total: XX", "Corporate: XX", "Non-Profit: XX", "High Match 90+: XX", "Tier 1: XX", "Tier 2: XX", "Tier 3: XX" 
+When you click "🔥 High Match (90+): 2" - should  filter to show only 90+ matches; and perform correlated filter logic and display for the others "All Jobs: 9"{should show everything in DB}, "Corporate: 2" {show/filter to just corporate}, and "Nonprofit" to Nonprofit tagged/related, the NEW "Application Tracker" routing button will be placed in-line but to the right of all of the existing. understood? confirm or not.
+Question 2: Native Text Search
+Search across what fields? All text found on page that makes sense and does not cause break or bug in the code. 
+Question 3: Job Cards - Show Full Description?
+Full Job Title Line "description" should be visible (not truncated or cut short) as follows....(Now the full set of "Rich data" components related to any relevant Job opportunity (which will only populate/be available for the top 5 results of both separate searches preformed in each run {this data/additional txt info will ABSOLUTLELLY have to/will be found under the "View Job Details" button for each corresponding Tier 1 matche(s) in every day's morning search) The Card info related to each Job should appear in this order (top to bottom of each job card box) 
+Order (top-bttm) : Filter Tag {which could be "High Match (90+)" or "Corporate" or "Nonprofit" (Location: Top Left of each matches box , Color: light red) then below tag(s) the Job Title/description (black text), then below Title the Location Details, then below Location the Hiring Company Name (or hiring on behalf of) Text Color: Deep Blue, then Company Name that the Brief 2-3 Sentence Match/Opportunity Summary & Why it is a good fit (Text Color: Green)
+Then at bottom the each job's card will be the row of MAIN corresponding action BUTTONS (should be bubble 3D in appearance) {Button Descriptions should be as follows and left in left to right order}: "View Job Details" "View Job Listing" "APPLY NOW!" & "Track Match") 
+Question 4: FOUR Buttons at Bottom OF EACH CARD
+At bottom the each job's card will be the row of FOUR MAIN action BUTTONS (should be bubble 3D in appearance) {Button Descriptions should be as follows and left in left to right order}: "View Job Details" "View Job Listing" "APPLY NOW!" & "Track Match") 
+
+🎯 FINAL CONFIRMED SPECIFICATIONS
+HEADER (Collapsible on mobile scroll)
+Left to Right:
+
+📊 Total Jobs: 9 (clickable filter → shows all)
+🔥 High Match (90+): 2 (clickable filter → shows only 90+)
+🏢 Corporate: 2 (clickable filter → shows corporate only)
+💚 Nonprofit: 7 (clickable filter → shows nonprofit only)
+🔍 Native Text Search Box (searches title, company, location, description)
+📋 Job Match Tracker button (navigates to tracker.html)
+
+JOB CARD LAYOUT (Top to Bottom)
+Visual Order:
+
+Filter Tag(s) (top-left, light red badge) - Shows: "High Match (90+)" OR "Corporate" OR "Nonprofit" (Or Mix if more than one apply)
+Job Title (full, untruncated, black text)
+Location (city/state)
+Company Name (deep blue text)
+2-3 Sentence Match Summary (why it's a good fit)
+
+[NON-OPTIONAL] Quick-Jump Links related to ANY availabel RICH DATA (1-2 word buttons like "Interview Prep", "Talking Points" → jumps to that section in "View Job Details")
+
+FOUR MAIN BUTTONS (3D bubble style, left-to-right):
+
+"View Job Details" → Expands/navigates to full 11-component data
+"View Job Listing" → Opens original job posting URL
+"APPLY NOW!" → Opens application page (or same as job listing if identical)
+"Track Match" → Navigates to tracker filtered to this job
+
+🎯 FINAL CONFIRMED SPECIFICATIONS
+HEADER (Collapsible on mobile scroll)
+Left to Right:
+
+📊 Total Jobs: 9 (clickable filter → shows all)
+🔥 High Match (90+): 2 (clickable filter → shows only 90+)
+🏢 Corporate: 2 (clickable filter → shows corporate only)
+💚 Nonprofit: 7 (clickable filter → shows nonprofit only)
+🔍 Native Text Search Box (searches title, company, location, description)
+📋 Job Match Tracker button (navigates to tracker.html)
+
+NO TAB ROW
+Remove "All Jobs", "Corporate", "Nonprofit" tabs entirely (functionality moved to header)
+
+JOB CARD LAYOUT (Top to Bottom)
+Visual Order:
+
+Filter Tag(s) (top-left, light red badge) - Shows: "High Match (90+)" OR "Corporate" OR "Nonprofit"
+Job Title (full, untruncated, black text)
+Location (city/state)
+Company Name (deep blue text)
+2-3 Sentence Match Summary (green text - why it's a good fit)
+[OPTIONAL] Quick-Jump Links (1-2 word buttons like "Interview Prep", "Talking Points" → jumps to that section in "View Job Details")
+FOUR MAIN BUTTONS (3D bubble style, left-to-right):
+"View Job Details" → Expands/navigates to full 11-component data
+"View Job Listing" → Opens original job posting URL
+"APPLY NOW!" → Opens application page (or same as job listing if identical)
+"Track Match" → Navigates to tracker filtered to this job
+
+STATUS SYSTEM
+Statuses (dropdown on card):
+-New
+-Applied
+-Phone Screen
+-Interview(s) Scheduled
+-Offer Extended
+-Not a Fit
+-Not Interested
+
+Auto-Updates:
+
+Click "APPLY NOW!" → Status = "Applied" + timestamp + ✅ notification
+Click "View Job Listing" → Status changes from "New" to "Viewed" + ✅ notification
+
+FULL JOB DETAILS (Under "View Job Details" button (when clicked and expanded))
+For Tier 1 and Tier 2 matches only (ALL available RICH Data from TXT files):
+
+Quick-jump navigation on immeditely visible card face (non-optional) within expanded view to specific sections
+Editable Notes Field at bottom of each card (Underneath line of "MAIN ACTION BUTTONS"
+
+
+APPLICATION LINKS
+Handling same vs different URLs:
+
+If application_url exists → "APPLY NOW!" uses it
+If application_url is empty → "APPLY NOW!" uses job_listing_url
+Both buttons always visible, but may point to same URL
+
+TRACKER
+Separate tracker.html page (simpler, less error-prone)
+Shows all jobs with: Status, Applied Date, Last Updated, Notes
+Clickable job name → filters/jumps to that job's detail
+
+
+

@@ -1,0 +1,382 @@
+# STRATEGIC MATCH - DFW CORPORATE/TECH JOBS
+Generated: 2025-11-21 10:52 AM CST
+Search Type: Corporate
+Model: sonar-pro (3-tier structured)
+Focus: AI/Automation, SaaS, EdTech, Fintech, Healthtech
+Sources: 20+ job boards
+================================================================================
+
+================================
+
+SECTION 1: ALL JOB LISTINGS
+================================
+
+TOP 5 MATCHES (TIER 1) - FULL DETAILS
+---
+
+1. Customer Success Manager – LiveKit
+   - Match Score: 98
+   - Salary: ~$195,000
+   - Location: Remote (US-based)
+   - Company Overview: LiveKit is a rapidly growing AI infrastructure startup focused on real-time communications and network solutions for developers and enterprises. The company is Series A+ funded, with a strong reputation for technical innovation and a robust product-market fit in the AI/automation space. Its platform powers scalable, reliable audio/video features for SaaS, EdTech, and automation platforms, competing with Twilio and Agora. LiveKit is known for its engineering-driven culture, remote-first operations, and rapid growth trajectory[5].
+   - Role Insights: The Customer Success Manager will own the post-sales relationship with enterprise customers, driving adoption, retention, and expansion of LiveKit’s AI-powered solutions. Responsibilities include onboarding, strategic account planning, executive stakeholder management, and collaborating with product/engineering to deliver customer value. The role emphasizes proactive engagement, data-driven insights, and cross-functional leadership to ensure customer outcomes and renewals[5].
+   - Key Requirements: 10+ years in B2B SaaS customer success/account management, deep experience with AI/automation or developer tools, executive presence, strong technical acumen, and proven track record in retention/expansion. Excellent communication, relationship-building, and analytical skills are required. Experience with remote teams and fast-paced environments is essential[5].
+   - URL: [Direct application link][5]
+
+2. Customer Success Manager – Adobe
+   - Match Score: 95
+   - Salary: $135,200–$234,100
+   - Location: Remote (US-based, McLean, VA HQ)
+   - Company Overview: Adobe is a global leader in digital experience and creative SaaS solutions, with a multi-billion dollar valuation and a dominant market position. The company’s Experience Cloud suite powers marketing, analytics, and automation for Fortune 500 clients. Adobe is known for innovation, strong financials, and a mature customer success organization. The company invests heavily in AI, analytics, and workflow automation, and offers robust remote/hybrid work options[2].
+   - Role Insights: This senior CSM role manages strategic enterprise accounts, driving adoption, retention, and measurable business outcomes. Responsibilities include executive relationship management, success planning, cross-functional orchestration, and advocacy. The role is highly consultative, with a focus on digital transformation, value realization, and multi-solution adoption. Some travel may be required for key client meetings[2].
+   - Key Requirements: 10+ years in SaaS customer success, strong executive presence, experience with digital marketing/automation, data-driven approach, and excellent communication. Bachelor’s degree or equivalent experience. Proven ability to manage complex enterprise relationships and drive measurable impact[2].
+   - URL: [Direct application link][2]
+
+3. Customer Success Senior Manager – Athenahealth
+   - Match Score: 92
+   - Salary: Not listed
+   - Location: Remote (US-based, Boston, MA HQ)
+   - Company Overview: Athenahealth is a leading cloud-based healthcare technology company, serving medical groups and health systems with EHR, revenue cycle, and patient engagement solutions. Backed by private equity, Athenahealth is a mature, rapidly growing company with a strong reputation for innovation and customer outcomes. The company is a major player in healthtech, with a focus on automation, analytics, and value-based care[2].
+   - Role Insights: The Senior Manager partners with healthcare executives to ensure success across quality and value-based care programs. The role involves proactive coaching, program enablement, and cross-functional collaboration to drive retention and expansion. The position is strategic, with high visibility and impact on customer outcomes and satisfaction[2].
+   - Key Requirements: 10+ years in SaaS or healthcare customer success, executive relationship management, strong analytical and communication skills, and experience with value-based care or healthcare SaaS. Bachelor’s degree preferred[2].
+   - URL: [Direct application link][2]
+
+4. Director of Customer Success – Confidential (Consumer Services AI Startup)
+   - Match Score: 90
+   - Salary: $65,000–$85,000
+   - Location: Phoenix, AZ (Hybrid/Remote possible)
+   - Company Overview: This Miami-based, Series A startup leverages advanced AI to streamline government services, offering a marketplace for trusted couriers. The company is building a world-class, tech-driven team focused on efficiency, empathy, and customer experience. With a strong AI/automation focus, the startup is scaling rapidly and aims to disrupt legacy government workflows[1].
+   - Role Insights: The Director leads centralized customer support operations, streamlines workflows, develops training, and collaborates with marketing/ops. The role is responsible for team performance, customer satisfaction metrics, and scaling support capabilities. High-impact, hands-on leadership is required[1].
+   - Key Requirements: 8+ years in customer success/operations, experience leading teams, process improvement, and SaaS/AI familiarity. Strong leadership, communication, and organizational skills are essential[1].
+   - URL: [Direct application link][1]
+
+5. Account Manager – Agency (Financial/Healthcare Clients)
+   - Match Score: 85
+   - Salary: Not listed
+   - Location: Central CT (Hybrid, 3/2 schedule)
+   - Company Overview: This established agency specializes in marketing for financial services and healthcare clients, offering strategic, data-driven solutions. The agency is known for client-centricity, cross-functional collaboration, and a strong reputation in regulated industries. Growth is steady, with a focus on digital transformation and customer experience[1].
+   - Role Insights: The Account Manager handles onboarding, project intake, client presentations, profitability, satisfaction, and conflict resolution. The role is strategic, client-facing, and involves cross-functional coordination across marketing, analytics, and creative teams[1].
+   - Key Requirements: 5+ years in account management, experience with financial/healthcare clients, strategic mindset, and strong communication skills. Agency experience preferred[1].
+   - URL: [Direct application link][1]
+
+POSITIONS 6-10 (TIER 2) - CORE DETAILS
+---
+
+6. Retention Specialist – Solve
+   - Match Score: 80
+   - Salary: Not listed
+   - Location: Remote (TX-based)
+   - Company Overview: Solve is a tech-enabled customer retention platform focused on building lasting relationships and solving customer challenges through empathy and rapport. The company operates remotely and emphasizes customer-centricity and problem-solving[4].
+   - Role Insights: The Retention Specialist builds trust, solves customer issues, and creates lasting relationships in a remote environment. The role requires empathy, communication, and proactive engagement[4].
+   - Key Requirements: Experience in customer retention, strong interpersonal skills, and remote work proficiency[4].
+   - URL: [Direct application link][4]
+
+7. Customer Success Manager – Southeast Regional Technology Group
+   - Match Score: 78
+   - Salary: From $55,000
+   - Location: Hybrid (Macon, GA)
+   - Company Overview: Regional IT services provider specializing in B2B technology solutions for the Southeast US. Focus on managed services, customer support, and long-term client relationships. Growth is steady, with a focus on customer satisfaction[2].
+   - Role Insights: Manages customer relationships, satisfaction, and issue resolution. Tracks metrics and leads teams to deliver value[2].
+   - Key Requirements: Proven customer success experience, leadership, and relationship management skills[2].
+   - URL: [Direct application link][2]
+
+8. Chat Representative – Fancy & Funky
+   - Match Score: 75
+   - Salary: Not listed
+   - Location: Remote
+   - Company Overview: Fancy & Funky is an e-commerce platform focused on unique consumer products, with a strong emphasis on customer engagement and remote work culture[4].
+   - Role Insights: Resolves customer issues, maintains positive attitude, and keeps accurate records of interactions[4].
+   - Key Requirements: Customer service experience, communication skills, and remote work proficiency[4].
+   - URL: [Direct application link][4]
+
+9. Senior Product Manager – SafetyChain
+   - Match Score: 72
+   - Salary: Not listed
+   - Location: Remote
+   - Company Overview: SafetyChain is a SaaS provider for food safety and quality management, serving enterprise clients in regulated industries. The company is known for its robust platform, technical innovation, and focus on compliance automation[7].
+   - Role Insights: Leads product delivery, configuration tools, and platform enhancements. Works closely with technical and customer-facing teams[7].
+   - Key Requirements: B2B SaaS product management experience, technical proficiency, and leadership skills[7].
+   - URL: [Direct application link][7]
+
+10. Customer Success Associate – Various Companies
+    - Match Score: 70
+    - Salary: Not listed
+    - Location: Remote
+    - Company Overview: Multiple openings across SaaS, EdTech, and Fintech companies seeking associates for customer success and support roles. Companies range from startups to established firms, with remote-first cultures[4].
+    - Role Insights: Entry to mid-level roles focused on customer onboarding, support, and retention[4].
+    - Key Requirements: Customer success/support experience, communication, and remote work skills[4].
+    - URL: [Direct application link][4]
+
+ALL OTHER MATCHES (TIER 3) - BASIC LIST
+---
+
+11. Sales Representative-Software – Global Payments – Match: 60
+12. Customer Success Manager – Robert Half – Match: 65
+13. Customer Success Manager – Remote (Various) – Match: 68
+14. Customer Success Associate – Remote (Various) – Match: 66
+15. Product Marketing Manager – Duluth, GA – Match: 62
+
+================================
+
+SECTION 2: STRATEGIC ANALYSIS (TOP 5 ONLY)
+================================
+
+---START_JOB_1---
+TITLE: Customer Success Manager
+COMPANY: LiveKit
+MATCH_SCORE: 98
+TIER: 1
+
+---COMPANY_OVERVIEW---
+LiveKit is a Series A+ funded AI infrastructure startup specializing in real-time communications for SaaS, EdTech, and automation platforms. The company has quickly established itself as a technical leader, providing scalable, reliable audio/video APIs and network solutions. LiveKit’s platform is used by developers and enterprises seeking to embed real-time features into their products. The company is remote-first, engineering-driven, and known for rapid innovation. Competitors include Twilio, Agora, and Daily.co. LiveKit’s focus on AI/automation and developer tools positions it at the forefront of the next wave of SaaS infrastructure.
+
+---ROLE_INSIGHTS---
+You’ll own the post-sales relationship for enterprise customers, acting as the primary point of contact for onboarding, adoption, and expansion. The role reports to the VP of Customer Success and collaborates closely with product, engineering, and sales. Day-to-day involves executive stakeholder management, strategic planning, and delivering data-driven insights to maximize customer value. You’ll have significant autonomy, P&L responsibility for renewals/expansions, and authority to escalate product priorities. No travel is required; all interactions are remote.
+
+---KEY_REQUIREMENTS---
+10+ years in B2B SaaS customer success/account management, ideally with AI/automation or developer tools. Must have executive presence, technical acumen, and a proven track record in retention and expansion. Strong communication, analytical, and relationship-building skills are essential. Experience with remote teams and fast-paced environments is required.
+
+---INTERVIEW_PREP---
+Expect scenario-based questions on managing complex enterprise relationships, driving adoption, and handling technical escalations. Be ready to discuss metrics-driven success stories, cross-functional collaboration, and executive communication. Prepare a presentation on customer journey mapping and a case study on retention/expansion. Technical assessment may include API familiarity and troubleshooting.
+
+---SALARY_INTEL---
+Market rates for this level in AI/automation SaaS are $150K–$200K base, with potential for bonus/equity. Total comp may include performance-based incentives and stock options. Benefits typically include health, dental, vision, 401(k), and remote work stipends. Leverage your deep experience and AI/automation expertise for negotiation.
+
+---APPLICATION_STRATEGY---
+Emphasize keywords: “AI infrastructure,” “enterprise SaaS,” “retention,” “expansion,” “executive stakeholder management,” “API adoption.” Tailor your resume to highlight technical proficiency and measurable outcomes. Cover letter should focus on your impact in AI/automation SaaS. Seek referrals from developer relations or product leaders. Apply early; roles fill quickly.
+
+---RED_FLAGS---
+Watch for unclear reporting lines, lack of defined success metrics, or high turnover in customer-facing teams. Verify that product roadmap aligns with customer needs and that support resources are adequate for enterprise clients.
+
+---CULTURAL_FIT---
+LiveKit values autonomy, rapid iteration, and technical excellence. The culture is remote-first, collaborative, and transparent. Expect a fast pace, direct feedback, and a focus on outcomes. Leadership is accessible, and teams are cross-functional. Ideal for self-starters comfortable with ambiguity and change.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles exist at Twilio, Agora, and Daily.co, but LiveKit offers greater influence on product direction and a more agile environment. The company’s AI/automation focus and rapid growth set it apart. Alternative opportunities include customer success leadership at other Series A/B SaaS infrastructure startups.
+
+---SKILLS_GAP_ANALYSIS---
+Your deep SaaS customer success experience aligns well. If you lack direct AI/automation or developer tools exposure, position your technical learning agility and experience with API-driven platforms as growth assets. Highlight your ability to quickly master new technologies.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections in AI/automation SaaS, alumni from developer-focused companies, and industry recruiters specializing in technical customer success. Target informational interviews with LiveKit’s product or customer success leaders.
+
+---DECISION_TIMELINE---
+Apply ASAP; top candidates often move to final interviews within 2–3 weeks. Follow up within 5 days of application. Expect a 1–2 week decision window post-final interview.
+
+---CAREER_TRAJECTORY---
+This role positions you for VP-level leadership in AI/automation SaaS. You’ll build expertise in developer platforms, gain exposure to product strategy, and expand your executive network. In 3–5 years, you could move into broader customer experience or GM roles.
+
+---WHY_THIS_ROLE---
+Your 14+ years of B2B SaaS customer success and account management, especially in retention and expansion, are a direct fit. LiveKit’s AI/automation focus matches your sector interests. The remote-first, high-growth environment offers both challenge and upside. Risk is moderate, with strong funding and market traction.
+
+---FULL_DESCRIPTION---
+You’ll manage the full customer lifecycle for enterprise clients, from onboarding through renewal and expansion. Responsibilities include defining success plans, driving product adoption, and orchestrating cross-functional resources. Success is measured by retention, NRR, and customer advocacy. “Great” means proactive engagement, deep technical understanding, and delivering measurable business outcomes.
+---END_JOB_1---
+
+---START_JOB_2---
+TITLE: Customer Success Manager
+COMPANY: Adobe
+MATCH_SCORE: 95
+TIER: 1
+
+---COMPANY_OVERVIEW---
+Adobe is a global SaaS leader with a multi-billion dollar valuation, renowned for its Experience Cloud and Creative Cloud platforms. The company is mature, financially robust, and a pioneer in digital marketing, analytics, and automation. Adobe invests heavily in AI and workflow automation, serving Fortune 500 clients across industries. The culture is inclusive, innovative, and supportive of remote/hybrid work. Competitors include Salesforce, Oracle, and Microsoft.
+
+---ROLE_INSIGHTS---
+This senior CSM role manages strategic enterprise accounts, reporting to a regional director. You’ll drive adoption, retention, and measurable business outcomes through executive relationship management, success planning, and cross-functional orchestration. The role is consultative, with significant influence on client digital transformation. Some travel may be required for key meetings, but most work is remote.
+
+---KEY_REQUIREMENTS---
+10+ years in SaaS customer success, strong executive presence, experience with digital marketing/automation, and a data-driven approach. Bachelor’s degree or equivalent experience required. Must demonstrate ability to manage complex enterprise relationships and deliver measurable impact.
+
+---INTERVIEW_PREP---
+Prepare for behavioral questions on executive stakeholder management, value realization, and digital transformation. Expect case studies on customer journey mapping and adoption strategies. Technical assessment may cover analytics tools and workflow automation. Presentation skills will be evaluated.
+
+---SALARY_INTEL---
+Market rates for this level at Adobe are $135K–$234K base, with bonus and equity. Benefits include health, dental, vision, 401(k), and generous PTO. Leverage your enterprise SaaS experience and digital transformation expertise for negotiation.
+
+---APPLICATION_STRATEGY---
+Highlight keywords: “enterprise SaaS,” “digital transformation,” “adoption,” “retention,” “executive relationship management.” Tailor your resume to showcase measurable outcomes and cross-functional leadership. Cover letter should emphasize your impact in digital marketing/automation. Seek referrals from Adobe’s customer success or product teams.
+
+---RED_FLAGS---
+Monitor for signs of overextension (large account loads), unclear success metrics, or siloed teams. Check Glassdoor for feedback on work-life balance and management support.
+
+---CULTURAL_FIT---
+Adobe values innovation, collaboration, and customer-centricity. The pace is steady but demanding, with a focus on continuous improvement. Remote/hybrid culture is well established. Teams are diverse, and leadership is supportive of professional growth.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles at Salesforce, Oracle, and Microsoft offer comparable scope but may be more siloed. Adobe’s integrated platform and AI/automation investments provide unique opportunities for impact. Consider customer success leadership at other digital experience SaaS firms as alternatives.
+
+---SKILLS_GAP_ANALYSIS---
+Your experience aligns closely. If you lack direct exposure to Adobe’s platforms, emphasize your ability to quickly master new tools and your track record in digital transformation. Highlight executive communication and data-driven decision-making.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections at Adobe, alumni from digital marketing SaaS, and industry recruiters. Target informational interviews with Adobe’s customer success leaders.
+
+---DECISION_TIMELINE---
+Apply promptly; Adobe’s process typically takes 3–5 weeks. Follow up within 7 days. Expect a multi-stage interview process with panel and case components.
+
+---CAREER_TRAJECTORY---
+This role sets you up for director or VP-level customer success positions at Adobe or other enterprise SaaS leaders. You’ll deepen expertise in digital transformation and expand your executive network. Long-term, you could move into broader customer experience or strategy roles.
+
+---WHY_THIS_ROLE---
+Your extensive B2B SaaS customer success background, especially in retention and expansion, is a strong fit. Adobe’s focus on digital transformation and automation aligns with your interests. The company’s scale and resources offer stability and growth. Risk is low, with high reward for performance.
+
+---FULL_DESCRIPTION---
+You’ll manage the full lifecycle for strategic enterprise accounts, from onboarding through renewal and expansion. Responsibilities include defining success plans, driving multi-solution adoption, and orchestrating internal resources. Success is measured by retention, NRR, and customer advocacy. “Great” means proactive engagement, executive influence, and delivering measurable business outcomes.
+---END_JOB_2---
+
+---START_JOB_3---
+TITLE: Customer Success Senior Manager
+COMPANY: Athenahealth
+MATCH_SCORE: 92
+TIER: 1
+
+---COMPANY_OVERVIEW---
+Athenahealth is a leading cloud-based healthcare technology provider, serving medical groups and health systems with EHR, revenue cycle, and patient engagement solutions. The company is backed by private equity, with a mature, rapidly growing business and a strong reputation for innovation. Athenahealth is a major player in healthtech, focusing on automation, analytics, and value-based care. The culture is mission-driven, collaborative, and supportive of remote work.
+
+---ROLE_INSIGHTS---
+The Senior Manager partners with healthcare executives to ensure success across quality and value-based care programs. The role reports to the VP of Customer Success and collaborates with product, analytics, and clinical teams. Day-to-day involves proactive coaching, program enablement, and strategic planning to drive retention and expansion. High visibility and impact on customer outcomes.
+
+---KEY_REQUIREMENTS---
+10+ years in SaaS or healthcare customer success, executive relationship management, strong analytical and communication skills, and experience with value-based care or healthcare SaaS. Bachelor’s degree preferred.
+
+---INTERVIEW_PREP---
+Expect scenario-based questions on healthcare program management, value-based care, and executive engagement. Prepare to discuss metrics-driven success stories and cross-functional collaboration. Case study may focus on retention/expansion in healthcare SaaS.
+
+---SALARY_INTEL---
+Market rates for this level in healthtech SaaS are $120K–$180K base, with bonus potential. Benefits include health, dental, vision, 401(k), and remote work flexibility. Leverage your healthcare SaaS experience for negotiation.
+
+---APPLICATION_STRATEGY---
+Emphasize keywords: “healthtech,” “value-based care,” “retention,” “expansion,” “executive relationship management.” Tailor your resume to highlight healthcare outcomes and program enablement. Cover letter should focus on your impact in healthcare SaaS. Seek referrals from Athenahealth’s customer success or clinical teams.
+
+---RED_FLAGS---
+Watch for unclear program ownership, shifting priorities, or high turnover in customer-facing teams. Verify that support resources are adequate for complex healthcare clients.
+
+---CULTURAL_FIT---
+Athenahealth values collaboration, mission-driven work, and continuous improvement. The pace is steady, with a focus on outcomes and innovation. Remote culture is well supported. Teams are cross-functional, and leadership is accessible.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles exist at Cerner, Epic, and Allscripts, but Athenahealth’s cloud-first approach and focus on automation set it apart. Consider customer success leadership at other healthtech SaaS firms as alternatives.
+
+---SKILLS_GAP_ANALYSIS---
+Your SaaS customer success experience is highly relevant. If you lack direct value-based care exposure, emphasize your ability to learn healthcare programs and your track record in complex SaaS environments.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections in healthtech, alumni from healthcare SaaS, and industry recruiters. Target informational interviews with Athenahealth’s customer success or clinical leaders.
+
+---DECISION_TIMELINE---
+Apply promptly; Athenahealth’s process typically takes 3–4 weeks. Follow up within 7 days. Expect a multi-stage interview process with panel and case components.
+
+---CAREER_TRAJECTORY---
+This role positions you for director or VP-level customer success roles in healthtech SaaS. You’ll deepen expertise in healthcare programs and expand your executive network. Long-term, you could move into broader customer experience or strategy roles.
+
+---WHY_THIS_ROLE---
+Your extensive SaaS customer success background, especially in retention and expansion, is a strong fit. Athenahealth’s focus on healthcare outcomes and automation aligns with your interests. The company’s growth and mission-driven culture offer both challenge and reward.
+
+---FULL_DESCRIPTION---
+You’ll manage the full customer lifecycle for healthcare clients, from onboarding through renewal and expansion. Responsibilities include program enablement, executive coaching, and cross-functional collaboration. Success is measured by retention, NRR, and customer satisfaction. “Great” means proactive engagement, healthcare expertise, and delivering measurable outcomes.
+---END_JOB_3---
+
+---START_JOB_4---
+TITLE: Director of Customer Success
+COMPANY: Confidential (Consumer Services AI Startup)
+MATCH_SCORE: 90
+TIER: 1
+
+---COMPANY_OVERVIEW---
+This Miami-based Series A startup leverages advanced AI to streamline government services, offering a marketplace for trusted couriers. The company is building a world-class, tech-driven team focused on efficiency, empathy, and customer experience. With a strong AI/automation focus, the startup is scaling rapidly and aims to disrupt legacy government workflows. The culture is innovative, collaborative, and remote-friendly.
+
+---ROLE_INSIGHTS---
+The Director leads centralized customer support operations, reporting to the COO. You’ll streamline workflows, develop training, and collaborate with marketing/ops. Day-to-day involves team leadership, process improvement, and scaling support capabilities. You’ll have significant influence on customer experience and operational efficiency. Some travel may be required for team meetings.
+
+---KEY_REQUIREMENTS---
+8+ years in customer success/operations, experience leading teams, process improvement, and SaaS/AI familiarity. Strong leadership, communication, and organizational skills are essential.
+
+---INTERVIEW_PREP---
+Expect scenario-based questions on scaling support teams, workflow optimization, and AI-driven customer engagement. Prepare to discuss team leadership, cross-functional collaboration, and process improvement. Case study may focus on scaling customer support in a tech-driven environment.
+
+---SALARY_INTEL---
+Market rates for this level at Series A startups are $80K–$120K base, with potential for equity. Benefits may include health, dental, vision, and remote work flexibility. Leverage your team leadership and AI/automation experience for negotiation.
+
+---APPLICATION_STRATEGY---
+Emphasize keywords: “AI/automation,” “customer support operations,” “process improvement,” “team leadership.” Tailor your resume to highlight scaling teams and operational efficiency. Cover letter should focus on your impact in tech-driven environments. Seek referrals from startup networks or investors.
+
+---RED_FLAGS---
+Watch for unclear reporting lines, lack of defined success metrics, or high turnover in support teams. Verify that resources are adequate for scaling operations.
+
+---CULTURAL_FIT---
+The company values innovation, empathy, and efficiency. The pace is fast, with a focus on outcomes and continuous improvement. Remote culture is well supported. Teams are collaborative, and leadership is accessible.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles exist at other AI/automation startups, but this company’s focus on government services and rapid growth set it apart. Consider customer success leadership at other Series A/B startups as alternatives.
+
+---SKILLS_GAP_ANALYSIS---
+Your experience leading customer success/operations teams is highly relevant. If you lack direct government services exposure, emphasize your ability to learn new domains and your track record in tech-driven environments.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections in AI/automation startups, alumni from tech-driven companies, and startup recruiters. Target informational interviews with the company’s leadership or investors.
+
+---DECISION_TIMELINE---
+Apply promptly; startup processes are fast, with decisions in 2–3 weeks. Follow up within 5 days. Expect a multi-stage interview process with panel and case components.
+
+---CAREER_TRAJECTORY---
+This role positions you for VP-level customer success or operations roles at scaling startups. You’ll build expertise in AI-driven customer experience and operational efficiency. Long-term, you could move into broader COO or GM roles.
+
+---WHY_THIS_ROLE---
+Your experience in customer success and operations, especially with AI/automation, is a strong fit. The company’s mission and growth trajectory offer both challenge and upside. Risk is moderate, with strong funding and market traction.
+
+---FULL_DESCRIPTION---
+You’ll lead centralized customer support operations, streamline workflows, develop training, and collaborate with marketing/ops. Responsibilities include team leadership, process improvement, and scaling support capabilities. Success is measured by customer satisfaction, operational efficiency, and team performance. “Great” means proactive leadership, process innovation, and delivering measurable outcomes.
+---END_JOB_4---
+
+---START_JOB_5---
+TITLE: Account Manager
+COMPANY: Agency (Financial/Healthcare Clients)
+MATCH_SCORE: 85
+TIER: 1
+
+---COMPANY_OVERVIEW---
+This established agency specializes in marketing for financial services and healthcare clients, offering strategic, data-driven solutions. The agency is known for client-centricity, cross-functional collaboration, and a strong reputation in regulated industries. Growth is steady, with a focus on digital transformation and customer experience. The culture is collaborative, fast-paced, and supportive of hybrid work.
+
+---ROLE_INSIGHTS---
+The Account Manager handles onboarding, project intake, client presentations, profitability, satisfaction, and conflict resolution. The role reports to the Director of Digital Marketing and collaborates with marketing, analytics, and creative teams. Day-to-day involves client strategy, cross-functional coordination, and delivering measurable outcomes.
+
+---KEY_REQUIREMENTS---
+5+ years in account management, experience with financial/healthcare clients, strategic mindset, and strong communication skills. Agency experience preferred.
+
+---INTERVIEW_PREP---
+Expect scenario-based questions on client management, conflict resolution, and cross-functional collaboration. Prepare to discuss success stories in financial/healthcare marketing. Case study may focus on client onboarding or project delivery.
+
+---SALARY_INTEL---
+Market rates for this level in agencies are $70K–$110K base, with bonus potential. Benefits include health, dental, vision, and hybrid work flexibility. Leverage your industry experience for negotiation.
+
+---APPLICATION_STRATEGY---
+Emphasize keywords: “financial services,” “healthcare,” “client strategy,” “cross-functional collaboration.” Tailor your resume to highlight agency and regulated industry experience. Cover letter should focus on your impact in client management. Seek referrals from agency networks.
+
+---RED_FLAGS---
+Watch for high client loads, unclear profitability metrics, or high turnover in account teams. Verify that resources are adequate for client delivery.
+
+---CULTURAL_FIT---
+The agency values collaboration, client-centricity, and continuous improvement. The pace is fast, with a focus on outcomes and innovation. Hybrid culture is well supported. Teams are cross-functional, and leadership is accessible.
+
+---COMPETITIVE_LANDSCAPE---
+Similar roles exist at other agencies serving regulated industries, but this agency’s focus on digital transformation and client outcomes sets it apart. Consider account management roles at other financial/healthcare agencies as alternatives.
+
+---SKILLS_GAP_ANALYSIS---
+Your account management experience is highly relevant. If you lack direct agency experience, emphasize your ability to adapt to fast-paced, client-centric environments.
+
+---NETWORK_LEVERAGE---
+Leverage LinkedIn connections in agency networks, alumni from financial/healthcare marketing, and industry recruiters. Target informational interviews with agency leaders.
+
+---DECISION_TIMELINE---
+Apply promptly; agency processes are fast, with decisions in 2–3 weeks. Follow up within 5 days. Expect a multi-stage interview process with panel and case components.
+
+---CAREER_TRAJECTORY---
+This role positions you for director or VP-level account management roles in agencies. You’ll deepen expertise in regulated industries and expand your client strategy skills. Long-term, you could move into broader client experience or strategy roles.
+
+---WHY_THIS_ROLE---
+Your experience in account management, especially with financial/healthcare clients, is a strong fit. The agency’s focus on digital transformation and client outcomes aligns with your interests. The hybrid culture offers flexibility and growth.
+
+---FULL_DESCRIPTION---
+You’ll manage onboarding, project intake, client presentations, profitability, satisfaction, and conflict resolution. Responsibilities include client strategy, cross-functional coordination, and delivering measurable outcomes. Success is measured by client retention, profitability, and satisfaction. “Great” means proactive engagement, strategic insight, and delivering client value.
+---END_JOB_5---
