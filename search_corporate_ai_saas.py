@@ -1,193 +1,115 @@
-#!/usr/bin/env python3
-"""
-Strategic Match - Corporate/Tech Job Search (Enhanced)
-AI/Automation, SaaS, EdTech, Fintech, Healthtech focus
-"""
 import os
 import requests
-from datetime import datetime
-from pathlib import Path
+import json
+import datetime
 
-def search_corporate_jobs(api_key):
-    """Execute enhanced corporate job search with 3-tier structure"""
-    url = "https://api.perplexity.ai/chat/completions"
+# CONFIGURATION
+API_KEY = os.environ.get("PERPLEXITY_API_KEY")
+if not API_KEY:
+    raise ValueError("❌ PERPLEXITY_API_KEY not found in environment variables.")
 
-    # SECTION 1: LISTING PROMPT
-    section_1_prompt = """
-    For EACH listing, you MUST include:
-    1. **Job Title**
-    2. **Company Name**
-    3. **Match Score** (0-100)
-    4. **Salary** (Provided or Estimated)
-    5. **Location**
-    6. **URL**
-    7. **SUMMARY_BULLETS**: 3 concise bullets summarizing the role.
-    8. **FIT_BULLETS**: 3 concise bullets on why this fits the candidate profile.
-    """
+TODAY = datetime.datetime.now().strftime("%Y-%m-%d")
+OUTPUT_FILE = f"job_search_results/job_search_corporate_sonar_{TODAY}.txt"
 
-    # SECTION 2: DEEP DIVE PROMPT (20-POINT SPEC)
-    section_2_prompt = """
-    SECTION 2: DEEP DIVE ANALYSIS (TIER 1 & TIER 2)
-    ===============================================
+HEADERS = {
+    "Authorization": f"Bearer {API_KEY}",
+    "Content-Type": "application/json"
+}
 
-    For Jobs 1-5 (TIER 1), provide ALL DATA FIELDS below (Applied Research + Application Pack).
-    For Jobs 6-10 (TIER 2), provide ONLY the "APPLIED RESEARCH" fields.
+# THE RICH DATA PROMPT
+SYSTEM_PROMPT = """You are a high-level Executive Recruiter Agent. 
+Your goal is to find live, high-value job openings and extract structured, actionable data for a candidate.
+You must output your answer STRICTLY as a JSON list of objects. No markdown, no conversational text."""
 
-    ---START_JOB_X---
-    TITLE: [Exact Title]
-    COMPANY: [Company]
-    TIER: [1 or 2]
+SEARCH_QUERY = """
+Find 5 high-paying Customer Success or Account Executive roles in AI/SaaS companies (Remote or Dallas/TX).
+Focus on: OpenAI, Anthropic, Stripe, Databricks, or similar high-growth tech.
+Only include roles posted in the last 14 days.
 
-    # === APPLIED RESEARCH (TIER 1 & 2) ===
-    ---COMPANY_OVERVIEW---
-    [Financial Health, Funding, Mission, Values, Press]
+For EACH job, you MUST extract or generate the following 30 fields in a valid JSON object:
 
-    ---ROLE_INSIGHTS---
-    [Team structure, Core Responsibilities, Success Metrics, Tech Stack]
+1. title (Job Title)
+2. company (Company Name)
+3. location (City/State or Remote)
+4. match_score (0-100 based on high-growth SaaS fit)
+5. listing_url (Direct link to the job post)
+6. application_url (Direct link to apply - if different, otherwise same as listing)
+7. summary_bullets (3 key highlights of the role)
+8. company_overview (Brief 2-sentence company description)
+9. role_insights (What success looks like in this role)
+10. key_requirements (Top 3 hard skills needed)
+11. salary_intel (Estimated range or mentioned comp)
+12. application_strategy (One specific tip to stand out)
+13. red_flags (Any potential downsides or risks)
+14. cultural_fit (Describe the vibe: e.g., "Fast-paced, chaotic")
+15. competitive_landscape (Who are their main rivals?)
+16. skills_gap (One skill the candidate might need to brush up on)
+17. network_leverage (Who to reach out to? e.g., "Connect with VP of Success")
+18. decision_timeline (Urgent? Rolling? Estimated.)
+19. career_trajectory (Where does this role lead?)
+20. resume_keywords (5 ATS keywords to include)
+21. resume_summary (A tailored 2-sentence summary for the CV)
+22. cover_letter (A draft opening paragraph for the cover letter)
+23. why_me_bullets (3 arguments for why I am the perfect fit)
+24. why_them_bullets (3 reasons why I want to join THEM)
+25. interview_prep (3 likely interview questions)
+26. star_hooks (A suggestion for a STAR story to tell)
+27. talking_points (2 strategic topics to discuss with leadership)
+28. questions_to_ask (2 smart questions to ask the hiring manager)
+29. recruiter_email (Guess the format: e.g., firstname.lastname@company.com)
+30. plan_30_60_90 (A rough 30-60-90 day plan outline)
 
-    ---KEY_REQUIREMENTS---
-    [Must-haves vs Nice-to-haves]
+OUTPUT FORMAT:
+[
+  {
+    "title": "...",
+    "company": "...",
+    ... (all fields)
+  },
+  ...
+]
+"""
 
-    ---SALARY_INTEL---
-    [Market rate, leverage, negotiation data]
-
-    ---APPLICATION_STRATEGY---
-    [Resume keywords, specific angles]
-
-    ---RED_FLAGS---
-    [Turnover, risks, funding issues]
-
-    ---CULTURAL_FIT---
-    [Pace, style, values alignment]
-
-    ---COMPETITIVE_LANDSCAPE---
-    [Market position, competitors]
-
-    ---SKILLS_GAP_ANALYSIS---
-    [Missing skills & how to pivot]
-
-    ---NETWORK_LEVERAGE---
-    [Who to contact, alumni, board]
-
-    ---DECISION_TIMELINE---
-    [Urgency, hiring speed]
-
-    ---CAREER_TRAJECTORY---
-    [Exit opps, growth path]
-
-    # === APPLICATION PACK (TIER 1 ONLY - JOBS 1-5) ===
-    ---RESUME_KEYWORDS---
-    [ATS keyword list]
-
-    ---RESUME_SUMMARY---
-    [Tailored summary text]
-
-    ---COVER_LETTER_DRAFT---
-    [Full tailored draft]
-
-    ---WHY_ME_BULLETS---
-    [3-5 value prop bullets]
-
-    ---WHY_THEM_BULLETS---
-    [3-5 company interest bullets]
-
-    ---INTERVIEW_PREP---
-    [15 Qs: 5 Behavioral, 5 Technical, 5 Cultural]
-
-    ---STAR_HOOKS---
-    [3 Story ideas]
-
-    ---TALKING_POINTS---
-    [Negotiation strategy]
-
-    ---QUESTIONS_TO_ASK---
-    [3-5 smart questions for them]
-
-    ---RECRUITER_EMAIL---
-    [Outreach draft]
-
-    ---THANK_YOU_EMAIL---
-    [Post-interview draft]
-
-    ---30_60_90_PLAN---
-    [High-level outline]
-
-    ---END_JOB_X---
-    """
-
-    search_query = f"""
-    Search LinkedIn, Indeed, Glassdoor, Built In, AngelList/Wellfound, Dice,
-    We Work Remotely, ZipRecruiter, Remote.co, The Muse, Ladders, FlexJobs,
-    RepVue, Monster, CareerBuilder, SimplyHired, Stack Overflow Jobs, Remotive,
-    YC Jobs, Levels.fyi Jobs, Hired, and CrunchBoard for jobs.
-
-    TARGET PROFILE:
-    - 14+ years B2B SaaS customer success & account management experience
-    - Expert in retention, expansion, relationship building
-    - NOT hunter sales / cold outbound roles
-    - $75,000-$150,000 salary range
-    - DFW Metroplex (Dallas, Fort Worth, Plano, Frisco, Irving) or REMOTE (US-based)
-    - Industries: SaaS, AI/Automation, EdTech, Fintech, Healthtech
-
-    ROLES:
-    - Customer Success Director/VP
-    - Strategic Account Manager
-    - Customer Experience Director
-    - AI Solutions Manager
-    - Enterprise Relationship Manager
-
-    {section_1_prompt}
-
-    {section_2_prompt}
-
-    CRITICAL RULES:
-    1. Prioritize recently posted jobs (last 7 days).
-    2. Do NOT invent jobs. Only list real, active listings found.
-    3. Follow the exact output format with "---HEADER---" separators.
-    """
+def run_search():
+    print(f"🔍 Scanning Corporate Jobs via Perplexity...")
 
     payload = {
         "model": "sonar-pro",
         "messages": [
-            {"role": "system", "content": "You are an expert executive job search agent. Find high-value matches."},
-            {"role": "user", "content": search_query}
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": SEARCH_QUERY}
         ]
     }
 
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
-    }
+    try:
+        response = requests.post("https://api.perplexity.ai/chat/completions", json=payload, headers=HEADERS)
+        response.raise_for_status()
 
-    print("🔍 Scanning 20+ Corporate Job Boards...")
-    response = requests.post(url, json=payload, headers=headers)
+        data = response.json()
+        content = data["choices"][0]["message"]["content"]
 
-    if response.status_code == 200:
-        content = response.json()['choices'][0]['message']['content']
+        # Basic cleanup to ensure it's pure JSON
+        if "```json" in content:
+            content = content.split("```json")[1].split("```")[0].strip()
+        elif "```" in content:
+            content = content.split("```")[1].split("```")[0].strip()
+
+        # Validate JSON
+        try:
+            parsed = json.loads(content)
+            print(f"✅ Successfully parsed {len(parsed)} jobs.")
+        except json.JSONDecodeError:
+            print("⚠️ Warning: AI output might not be valid JSON. Saving raw output anyway.")
 
         # Save to file
-        output_dir = Path("job_search_results")
-        output_dir.mkdir(exist_ok=True)
-        filename = output_dir / f"job_search_corporate_sonar_{datetime.now().strftime('%Y-%m-%d')}.txt"
-
-        with open(filename, "w", encoding="utf-8") as f:
+        os.makedirs("job_search_results", exist_ok=True)
+        with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             f.write(content)
 
-        print(f"✅ Corporate Search Complete. Saved to {filename}")
-        return str(filename)
-    else:
-        print(f"❌ Error: {response.status_code} - {response.text}")
-        return None
+        print(f"✅ Search Complete. Saved to {OUTPUT_FILE}")
+
+    except Exception as e:
+        print(f"❌ Error: {e}")
 
 if __name__ == "__main__":
-    # Load API Key from env or file
-    api_key = os.getenv("PERPLEXITY_API_KEY")
-    if not api_key:
-        try:
-            with open("Perplexity_Corp_Job_Search.txt", "r") as f:
-                api_key = f.read().strip()
-        except:
-            print("❌ API Key not found. Set PERPLEXITY_API_KEY env var or 'Perplexity_Corp_Job_Search.txt'")
-            exit(1)
-
-    search_corporate_jobs(api_key)
+    run_search()

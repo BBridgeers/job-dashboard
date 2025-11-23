@@ -1,0 +1,322 @@
+[
+  {
+    "title": "Customer Success Manager (AI & MarTech, SaaS)",
+    "company": "Lavendo",
+    "location": "Austin, TX / Remote",
+    "match_score": 92,
+    "listing_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas",
+    "application_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas",
+    "summary_bullets": [
+      "Drive customer success for an AI-powered MarTech SaaS platform",
+      "Collaborate closely with client tech teams on automation/integration",
+      "Lead retention and onboarding for enterprise customers"
+    ],
+    "company_overview": "Lavendo builds AI-driven marketing technology for global brands seeking data-driven campaign automation. The company is in a high-growth phase and expanding its remote customer success team.",
+    "role_insights": "Success is measured by retention, rapid onboarding, and driving measurable client outcomes through technical advisory and automation best practices.",
+    "key_requirements": [
+      "Experience in SaaS or MarTech customer success",
+      "Working knowledge of HTML/CSS, APIs, and automation tools",
+      "Strong relationship-building and technical troubleshooting skills"
+    ],
+    "salary_intel": "$100K - $120K base + possible bonus",
+    "application_strategy": "Reference specific integration or workflow automation successes with similar MarTech or SaaS tools.",
+    "red_flags": "Potential for ambiguity and evolving processes in a high-growth MarTech scaleup.",
+    "cultural_fit": "Fast-paced, tech-driven, analytical",
+    "competitive_landscape": "Braze, HubSpot, Iterable, Salesforce Marketing Cloud",
+    "skills_gap": "Advanced API or data mapping experience",
+    "network_leverage": "Connect with the Director of Customer Success or CTO on LinkedIn",
+    "decision_timeline": "Urgent; interviews are likely rolling within 1-2 weeks",
+    "career_trajectory": "Moves to Head of Customer Success, Solutions Consulting, or Product roles",
+    "resume_keywords": [
+      "Customer Success",
+      "MarTech",
+      "API Integration",
+      "Workflow Automation",
+      "SaaS"
+    ],
+    "resume_summary": "Customer Success Manager with expertise in MarTech SaaS, driving onboarding and retention via technical integrations and data-driven client strategy.",
+    "cover_letter": "As a seasoned Customer Success professional with a passion for MarTech and automation, I am eager to drive impactful results for Lavendo’s cutting-edge clients.",
+    "why_me_bullets": [
+      "Proven track record with SaaS automation solutions",
+      "Technical proficiency with APIs and campaign automation",
+      "Strong stakeholder management in high-growth tech"
+    ],
+    "why_them_bullets": [
+      "Innovative AI-powered product suite",
+      "Exciting growth trajectory and technical challenges",
+      "Culture of experimentation and technical excellence"
+    ],
+    "interview_prep": [
+      "Describe a complex MarTech integration you led.",
+      "How do you prioritize onboarding tasks for multiple enterprise clients?",
+      "How do you measure customer health and success proactively?"
+    ],
+    "star_hooks": "A project launching onboarding automation for an enterprise client, boosting retention and reducing churn by 30%",
+    "talking_points": [
+      "Expanding technical enablement and self-serve onboarding",
+      "Client feedback loops for new product development"
+    ],
+    "questions_to_ask": [
+      "How does Lavendo measure long-term customer value?",
+      "What roadmap innovations are planned for the next 12 months?"
+    ],
+    "recruiter_email": "firstname.lastname@lavendo.com",
+    "plan_30_60_90": "30 days: Build relationships and audit existing playbooks. 60 days: Lead onboarding for 2-3 new enterprise clients and suggest process improvements. 90 days: Deliver client-facing success metrics dashboard; propose workflow enhancements."
+  },
+  {
+    "title": "Senior Account Executive, SaaS Sales",
+    "company": "Yelp",
+    "location": "Remote - US",
+    "match_score": 88,
+    "listing_url": "https://jobright.ai/jobs/info/69046bc8ff462851feff51c4",
+    "application_url": "https://jobright.ai/jobs/info/69046bc8ff462851feff51c4",
+    "summary_bullets": [
+      "Hunt and close new SaaS/advertising business at enterprise scale",
+      "Own full sales cycle from pipeline generation to close",
+      "Work as part of a collaborative, metrics-driven team"
+    ],
+    "company_overview": "Yelp is a leading online platform connecting people with local businesses, leveraging a SaaS suite for advertising and business management. Their SaaS arm is a rapidly scaling business unit focused on enterprise and midmarket growth.",
+    "role_insights": "Top performers exceed quota by strategic targeting, creative value pitches, and robust relationship-building.",
+    "key_requirements": [
+      "3+ years SaaS sales experience (mid-market/enterprise focus)",
+      "Track record exceeding quotas",
+      "Excellent remote communication and demo skills"
+    ],
+    "salary_intel": "Estimated $120K+ OTE (base + commission), performance-leveraged",
+    "application_strategy": "Tailor your recent closes and SaaS product storytelling to Yelp’s unique client base (brands/agencies/local enterprise).",
+    "red_flags": "Win rates vary and can depend on legacy platform perceptions.",
+    "cultural_fit": "Results-driven, collaborative, transparent",
+    "competitive_landscape": "Google Business, Trustpilot, Podium, BirdEye",
+    "skills_gap": "CRM pipeline hygiene and volume management",
+    "network_leverage": "Reach out to Director of Enterprise Sales or Senior Sales Enablement Manager",
+    "decision_timeline": "Rolling applications; hire as soon as strong fit found",
+    "career_trajectory": "Grow into Sales Management, Strategic Enterprise Lead, or GTM Operations roles",
+    "resume_keywords": [
+      "SaaS Sales",
+      "Enterprise Accounts",
+      "New Business Development",
+      "Quota Attainment",
+      "Pipeline Management"
+    ],
+    "resume_summary": "SaaS Senior Account Executive with a proven record of closing multi-year, enterprise deals and driving new business at scale.",
+    "cover_letter": "I excel at building enterprise SaaS pipelines and closing complex technology deals, and I’m excited by Yelp’s focus on transforming local business engagement for brands.",
+    "why_me_bullets": [
+      "History of closing and growing strategic SaaS accounts",
+      "Strong remote selling and solution demo skills",
+      "Motivated by targets and able to self-manage pipeline"
+    ],
+    "why_them_bullets": [
+      "Iconic brand and trusted business platform",
+      "Dynamic, metrics-based sales culture",
+      "Room for growth as the SaaS offering expands"
+    ],
+    "interview_prep": [
+      "How do you prioritize enterprise prospects in a high-velocity environment?",
+      "Describe a deal you salvaged from a stalled stage.",
+      "What is your approach to pipeline generation in a crowded market?"
+    ],
+    "star_hooks": "A turnaround deal where I won back a lost account through value-based business analysis and ROI proof points",
+    "talking_points": [
+      "Innovative ways to differentiate Yelp’s SaaS in RFPs",
+      "Data-driven sales enablement for faster closes"
+    ],
+    "questions_to_ask": [
+      "What distinguishes top performers in your SaaS team?",
+      "How is feedback from sales team incorporated into product development?"
+    ],
+    "recruiter_email": "firstname.lastname@yelp.com",
+    "plan_30_60_90": "30 days: Ramp on product and prospect account mapping. 60 days: Build and action a multi-channel outreach campaign. 90 days: Close first new business accounts; provide territory insights."
+  },
+  {
+    "title": "Customer Success Manager, Strategic",
+    "company": "Pushpay",
+    "location": "Remote (Dallas, TX eligible)",
+    "match_score": 85,
+    "listing_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship",
+    "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship",
+    "summary_bullets": [
+      "Manage large-scale customer relationships for retention and growth",
+      "Analyze data and trends to drive customer success strategies",
+      "Partner closely with sales and product teams"
+    ],
+    "company_overview": "Pushpay is a leading SaaS platform delivering engagement, payments, and donor management technology to nonprofits and faith-based organizations, with hundreds of millions in annual transactions.",
+    "role_insights": "Top CSMs are measured by revenue retention, account expansion, and creating quantifiable client outcomes.",
+    "key_requirements": [
+      "B2B SaaS customer success/account management experience",
+      "Data analysis (success metrics/KPIs/retention)",
+      "Executive stakeholder management"
+    ],
+    "salary_intel": "$100,000 - $122,000 salary + potential commission, full benefits",
+    "application_strategy": "Demonstrate experience with revenue retention projects and client expansion in SaaS.",
+    "red_flags": "Potential narrow industry focus (nonprofit/faith).",
+    "cultural_fit": "Mission-driven, outcomes-oriented, collaborative",
+    "competitive_landscape": "Blackbaud, Bloomerang, Kindful, Virtuous",
+    "skills_gap": "Nonprofit donor management nuance",
+    "network_leverage": "Connect with VP of Success or Strategic CSMs on LinkedIn",
+    "decision_timeline": "Likely rolling; active for immediate need",
+    "career_trajectory": "Lead to Senior CSM, CSM Director, or Expansion Sales",
+    "resume_keywords": [
+      "Revenue Retention",
+      "SaaS Customer Success",
+      "Account Expansion",
+      "Stakeholder Management",
+      "Data Analysis"
+    ],
+    "resume_summary": "B2B SaaS Customer Success Manager specializing in strategic retention, account growth, and data-driven customer health management.",
+    "cover_letter": "My strategic approach to customer retention and passion for leveraging SaaS to drive impact will help Pushpay’s customers reach their engagement goals.",
+    "why_me_bullets": [
+      "Strategic operator with B2B SaaS focus",
+      "Expert at cross-functional client projects",
+      "Data-driven retention and expansion mindset"
+    ],
+    "why_them_bullets": [
+      "Purpose-driven SaaS for mission-aligned clients",
+      "Emphasis on innovation and customer success",
+      "Leadership visibility and fast impact potential"
+    ],
+    "interview_prep": [
+      "Describe a high-touch renewal strategy you implemented.",
+      "How do you align customer success KPIs to business goals?",
+      "What techniques do you use to communicate ROI to clients?"
+    ],
+    "star_hooks": "A customer expansion project resulting in a multi-year relationship and 20% revenue lift",
+    "talking_points": [
+      "Data-driven account health scoring",
+      "Upselling and product engagement for strategic accounts"
+    ],
+    "questions_to_ask": [
+      "How does Pushpay encourage cross-team collaboration to drive outcomes?",
+      "What are the biggest opportunities for SaaS-driven innovation with your clients?"
+    ],
+    "recruiter_email": "firstname.lastname@pushpay.com",
+    "plan_30_60_90": "30 days: Deep dive into customer portfolio, review health scores. 60 days: Build advocacy with decision-makers, implement retention plan. 90 days: Identify and begin one account expansion project."
+  },
+  {
+    "title": "Customer Success Manager (Remote - IA, WI, TX only)",
+    "company": "Humach",
+    "location": "Remote (Dallas, TX eligible)",
+    "match_score": 80,
+    "listing_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship",
+    "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship",
+    "summary_bullets": [
+      "Manage sensitive customer and client data for AI/contact center SaaS",
+      "Coordinate service delivery and new client onboarding",
+      "Develop and execute client visit agendas and QBRs"
+    ],
+    "company_overview": "Humach is a pioneer in customer experience and AI-driven contact center solutions, helping organizations optimize human and digital touchpoints.",
+    "role_insights": "Great CSMs streamline onboarding and quickly build trust to ensure long-term client retention in regulated data environments.",
+    "key_requirements": [
+      "Experience with SaaS or contact-center operations",
+      "Familiarity with client onboarding processes",
+      "Ability to manage sensitive PII/Cardholder data"
+    ],
+    "salary_intel": "Not disclosed; likely $90K+ base with benefits",
+    "application_strategy": "Cite experience managing sensitive data and running client onboarding in regulated SaaS settings.",
+    "red_flags": "Broad territory; expectations to handle multiple sites or regions.",
+    "cultural_fit": "Empathetic, technical, process-oriented",
+    "competitive_landscape": "Five9, Genesys, NICE inContact",
+    "skills_gap": "PCI DSS or other compliance knowledge",
+    "network_leverage": "Reach out to CCO or regional success leads",
+    "decision_timeline": "Active/rolling until filled",
+    "career_trajectory": "Path to Senior/Team Lead CSM or Implementation Manager",
+    "resume_keywords": [
+      "Client Onboarding",
+      "Contact Center",
+      "Data Privacy",
+      "AI Customer Experience",
+      "SaaS"
+    ],
+    "resume_summary": "Results-oriented Customer Success Manager skilled at onboarding enterprise clients and maintaining compliance in AI-driven SaaS environments.",
+    "cover_letter": "I thrive at the intersection of technology and customer advocacy, and I am eager to bring that expertise to Humach’s innovative customer experience platform.",
+    "why_me_bullets": [
+      "Significant client success background with tech/SaaS",
+      "Demonstrated success managing sensitive data",
+      "Experience optimizing onboarding and touchpoints"
+    ],
+    "why_them_bullets": [
+      "Early leader in AI-driven contact center SaaS",
+      "Complex enterprise clients with innovation needs",
+      "Growth culture valuing process improvement"
+    ],
+    "interview_prep": [
+      "Tell me about a time you onboarded a complex enterprise client.",
+      "How do you balance process with high-touch client expectations?",
+      "What approaches do you use to ensure data privacy and trust?"
+    ],
+    "star_hooks": "A customer onboarding sequence you re-engineered, leading to reduced time-to-value for new clients",
+    "talking_points": [
+      "AI automation for proactive support",
+      "Scaling onboarding with regulatory compliance"
+    ],
+    "questions_to_ask": [
+      "How does Humach balance AI automation with human support?",
+      "What initiatives are in place for customer insights and feedback?"
+    ],
+    "recruiter_email": "firstname.lastname@humach.com",
+    "plan_30_60_90": "30 days: Shadow onboarding and support calls; review data policies. 60 days: Run onboarding for new book of business, execute at least one QBR. 90 days: Present feedback/suggestions for process optimization."
+  },
+  {
+    "title": "Director - Customer Success",
+    "company": "Steer Health",
+    "location": "Remote (Dallas, TX eligible)",
+    "match_score": 75,
+    "listing_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship",
+    "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship",
+    "summary_bullets": [
+      "Build and define strategy for post-sales success at healthtech SaaS firm",
+      "Lead and mentor Customer Success team members",
+      "Shape customer success for early-stage product and client base"
+    ],
+    "company_overview": "Steer Health delivers AI-powered patient engagement and analytics to healthcare providers, driving outcomes and reducing costs through SaaS solutions.",
+    "role_insights": "Key measures: building high-performing teams, establishing scalable processes, and achieving client retention/expansion targets.",
+    "key_requirements": [
+      "Director-level experience or equivalent in SaaS/healthcare",
+      "Post-sales team leadership",
+      "Experience building orgs, processes, and success metrics"
+    ],
+    "salary_intel": "Not disclosed; likely $150K+ base + equity/bonus",
+    "application_strategy": "Showcase track record building CS teams and frameworks for SaaS/healthtech orgs.",
+    "red_flags": "Startup ambiguity—role requirements may shift as product matures.",
+    "cultural_fit": "Mission-driven, experimental, fast-evolving",
+    "competitive_landscape": "Phreesia, Luma Health, Salesforce Health Cloud",
+    "skills_gap": "AI/analytics depth in provider SaaS settings",
+    "network_leverage": "Contact the CEO/Head of Customer Experience",
+    "decision_timeline": "Seeking to hire within a month; applications reviewed in batches",
+    "career_trajectory": "VP of Customer Success, GM of new business unit, CS Operations lead",
+    "resume_keywords": [
+      "Director, Customer Success",
+      "SaaS Healthtech",
+      "Team Leadership",
+      "Post-Sales Strategy",
+      "Client Retention"
+    ],
+    "resume_summary": "Director-level Customer Success leader with deep SaaS and healthcare background, adept at building teams and programs that drive growth and retention.",
+    "cover_letter": "With a passion for leveraging AI SaaS to improve patient outcomes, I am excited to build Steer Health’s customer success organization from the ground up.",
+    "why_me_bullets": [
+      "Hands-on with SaaS team-building at scale",
+      "Post-sales, expansion-minded leader",
+      "Healthcare sector implementation experience"
+    ],
+    "why_them_bullets": [
+      "Ground-floor opportunity in healthtech SaaS",
+      "Innovative AI-driven patient solutions",
+      "Start-up momentum and leadership access"
+    ],
+    "interview_prep": [
+      "Describe a time you built a CS team from scratch.",
+      "How do you set and track post-sales KPIs for healthcare SaaS?",
+      "What’s your approach to mentoring junior CS talent?"
+    ],
+    "star_hooks": "Building a customer playbook and hiring team that led to top QSAS scores and 99% retention",
+    "talking_points": [
+      "Scalability of post-sales operations",
+      "Integrating AI-driven insights for customer outcomes"
+    ],
+    "questions_to_ask": [
+      "How is feedback from health system clients used to iterate the platform?",
+      "What does success look like in the first year for this role?"
+    ],
+    "recruiter_email": "firstname.lastname@steerhealth.com",
+    "plan_30_60_90": "30 days: Assess and refine team/org structure, meet top clients. 60 days: Build out and document onboarding/processes. 90 days: Deliver first customer QBRs and define success metrics with leadership."
+  }
+]
