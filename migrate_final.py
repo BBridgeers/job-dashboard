@@ -1,111 +1,140 @@
-import sqlite3
-import os
-import glob
-import json
-import datetime
 
-DB_NAME = "jobs.db"
+import sqlite3
+import json
+import glob
+import os
+import re
+
+DB_PATH = 'jobs.db'
 
 def init_db():
-    conn = sqlite3.connect(DB_NAME)
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-    # Create table with ALL 30 columns if not exists
-    # Fixed the triple-quote syntax error here
-    sql = """CREATE TABLE IF NOT EXISTS jobs (
+    c.execute("""CREATE TABLE IF NOT EXISTS jobs (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT, company TEXT, location TEXT, match_score INTEGER,
-        url TEXT, application_url TEXT,
-        summary_bullets TEXT, company_overview TEXT, role_insights TEXT,
-        key_requirements TEXT, salary_intel TEXT, application_strategy TEXT,
-        red_flags TEXT, cultural_fit TEXT, competitive_landscape TEXT,
-        skills_gap TEXT, network_leverage TEXT, decision_timeline TEXT,
-        career_trajectory TEXT, resume_keywords TEXT, resume_summary TEXT,
-        cover_letter TEXT, why_me_bullets TEXT, why_them_bullets TEXT,
-        interview_prep TEXT, star_hooks TEXT, talking_points TEXT,
-        questions_to_ask TEXT, recruiter_email TEXT, plan_30_60_90 TEXT,
-        status TEXT DEFAULT 'New', tier INTEGER DEFAULT 3,
-        search_type TEXT, date_added DATE
-    )"""
-    c.execute(sql)
+        title TEXT,
+        company TEXT,
+        url TEXT UNIQUE,
+        match_score INTEGER,
+        tier INTEGER,
+        status TEXT DEFAULT 'New',
+        notes TEXT,
+        company_overview TEXT,
+        role_insights TEXT,
+        key_requirements TEXT,
+        interview_prep TEXT,
+        talking_points TEXT,
+        red_flags TEXT,
+        full_description TEXT,
+        search_type TEXT,
+        application_url TEXT,
+        date_added TEXT
+    )""")
     conn.commit()
-    conn.close()
+    return conn
 
-def run_migration():
-    print("🚀 STARTING JSON MIGRATION...")
-    init_db()
+def parse_txt_file(filepath):
+    jobs = []
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
 
-    conn = sqlite3.connect(DB_NAME)
+        raw_entries = content.split("--------------------------------------------------")
+
+        for entry in raw_entries:
+            if not entry.strip(): continue
+
+            job = {}
+            title_match = re.search(r"Role: (.+)", entry)
+            company_match = re.search(r"Company: (.+)", entry)
+            url_match = re.search(r"URL: (.+)", entry)
+            score_match = re.search(r"Match Score: (\d+)", entry)
+            tier_match = re.search(r"Tier: (\d+)", entry)
+
+            if title_match: job['title'] = title_match.group(1).strip()
+            if company_match: job['company'] = company_match.group(1).strip()
+            if url_match: job['url'] = url_match.group(1).strip()
+            if score_match: job['match_score'] = int(score_match.group(1))
+            if tier_match: job['tier'] = int(tier_match.group(1))
+
+            sections = [
+                ('Company Overview', 'company_overview'),
+                ('Role Insights', 'role_insights'),
+                ('Key Requirements', 'key_requirements'),
+                ('Interview Prep', 'interview_prep'),
+                ('Talking Points', 'talking_points'),
+                ('Red Flags', 'red_flags')
+            ]
+
+            for label, key in sections:
+                pattern = fr"\*\*?{label}:?\*\*?\s*(.*?)(?=\n\*\*|$)"
+                match = re.search(pattern, entry, re.DOTALL)
+                if match:
+                    job[key] = match.group(1).strip()
+                else:
+                    job[key] = ""
+
+            if job.get('url'):
+                jobs.append(job)
+
+    except Exception as e:
+        print(f"⚠️ Error reading {filepath}: {e}")
+
+    return jobs
+
+def migrate():
+    print("🚀 STARTING ROBUST MIGRATION...")
+    conn = init_db()
     c = conn.cursor()
 
-    # Find all result files
     files = glob.glob("job_search_results/*.txt")
+    if not files:
+        files = glob.glob("job_search_*sonar*.txt")
+
+    print(f"📂 Found {len(files)} result files.")
+
     new_count = 0
 
-    for f in files:
-        try:
-            with open(f, 'r', encoding='utf-8') as file:
-                content = file.read().strip()
+    for fpath in files:
+        print(f"   Processing {fpath}...")
+        jobs = parse_txt_file(fpath)
+        search_type = "Corporate" if "corporate" in fpath.lower() else "Nonprofit"
 
-            # Try parsing as JSON
+        for j in jobs:
             try:
-                data = json.loads(content)
-            except:
-                print(f"⚠️ Skipping {f} (Not valid JSON)")
-                continue
+                # Ensure values are strings (handles lists gracefully)
+                vals = (
+                    j.get('title', 'Unknown Role'),
+                    j.get('company', 'Unknown Co'),
+                    j.get('url', '#'),
+                    j.get('match_score', 0),
+                    j.get('tier', 3),
+                    str(j.get('company_overview', '')),
+                    str(j.get('role_insights', '')),
+                    str(j.get('key_requirements', '')),
+                    str(j.get('interview_prep', '')),
+                    str(j.get('talking_points', '')),
+                    str(j.get('red_flags', '')),
+                    search_type
+                )
 
-            if not isinstance(data, list): data = [data]
+                c.execute("""
+                    INSERT OR IGNORE INTO jobs (
+                        title, company, url, match_score, tier, 
+                        company_overview, role_insights, key_requirements,
+                        interview_prep, talking_points, red_flags,
+                        search_type, date_added
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date('now'))
+                """, vals)
 
-            # Identify type based on filename
-            s_type = "Corporate" if "corporate" in f else "Nonprofit"
-
-            for job in data:
-                # Check dupe
-                title = job.get('title', '')
-                company = job.get('company', '')
-                c.execute("SELECT id FROM jobs WHERE title=? AND company=?", (title, company))
-                if c.fetchone():
-                    continue
-
-                # Insert
-                cols = [
-                    'title', 'company', 'location', 'match_score', 'url', 'application_url',
-                    'summary_bullets', 'company_overview', 'role_insights', 'key_requirements',
-                    'salary_intel', 'application_strategy', 'red_flags', 'cultural_fit',
-                    'competitive_landscape', 'skills_gap', 'network_leverage', 'decision_timeline',
-                    'career_trajectory', 'resume_keywords', 'resume_summary', 'cover_letter',
-                    'why_me_bullets', 'why_them_bullets', 'interview_prep', 'star_hooks',
-                    'talking_points', 'questions_to_ask', 'recruiter_email', 'plan_30_60_90'
-                ]
-
-                # Map specific keys from JSON to DB columns
-                # Note: JSON key 'listing_url' maps to DB column 'url'
-                vals = []
-                for k in cols:
-                    if k == 'url':
-                        vals.append(job.get('listing_url', ''))
-                    else:
-                        vals.append(job.get(k, ''))
-
-                vals.append('New') # status
-
-                # Tier Logic
-                score = int(job.get('match_score', 0))
-                tier = 1 if score >= 90 else 2 if score >= 80 else 3
-                vals.append(tier)
-
-                vals.append(s_type) # search_type
-                vals.append(datetime.date.today()) # date_added
-
-                placeholders = ','.join(['?'] * len(vals))
-                c.execute(f"INSERT INTO jobs ({','.join(cols + ['status', 'tier', 'search_type', 'date_added'])}) VALUES ({placeholders})", vals)
-                new_count += 1
-
-        except Exception as e:
-            print(f"❌ Error processing {f}: {e}")
+                if c.rowcount > 0:
+                    new_count += 1
+            except Exception as e:
+                print(f"❌ Error inserting job {j.get('company')}: {e}")
 
     conn.commit()
     conn.close()
     print(f"✅ Migration Complete. Added {new_count} new jobs.")
 
-if __name__ == "__main__":
-    run_migration()
+if __name__ == '__main__':
+    migrate()
