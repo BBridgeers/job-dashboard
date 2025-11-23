@@ -4,11 +4,13 @@ Strategic Match - API Backend Server
 Handles data persistence for Dashboard and Tracker
 """
 from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
 import sqlite3
 import os
 from datetime import datetime
 
 app = Flask(__name__, static_folder='.')
+CORS(app) # Enable CORS for all routes to allow external frontend access if needed
 
 # Ensure DB connection
 def get_db():
@@ -23,6 +25,27 @@ def serve_index():
 @app.route('/<path:path>')
 def serve_static(path):
     return send_from_directory('.', path)
+
+# --- CRITICAL FIX: Added /api/jobs endpoint ---
+@app.route('/api/jobs', methods=['GET'])
+def get_jobs():
+    """Fetch all jobs for the tracker"""
+    try:
+        conn = get_db()
+        c = conn.cursor()
+        # Select all fields
+        c.execute("SELECT * FROM jobs ORDER BY match_score DESC")
+        rows = c.fetchall()
+
+        # Convert Row objects to dicts
+        jobs = [dict(r) for r in rows]
+
+        conn.close()
+        return jsonify(jobs)
+    except Exception as e:
+        print(f"❌ DB Error: {e}")
+        return jsonify({'error': str(e)}), 500
+# ----------------------------------------------
 
 @app.route('/api/update_status', methods=['POST'])
 def update_status():
