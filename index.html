@@ -1,213 +1,802 @@
-<!DOCTYPE html><html><head><title>Strategic Match</title>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strategic Match</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #4f46e5; --bg-color: #f3f4f6; --card-bg: white; --text-main: #111827; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin: 0; padding-top: 140px; }
-        .header { position: fixed; top: 0; left: 0; right: 0; background: white; padding: 15px 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 1000; }
-        .header-content { max-width: 1500px; margin: 0 auto; }
-        .app-title { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
-        .controls-row { display: flex; gap: 15px; align-items: center; }
-        .search-section { flex: 1; }
-        .search-input { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; }
-        .filter-badges { display: flex; gap: 8px; }
-        .badge-filter { padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; background: #e5e7eb; white-space: nowrap; }
-        .badge-filter.active { background: #111827; color: white; }
+    :root { --primary: #4f46e5; --bg-color: #f3f4f6; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-color); margin: 0; padding-top: 140px; }
+    .header { position: fixed; top: 0; left: 0; right: 0; background: white; padding: 15px 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 1000; }
+    .header-content { max-width: 1500px; margin: 0 auto; }
+    .app-title { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+    .controls-row { display: flex; gap: 15px; align-items: center; }
+    .search-section { flex: 1; }
+    .search-input { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; }
+    .filter-badges { display: flex; gap: 8px; }
+    .badge-filter { padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; background: #e5e7eb; white-space: nowrap; }
+    .badge-filter.active { background: #111827; color: white; }
 
-        .grid-container { max-width: 1500px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
-        .job-card { background: white; border-radius: 8px; padding: 18px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; }
-        .job-card:hover { border-color: var(--primary); }
+    .grid-container { max-width: 1500px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+    .job-card { background: white; border-radius: 8px; padding: 18px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; }
+    .job-card:hover { border-color: var(--primary); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transform: translateY(-2px); transition: all 0.2s; }
 
-        .card-tags { display: flex; gap: 5px; margin-bottom: 8px; }
-        .tag { font-size: 9px; font-weight: 600; padding: 3px 7px; border-radius: 4px; text-transform: uppercase; }
-        .tag-tier-1 { background: #fef9c3; color: #a16207; }
-        .tag-tier-2 { background: #e5e7eb; color: #4b5563; }
-        .tag-tier-3 { background: #ffedd5; color: #c2410c; }
-        .tag-high { background: #dcfce7; color: #166534; }
-        .tag-corp { background: #dbeafe; color: #4338ca; }
+    .card-tags { display: flex; gap: 5px; margin-bottom: 8px; }
+    .tag { font-size: 9px; font-weight: 600; padding: 3px 7px; border-radius: 4px; text-transform: uppercase; }
+    .tag-tier-1 { background: #fef9c3; color: #a16207; }
+    .tag-tier-2 { background: #e5e7eb; color: #4b5563; }
+    .tag-tier-3 { background: #ffedd5; color: #c2410c; }
+    .tag-high { background: #dcfce7; color: #166534; }
+    .tag-corp { background: #dbeafe; color: #4338ca; }
 
-        .job-title { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
-        .company-name { color: #4b5563; font-size: 13px; margin-bottom: 10px; }
+    .job-title { font-weight: 600; font-size: 15px; margin-bottom: 2px; color: #111827; }
+    .company-name { color: #4b5563; font-size: 13px; margin-bottom: 10px; }
 
-        /* NEW: CORE BULLETS ON CARD */
-        .core-bullets { background: #f9fafb; border: 1px solid #f3f4f6; border-radius: 6px; padding: 10px; font-size: 12px; line-height: 1.5; margin-bottom: 12px; }
-        .core-bullets h5 { font-size: 11px; text-transform: uppercase; color: #6b7280; margin: 0 0 5px 0; }
-        .core-bullets ul { margin: 0; padding-left: 15px; }
+    .core-bullets { background: #f9fafb; border: 1px solid #f3f4f6; border-radius: 6px; padding: 10px; font-size: 12px; line-height: 1.5; margin-bottom: 12px; color: #374151; }
+    .core-bullets h5 { font-size: 10px; text-transform: uppercase; color: #9ca3af; margin: 0 0 4px 0; font-weight: 700; }
 
-        .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: auto; }
-        .btn-3d { padding: 7px; border-radius: 5px; font-weight: 500; font-size: 11px; text-align: center; color: white; cursor: pointer; border: none; text-decoration: none; }
-        .btn-details { background: #4f46e5; }
-        .btn-listing { background: #3b82f6; }
+    .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: auto; }
+    .btn-3d { padding: 7px; border-radius: 5px; font-weight: 500; font-size: 11px; text-align: center; color: white; cursor: pointer; border: none; text-decoration: none; }
+    .btn-details { background: #4f46e5; }
+    .btn-listing { background: #3b82f6; }
+    .btn-apply { background: #10b981; }
+    .btn-track { background: #f59e0b; }
 
-        .status-row { margin-top: 10px; padding-top: 8px; border-top: 1px solid #f3f4f6; }
-        .status-select { width: 100%; padding: 5px; border: 1px solid #d1d5db; border-radius: 4px; }
+    .status-row { margin-top: 10px; padding-top: 8px; border-top: 1px solid #f3f4f6; }
+    .status-select { width: 100%; padding: 5px; border: 1px solid #d1d5db; border-radius: 4px; }
 
-        /* MODAL STYLES */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; }
-        .modal-content { background: #f9fafb; width: 95%; max-width: 900px; height: 90vh; border-radius: 10px; display: flex; flex-direction: column; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        .modal-header { padding: 15px 20px; border-bottom: 1px solid #e5e7eb; }
-        .modal-title { font-size: 18px; font-weight: 600; }
-        .tab-nav { display: flex; padding: 0 20px; background: white; border-bottom: 1px solid #e5e7eb; gap: 15px; }
-        .tab-btn { padding: 12px 0; font-weight: 500; font-size: 12px; color: #6b7280; cursor: pointer; border-bottom: 2px solid transparent; }
-        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
-        .modal-body { padding: 15px; overflow-y: auto; flex: 1; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .data-block { margin-bottom: 15px; }
-        .data-label { font-size: 10px; font-weight: 600; text-transform: uppercase; color: #9ca3af; margin-bottom: 4px; }
-        .data-value { font-size: 13px; line-height: 1.6; color: #374151; white-space: pre-line; background: white; padding: 10px; border-radius: 6px; border: 1px solid #e5e7eb; position: relative; }
-        .data-value ul { margin:0; padding-left: 15px; }
-        .copy-btn { position: absolute; top: 5px; right: 5px; font-size: 9px; background: #e5e7eb; border: none; padding: 2px 5px; border-radius: 3px; cursor: pointer; }
-        .toast { position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 10px 20px; border-radius: 6px; }
+    /* MODAL */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(2px); }
+    .modal-content { background: #f9fafb; width: 95%; max-width: 900px; height: 90vh; border-radius: 10px; display: flex; flex-direction: column; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    .modal-header { padding: 15px 20px; border-bottom: 1px solid #e5e7eb; background: white; border-radius: 10px 10px 0 0; }
+    .modal-title { font-size: 18px; font-weight: 600; color: #111827; margin: 0; }
+    .modal-subtitle { font-size: 13px; color: #6b7280; margin-top: 2px; }
+
+    .tab-nav { display: flex; padding: 0 20px; background: white; border-bottom: 1px solid #e5e7eb; gap: 20px; }
+    .tab-btn { padding: 15px 0; font-weight: 600; font-size: 12px; color: #6b7280; cursor: pointer; border-bottom: 2px solid transparent; }
+    .tab-btn:hover { color: #111827; }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    .modal-body { padding: 20px; overflow-y: auto; flex: 1; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .data-block { margin-bottom: 20px; }
+    .data-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #9ca3af; margin-bottom: 6px; letter-spacing: 0.5px; }
+    .data-value { font-size: 14px; line-height: 1.6; color: #374151; white-space: pre-line; background: white; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; position: relative; }
+    .copy-btn { position: absolute; top: 10px; right: 10px; font-size: 10px; background: #f3f4f6; border: 1px solid #e5e7eb; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #4b5563; font-weight: 600; }
+    .copy-btn:hover { background: #e5e7eb; color: #111827; }
+
+    .toast { position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 10px 20px; border-radius: 6px; font-weight: 600; z-index: 3000; display: none; }
     </style>
-    </head><body>
-        <!-- ... (Header HTML as before) ... -->
-        <div class="grid-container">
-            
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
-    <div class="job-card">
-        <!-- Tags, Title, Company -->
-        
-        <!-- Action Buttons, Status -->
-    </div>
-    
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="app-title">Strategic Match 🚀</div>
+            <div class="controls-row">
+                <div class="search-section">
+                    <input type="text" class="search-input" placeholder="Search jobs..." onkeyup="searchJobs(this.value)">
+                </div>
+                <div class="filter-badges">
+                    <div class="badge-filter active" onclick="filterJobs('all', this)">All (23)</div>
+                    <div class="badge-filter" onclick="filterJobs('t1', this)">Tier 1 (6)</div>
+                    <div class="badge-filter" onclick="filterJobs('t2', this)">Tier 2 (8)</div>
+                    <div class="badge-filter" onclick="filterJobs('corp', this)">Corporate</div>
+                    <div class="badge-filter" onclick="filterJobs('nonprofit', this)">Nonprofit</div>
+                </div>
+                <a href="tracker.html" style="margin-left:auto;background:#111827;color:white;padding:8px 15px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:600;">Tracker</a>
+            </div>
         </div>
-        <div id="modal" class="modal" onclick="if(event.target===this)this.style.display='none'"><div id="modal-content" class="modal-content"></div></div>
-        <div id="toast" class="toast" style="display:none;"></div>
-         ... 
-        <script>
-        // ... (JS functions will be here) ...
-        </script>
-    </body></html>
+    </div>
+
+    <div class="grid-container">
+        
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Development Manager">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Development Manager</div>
+        <div class="company-name">North Texas Food Bank</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(14)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(14, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(14, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-14" class="status-select" onchange="updateStatus(14, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Community Engagement Manager">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Community Engagement Manager</div>
+        <div class="company-name">Dallas Independent School District</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(15)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(15, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(15, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-15" class="status-select" onchange="updateStatus(15, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Volunteer Manager">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Volunteer Manager</div>
+        <div class="company-name">American Red Cross</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(16)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(16, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(16, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-16" class="status-select" onchange="updateStatus(16, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit" data-title="Program Manager, Youth Development">
+        <div class="card-tags"><span class="tag tag-tier-1">Tier 1</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Program Manager, Youth Development</div>
+        <div class="company-name">YMCA of Metropolitan Dallas</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(17)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(17, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(17, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-17" class="status-select" onchange="updateStatus(17, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Donor Relations Manager">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Donor Relations Manager</div>
+        <div class="company-name">Dallas Children’s Theater</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(18)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(18, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(18, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-18" class="status-select" onchange="updateStatus(18, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Strategic Partnerships Manager">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Strategic Partnerships Manager</div>
+        <div class="company-name">Dallas Museum of Art</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(19)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(19, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(19, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-19" class="status-select" onchange="updateStatus(19, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Volunteer Coordinator">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Volunteer Coordinator</div>
+        <div class="company-name">Dallas Arboretum and Botanical Garden</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(20)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(20, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(20, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-20" class="status-select" onchange="updateStatus(20, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Program Director, Education">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Program Director, Education</div>
+        <div class="company-name">Dallas Public Library</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(21)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(21, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(21, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-21" class="status-select" onchange="updateStatus(21, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Major Gifts Officer">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Major Gifts Officer</div>
+        <div class="company-name">Dallas Symphony Orchestra</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(22)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(22, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(22, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-22" class="status-select" onchange="updateStatus(22, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Nonprofit" data-title="Community Engagement Manager">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Community Engagement Manager</div>
+        <div class="company-name">Dallas Zoo</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(23)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(23, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(23, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-23" class="status-select" onchange="updateStatus(23, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit" data-title="Sarah Chen">
+        <div class="card-tags"><span class="tag tag-tier-2">Tier 2</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Sarah Chen</div>
+        <div class="company-name">Director of Customer Success (Example SaaS Co)</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(1)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(1, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(1, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-1" class="status-select" onchange="updateStatus(1, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit" data-title="Michael Rodriguez">
+        <div class="card-tags"><span class="tag tag-tier-2">Tier 2</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Michael Rodriguez</div>
+        <div class="company-name">VP of Customer Experience</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(2)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(2, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(2, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-2" class="status-select" onchange="updateStatus(2, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit" data-title="Jessica Williams">
+        <div class="card-tags"><span class="tag tag-tier-2">Tier 2</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Jessica Williams</div>
+        <div class="company-name">Talent Acquisition Partner</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(3)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(3, '#')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(3, '#')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-3" class="status-select" onchange="updateStatus(3, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit" data-title="Community Education &amp; Outreach Manager, South Central Chapter">
+        <div class="card-tags"><span class="tag tag-tier-1">Tier 1</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Community Education &amp; Outreach Manager, South Central Chapter</div>
+        <div class="company-name">Parkinson&#x27;s Foundation</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(4)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(4, 'https://www.idealist.org/en/nonprofit-job/801fbbeae67c4b87a8e5a2602c34be43-community-education-outreach-manager-south-central-chapter-parkinsons-foundation-dallas')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(4, 'https://www.idealist.org/en/nonprofit-job/801fbbeae67c4b87a8e5a2602c34be43-community-education-outreach-manager-south-central-chapter-parkinsons-foundation-dallas')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-4" class="status-select" onchange="updateStatus(4, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit" data-title="Community Relationship Manager (Remote - Dallas or Houston, TX Candidates Only)">
+        <div class="card-tags"><span class="tag tag-tier-1">Tier 1</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Community Relationship Manager (Remote - Dallas or Houston, TX Candidates Only)</div>
+        <div class="company-name">Equitable Hiring Group</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(5)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(5, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(5, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-5" class="status-select" onchange="updateStatus(5, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit" data-title="Volunteer &amp; Operations Manager">
+        <div class="card-tags"><span class="tag tag-tier-1">Tier 1</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Volunteer &amp; Operations Manager</div>
+        <div class="company-name">Member Engagement (Remote)</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(6)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(6, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(6, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-6" class="status-select" onchange="updateStatus(6, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit" data-title="Development Manager (Relationship-Based)">
+        <div class="card-tags"><span class="tag tag-tier-1">Tier 1</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Development Manager (Relationship-Based)</div>
+        <div class="company-name">SAFE Alliance</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(7)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(7, 'https://search)/?attr_tags_location_lk%5B%5D=texas')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(7, 'https://search)/?attr_tags_location_lk%5B%5D=texas')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-7" class="status-select" onchange="updateStatus(7, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 1,Nonprofit" data-title="Program Manager, Youth Development">
+        <div class="card-tags"><span class="tag tag-tier-1">Tier 1</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Program Manager, Youth Development</div>
+        <div class="company-name">Big Brothers Big Sisters of North Texas</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(8)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(8, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(8, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-8" class="status-select" onchange="updateStatus(8, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit" data-title="Donor Relations Manager">
+        <div class="card-tags"><span class="tag tag-tier-2">Tier 2</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Donor Relations Manager</div>
+        <div class="company-name">Communities Foundation of Texas</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(9)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(9, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(9, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-9" class="status-select" onchange="updateStatus(9, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit" data-title="Strategic Partnerships Manager">
+        <div class="card-tags"><span class="tag tag-tier-2">Tier 2</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Strategic Partnerships Manager</div>
+        <div class="company-name">Dallas Foundation</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(10)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(10, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(10, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-10" class="status-select" onchange="updateStatus(10, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit" data-title="Volunteer Coordinator">
+        <div class="card-tags"><span class="tag tag-tier-2">Tier 2</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Volunteer Coordinator</div>
+        <div class="company-name">Feeding America</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(11)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(11, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(11, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-11" class="status-select" onchange="updateStatus(11, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit" data-title="Program Director, Education">
+        <div class="card-tags"><span class="tag tag-tier-2">Tier 2</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Program Director, Education</div>
+        <div class="company-name">United Way of Metropolitan Dallas</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(12)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(12, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(12, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-12" class="status-select" onchange="updateStatus(12, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 2,Nonprofit" data-title="Major Gifts Officer (Relationship-Focused)">
+        <div class="card-tags"><span class="tag tag-tier-2">Tier 2</span><span class="tag tag-tier-3">Nonprofit</span></div>
+        <div class="job-title">Major Gifts Officer (Relationship-Focused)</div>
+        <div class="company-name">American Heart Association</div>
+
+        
+
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(13)">View Full</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(13, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(13, 'https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0')">Apply</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+
+        <div class="status-row">
+            <select id="status-13" class="status-select" onchange="updateStatus(13, this.value)">
+                <option value="New" selected>New</option>
+                <option value="Applied" >Applied</option>
+                <option value="Interview" >Interview</option>
+                <option value="Offer" >Offer</option>
+                <option value="Rejected" >Rejected</option>
+            </select>
+        </div>
+    </div>
+    
+    </div>
+
+    <div id="toast" class="toast">Notification</div>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal" onclick="if(event.target===this)document.getElementById('modal').style.display='none'">
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    <script>
+        const API_BASE = "https://my-job-dashboard.onrender.com";
+        const ALL_JOBS = [{"id": 14, "title": "Development Manager", "company": "North Texas Food Bank", "location": "See details", "url": "#", "match_score": 72, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 15, "title": "Community Engagement Manager", "company": "Dallas Independent School District", "location": "See details", "url": "#", "match_score": 70, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 16, "title": "Volunteer Manager", "company": "American Red Cross", "location": "See details", "url": "#", "match_score": 68, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 17, "title": "Program Manager, Youth Development", "company": "YMCA of Metropolitan Dallas", "location": "See details", "url": "#", "match_score": 66, "tier": 1, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "Big Brothers Big Sisters of North Texas provides mentoring and enrichment programs for youth. The organization is funded by individual donors, corporate sponsors, and government grants, with a strong focus on youth development and community impact. The organization has a strong reputation for supporting youth and fostering inclusive workplace cultures.", "role_insights": "You will manage youth development programs, coordinate volunteer recruitment and training, and oversee program evaluation. You will work closely with staff, volunteers, and community partners to ensure program success. The role involves frequent collaboration with nonprofit leaders and a focus on program ownership and community engagement.", "key_requirements": "Experience in nonprofit program management, youth development, and volunteer coordination. Strong leadership and communication skills. CVA certification is preferred. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "salary_intel": "The salary range is $60,000-$75,000, which is competitive for a mid-level nonprofit role in the Dallas area. The comprehensive benefits package includes health insurance, retirement plans, and professional development opportunities. Nonprofit salaries are often lower than corporate roles, but the total compensation package can be attractive due to benefits and mission fulfillment.", "application_strategy": "Highlight your impact in corporate relationship management and community engagement roles. Emphasize your mission connection and volunteer experience. Position your corporate experience as a strength, showing how your skills in stakeholder engagement and program development transfer to the nonprofit sector. Tailor your cover letter to reflect your passion for supporting youth and fostering inclusive workplace cultures.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "cultural_fit": "Nonprofit work often involves a slower pace and a values-driven culture. Community engagement is a key expectation, and work-life integration can be challenging due to the mission-driven nature of the work. The organization values collaboration, empathy, and a commitment to diversity and inclusion.", "competitive_landscape": "Similar roles at other DFW nonprofits include program managers at community foundations and development organizations. Big Brothers Big Sisters of North Texas stands out for its focus on youth development and mentoring. Alternative opportunities include roles at Dallas Foundation, Communities Foundation of Texas, and other youth development nonprofits.", "skills_gap": "Corporate skills in relationship management, program development, and stakeholder engagement transfer well to nonprofit roles. Nonprofit-specific skills to develop include grant writing, volunteer management, and community outreach. Position your corporate experience as a strength, showing how your skills can enhance the organization\u2019s mission.", "network_leverage": "Join DFW nonprofit networks such as the Dallas Foundation and Communities Foundation of Texas. Connect with CVA community members and attend nonprofit conferences and events. Research board members and key stakeholders to build relationships and gain insights into the organization.", "decision_timeline": "Nonprofit hiring timelines are often slower than corporate roles, with board approval processes and multiple interview rounds. Follow up after submitting your application and be prepared for a longer decision process. Start date flexibility is common in nonprofit roles.", "career_trajectory": "This role offers opportunities for growth within the nonprofit sector, including leadership positions in program management and community engagement. The experience gained can lead to roles at larger nonprofits or in foundation leadership. The long-term impact potential is high, with opportunities to influence youth development and community building.", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "Be prepared to discuss your experience in nonprofit program management, youth development, and volunteer coordination. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 1", "Nonprofit"]}, {"id": 18, "title": "Donor Relations Manager", "company": "Dallas Children\u2019s Theater", "location": "See details", "url": "#", "match_score": 64, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 19, "title": "Strategic Partnerships Manager", "company": "Dallas Museum of Art", "location": "See details", "url": "#", "match_score": 62, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 20, "title": "Volunteer Coordinator", "company": "Dallas Arboretum and Botanical Garden", "location": "See details", "url": "#", "match_score": 60, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 21, "title": "Program Director, Education", "company": "Dallas Public Library", "location": "See details", "url": "#", "match_score": 58, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 22, "title": "Major Gifts Officer", "company": "Dallas Symphony Orchestra", "location": "See details", "url": "#", "match_score": 56, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 23, "title": "Community Engagement Manager", "company": "Dallas Zoo", "location": "See details", "url": "#", "match_score": 54, "tier": 3, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 3", "Nonprofit"]}, {"id": 1, "title": "Sarah Chen", "company": "Director of Customer Success (Example SaaS Co)", "location": "See details", "url": "#", "match_score": 0, "tier": 2, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 2", "Nonprofit"]}, {"id": 2, "title": "Michael Rodriguez", "company": "VP of Customer Experience", "location": "See details", "url": "#", "match_score": 0, "tier": 2, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 2", "Nonprofit"]}, {"id": 3, "title": "Jessica Williams", "company": "Talent Acquisition Partner", "location": "See details", "url": "#", "match_score": 0, "tier": 2, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "#", "list_url": "#", "tags": ["Tier 2", "Nonprofit"]}, {"id": 4, "title": "Community Education & Outreach Manager, South Central Chapter", "company": "Parkinson's Foundation", "location": "Remote within Dallas, TX Metro", "url": "https://www.idealist.org/en/nonprofit-job/801fbbeae67c4b87a8e5a2602c34be43-community-education-outreach-manager-south-central-chapter-parkinsons-foundation-dallas", "match_score": 0, "tier": 1, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "The Parkinson\u2019s Foundation is a national nonprofit dedicated to improving care and advancing research for people with Parkinson\u2019s disease. The South Central Chapter serves Texas, Oklahoma, and Arkansas, offering education, outreach, and support programs. The organization is funded by individual donors, foundations, and corporate partnerships, with a strong reputation for community impact and mission-driven programming. The Foundation has a robust board and a history of financial stability, making it a respected leader in the nonprofit sector.", "role_insights": "You will lead the development and delivery of education programs tailored to the local Parkinson\u2019s community, build partnerships with healthcare systems and community stakeholders, and coordinate outreach initiatives. You will ensure awareness of Foundation events and resources, supporting both local and national strategic goals. The role involves frequent collaboration with healthcare providers, community organizations, and volunteers, with a focus on program ownership and community engagement.", "key_requirements": "Experience in nonprofit outreach, community engagement, and program development. Strong stakeholder relationship skills, ability to collaborate with diverse partners, and a passion for mission-driven work. CVA certification is a strong plus. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "salary_intel": "The salary range is $55,000-$60,000, which is competitive for a mid-level nonprofit role in the Dallas area. The comprehensive benefits package includes health insurance, retirement plans, and professional development opportunities. Nonprofit salaries are often lower than corporate roles, but the total compensation package can be attractive due to benefits and mission fulfillment.", "application_strategy": "Highlight your impact in corporate relationship management and community engagement roles. Emphasize your mission connection and volunteer experience. Position your corporate experience as a strength, showing how your skills in stakeholder engagement and program development transfer to the nonprofit sector. Tailor your cover letter to reflect your passion for the Parkinson\u2019s Foundation\u2019s mission.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "cultural_fit": "Nonprofit work often involves a slower pace and a values-driven culture. Community engagement is a key expectation, and work-life integration can be challenging due to the mission-driven nature of the work. The organization values collaboration, empathy, and a commitment to diversity and inclusion.", "competitive_landscape": "Similar roles at other DFW nonprofits include community engagement managers at health and education organizations. The Parkinson\u2019s Foundation stands out for its national reputation and strong community impact. Alternative opportunities include roles at United Way, Dallas Foundation, and other health-focused nonprofits.", "skills_gap": "Corporate skills in relationship management, program development, and stakeholder engagement transfer well to nonprofit roles. Nonprofit-specific skills to develop include grant writing, volunteer management, and community outreach. Position your corporate experience as a strength, showing how your skills can enhance the organization\u2019s mission.", "network_leverage": "Join DFW nonprofit networks such as the Dallas Foundation and Communities Foundation of Texas. Connect with CVA community members and attend nonprofit conferences and events. Research board members and key stakeholders to build relationships and gain insights into the organization.", "decision_timeline": "Nonprofit hiring timelines are often slower than corporate roles, with board approval processes and multiple interview rounds. Follow up after submitting your application and be prepared for a longer decision process. Start date flexibility is common in nonprofit roles.", "career_trajectory": "This role offers opportunities for growth within the nonprofit sector, including leadership positions in program management and community engagement. The experience gained can lead to roles at larger nonprofits or in foundation leadership. The long-term impact potential is high, with opportunities to influence community health and well-being.", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "Be prepared to discuss your experience in community outreach, program development, and stakeholder engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.idealist.org/en/nonprofit-job/801fbbeae67c4b87a8e5a2602c34be43-community-education-outreach-manager-south-central-chapter-parkinsons-foundation-dallas", "list_url": "https://www.idealist.org/en/nonprofit-job/801fbbeae67c4b87a8e5a2602c34be43-community-education-outreach-manager-south-central-chapter-parkinsons-foundation-dallas", "tags": ["Tier 1", "Nonprofit"]}, {"id": 5, "title": "Community Relationship Manager (Remote - Dallas or Houston, TX Candidates Only)", "company": "Equitable Hiring Group", "location": "Remote - Dallas, TX", "url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "match_score": 0, "tier": 1, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "Equitable Hiring Group partners with nonprofits to advance diversity, equity, and inclusion in hiring. The organization supports mission-driven organizations in building equitable teams and fostering inclusive workplace cultures. Funding comes from nonprofit clients and foundation grants. The organization has a strong reputation for community impact and is recognized for its innovative approach to nonprofit hiring.", "role_insights": "You will serve as the primary operations and relationship contact for nonprofit clients, supporting program implementation, stakeholder engagement, and community outreach. You will help nonprofits build and sustain equitable hiring practices, working closely with staff, volunteers, and community partners. The role involves frequent collaboration with nonprofit leaders and a focus on program ownership and community engagement.", "key_requirements": "Experience in nonprofit operations, community engagement, and relationship management. Strong project management and communication skills. CVA certification is highly valued. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "salary_intel": "The salary is not listed, but nonprofit operations roles in the Dallas area typically range from $55,000 to $70,000. The comprehensive benefits package includes health insurance, retirement plans, and professional development opportunities. Nonprofit salaries are often lower than corporate roles, but the total compensation package can be attractive due to benefits and mission fulfillment.", "application_strategy": "Highlight your impact in corporate relationship management and community engagement roles. Emphasize your mission connection and volunteer experience. Position your corporate experience as a strength, showing how your skills in stakeholder engagement and program development transfer to the nonprofit sector. Tailor your cover letter to reflect your passion for advancing diversity and inclusion in nonprofit hiring.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "cultural_fit": "Nonprofit work often involves a slower pace and a values-driven culture. Community engagement is a key expectation, and work-life integration can be challenging due to the mission-driven nature of the work. The organization values collaboration, empathy, and a commitment to diversity and inclusion.", "competitive_landscape": "Similar roles at other DFW nonprofits include operations managers at community foundations and development organizations. Equitable Hiring Group stands out for its focus on diversity and inclusion in nonprofit hiring. Alternative opportunities include roles at Dallas Foundation, Communities Foundation of Texas, and other community development nonprofits.", "skills_gap": "Corporate skills in relationship management, program development, and stakeholder engagement transfer well to nonprofit roles. Nonprofit-specific skills to develop include grant writing, volunteer management, and community outreach. Position your corporate experience as a strength, showing how your skills can enhance the organization\u2019s mission.", "network_leverage": "Join DFW nonprofit networks such as the Dallas Foundation and Communities Foundation of Texas. Connect with CVA community members and attend nonprofit conferences and events. Research board members and key stakeholders to build relationships and gain insights into the organization.", "decision_timeline": "Nonprofit hiring timelines are often slower than corporate roles, with board approval processes and multiple interview rounds. Follow up after submitting your application and be prepared for a longer decision process. Start date flexibility is common in nonprofit roles.", "career_trajectory": "This role offers opportunities for growth within the nonprofit sector, including leadership positions in operations and community engagement. The experience gained can lead to roles at larger nonprofits or in foundation leadership. The long-term impact potential is high, with opportunities to influence nonprofit hiring practices and community development.", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "Be prepared to discuss your experience in nonprofit operations, community engagement, and relationship management. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "list_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "tags": ["Tier 1", "Nonprofit"]}, {"id": 6, "title": "Volunteer & Operations Manager", "company": "Member Engagement (Remote)", "location": "Remote - Dallas, TX", "url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "match_score": 0, "tier": 1, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "This association supports nonprofit professionals through networking, training, and advocacy. The organization is funded by membership dues and grants, with a focus on community building and professional development. The association has a strong reputation for supporting nonprofit professionals and fostering inclusive workplace cultures.", "role_insights": "You will manage volunteer programs, coordinate member engagement activities, and oversee operations for the association. You will work closely with board members, staff, and volunteers to ensure successful program delivery. The role involves frequent collaboration with nonprofit leaders and a focus on program ownership and community engagement.", "key_requirements": "Experience in nonprofit volunteer management, operations, and community engagement. Strong organizational and interpersonal skills. CVA certification is preferred. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "salary_intel": "The salary is not listed, but nonprofit operations roles in the Dallas area typically range from $55,000 to $70,000. The comprehensive benefits package includes health insurance, retirement plans, and professional development opportunities. Nonprofit salaries are often lower than corporate roles, but the total compensation package can be attractive due to benefits and mission fulfillment.", "application_strategy": "Highlight your impact in corporate relationship management and community engagement roles. Emphasize your mission connection and volunteer experience. Position your corporate experience as a strength, showing how your skills in stakeholder engagement and program development transfer to the nonprofit sector. Tailor your cover letter to reflect your passion for supporting nonprofit professionals and fostering inclusive workplace cultures.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "cultural_fit": "Nonprofit work often involves a slower pace and a values-driven culture. Community engagement is a key expectation, and work-life integration can be challenging due to the mission-driven nature of the work. The organization values collaboration, empathy, and a commitment to diversity and inclusion.", "competitive_landscape": "Similar roles at other DFW nonprofits include operations managers at community foundations and development organizations. This association stands out for its focus on supporting nonprofit professionals and fostering inclusive workplace cultures. Alternative opportunities include roles at Dallas Foundation, Communities Foundation of Texas, and other community development nonprofits.", "skills_gap": "Corporate skills in relationship management, program development, and stakeholder engagement transfer well to nonprofit roles. Nonprofit-specific skills to develop include grant writing, volunteer management, and community outreach. Position your corporate experience as a strength, showing how your skills can enhance the organization\u2019s mission.", "network_leverage": "Join DFW nonprofit networks such as the Dallas Foundation and Communities Foundation of Texas. Connect with CVA community members and attend nonprofit conferences and events. Research board members and key stakeholders to build relationships and gain insights into the organization.", "decision_timeline": "Nonprofit hiring timelines are often slower than corporate roles, with board approval processes and multiple interview rounds. Follow up after submitting your application and be prepared for a longer decision process. Start date flexibility is common in nonprofit roles.", "career_trajectory": "This role offers opportunities for growth within the nonprofit sector, including leadership positions in operations and community engagement. The experience gained can lead to roles at larger nonprofits or in foundation leadership. The long-term impact potential is high, with opportunities to influence nonprofit professional development and community building.", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "Be prepared to discuss your experience in volunteer management, operations, and community engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "list_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "tags": ["Tier 1", "Nonprofit"]}, {"id": 7, "title": "Development Manager (Relationship-Based)", "company": "SAFE Alliance", "location": "Dallas, TX (Hybrid)", "url": "search)/?attr_tags_location_lk%5B%5D=texas", "match_score": 0, "tier": 1, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "SAFE Alliance provides shelter and support services for survivors of domestic violence and sexual assault. The organization is funded by government grants, individual donors, and foundations, with a strong commitment to community impact and survivor empowerment. The organization has a strong reputation for supporting survivors and fostering inclusive workplace cultures.", "role_insights": "You will manage donor relationships, coordinate fundraising events, and support major gifts initiatives. You will work closely with development staff and community partners to advance the organization\u2019s mission. The role involves frequent collaboration with nonprofit leaders and a focus on program ownership and community engagement.", "key_requirements": "Experience in nonprofit development, donor relations, and community engagement. Strong relationship-building skills. CVA certification is a plus. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "salary_intel": "The salary is not listed, but nonprofit development roles in the Dallas area typically range from $60,000 to $80,000. The comprehensive benefits package includes health insurance, retirement plans, and professional development opportunities. Nonprofit salaries are often lower than corporate roles, but the total compensation package can be attractive due to benefits and mission fulfillment.", "application_strategy": "Highlight your impact in corporate relationship management and community engagement roles. Emphasize your mission connection and volunteer experience. Position your corporate experience as a strength, showing how your skills in stakeholder engagement and program development transfer to the nonprofit sector. Tailor your cover letter to reflect your passion for supporting survivors and fostering inclusive workplace cultures.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "cultural_fit": "Nonprofit work often involves a slower pace and a values-driven culture. Community engagement is a key expectation, and work-life integration can be challenging due to the mission-driven nature of the work. The organization values collaboration, empathy, and a commitment to diversity and inclusion.", "competitive_landscape": "Similar roles at other DFW nonprofits include development managers at community foundations and development organizations. SAFE Alliance stands out for its focus on supporting survivors and fostering inclusive workplace cultures. Alternative opportunities include roles at Dallas Foundation, Communities Foundation of Texas, and other community development nonprofits.", "skills_gap": "Corporate skills in relationship management, program development, and stakeholder engagement transfer well to nonprofit roles. Nonprofit-specific skills to develop include grant writing, volunteer management, and community outreach. Position your corporate experience as a strength, showing how your skills can enhance the organization\u2019s mission.", "network_leverage": "Join DFW nonprofit networks such as the Dallas Foundation and Communities Foundation of Texas. Connect with CVA community members and attend nonprofit conferences and events. Research board members and key stakeholders to build relationships and gain insights into the organization.", "decision_timeline": "Nonprofit hiring timelines are often slower than corporate roles, with board approval processes and multiple interview rounds. Follow up after submitting your application and be prepared for a longer decision process. Start date flexibility is common in nonprofit roles.", "career_trajectory": "This role offers opportunities for growth within the nonprofit sector, including leadership positions in development and community engagement. The experience gained can lead to roles at larger nonprofits or in foundation leadership. The long-term impact potential is high, with opportunities to influence nonprofit fundraising and community development.", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "Be prepared to discuss your experience in nonprofit development, donor relations, and community engagement. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://search)/?attr_tags_location_lk%5B%5D=texas", "list_url": "https://search)/?attr_tags_location_lk%5B%5D=texas", "tags": ["Tier 1", "Nonprofit"]}, {"id": 8, "title": "Program Manager, Youth Development", "company": "Big Brothers Big Sisters of North Texas", "location": "Dallas, TX (Hybrid)", "url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "match_score": 0, "tier": 1, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "Big Brothers Big Sisters of North Texas provides mentoring and enrichment programs for youth. The organization is funded by individual donors, corporate sponsors, and government grants, with a strong focus on youth development and community impact. The organization has a strong reputation for supporting youth and fostering inclusive workplace cultures.", "role_insights": "You will manage youth development programs, coordinate volunteer recruitment and training, and oversee program evaluation. You will work closely with staff, volunteers, and community partners to ensure program success. The role involves frequent collaboration with nonprofit leaders and a focus on program ownership and community engagement.", "key_requirements": "Experience in nonprofit program management, youth development, and volunteer coordination. Strong leadership and communication skills. CVA certification is preferred. The organization values cultural competencies such as empathy, adaptability, and a commitment to diversity and inclusion.", "salary_intel": "The salary range is $60,000-$75,000, which is competitive for a mid-level nonprofit role in the Dallas area. The comprehensive benefits package includes health insurance, retirement plans, and professional development opportunities. Nonprofit salaries are often lower than corporate roles, but the total compensation package can be attractive due to benefits and mission fulfillment.", "application_strategy": "Highlight your impact in corporate relationship management and community engagement roles. Emphasize your mission connection and volunteer experience. Position your corporate experience as a strength, showing how your skills in stakeholder engagement and program development transfer to the nonprofit sector. Tailor your cover letter to reflect your passion for supporting youth and fostering inclusive workplace cultures.", "red_flags": "Be aware of potential funding instability, as nonprofits can be affected by changes in donor support. High turnover in nonprofit roles can indicate unrealistic expectations or mission drift. Ensure the organization has a clear strategic plan and strong board support.", "cultural_fit": "Nonprofit work often involves a slower pace and a values-driven culture. Community engagement is a key expectation, and work-life integration can be challenging due to the mission-driven nature of the work. The organization values collaboration, empathy, and a commitment to diversity and inclusion.", "competitive_landscape": "Similar roles at other DFW nonprofits include program managers at community foundations and development organizations. Big Brothers Big Sisters of North Texas stands out for its focus on youth development and mentoring. Alternative opportunities include roles at Dallas Foundation, Communities Foundation of Texas, and other youth development nonprofits.", "skills_gap": "Corporate skills in relationship management, program development, and stakeholder engagement transfer well to nonprofit roles. Nonprofit-specific skills to develop include grant writing, volunteer management, and community outreach. Position your corporate experience as a strength, showing how your skills can enhance the organization\u2019s mission.", "network_leverage": "Join DFW nonprofit networks such as the Dallas Foundation and Communities Foundation of Texas. Connect with CVA community members and attend nonprofit conferences and events. Research board members and key stakeholders to build relationships and gain insights into the organization.", "decision_timeline": "Nonprofit hiring timelines are often slower than corporate roles, with board approval processes and multiple interview rounds. Follow up after submitting your application and be prepared for a longer decision process. Start date flexibility is common in nonprofit roles.", "career_trajectory": "This role offers opportunities for growth within the nonprofit sector, including leadership positions in program management and community engagement. The experience gained can lead to roles at larger nonprofits or in foundation leadership. The long-term impact potential is high, with opportunities to influence youth development and community building.", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "Be prepared to discuss your experience in nonprofit program management, youth development, and volunteer coordination. Expect mission alignment questions about your motivation for working in the nonprofit sector and scenario-based questions about managing partnerships and community programs. You may be asked to present a sample outreach plan or discuss a successful community engagement initiative.", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "list_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "tags": ["Tier 1", "Nonprofit"]}, {"id": 9, "title": "Donor Relations Manager", "company": "Communities Foundation of Texas", "location": "Dallas, TX (Hybrid)", "url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "match_score": 0, "tier": 2, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "list_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "tags": ["Tier 2", "Nonprofit"]}, {"id": 10, "title": "Strategic Partnerships Manager", "company": "Dallas Foundation", "location": "Dallas, TX (Hybrid)", "url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "match_score": 0, "tier": 2, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "list_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "tags": ["Tier 2", "Nonprofit"]}, {"id": 11, "title": "Volunteer Coordinator", "company": "Feeding America", "location": "Dallas, TX (Hybrid)", "url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "match_score": 0, "tier": 2, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "list_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "tags": ["Tier 2", "Nonprofit"]}, {"id": 12, "title": "Program Director, Education", "company": "United Way of Metropolitan Dallas", "location": "Dallas, TX (Hybrid)", "url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "match_score": 0, "tier": 2, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "list_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "tags": ["Tier 2", "Nonprofit"]}, {"id": 13, "title": "Major Gifts Officer (Relationship-Focused)", "company": "American Heart Association", "location": "Dallas, TX (Hybrid)", "url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "match_score": 0, "tier": 2, "status": "New", "date_added": "2025-11-22", "summary_bullets": "", "fit_bullets": "", "company_overview": "", "role_insights": "", "key_requirements": "", "salary_intel": "", "application_strategy": "", "red_flags": "", "cultural_fit": "", "competitive_landscape": "", "skills_gap": "", "network_leverage": "", "decision_timeline": "", "career_trajectory": "", "resume_keywords": "", "resume_summary": "", "cover_letter": "", "why_me_bullets": "", "why_them_bullets": "", "interview_prep": "", "star_hooks": "", "talking_points": "", "questions_to_ask": "", "recruiter_email": "", "thank_you_email": "", "plan_30_60_90": "", "notes": "", "application_url": null, "search_type": "Nonprofit", "app_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "list_url": "https://www.indeed.com/viewjob?jk=a77a3a6cd497e2bd&tk=1i0v5q0q0q0q0q0", "tags": ["Tier 2", "Nonprofit"]}]; // Injected JSON data
+
+        function openModal(id) {
+            const job = ALL_JOBS.find(j => j.id == id);
+            if(!job) return;
+
+            const content = document.getElementById('modal-content');
+
+            // Render Helper
+            const f = (label, val, copy=false) => {
+                if(!val || val.length < 3) return '';
+                const fid = `field-${Math.random().toString(36).substr(2,9)}`;
+                return `
+                <div class="data-block">
+                    <div class="data-label">${label}</div>
+                    <div class="data-value" id="${fid}">
+                        ${val.replace(/\n/g, '<br>')}
+                        ${copy ? `<button class="copy-btn" onclick="copyText('${fid}')">COPY</button>` : ''}
+                    </div>
+                </div>`;
+            };
+
+            content.innerHTML = `
+                <div class="modal-header">
+                    <h2 class="modal-title">${job.title}</h2>
+                    <div class="modal-subtitle">${job.company} • Tier ${job.tier}</div>
+                </div>
+                <div class="tab-nav">
+                    <div id="btn-strategy" class="tab-btn active" onclick="switchTab('strategy')">STRATEGY</div>
+                    <div id="btn-interview" class="tab-btn" onclick="switchTab('interview')">INTERVIEW</div>
+                    <div id="btn-assets" class="tab-btn" onclick="switchTab('assets')">ASSETS</div>
+                </div>
+                <div class="modal-body">
+                    <div id="tab-strategy" class="tab-content active">
+                        ${f('Company Overview', job.company_overview)}
+                        ${f('Role Insights', job.role_insights)}
+                        ${f('Key Requirements', job.key_requirements)}
+                        ${f('Red Flags', job.red_flags)}
+                        ${f('Cultural Fit', job.cultural_fit)}
+                        ${f('Competitive Landscape', job.competitive_landscape)}
+                        ${f('Skills Gap', job.skills_gap)}
+                        ${f('Timeline', job.decision_timeline)}
+                    </div>
+                    <div id="tab-interview" class="tab-content">
+                        ${f('Interview Prep', job.interview_prep)}
+                        ${f('STAR Hooks', job.star_hooks)}
+                        ${f('Talking Points', job.talking_points)}
+                        ${f('Salary Intel', job.salary_intel)}
+                        ${f('Questions to Ask', job.questions_to_ask)}
+                    </div>
+                    <div id="tab-assets" class="tab-content">
+                        ${f('Resume Keywords', job.resume_keywords, true)}
+                        ${f('Resume Summary', job.resume_summary, true)}
+                        ${f('Cover Letter Draft', job.cover_letter, true)}
+                        ${f('Recruiter Email', job.recruiter_email, true)}
+                        ${f('Why Me', job.why_me_bullets)}
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function switchTab(name) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-'+name).classList.add('active');
+            document.getElementById('btn-'+name).classList.add('active');
+        }
+
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const t = document.getElementById('toast');
+                t.innerText = "✅ Copied!";
+                t.style.display = 'block';
+                setTimeout(() => t.style.display = 'none', 2000);
+            });
+        }
+
+        function filterJobs(criteria, btn) {
+            document.querySelectorAll('.badge-filter').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.job-card').forEach(card => {
+                const tags = card.dataset.tags.toLowerCase();
+                let match = true;
+                if(criteria === 't1' && !tags.includes('tier 1')) match = false;
+                if(criteria === 't2' && !tags.includes('tier 2')) match = false;
+                if(criteria === 'corp' && !tags.includes('corporate')) match = false;
+                if(criteria === 'nonprofit' && !tags.includes('nonprofit')) match = false;
+                card.style.display = match ? 'flex' : 'none';
+            });
+        }
+
+        function searchJobs(query) {
+            const q = query.toLowerCase();
+            document.querySelectorAll('.job-card').forEach(card => {
+                const title = card.dataset.title.toLowerCase();
+                card.style.display = title.includes(q) ? 'flex' : 'none';
+            });
+        }
+
+        async function updateStatus(id, status) {
+            try {
+                await fetch(`${API_BASE}/api/update_status`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id, status})
+                });
+                const t = document.getElementById('toast');
+                t.innerText = "✅ Saved";
+                t.style.display = 'block';
+                setTimeout(() => t.style.display = 'none', 2000);
+            } catch(e) { console.error(e); }
+        }
+
+        function markApplied(id, url) { updateStatus(id, 'Applied'); window.open(url, '_blank'); }
+        function markViewed(id, url) { updateStatus(id, 'Viewed'); window.open(url, '_blank'); }
+    </script>
+</body>
+</html>
