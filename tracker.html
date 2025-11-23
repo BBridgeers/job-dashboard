@@ -1,286 +1,211 @@
-<!DOCTYPE html><html><head><title>Tracker</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Job Application Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --primary: #4f46e5; 
-            --bg-color: #e2e8f0; 
-            --card-bg: #ffffff; 
-            --text-main: #0f172a;
-            --blue-company: #1e40af;
-        }
-        * { box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg-color); 
-            color: var(--text-main); 
-            margin: 0; 
-            padding-top: 160px; 
-            min-height: 100vh;
-        }
-        .header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid #cbd5e1;
-            padding: 15px 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-        .header.hidden { transform: translateY(-100%); }
-        .app-title {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-        }
-        .header-content {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .controls-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .search-section {
-            flex: 1;
-            max-width: 400px;
-            position: relative;
-        }
-        .search-input {
-            width: 100%;
-            padding: 10px 15px 10px 40px;
-            border-radius: 8px;
-            border: 1px solid #cbd5e1;
-            font-size: 14px;
-            background: #f8fafc;
-        }
-        .search-icon {
-            position: absolute;
-            left: 12px; top: 50%; transform: translateY(-50%);
-            color: #94a3b8;
-        }
-        .filter-badges {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .badge-filter {
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            background: white;
-            border: 1px solid #e2e8f0;
-            color: #64748b;
-            transition: all 0.2s;
-        }
-        .badge-filter:hover, .badge-filter.active {
-            background: var(--text-main);
-            color: white;
-            border-color: var(--text-main);
-        }
-        .tracker-link {
-            margin-left: auto;
-            background: #0f172a;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 13px;
-        }
-        .grid-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 25px;
-        }
-        .job-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #e2e8f0;
-        }
-        .job-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
-        .card-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-        .tag { font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .tag-tier-1 { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
-        .tag-tier-2 { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
-        .tag-tier-3 { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
-        .tag-high { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
-        .tag-corp { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
-        .tag-nonprofit { background: #ccfbf1; color: #0f766e; border: 1px solid #5eead4; }
-
-        .job-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #0f172a;
-            margin: 0 0 4px 0;
-            line-height: 1.3;
-        }
-        .company-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--blue-company);
-            margin-bottom: 12px;
-        }
-        .quick-links {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .ql-btn {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: #f8fafc;
-            color: #64748b;
-            border: 1px solid #e2e8f0;
-            cursor: pointer;
-            transition: all 0.1s;
-        }
-        .ql-btn:hover { background: #e2e8f0; color: #0f172a; border-color: #cbd5e1; }
-        .action-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: auto;
-        }
-        .btn-3d {
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
-            transition: transform 0.1s;
-        }
-        .btn-3d:active { transform: translateY(2px); box-shadow: none; }
-        .btn-details { background: #4f46e5; }
-        .btn-listing { background: #3b82f6; }
-        .btn-apply { background: #10b981; }
-        .btn-track { background: #f59e0b; }
-        .status-row {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #f1f5f9;
-        }
-        .status-select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-weight: 600; }
-        .notes-area { width: 100%; margin-top: 8px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; resize: vertical; min-height: 40px; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; }
-        .modal-content { background: white; width: 90%; max-width: 700px; max-height: 85vh; border-radius: 12px; padding: 30px; overflow-y: auto; }
-        .toast { position: fixed; bottom: 20px; right: 20px; background: #10b981; color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; transform: translateY(100px); transition: transform 0.3s; }
-        .toast.show { transform: translateY(0); }
-        @media (max-width: 768px) { 
-            .controls-row { flex-direction: column; align-items: stretch; }
-            .search-section, .tracker-link { width: 100%; max-width: none; }
-            .filter-badges { justify-content: flex-start; overflow-x: auto; padding-bottom: 5px; }
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .kanban-col { min-height: 70vh; transition: background-color 0.2s; }
+        .kanban-col.drag-over { background-color: #e0e7ff; }
+        .card { cursor: grab; transition: all 0.2s; }
+        .card:active { cursor: grabbing; transform: rotate(1deg); }
+        .ghost { opacity: 0.4; background: #cbd5e1; border: 2px dashed #94a3b8; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
-    </head><body>
-    <div class="header"><div class="header-content"><a href="index.html" style="text-decoration:none; font-weight:700; color:#475569;">← Back to Dashboard</a><h2>Pipeline Tracker</h2></div></div>
-    <div style="padding:30px; max-width:800px; margin:0 auto;">
-        <p style="text-align:center; color:#64748b;">Tracker View (Vertical Stack)</p>
+</head>
+<body class="text-gray-800 h-screen flex flex-col overflow-hidden">
+
+    <!-- Header -->
+    <nav class="bg-white border-b border-gray-200 px-6 py-3 flex justify-between items-center shrink-0 z-10">
+        <div class="flex items-center gap-4">
+            <a href="/" class="text-gray-500 hover:text-gray-900 transition font-medium text-sm flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Dashboard
+            </a>
+            <h1 class="text-xl font-bold text-indigo-900">Application Tracker</h1>
+        </div>
+        <div id="sync-status" class="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+            Ready
+        </div>
+    </nav>
+
+    <!-- Board -->
+    <div class="flex-1 overflow-x-auto overflow-y-hidden p-6">
+        <div class="flex gap-5 h-full min-w-[1400px]">
+
+            <!-- Columns -->
+            <div class="flex flex-col w-80 shrink-0">
+                <div class="flex justify-between items-center mb-3 px-1">
+                    <h2 class="font-bold text-gray-600 uppercase text-xs tracking-wide">New / To Review</h2>
+                    <span id="count-New" class="bg-gray-200 text-gray-600 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                </div>
+                <div id="col-New" data-status="New" class="kanban-col bg-gray-100 rounded-xl p-2 flex-1 overflow-y-auto no-scrollbar ring-1 ring-gray-200"></div>
+            </div>
+
+            <div class="flex flex-col w-80 shrink-0">
+                <div class="flex justify-between items-center mb-3 px-1">
+                    <h2 class="font-bold text-blue-600 uppercase text-xs tracking-wide">Applied</h2>
+                    <span id="count-Applied" class="bg-blue-100 text-blue-600 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                </div>
+                <div id="col-Applied" data-status="Applied" class="kanban-col bg-blue-50/50 rounded-xl p-2 flex-1 overflow-y-auto no-scrollbar ring-1 ring-blue-100"></div>
+            </div>
+
+            <div class="flex flex-col w-80 shrink-0">
+                <div class="flex justify-between items-center mb-3 px-1">
+                    <h2 class="font-bold text-purple-600 uppercase text-xs tracking-wide">Interview</h2>
+                    <span id="count-Interview" class="bg-purple-100 text-purple-600 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                </div>
+                <div id="col-Interview" data-status="Interview" class="kanban-col bg-purple-50/50 rounded-xl p-2 flex-1 overflow-y-auto no-scrollbar ring-1 ring-purple-100"></div>
+            </div>
+
+            <div class="flex flex-col w-80 shrink-0">
+                <div class="flex justify-between items-center mb-3 px-1">
+                    <h2 class="font-bold text-green-600 uppercase text-xs tracking-wide">Offer</h2>
+                    <span id="count-Offer" class="bg-green-100 text-green-600 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                </div>
+                <div id="col-Offer" data-status="Offer" class="kanban-col bg-green-50/50 rounded-xl p-2 flex-1 overflow-y-auto no-scrollbar ring-1 ring-green-100"></div>
+            </div>
+
+            <div class="flex flex-col w-80 shrink-0">
+                <div class="flex justify-between items-center mb-3 px-1">
+                    <h2 class="font-bold text-red-600 uppercase text-xs tracking-wide">Rejected</h2>
+                    <span id="count-Rejected" class="bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                </div>
+                <div id="col-Rejected" data-status="Rejected" class="kanban-col bg-red-50/50 rounded-xl p-2 flex-1 overflow-y-auto no-scrollbar ring-1 ring-red-100"></div>
+            </div>
+
+        </div>
     </div>
-    
+
+    <!-- JavaScript Logic -->
     <script>
-        const API_BASE = "https://my-job-dashboard.onrender.com";
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            const header = document.querySelector('.header');
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                header.classList.add('hidden');
-            } else {
-                header.classList.remove('hidden');
+        // --- PROD-READY CONFIGURATION ---
+        // Using relative paths works on both Localhost and Render automatically
+        const API_BASE = '/api';
+
+        const STATUS_MAP = ['New', 'Applied', 'Interview', 'Offer', 'Rejected'];
+        const UI_COLS = {};
+        STATUS_MAP.forEach(s => UI_COLS[s] = document.getElementById(`col-${s}`));
+
+        // --- Initialization ---
+        async function init() {
+            showSync('Loading...');
+            try {
+                const res = await fetch(`${API_BASE}/jobs`);
+                if (!res.ok) throw new Error(`API Error: ${res.status}`);
+                const jobs = await res.json();
+                renderBoard(jobs);
+                showSync('Synced');
+            } catch (err) {
+                console.error(err);
+                showSync('Error', true);
+                alert(`Failed to load jobs. Ensure server is running.`);
             }
-            lastScroll = currentScroll;
-        });
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.innerText = msg;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
         }
-        async function updateStatus(id, newStatus) {
+
+        // --- Rendering ---
+        function renderBoard(jobs) {
+            Object.values(UI_COLS).forEach(col => col.innerHTML = '');
+
+            jobs.forEach(job => {
+                let status = job.status || 'New';
+                if (!UI_COLS[status]) status = 'New';
+                const card = createCard(job);
+                UI_COLS[status].appendChild(card);
+            });
+
+            updateCounts();
+            initDragAndDrop();
+        }
+
+        function createCard(job) {
+            const div = document.createElement('div');
+            div.className = "card bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-3 hover:shadow-md group";
+            div.setAttribute('data-id', job.id);
+
+            let tierBadge = '';
+            if(job.tier === 1) tierBadge = '<span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-1.5 py-0.5 rounded">TIER 1</span>';
+            if(job.tier === 2) tierBadge = '<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-1.5 py-0.5 rounded">TIER 2</span>';
+
+            div.innerHTML = `
+                <div class="flex justify-between items-start mb-1">
+                    ${tierBadge}
+                    <span class="text-xs font-bold text-emerald-600 bg-green-50 px-1.5 py-0.5 rounded">${job.match_score}%</span>
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm leading-tight mb-0.5">${job.title}</h3>
+                <p class="text-xs text-gray-500 mb-3">${job.company}</p>
+
+                <div class="flex items-center justify-between border-t border-gray-100 pt-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <a href="${job.url}" target="_blank" class="text-xs text-gray-400 hover:text-indigo-600 flex items-center gap-1">Link ↗</a>
+                    <a href="${job.application_url || '#'}" target="_blank" class="text-xs text-indigo-600 font-semibold hover:underline">Apply</a>
+                </div>
+            `;
+            return div;
+        }
+
+        function updateCounts() {
+            STATUS_MAP.forEach(status => {
+                const count = UI_COLS[status].children.length;
+                document.getElementById(`count-${status}`).innerText = count;
+            });
+        }
+
+        // --- Interaction ---
+        function initDragAndDrop() {
+            STATUS_MAP.forEach(status => {
+                new Sortable(UI_COLS[status], {
+                    group: 'kanban',
+                    animation: 150,
+                    ghostClass: 'ghost',
+                    delay: 100, delayOnTouchOnly: true,
+                    onEnd: async function (evt) {
+                        const itemEl = evt.item;
+                        const newStatus = evt.to.getAttribute('data-status');
+                        const oldStatus = evt.from.getAttribute('data-status');
+                        const jobId = itemEl.getAttribute('data-id');
+
+                        if (newStatus === oldStatus) return;
+                        updateCounts();
+                        await updateStatus(jobId, newStatus);
+                    }
+                });
+            });
+        }
+
+        async function updateStatus(id, status) {
+            showSync('Saving...');
             try {
-                const res = await fetch(`${API_BASE}/api/update_status`, {
+                const res = await fetch(`${API_BASE}/update_status`, {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({id: id, status: newStatus})
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id, status: status })
                 });
-                if (res.ok) showToast(`✅ Status synced: ${newStatus}`);
-            } catch (e) { console.error(e); }
+                const data = await res.json();
+                if(data.success) {
+                    showSync('Saved');
+                    setTimeout(() => showSync('Ready'), 2000);
+                } else {
+                    throw new Error(data.error || 'Unknown error');
+                }
+            } catch (err) {
+                console.error("Sync Failed", err);
+                showSync('Sync Failed!', true);
+                alert("Failed to save status. Check network.");
+            }
         }
-        async function saveNote(id, note) {
-            try {
-                await fetch(`${API_BASE}/api/save_note`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({id: id, note: note})
-                });
-            } catch(e) { }
+
+        function showSync(msg, isError = false) {
+            const el = document.getElementById('sync-status');
+            el.innerText = msg;
+            el.className = `text-xs font-semibold uppercase tracking-wider ${isError ? 'text-red-600' : 'text-gray-400'}`;
         }
-        function markApplied(id, url) { updateStatus(id, 'Applied'); window.open(url, '_blank'); }
-        function markViewed(id, url) { updateStatus(id, 'Viewed'); window.open(url, '_blank'); }
-        function filterJobs(criteria) {
-            const cards = document.querySelectorAll('.job-card');
-            const btns = document.querySelectorAll('.badge-filter');
-            btns.forEach(b => b.classList.remove('active'));
-            if(event.target) event.target.classList.add('active');
-            cards.forEach(card => {
-                const tags = card.dataset.tags.toLowerCase();
-                let match = true;
-                if (criteria === 'high' && !tags.includes('high')) match = false;
-                if (criteria === 'corp' && !tags.includes('corporate')) match = false;
-                if (criteria === 'nonprofit' && !tags.includes('nonprofit')) match = false;
-                if (criteria === 't1' && !tags.includes('tier 1')) match = false;
-                if (criteria === 't2' && !tags.includes('tier 2')) match = false;
-                if (criteria === 't3' && !tags.includes('tier 3')) match = false;
-                card.style.display = match ? 'flex' : 'none';
-            });
-        }
-        function searchJobs(query) {
-            const cards = document.querySelectorAll('.job-card');
-            cards.forEach(card => {
-                card.style.display = card.innerText.toLowerCase().includes(query.toLowerCase()) ? 'flex' : 'none';
-            });
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.notes-area').forEach(area => {
-                area.addEventListener('change', (e) => {
-                    const id = e.target.id.replace('note-', '');
-                    saveNote(id, e.target.value);
-                });
-            });
-        });
+
+        init();
     </script>
-    
-    </body></html>
+</body>
+</html>

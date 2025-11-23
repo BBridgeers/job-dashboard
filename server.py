@@ -1,98 +1,62 @@
-#!/usr/bin/env python3
-"""
-Strategic Match - API Backend Server
-Handles data persistence for Dashboard and Tracker
-"""
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import sqlite3
 import os
-from datetime import datetime
 
 app = Flask(__name__, static_folder='.')
-CORS(app) # Enable CORS for all routes to allow external frontend access if needed
+CORS(app)
 
-# Ensure DB connection
-def get_db():
+def get_db_connection():
     conn = sqlite3.connect('jobs.db')
     conn.row_factory = sqlite3.Row
     return conn
 
+# --- Static File Serving (Prod & Local) ---
 @app.route('/')
 def serve_index():
     return send_from_directory('.', 'index.html')
 
+@app.route('/tracker.html')
+def serve_tracker():
+    return send_from_directory('.', 'tracker.html')
+
 @app.route('/<path:path>')
 def serve_static(path):
-    return send_from_directory('.', path)
+    # Serve other static files like images or CSS if they exist
+    if os.path.exists(path):
+        return send_from_directory('.', path)
+    return "File not found", 404
 
-# --- CRITICAL FIX: Added /api/jobs endpoint ---
+# --- API Endpoints ---
+
 @app.route('/api/jobs', methods=['GET'])
 def get_jobs():
-    """Fetch all jobs for the tracker"""
     try:
-        conn = get_db()
-        c = conn.cursor()
-        # Select all fields
-        c.execute("SELECT * FROM jobs ORDER BY match_score DESC")
-        rows = c.fetchall()
-
-        # Convert Row objects to dicts
-        jobs = [dict(r) for r in rows]
-
+        conn = get_db_connection()
+        jobs = conn.execute('SELECT * FROM jobs').fetchall()
         conn.close()
-        return jsonify(jobs)
+        return jsonify([dict(ix) for ix in jobs])
     except Exception as e:
-        print(f"❌ DB Error: {e}")
-        return jsonify({'error': str(e)}), 500
-# ----------------------------------------------
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/update_status', methods=['POST'])
 def update_status():
-    """Update job status in database"""
     data = request.json
-    job_id = data.get('id')
-    new_status = data.get('status')
-
-    if not job_id or not new_status:
-        return jsonify({'error': 'Missing id or status'}), 400
-
-    try:
-        conn = get_db()
-        c = conn.cursor()
-
-        # If applied, update applied_date too
-        if new_status == 'Applied':
-            today = datetime.now().strftime("%Y-%m-%d")
-            c.execute("UPDATE jobs SET status = ?, applied_date = ? WHERE id = ?", (new_status, today, job_id))
-        else:
-            c.execute("UPDATE jobs SET status = ? WHERE id = ?", (new_status, job_id))
-
-        conn.commit()
-        conn.close()
-        print(f"✅ Updated Job {job_id} -> {new_status}")
-        return jsonify({'success': True, 'message': f'Status updated to {new_status}'})
-    except Exception as e:
-        print(f"❌ DB Error: {e}")
-        return jsonify({'error': str(e)}), 500
+    conn = get_db_connection()
+    conn.execute('UPDATE jobs SET status = ? WHERE id = ?', (data['status'], data['id']))
+    conn.commit()
+    conn.close()
+    return jsonify({"success": True})
 
 @app.route('/api/save_note', methods=['POST'])
 def save_note():
-    """Save user notes"""
     data = request.json
-    job_id = data.get('id')
-    note = data.get('note')
-
-    try:
-        conn = get_db()
-        c = conn.cursor()
-        c.execute("UPDATE jobs SET notes = ? WHERE id = ?", (note, job_id))
-        conn.commit()
-        conn.close()
-        return jsonify({'success': True})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    conn = get_db_connection()
+    conn.execute('UPDATE jobs SET notes = ? WHERE id = ?', (data['note'], data['id']))
+    conn.commit()
+    conn.close()
+    return jsonify({"success": True})
 
 if __name__ == '__main__':
-    print("🚀 Strategic Match API Server Running on http://localhost:5000")
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)

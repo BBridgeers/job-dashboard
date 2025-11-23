@@ -10,7 +10,8 @@ def init_db():
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
     # Create table with ALL 30 columns if not exists
-    c.execute(CREATE TABLE IF NOT EXISTS jobs (
+    # Fixed the triple-quote syntax error here
+    sql = """CREATE TABLE IF NOT EXISTS jobs (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT, company TEXT, location TEXT, match_score INTEGER,
         url TEXT, application_url TEXT,
@@ -24,7 +25,8 @@ def init_db():
         questions_to_ask TEXT, recruiter_email TEXT, plan_30_60_90 TEXT,
         status TEXT DEFAULT 'New', tier INTEGER DEFAULT 3,
         search_type TEXT, date_added DATE
-    ))
+    )"""
+    c.execute(sql)
     conn.commit()
     conn.close()
 
@@ -48,8 +50,7 @@ def run_migration():
             try:
                 data = json.loads(content)
             except:
-                # Skip old text-based files
-                print(f"⚠️ Skipping {f} (Not JSON)")
+                print(f"⚠️ Skipping {f} (Not valid JSON)")
                 continue
 
             if not isinstance(data, list): data = [data]
@@ -76,7 +77,15 @@ def run_migration():
                     'talking_points', 'questions_to_ask', 'recruiter_email', 'plan_30_60_90'
                 ]
 
-                vals = [job.get(k, '') for k in cols]
+                # Map specific keys from JSON to DB columns
+                # Note: JSON key 'listing_url' maps to DB column 'url'
+                vals = []
+                for k in cols:
+                    if k == 'url':
+                        vals.append(job.get('listing_url', ''))
+                    else:
+                        vals.append(job.get(k, ''))
+
                 vals.append('New') # status
 
                 # Tier Logic
