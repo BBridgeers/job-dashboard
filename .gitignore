@@ -3,3 +3,6 @@ credentials.json
 __pycache__/
 *.pyc
 *.key
+google_credentials.json
+gdrive_credentials.json
+gdrive_token.pickle
