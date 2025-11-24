@@ -273,10 +273,10 @@
                     <input type="text" class="search-input" placeholder="Search jobs..." onkeyup="searchJobs(this.value)">
                 </div>
                 <div class="filter-badges">
-                    <div class="badge-filter all-jobs active" onclick="filterJobs('all')">All Jobs (0)</div>
+                    <div class="badge-filter all-jobs active" onclick="filterJobs('all')">All Jobs (4)</div>
                     <div class="badge-filter tier-1" onclick="filterJobs('t1')">🥇 Tier 1 (0)</div>
                     <div class="badge-filter tier-2" onclick="filterJobs('t2')">🥈 Tier 2 (0)</div>
-                    <div class="badge-filter tier-3" onclick="filterJobs('t3')">🥉 Tier 3 (0)</div>
+                    <div class="badge-filter tier-3" onclick="filterJobs('t3')">🥉 Tier 3 (4)</div>
                     <div class="badge-filter high-match" onclick="filterJobs('high')">🔥 High Match</div>
                     <div class="badge-filter corporate" onclick="filterJobs('corp')">🏢 Corporate</div>
                     <div class="badge-filter nonprofit" onclick="filterJobs('nonprofit')">💚 Nonprofit</div>
@@ -290,6 +290,82 @@
     </div>
     <div class="grid-container">
         
+    <div class="job-card" data-tags="Tier 3,High Match,Nonprofit">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-high">High Match</span><span class="tag tag-nonprofit">Nonprofit</span></div>
+        <div class="job-title">Managing Campus Director</div>
+        <div class="company-name">Per Scholas</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(6, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(6, 'Talking Points')">🗣️ Talk</div></div>
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(6, null)">Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(6, 'https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(6, 'https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime')">APPLY</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+        <div class="status-row">
+            <select id="status-6" class="status-select" onchange="updateStatus(6, this.value)">
+                <option value="New" selected>New</option><option value="Applied" >Applied</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-6" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,High Match,Corporate">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-high">High Match</span><span class="tag tag-corp">Corporate</span></div>
+        <div class="job-title">Customer Success Manager (AI & MarTech SaaS)</div>
+        <div class="company-name">Lavendo</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(1, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(1, 'Talking Points')">🗣️ Talk</div></div>
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(1, null)">Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(1, 'https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(1, 'https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas')">APPLY</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+        <div class="status-row">
+            <select id="status-1" class="status-select" onchange="updateStatus(1, this.value)">
+                <option value="New" selected>New</option><option value="Applied" >Applied</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-1" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,High Match,Corporate">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-high">High Match</span><span class="tag tag-corp">Corporate</span></div>
+        <div class="job-title">Customer Success Manager, Strategic</div>
+        <div class="company-name">Pushpay</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(2, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(2, 'Talking Points')">🗣️ Talk</div></div>
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(2, null)">Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(2, 'https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(2, 'https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship')">APPLY</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+        <div class="status-row">
+            <select id="status-2" class="status-select" onchange="updateStatus(2, this.value)">
+                <option value="New" selected>New</option><option value="Applied" >Applied</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-2" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
+    <div class="job-card" data-tags="Tier 3,Corporate">
+        <div class="card-tags"><span class="tag tag-tier-3">Tier 3</span><span class="tag tag-corp">Corporate</span></div>
+        <div class="job-title">Director - Customer Success</div>
+        <div class="company-name">Steer Health</div>
+        <div class="quick-links"><div class="ql-btn" onclick="openModal(3, 'Interview Prep')">⚡ Prep</div><div class="ql-btn" onclick="openModal(3, 'Talking Points')">🗣️ Talk</div></div>
+        <div class="action-buttons">
+            <button class="btn-3d btn-details" onclick="openModal(3, null)">Details</button>
+            <button class="btn-3d btn-listing" onclick="markViewed(3, 'https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html')">Listing</button>
+            <button class="btn-3d btn-apply" onclick="markApplied(3, 'https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html')">APPLY</button>
+            <a href="tracker.html" class="btn-3d btn-track">Track</a>
+        </div>
+        <div class="status-row">
+            <select id="status-3" class="status-select" onchange="updateStatus(3, this.value)">
+                <option value="New" selected>New</option><option value="Applied" >Applied</option><option value="Interview" >Interview</option><option value="Offer" >Offer</option><option value="Rejected" >Rejected</option>
+            </select>
+            <textarea id="note-3" class="notes-area" placeholder="Notes..."></textarea>
+        </div>
+    </div>
+    
     </div>
     <div id="toast" class="toast">Notification</div>
     <div id="modal" class="modal" onclick="if(event.target===this)document.getElementById('modal').style.display='none'">
@@ -371,7 +447,7 @@
     
     <script>
     function openModal(id, section) {
-        const jobs = [];
+        const jobs = [{"id": 6, "title": "Managing Campus Director", "company": "Per Scholas", "url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime", "match_score": 97, "tier": 3, "status": "New", "notes": null, "company_overview": "Per Scholas is a national nonprofit advancing economic equity through rigorous training for tech careers, partnering with employers to build more diverse talent pipelines.", "role_insights": "Success is measured by program quality, learner graduation and job placement rates, and strong employer partnerships.", "key_requirements": "['7+ years of team and program management in education, nonprofit, or workforce development', 'Strategic leadership and cross-functional collaboration', 'Expertise in program operations and team coaching']", "interview_prep": "['Describe your approach to measurable program improvement.', 'Share an example of leading a team through organizational change.', 'Explain how you would build relationships with new employer partners in Dallas.']", "talking_points": "['Long-term vision for sustainable program growth.', 'Innovative approaches for expanding employer networks.']", "red_flags": "High visibility and performance metrics may create pressure; hybrid work may limit remote applicants.", "full_description": "", "search_type": "Nonprofit", "application_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime", "date_added": "2025-11-24", "app_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime", "list_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime", "tags": ["Tier 3", "High Match", "Nonprofit"]}, {"id": 1, "title": "Customer Success Manager (AI & MarTech SaaS)", "company": "Lavendo", "url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas", "match_score": 93, "tier": 3, "status": "New", "notes": null, "company_overview": "Lavendo is a fast-growing SaaS provider in the marketing technology space, leveraging AI to optimize business automations. They are recognized for their dynamic, fully remote teams and innovation in customer engagement.", "role_insights": "Success is defined by rapid customer onboarding, high retention rates, and successful integration with client systems.", "key_requirements": "['Experience in SaaS or MarTech customer success', 'Working knowledge of HTML/CSS and integration tools (Zapier, APIs)', 'Technical troubleshooting and consultative communication']", "interview_prep": "['Describe a technical onboarding you led.', 'How do you handle rapidly changing product requirements?', 'Share a story of a difficult client turnaround.']", "talking_points": "['Product roadmap for enterprise integrations.', 'Customer feedback loop improvements.']", "red_flags": "Startup pace means changing priorities and heavy workload.", "full_description": "", "search_type": "Corporate", "application_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas", "date_added": "2025-11-24", "app_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas", "list_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas", "tags": ["Tier 3", "High Match", "Corporate"]}, {"id": 2, "title": "Customer Success Manager, Strategic", "company": "Pushpay", "url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship", "match_score": 91, "tier": 3, "status": "New", "notes": null, "company_overview": "Pushpay is a high-growth SaaS platform powering digital engagement and giving solutions for non-profits and faith-based organizations. The company is recognized for rapid expansion and a strong focus on customer enablement.", "role_insights": "Key wins include retention, upsell, and establishing yourself as the trusted advisor for strategic accounts.", "key_requirements": "['Account management in SaaS (ideally enterprise-level)', 'Data-driven revenue retention/expansion', 'Excellent executive communication skills']", "interview_prep": "['Describe how you grew revenue in a strategic customer account.', 'How do you customize communication for executive vs. end user stakeholders?', 'What\u2019s your process for identifying churn risk?']", "talking_points": "['Cross-functional team alignment on renewals.', 'Data-driven advocacy for new product features.']", "red_flags": "Customer base largely in non-profit/faith space; sector exposure helpful.", "full_description": "", "search_type": "Corporate", "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship", "date_added": "2025-11-24", "app_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship", "list_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship", "tags": ["Tier 3", "High Match", "Corporate"]}, {"id": 3, "title": "Director - Customer Success", "company": "Steer Health", "url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html", "match_score": 88, "tier": 3, "status": "New", "notes": null, "company_overview": "Steer Health provides an AI-powered SaaS platform for healthcare organizations, specializing in patient engagement and digital care orchestration. They are in an accelerated growth stage with an expanding product suite.", "role_insights": "Success is building a world-class CS team, ensuring early clients\u2019 outcomes, and defining best practices in a high-velocity environment.", "key_requirements": "['Team leadership in SaaS customer success', 'Strategic account planning', 'Healthcare SaaS or regulated environment experience']", "interview_prep": "['Describe your approach to hiring and onboarding CS talent.', 'How do you drive customer outcomes in regulated environments?', 'Tell us about a time you had to pivot strategy fast.']", "talking_points": "['Scaling CS operations rapidly without sacrificing CX.', 'Balancing compliance with speed in early-stage health tech.']", "red_flags": "Early-stage: ambiguous processes, hands-on work, and team building required.", "full_description": "", "search_type": "Corporate", "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html", "date_added": "2025-11-24", "app_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html", "list_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html", "tags": ["Tier 3", "Corporate"]}];
         const job = jobs.find(j => j.id == id);
         const content = document.getElementById('modal-content');
         let html = `

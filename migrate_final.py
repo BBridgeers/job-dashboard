@@ -46,7 +46,29 @@ def parse_txt_file(filepath):
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
 
+        # Try JSON format first (new format)
+        if content.strip().startswith('[') or content.strip().startswith('{'):
+            try:
+                json_data = json.loads(content)
+                if isinstance(json_data, list):
+                    jobs = json_data
+                elif isinstance(json_data, dict) and 'jobs' in json_data:
+                    jobs = json_data['jobs']
+                else:
+                    jobs = [json_data]
+                print(f"   ✅ Parsed {len(jobs)} jobs from JSON format")
+                # Convert JSON field names to database field names
+                for job in jobs:
+                    # Map JSON fields to database fields if needed
+                    if 'listing_url' in job and 'url' not in job:
+                        job['url'] = job['listing_url']
+                return jobs
+            except json.JSONDecodeError as e:
+                print(f"   ❌ JSON decode error: {e}")
+
+        # Fall back to old text format
         raw_entries = content.split("--------------------------------------------------")
+        print(f"   Processing {len(raw_entries)} text entries")
 
         for entry in raw_entries:
             if not entry.strip(): 
@@ -82,7 +104,6 @@ def parse_txt_file(filepath):
                 else:
                     job[key] = ""
 
-            # Only add jobs with valid URLs
             if job.get('url') and job['url'].strip() != '#':
                 jobs.append(job)
 
@@ -103,7 +124,6 @@ def migrate():
     print(f"📂 Found {len(files)} result files.")
 
     new_count = 0
-    updated_count = 0
 
     for fpath in files:
         print(f"   Processing {fpath}...")
@@ -126,10 +146,9 @@ def migrate():
                     str(j.get('talking_points', '')),
                     str(j.get('red_flags', '')),
                     search_type,
-                    j.get('url', '#')  # application_url same as listing url by default
+                    j.get('application_url', j.get('url', '#'))  # Use application_url or fallback to url
                 )
 
-                # Try to insert, if duplicate update existing
                 c.execute("""
                     INSERT OR IGNORE INTO jobs (
                         title, company, url, match_score, tier, 
@@ -141,24 +160,12 @@ def migrate():
 
                 if c.rowcount > 0:
                     new_count += 1
-                else:
-                    # Update existing job with new data
-                    c.execute("""
-                        UPDATE jobs SET
-                            title = ?, company = ?, match_score = ?, tier = ?,
-                            company_overview = ?, role_insights = ?, key_requirements = ?,
-                            interview_prep = ?, talking_points = ?, red_flags = ?,
-                            search_type = ?, application_url = ?
-                        WHERE url = ?
-                    """, vals)
-                    updated_count += 1
-
             except Exception as e:
-                print(f"❌ Error processing job {j.get('company', 'Unknown')}: {e}")
+                print(f"❌ Error inserting job {j.get('company')}: {e}")
 
     conn.commit()
     conn.close()
-    print(f"✅ Migration Complete. Added {new_count} new jobs, updated {updated_count} existing jobs.")
+    print(f"✅ Migration Complete. Added {new_count} new jobs.")
 
 if __name__ == '__main__':
     migrate()
