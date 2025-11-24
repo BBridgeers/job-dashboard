@@ -3,290 +3,290 @@
     "title": "Managing Campus Director",
     "company": "Per Scholas",
     "location": "Dallas, TX (Hybrid)",
-    "match_score": 97,
+    "match_score": 98,
     "listing_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "application_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "summary_bullets": [
-      "Lead and oversee all campus operations, staff, and learner outcomes.",
+      "Lead campus operations and team management for a workforce development nonprofit.",
       "Cultivate relationships with local employers and workforce organizations.",
-      "Execute organizational strategies for education and job readiness."
+      "Drive metrics-based program performance and learner job-readiness outcomes."
     ],
-    "company_overview": "Per Scholas is a national nonprofit advancing economic equity through rigorous training for tech careers, partnering with employers to build more diverse talent pipelines.",
-    "role_insights": "Success is measured by program quality, learner graduation and job placement rates, and strong employer partnerships.",
+    "company_overview": "Per Scholas is a nonprofit organization focused on advancing economic equity through rigorous tech training for underrepresented communities. Its programs provide tuition-free technology training and professional development to launch careers.",
+    "role_insights": "Success means building a high-performing team, strengthening employer partnerships, and ensuring excellent learner outcomes in job placement.",
     "key_requirements": [
-      "7+ years of team and program management in education, nonprofit, or workforce development",
-      "Strategic leadership and cross-functional collaboration",
-      "Expertise in program operations and team coaching"
+      "7+ years leading teams in nonprofit, education, or workforce development",
+      "Data-driven decision making and program management",
+      "Excellent community engagement and public speaking"
     ],
-    "salary_intel": "$125,000–$130,000",
-    "application_strategy": "Highlight quantifiable leadership achievements managing diverse teams in mission-driven settings.",
-    "red_flags": "High visibility and performance metrics may create pressure; hybrid work may limit remote applicants.",
-    "cultural_fit": "Mission-focused, diverse, results-driven, collaborative.",
-    "competitive_landscape": "Year Up, NPower, local workforce nonprofits.",
-    "skills_gap": "Advanced data-informed decision making in education outcomes.",
-    "network_leverage": "Connect with current Per Scholas campus leaders and board members on LinkedIn.",
-    "decision_timeline": "Urgent/rolling, as indicated by detailed and timely postings.",
-    "career_trajectory": "Potential path to Regional Director or National Program Leader.",
-    "resume_keywords": ["program management", "team leadership", "workforce development", "learner success", "community engagement"],
-    "resume_summary": "Proven leader with extensive experience managing education and workforce programs, driving learner success through data-driven strategies and strong community engagement.",
-    "cover_letter": "As an experienced nonprofit leader passionate about education equity, I am excited to apply for the Managing Campus Director role at Per Scholas. My track record in workforce program management and stakeholder engagement aligns with your campus's mission to empower diverse learners.",
+    "salary_intel": "$125,000 - $130,000",
+    "application_strategy": "Demonstrate tangible outcomes from prior leadership roles, especially those tied to workforce or learner success metrics.",
+    "red_flags": "High expectations on metrics and program outcomes may require adjustment for candidates from less data-driven cultures.",
+    "cultural_fit": "Mission-driven, inclusive, collaborative, and focused on community impact and results.",
+    "competitive_landscape": "TechBridge, Year Up, Goodwill Industries, NPower",
+    "skills_gap": "Workforce development data analytics",
+    "network_leverage": "Current or former Per Scholas staff, local workforce board executives",
+    "decision_timeline": "Likely rolling due to urgency and leadership required for the campus.",
+    "career_trajectory": "Possible advancement to Regional Director or VP of Operations within the organization or tech workforce sector.",
+    "resume_keywords": ["workforce development", "nonprofit leadership", "team management", "community engagement", "learner outcomes"],
+    "resume_summary": "Accomplished nonprofit leader with a proven record building effective teams and delivering strong learner and job placement outcomes. Deep expertise in workforce development, program management, and external partner engagement.",
+    "cover_letter": "As a mission-driven leader with deep roots in workforce development, I am energized by Per Scholas’ commitment to advancing economic mobility in Dallas. Leading with a data-informed and collaborative approach, I am confident that I can build strong teams and impactful employer partnerships to propel learner success.",
     "why_me_bullets": [
-      "Over a decade building high-performing teams in mission-driven education programs.",
-      "Demonstrated success in developing community partnerships and employer outreach.",
-      "Expertise in data-driven program optimization and operational excellence."
+      "Extensive experience leading diverse teams and achieving ambitious outcomes.",
+      "Deep local knowledge of the Dallas-area employer landscape.",
+      "Proven track record in workforce development and nonprofit management."
     ],
     "why_them_bullets": [
-      "Per Scholas pioneers accessible career pathways that align with my belief in economic mobility.",
-      "Nationally respected for diversity and impact in tech education.",
-      "Offers opportunity to drive regional workforce outcomes at scale."
+      "Respected leader in equitable tech workforce training.",
+      "Strong impact orientation and community presence in Dallas.",
+      "Innovative, learner-centered program model."
     ],
     "interview_prep": [
-      "Describe your approach to measurable program improvement.",
-      "Share an example of leading a team through organizational change.",
-      "Explain how you would build relationships with new employer partners in Dallas."
+      "Describe your approach to leading high-performing teams.",
+      "How have you built successful community partnerships?",
+      "Share a time you delivered results under challenging metrics."
     ],
-    "star_hooks": "A time you turned around underperforming program metrics by empowering your team and engaging local partners.",
+    "star_hooks": "Describe turning around a struggling program by implementing new data-driven strategies that improved both staff morale and learner job placement.",
     "talking_points": [
-      "Long-term vision for sustainable program growth.",
-      "Innovative approaches for expanding employer networks."
+      "Strategies to boost employer engagement and graduate placement rates.",
+      "Potential for program model innovation and scale in Dallas."
     ],
     "questions_to_ask": [
-      "What are the key challenges your Dallas campus faces in 2026?",
-      "How does Per Scholas support leadership development internally?"
+      "How is campus success measured beyond job placement metrics?",
+      "What internal advancement and professional development opportunities exist for campus leaders?"
     ],
     "recruiter_email": "firstname.lastname@perscholas.org",
-    "plan_30_60_90": "30: Meet team, assess campus operations and KPIs. 60: Optimize learner experience and deepen employer partnerships. 90: Launch new initiatives to boost job placement and retention."
+    "plan_30_60_90": "30 Days: Build relationships with staff and key partners, review current campus metrics. 60 Days: Implement quick wins for operational improvement, connect with top employers. 90 Days: Deliver measurable improvement in candidate job readiness and site operations."
   },
   {
     "title": "Director of Development",
     "company": "Youth Guidance",
     "location": "Dallas, TX (Hybrid)",
-    "match_score": 94,
+    "match_score": 97,
     "listing_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "application_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "summary_bullets": [
-      "Oversee all Dallas fundraising and donor engagement initiatives.",
-      "Lead grant writing, stewardship, and cultivation of major gifts.",
-      "Partner with executive leadership on strategic growth."
+      "Oversee fundraising strategy and donor engagement for a major youth-serving nonprofit.",
+      "Partner closely with program and executive leaders to drive funding growth.",
+      "Lead a development team serving Dallas-area and new site expansion."
     ],
-    "company_overview": "Youth Guidance is a nonprofit providing evidence-based youth development and counseling programs, preparing students in underserved communities for success.",
-    "role_insights": "Achieve annual fundraising goals, build partnerships, and launch new initiatives in support of youth programs.",
+    "company_overview": "Youth Guidance is a respected national nonprofit, focused on empowering young people in under-resourced communities through evidence-based school and community programs.",
+    "role_insights": "Strong fundraising growth, deepening donor relationships, and funding for site expansion will be key drivers of success.",
     "key_requirements": [
-      "5+ years nonprofit fundraising, including major gifts",
-      "Outstanding written/oral communication",
-      "Strategic relationship building"
+      "Demonstrated major gifts fundraising experience",
+      " Donor cultivation and stewardship expertise",
+      "Team leadership"
     ],
-    "salary_intel": "$95,000–$102,000",
-    "application_strategy": "Tailor your application to donor impact stories and connect past fundraising wins to similar youth missions.",
-    "red_flags": "High targets for fundraising; hybrid schedule may affect flexibility.",
-    "cultural_fit": "Mission-driven, youth-centered, innovative, collaborative.",
-    "competitive_landscape": "Communities In Schools, Big Brothers Big Sisters, Boys & Girls Clubs.",
-    "skills_gap": "Advanced grant management systems.",
-    "network_leverage": "Reach out to current Dallas board members and the Executive Director.",
-    "decision_timeline": "Likely rolling, based on time-sensitive fundraising.",
-    "career_trajectory": "Growth toward Chief Development Officer or Executive Director.",
-    "resume_keywords": ["fundraising", "donor engagement", "grant writing", "major gifts", "youth development"],
-    "resume_summary": "Dynamic development leader with expertise in major gift cultivation and community partnerships, driving fundraising success for youth-serving organizations.",
-    "cover_letter": "With deep experience in nonprofit fundraising and a commitment to youth empowerment, I am drawn to the Director of Development role at Youth Guidance, where I can leverage my skills to expand donor impact and support youth success in Dallas.",
+    "salary_intel": "$95,000 - $102,000",
+    "application_strategy": "Highlight multi-channel fundraising outcomes and depth of local Dallas donor relationships or networks.",
+    "red_flags": "Expectations may include expansion fundraising in new markets; high performance required.",
+    "cultural_fit": "Youth-driven, impact-oriented, values collaboration and learning.",
+    "competitive_landscape": "Big Brothers Big Sisters, Boys & Girls Clubs, Communities in Schools",
+    "skills_gap": "Scaling donor engagement for expansion",
+    "network_leverage": "Current donors or board members, Dallas-area philanthropists",
+    "decision_timeline": "Priority fill—timeline likely less than 30 days.",
+    "career_trajectory": "Advancement to Executive Director, Chief Development Officer, or national leadership roles.",
+    "resume_keywords": ["fundraising", "youth development", "major gifts", "donor engagement", "team leadership"],
+    "resume_summary": "Results-driven fundraising leader with a deep commitment to youth empowerment and a strong track record of securing major gifts for nonprofit growth. Skilled in donor strategy, stewardship, and leading high-performing teams.",
+    "cover_letter": "With a passion for advancing youth outcomes, I am excited to bring my proven development skills to Youth Guidance. My strengths in donor relations and strategic fundraising align perfectly with your mission and growth goals for Dallas youth initiatives.",
     "why_me_bullets": [
-      "Proven record exceeding annual fundraising goals in youth development.",
-      "Exceptional communicator with expertise engaging diverse donor bases.",
-      "Skilled in launching creative donor engagement initiatives."
+      "History of meeting and exceeding fundraising goals in youth-focused nonprofits.",
+      "Networked with Dallas-area donors and philanthropic leaders.",
+      "Experienced in developing creative donor engagement strategies."
     ],
     "why_them_bullets": [
-      "Innovative, evidence-based youth programs align with my values.",
-      "Opportunities for professional growth and leadership.",
-      "Strong reputation for program outcomes and student impact."
+      "National reputation for evidence-based youth programs.",
+      "Strategic growth into new sites and communities.",
+      "Collaborative, supportive leadership culture."
     ],
     "interview_prep": [
-      "Tell us about a time you exceeded a fundraising goal.",
-      "How do you build long-term donor relationships?",
-      "Describe how you'd expand Youth Guidance's reach in Dallas."
+      "Describe a successful major gifts campaign you led.",
+      "How have you built a new donor pipeline?",
+      "Share your approach to team management in a fundraising environment."
     ],
-    "star_hooks": "When you organized a community fundraiser that doubled annual donations via creative donor engagement.",
+    "star_hooks": "Successfully turned around underperforming development teams to consistently hit stretch goals through strategic donor engagement.",
     "talking_points": [
-      "Strategies for diversifying the donor pipeline.",
-      "Leveraging partnerships for sustainable growth."
+      "Innovative strategies for engaging new funders in the Dallas area.",
+      "The future of multi-site expansion and donor network building."
     ],
     "questions_to_ask": [
-      "What new programs are you looking to fund in 2026?",
-      "How do you support donor stewardship and retention?"
+      "How has Youth Guidance adapted its fundraising approach post-pandemic?",
+      "What are the primary priorities for the role in the first year?"
     ],
     "recruiter_email": "firstname.lastname@youth-guidance.org",
-    "plan_30_60_90": "30: Review all fundraising initiatives, meet team/donors. 60: Launch at least one new donor engagement strategy. 90: Present results and adjust approach to meet annual goals."
+    "plan_30_60_90": "30 Days: Assess fundraising pipeline and meet key donors. 60 Days: Implement immediate campaign improvements. 90 Days: Launch at least one new donor initiative and exceed Q1 fundraising benchmarks."
   },
   {
     "title": "Director of Shelter Services",
     "company": "Austin Street Center",
-    "location": "Dallas, TX (On-site)",
-    "match_score": 90,
+    "location": "Dallas, TX",
+    "match_score": 95,
     "listing_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "application_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "summary_bullets": [
-      "Direct all operational aspects of homeless shelter services.",
-      "Lead, mentor, and develop teams to achieve outcomes.",
-      "Ensure compliance and program quality for vulnerable populations."
+      "Oversee shelter services program for a leading Dallas homeless services organization.",
+      "Supervise staff and ensure compliance with best practices in human services.",
+      "Drive client-centered care and support program outcomes."
     ],
-    "company_overview": "Austin Street Center is a Dallas nonprofit offering emergency shelter and resources to individuals experiencing homelessness, committed to helping guests transition to independence.",
-    "role_insights": "Deliver best-in-class shelter services and improve outcomes for guests, while ensuring compliance and operational excellence.",
+    "company_overview": "Austin Street Center is a cornerstone Dallas nonprofit dedicated to helping individuals experiencing homelessness secure shelter, support, and pathways to independence.",
+    "role_insights": "Success means ensuring program excellence, achieving strong client outcomes, and maintaining regulatory compliance.",
     "key_requirements": [
       "Master’s degree in human services or nonprofit management",
-      "Team leadership and operational management",
-      "Strong conflict resolution and compliance skills"
+      "Staff supervision and program evaluation experience",
+      "Strong organizational and leadership skills"
     ],
-    "salary_intel": "$80,000–$83,000",
-    "application_strategy": "Demonstrate your commitment to trauma-informed care and ability to manage high-need populations.",
-    "red_flags": "May require crisis management outside normal hours; emotionally demanding environment.",
-    "cultural_fit": "Mission-oriented, compassionate, resilient, teamwork-driven.",
-    "competitive_landscape": "The Bridge, Salvation Army, Union Gospel Mission.",
-    "skills_gap": "Latest best practices in trauma-informed care.",
-    "network_leverage": "Reach out to program alumni or senior staff for insights.",
-    "decision_timeline": "Likely urgent: essential service role.",
-    "career_trajectory": "Progression to VP Program Services or Executive Director roles.",
-    "resume_keywords": ["shelter operations", "team development", "compliance", "homeless services", "program quality"],
-    "resume_summary": "Strategic leader with extensive experience in shelter operations and team management, specializing in trauma-informed, compliance-driven service delivery.",
-    "cover_letter": "My passion for empowering vulnerable individuals and expertise in nonprofit operations draw me to Austin Street Center’s Director of Shelter Services opportunity, where I seek to advance program quality and guest outcomes.",
+    "salary_intel": "$80,000 - $83,000",
+    "application_strategy": "Emphasize experience improving shelter program outcomes and hands-on staff supervision.",
+    "red_flags": "Direct client-facing work can be emotionally demanding; possible on-call responsibilities.",
+    "cultural_fit": "Compassion-focused, mission-driven, team-oriented.",
+    "competitive_landscape": "The Bridge Homeless Recovery Center, CitySquare, Salvation Army Dallas",
+    "skills_gap": "Trauma-informed care best practices",
+    "network_leverage": "Shelter advocates, Dallas Continuum of Care partners",
+    "decision_timeline": "Likely hiring on an urgent or rolling basis.",
+    "career_trajectory": "Potential to move to VP of Programs or Chief Program Officer roles.",
+    "resume_keywords": ["shelter management", "homeless services", "program evaluation", "staff supervision", "client outcomes"],
+    "resume_summary": "Experienced shelter leader with a strong background in human services and a record of program excellence in serving vulnerable populations. Skilled in staff supervision, program evaluation, and client-centered care.",
+    "cover_letter": "With a commitment to dignity and support for Dallas’ most vulnerable neighbors, I am eager to bring my shelter leadership and program management skills to Austin Street Center as Director of Shelter Services.",
     "why_me_bullets": [
-      "Proven leadership in emergency services environments.",
-      "Deep knowledge of compliance in nonprofit settings.",
-      "Demonstrated skill in staff development and guest engagement."
+      "Proven leader in shelter operations and staff management.",
+      "Deep understanding of trauma-informed and holistic client care.",
+      "Track record achieving regulatory compliance and program goals."
     ],
     "why_them_bullets": [
-      "Strong commitment to client-centered care and innovation.",
-      "Opportunity to impact Dallas’s most vulnerable populations.",
-      "Reputation for operational excellence in shelter services."
+      "Longstanding impact on Dallas’ homeless population.",
+      "Innovative programs focused on client outcomes.",
+      "Team-oriented and mission-focused work culture."
     ],
     "interview_prep": [
-      "How have you handled a crisis in a shelter or nonprofit setting?",
-      "What is your approach to team retention and morale?",
-      "How would you measure program success for shelter guests?"
+      "Describe a time you improved outcomes for shelter clients.",
+      "How have you managed a multidisciplinary staff?",
+      "What’s your approach to self-care and staff well-being in demanding environments?"
     ],
-    "star_hooks": "Describe a time you navigated a crisis and ensured guest safety while maintaining program integrity.",
+    "star_hooks": "Explain how you implemented a new intake process that increased program engagement and positive exits.",
     "talking_points": [
-      "Implementing trauma-informed best practices.",
-      "Data-driven approach to improving shelter outcomes."
+      "Expanding capacity and partnerships for greater impact.",
+      "Balancing compliance with compassionate, individualized care."
     ],
     "questions_to_ask": [
-      "How does Austin Street Center invest in staff well-being?",
-      "What partnerships are most pivotal for service delivery?"
+      "How are client outcomes and staff success evaluated?",
+      "What are the current gaps in service delivery you hope to address?"
     ],
     "recruiter_email": "firstname.lastname@austinstreet.org",
-    "plan_30_60_90": "30: Meet staff, review operations, assess compliance. 60: Implement quick wins for program improvement. 90: Set longer-term goals around guest outcomes and service growth."
+    "plan_30_60_90": "30 Days: Meet team and review current protocols. 60 Days: Initiate process improvements. 90 Days: Demonstrate increased client outcomes and team morale."
   },
   {
     "title": "Texas State Director",
     "company": "Best Buddies International",
-    "location": "Dallas, TX (On-site)",
-    "match_score": 92,
+    "location": "Dallas, TX",
+    "match_score": 93,
     "listing_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "application_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "summary_bullets": [
-      "Lead statewide programs fostering inclusion for people with intellectual and developmental disabilities.",
-      "Drive fundraising, staff performance, and mission impact across Texas.",
-      "Represent the organization with community partners and at public events."
+      "Lead statewide expansion and operational excellence for an inclusive youth-focused nonprofit.",
+      "Build state-wide partnerships and funder relationships.",
+      "Implement annual state plan and mentor direct-reports."
     ],
-    "company_overview": "Best Buddies International creates opportunities for one-to-one friendships, integrated employment, leadership development, and inclusive living for individuals with intellectual and developmental disabilities.",
-    "role_insights": "Success comes from program growth, fundraising results, and strengthening the inclusion mission across Texas.",
+    "company_overview": "Best Buddies International fosters inclusive opportunities for individuals with intellectual and developmental disabilities, offering programs in schools and communities nationwide.",
+    "role_insights": "Drive program participation, revenue growth, and partnership expansion across Texas.",
     "key_requirements": [
-      "7+ years leadership experience in disability, youth, or social services",
-      "Proven fundraising and program expansion results",
-      "Strong stakeholder engagement skills"
+      "Executive nonprofit leadership experience",
+      "State-wide strategic planning",
+      "Stakeholder engagement & public speaking"
     ],
-    "salary_intel": "$100,000–$115,000",
-    "application_strategy": "Highlight cross-regional leadership and experience driving systemic impact and growth.",
-    "red_flags": "Significant travel required; broad scope of responsibility.",
-    "cultural_fit": "Empowering, passionate, high-energy, inclusive.",
-    "competitive_landscape": "Special Olympics Texas, The Arc, Easterseals.",
-    "skills_gap": "Current trends in disability advocacy and leadership.",
-    "network_leverage": "Engage with Texas regional program managers and national Best Buddies staff.",
-    "decision_timeline": "Likely rolling; expectation to fill promptly for statewide initiatives.",
-    "career_trajectory": "Potential to progress to a National VP or Executive Director.",
-    "resume_keywords": ["statewide programs", "fundraising", "disability inclusion", "stakeholder engagement", "program expansion"],
-    "resume_summary": "Seasoned leader with a track record of statewide program growth, fundraising success, and advancing inclusion for people with disabilities.",
-    "cover_letter": "With an unwavering commitment to inclusion and strong leadership driving statewide impact, I am eager to lead Best Buddies Texas in advancing opportunities for individuals with disabilities.",
+    "salary_intel": "$100,000 - $115,000",
+    "application_strategy": "Demonstrate large-scale expansion leadership, especially with youth, disability, or community engagement organizations.",
+    "red_flags": "High visibility and ambitious growth goals; statewide travel required.",
+    "cultural_fit": "Passionate, people-focused, growth mindset with an emphasis on inclusivity.",
+    "competitive_landscape": "Special Olympics Texas, Easterseals, The Arc of Texas",
+    "skills_gap": "State-level advocacy and government relations",
+    "network_leverage": "Statewide disability advocates or legislators, current funders",
+    "decision_timeline": "Leadership role likely prioritized, timeline within 4 weeks.",
+    "career_trajectory": "Growth to Regional Director or C-suite, or platform for national advocacy work.",
+    "resume_keywords": ["program expansion", "nonprofit operations", "youth development", "stakeholder engagement", "statewide strategy"],
+    "resume_summary": "Dynamic nonprofit leader skilled in driving statewide operational excellence and building inclusive programs for youth. Adept at leading teams, forging partnerships, and scaling mission-driven impact across Texas.",
+    "cover_letter": "I am inspired by Best Buddies’ vision for inclusive communities and am eager to bring my statewide leadership experience to Texas. My record of building partnerships and scaling youth programs will ensure Best Buddies continues to thrive and grow.",
     "why_me_bullets": [
-      "Demonstrated history of building inclusive, impact-driven programs.",
-      "Expertise in scaling operations and managing multi-site teams.",
-      "Outstanding record in fundraising and stakeholder relations."
+      "Led successful statewide nonprofit expansions.",
+      "Expertise in inclusive youth programming.",
+      "Skilled coalition builder and team mentor."
     ],
     "why_them_bullets": [
-      "Mission of inclusion resonates deeply with my values.",
-      "Best Buddies is a global changemaker in disability leadership.",
-      "Exciting opportunity to shape the statewide vision and strategy."
+      "Pioneer in disability inclusion and youth empowerment.",
+      "Supportive culture with strong leadership training.",
+      "Commitment to expanding Texas programs."
     ],
     "interview_prep": [
-      "Share an experience scaling a statewide or regional program.",
-      "How do you engage diverse stakeholders for mission alignment?",
-      "How would you approach cross-regional fundraising?"
+      "Share a story of expanding a program statewide.",
+      "How have you managed geographically distributed teams?",
+      "What is your vision for disability inclusion in Texas?"
     ],
-    "star_hooks": "Describe a project where you led statewide expansion and increased mission outcomes amid resource constraints.",
+    "star_hooks": "Describe launching a new regional office and exceeding participation and funding targets.",
     "talking_points": [
-      "Opportunities for strategic partnerships statewide.",
-      "Long-term vision for Texas program growth."
+      "Opportunities for new public-private partnerships in Texas.",
+      "Approaches to sustainable revenue growth for long-term impact."
     ],
     "questions_to_ask": [
-      "How do you balance state priorities with national initiatives?",
-      "What are your top priorities for Texas in 2026?"
+      "What are the next milestones for Texas expansion?",
+      "How does the Texas team interact with national leadership?"
     ],
     "recruiter_email": "firstname.lastname@bestbuddies.org",
-    "plan_30_60_90": "30: Deep dive into state metrics and program status. 60: Meet key staff, partners, and stakeholders. 90: Present a statewide growth and fundraising plan."
+    "plan_30_60_90": "30 Days: Assess statewide performance and visit key sites. 60 Days: Launch new partnership initiatives. 90 Days: Deliver on initial milestones for expansion and revenue targets."
   },
   {
-    "title": "Director of Program Services",
+    "title": "Director Program Services",
     "company": "Vizient, Inc.",
-    "location": "Irving, TX (Dallas Metro)",
-    "match_score": 85,
+    "location": "Irving, TX (Dallas/Fort Worth area, hybrid possible)",
+    "match_score": 91,
     "listing_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "application_url": "https://www.indeed.com/q-nonprofit-director-l-dallas,-tx-jobs.html?jt=parttime",
     "summary_bullets": [
-      "Lead all aspects of a major healthcare program focused on impact standardization.",
-      "Drive cross-functional teams in executing value-based initiatives.",
-      "Build and sustain key hospital and partner relationships."
+      "Strategic leadership of healthcare impact programs and managed rebate initiatives.",
+      "Cross-functional management of program execution with operational excellence.",
+      "Key liaison with external and internal stakeholders to drive impact."
     ],
-    "company_overview": "Vizient, Inc. is a healthcare performance improvement company serving nonprofit hospitals and health systems, delivering data-driven insights and program management.",
-    "role_insights": "Success is defined by program excellence, measured outcomes, and expansion of partnership value.",
+    "company_overview": "Vizient, Inc. advances healthcare performance through data-driven solutions, partnering with nonprofit health systems and foundations across the nation.",
+    "role_insights": "Deliver measurable results from healthcare programs, standardize impact initiatives, and build strong cross-sector partnerships.",
     "key_requirements": [
-      "7+ years program management, ideally in healthcare or nonprofits",
-      "Expertise in data analytics and value-based care",
-      "Strong cross-functional team leadership"
+      "Healthcare program management experience",
+      "Strategic planning and operations",
+      "Financial acumen and stakeholder engagement"
     ],
-    "salary_intel": "$117,600–$206,000",
-    "application_strategy": "Demonstrate measurable program outcomes and an ability to navigate complex healthcare stakeholder environments.",
-    "red_flags": "Large corporate structure may limit nonprofit flexibility; focus on healthcare systems may require industry-specific expertise.",
-    "cultural_fit": "Mission-oriented, analytical, collaborative, high-performing.",
-    "competitive_landscape": "Premier Inc., HealthTrust, local hospital systems.",
-    "skills_gap": "Value-based healthcare program management.",
-    "network_leverage": "Connect with alumni in Vizient's program or project management teams on LinkedIn.",
-    "decision_timeline": "Likely urgent for healthcare-focused program areas.",
-    "career_trajectory": "Growth toward Senior Director or VP-level healthcare program roles.",
-    "resume_keywords": ["program management", "healthcare", "data analytics", "value-based initiatives", "stakeholder engagement"],
-    "resume_summary": "Results-driven healthcare leader specializing in value-based program management, analytics, and collaborative stakeholder partnerships for nonprofit systems.",
-    "cover_letter": "As a passionate advocate for healthcare impact, I am excited to apply for the Director of Program Services position at Vizient, merging my commitment to innovation and nonprofit excellence.",
+    "salary_intel": "$117,600 - $206,000",
+    "application_strategy": "Demonstrate past healthcare program results and ability to manage multiple stakeholders in complex matrices.",
+    "red_flags": "Potential for large-scale responsibility and matrixed reporting may be challenging.",
+    "cultural_fit": "Results-focused, analytical, collaborative, mission-aligned with healthcare improvement.",
+    "competitive_landscape": "Premier Inc., HealthTrust, MedAssets",
+    "skills_gap": "Healthcare finance and reimbursement mechanisms",
+    "network_leverage": "Healthcare foundation program officers, Vizient client contacts",
+    "decision_timeline": "Attractive salary—likely a quick process for top candidates.",
+    "career_trajectory": "Growth potential to VP of Program Strategy or Chief Impact Officer.",
+    "resume_keywords": ["program leadership", "healthcare impact", "stakeholder engagement", "operational excellence", "managed care"],
+    "resume_summary": "Accomplished program leader with a track record of delivering strategic impact for healthcare providers and foundations. Excels in operational excellence, stakeholder engagement, and managing complex programs.",
+    "cover_letter": "I am excited by Vizient's mission to advance healthcare through collaborative program leadership. I bring rich experience delivering impact in healthcare settings and am eager to support the growth and standardization of your managed programs.",
     "why_me_bullets": [
-      "Track record managing complex healthcare programs for nonprofit systems.",
-      "Expertise in data analytics and value-based care initiatives.",
-      "Proven history of high-value partner engagement."
+      "Healthcare program management expertise.",
+      "Strong record working with matrixed teams and stakeholders.",
+      "Skilled at driving measurable impact in complex settings."
     ],
     "why_them_bullets": [
-      "Vizient shapes the future of nonprofit healthcare improvement.",
-      "Data-driven solutions align with my skillset and values.",
-      "Opportunity to partner with leading hospitals across the United States."
+      "Industry leader in healthcare performance.",
+      "Collaborative, results- and mission-driven culture.",
+      "Commitment to innovation and program impact."
     ],
     "interview_prep": [
-      "Describe your approach to program standardization and measurement.",
-      "How have you fostered cross-functional teamwork on large projects?",
-      "Share an example of a successful value-based initiative."
+      "Describe a major healthcare program you led from launch to impact.",
+      "How do you manage cross-functional teams and competing priorities?",
+      "Share your approach to financial acumen in healthcare program settings."
     ],
-    "star_hooks": "A project where you improved healthcare outcomes using data-driven strategies under tight timelines.",
+    "star_hooks": "Tell the story of turning around a programs portfolio to deliver better patient outcomes and higher ROI.",
     "talking_points": [
-      "Impact of standardization on healthcare system value.",
-      "Building partnerships for sustainable program growth."
+      "Future direction of healthcare impact programs.",
+      "Strategies for deepening non-profit health system partnerships."
     ],
     "questions_to_ask": [
-      "How does Vizient support innovation in program services?",
-      "What are the most critical partnerships for this program?"
+      "What are the most important program KPIs in this role?",
+      "How does Vizient support career and leadership growth?"
     ],
     "recruiter_email": "firstname.lastname@vizientinc.com",
-    "plan_30_60_90": "30: Assess all program metrics and partner relationships. 60: Standardize best practices in delivery. 90: Recommend and implement program improvements based on initial findings."
+    "plan_30_60_90": "30 Days: Deep dive into program portfolios and key metrics. 60 Days: Align teams on strategy and process improvements. 90 Days: Deliver measurable progress on program outcomes and partner satisfaction."
   }
 ]
