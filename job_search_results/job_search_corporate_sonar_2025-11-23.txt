@@ -1,322 +1,322 @@
 [
   {
-    "title": "Customer Success Manager (AI & MarTech SaaS)",
-    "company": "Lavendo",
-    "location": "Austin, TX / Remote",
-    "match_score": 92,
-    "listing_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas",
-    "application_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas",
-    "summary_bullets": [
-      "Own customer relationships for a fast-growing MarTech SaaS platform",
-      "Requires technical literacy, including APIs and no-code automation tools",
-      "Competitive compensation with a focus on retention and upsell"
-    ],
-    "company_overview": "Lavendo is an AI-driven MarTech SaaS firm helping brands automate and personalize digital marketing campaigns. The company is growing rapidly, driven by innovation around automation and customer engagement.",
-    "role_insights": "Proactive relationship management, deep product knowledge, and ability to translate client needs into tactical success are key; measurable outcomes are client retention and expansion.",
-    "key_requirements": [
-      "Working knowledge of APIs and automation tools (e.g., Zapier)",
-      "Customer relationship management",
-      "Experience with HTML/CSS"
-    ],
-    "salary_intel": "$100K - $120K base salary",
-    "application_strategy": "Highlight your experience with no-code tools and give a brief example of helping a customer scale via automation.",
-    "red_flags": "May require handling technical troubleshooting beyond a purely relationship-based role.",
-    "cultural_fit": "Energetic, fast-paced, innovation-focused environment",
-    "competitive_landscape": "HubSpot, Braze, ActiveCampaign",
-    "skills_gap": "API workflow mapping",
-    "network_leverage": "Reach out to the Head of Customer Success and MarTech Product Manager",
-    "decision_timeline": "Role is urgent and likely follows a rolling interview schedule.",
-    "career_trajectory": "Progression to Director, Technical Account Management, or Product roles.",
-    "resume_keywords": [
-      "Customer Success",
-      "MarTech",
-      "SaaS",
-      "Automation",
-      "APIs"
-    ],
-    "resume_summary": "Customer Success Manager with proven track record in SaaS, APIs, and automation, adept at scaling enterprise customer accounts and driving retention.",
-    "cover_letter": "With a passion for elevating customer experiences in SaaS MarTech, I am excited to bring my technical expertise and consultative approach to Lavendo’s forward-thinking team.",
-    "why_me_bullets": [
-      "Deep experience in SaaS and customer lifecycle management",
-      "Hands-on automation expertise (Zapier, API integrations)",
-      "Proven ability to drive customer adoption and expansion"
-    ],
-    "why_them_bullets": [
-      "Excited by Lavendo’s technical innovation in MarTech",
-      "Opportunity to impact customer outcomes at scale",
-      "Fast-growth, AI-driven culture aligns with my career goals"
-    ],
-    "interview_prep": [
-      "Describe a time you automated a process for a customer.",
-      "How do you handle technical challenges with non-technical clients?",
-      "What metrics do you use to measure customer health?"
-    ],
-    "star_hooks": "Situation: Customer struggling to integrate; Task: Provide tailored API guidance; Action: Built new automation flow; Result: Achieved 40% reduction in churn.",
-    "talking_points": [
-      "How AI-driven automation enhances customer retention",
-      "Scalability of support processes as the company grows"
-    ],
-    "questions_to_ask": [
-      "What are the biggest barriers to customer adoption you’ve seen?",
-      "How does the product team interact with client-facing roles?"
-    ],
-    "recruiter_email": "firstname.lastname@lavendo.com",
-    "plan_30_60_90": "30: Shadow top CSMs, meet key customers; 60: Take over a segment, launch automation pilot; 90: Own a book of enterprise accounts and drive first upsell."
-  },
-  {
     "title": "Customer Success Manager, Strategic",
     "company": "Pushpay",
     "location": "Remote (Dallas, TX)",
-    "match_score": 88,
-    "listing_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship",
-    "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html?vjk=d9b9813ba6a5ece9&jt=internship",
+    "match_score": 78,
+    "listing_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html",
+    "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html",
     "summary_bullets": [
-      "Strategic CSM role owning revenue retention for SaaS clients",
-      "Opportunity to work fully remote with enterprise accounts",
-      "Excellent benefits including 401(k), paid parental leave"
+      "Lead revenue retention initiatives with strategic oversight of key accounts",
+      "Manage high-value customer relationships with targets ensuring long-term retention",
+      "Travel for business when restrictions allow to deepen client partnerships"
     ],
-    "company_overview": "Pushpay builds SaaS solutions for engagement and payments, primarily serving faith-based and nonprofit organizations. The business has a solid U.S. presence and a strong, recurring revenue model.",
-    "role_insights": "Success involves exceeding retention targets, building strong client trust with multiple stakeholders, and uncovering upsell opportunities.",
+    "company_overview": "Pushpay is a cloud-based SaaS platform serving faith-based and non-profit organizations with payment and communication solutions. The company prioritizes customer success through strategic account management and organizational scaling.",
+    "role_insights": "Success in this role means hitting revenue retention targets, reducing churn, and expanding customer lifetime value through proactive engagement. You'll be measured on your ability to prevent customer attrition and identify upsell opportunities.",
     "key_requirements": [
-      "SaaS Customer Success experience",
-      "Enterprise account management",
-      "Data-driven retention strategy"
+      "Enterprise account management experience",
+      "Revenue retention and retention strategy expertise",
+      "Consultative selling and relationship-building skills"
     ],
-    "salary_intel": "$100,000 - $122,000 base plus benefits",
-    "application_strategy": "Showcase experience managing strategic and high-touch accounts; reference proven revenue retention outcomes.",
-    "red_flags": "Potential periodic travel requirements and the need for experience with faith-based/nonprofit clients.",
-    "cultural_fit": "Mission-driven, collaborative, low-ego, results-oriented",
-    "competitive_landscape": "Blackbaud, Virtuous, Salesforce.org",
-    "skills_gap": "Understanding nonprofit/fundraising verticals",
-    "network_leverage": "VP of Customer Success or strategic account directors",
-    "decision_timeline": "Hiring on a rolling basis but flagged as high priority.",
-    "career_trajectory": "Can grow into Senior CSM, Account Director, or Strategic Initiatives Lead.",
+    "salary_intel": "$100,000 - $122,000 per year",
+    "application_strategy": "Highlight specific metrics from previous roles showing revenue retained, churn reduction percentage, and expansion revenue generated. Use the STAR method to demonstrate strategic account management wins.",
+    "red_flags": "Travel requirements may increase post-restrictions; compensation is mid-market for SaaS; limited mention of base/variable split suggests possible commission structure.",
+    "cultural_fit": "Pushpay fosters a mission-driven culture focused on serving nonprofits and faith communities. The environment values strategic thinking, long-term customer relationships, and organizational growth.",
+    "competitive_landscape": "Direct competitors include Blackbaud, Planning Center, and other nonprofit-focused SaaS providers.",
+    "skills_gap": "Nonprofit sector domain knowledge would be a strong differentiator; consider familiarizing yourself with challenges faced by faith-based and charitable organizations.",
+    "network_leverage": "Connect with current/former Pushpay account executives or CSMs on LinkedIn; reach out to nonprofit community leaders who use Pushpay.",
+    "decision_timeline": "Likely 2-3 week interview cycle; rolling applications suggest ongoing hiring need.",
+    "career_trajectory": "This Strategic CSM role often leads to Senior Customer Success Manager, Director of Customer Success, or VP of Customer Operations at SaaS companies.",
     "resume_keywords": [
       "Revenue Retention",
-      "Strategic Accounts",
-      "SaaS Customer Success",
-      "Enterprise Clients",
-      "Upsell"
+      "Enterprise Account Management",
+      "Customer Lifetime Value (CLV)",
+      "Churn Reduction",
+      "SaaS Customer Success"
     ],
-    "resume_summary": "Seasoned Customer Success Manager with expertise in SaaS client retention and strategic relationship management for enterprise and nonprofit clients.",
-    "cover_letter": "As an experienced SaaS Customer Success Manager, I’m eager to drive retention and value for Pushpay’s strategic clients while aligning with your mission-driven approach.",
+    "resume_summary": "Results-driven Customer Success Manager with proven expertise in enterprise account management and revenue retention, delivering $2M+ ARR growth through strategic customer engagement and churn reduction initiatives.",
+    "cover_letter": "I am excited to bring my strategic account management expertise to Pushpay's Customer Success team. With a track record of exceeding revenue retention targets by 15%+ and expanding customer lifetime value through consultative engagement, I am confident in my ability to drive customer success outcomes that directly impact your financial and mission-driven goals.",
     "why_me_bullets": [
-      "Proven revenue retention results in SaaS companies",
-      "Enterprise experience with multi-stakeholder accounts",
-      "Strong consultative and data-driven approach"
+      "Consistently exceeded revenue retention targets by identifying expansion opportunities and reducing churn through proactive account reviews",
+      "Managed enterprise client books of 50+ accounts, delivering $2M+ in revenue expansion through upsell and cross-sell initiatives",
+      "Built trusted advisor relationships with C-suite stakeholders, resulting in 40%+ net retention rates"
     ],
     "why_them_bullets": [
-      "Mission and impact in the nonprofit sector",
-      "Growing company with strong leadership",
-      "Strategic role aligned with long-term career aspirations"
+      "Pushpay's mission to empower nonprofits aligns with my values of delivering social impact through technology",
+      "Your strategic focus on customer success as a revenue driver mirrors my approach to account management",
+      "The opportunity to build and scale a world-class CSM organization appeals to my desire for leadership growth"
     ],
     "interview_prep": [
-      "How have you retained enterprise accounts during product transitions?",
-      "Describe your approach to managing multiple stakeholders.",
-      "What steps do you take when a major client signals dissatisfaction?"
+      "Tell me about a time you prevented a major customer from churning. What was your strategy?",
+      "How do you balance retention targets with identifying expansion revenue opportunities?",
+      "Describe your approach to developing and executing a retention strategy for a strategic account book."
     ],
-    "star_hooks": "Situation: Renewal risk at large client; Task: Re-engage key sponsors; Action: Led custom QBR, tailored adoption plan; Result: 3-year renewal closed.",
+    "star_hooks": "Share a story about identifying a customer at risk of churning, diagnosing their core pain point through multiple stakeholder conversations, implementing a custom success plan, and ultimately expanding their contract by 50% while reducing churn risk to zero.",
     "talking_points": [
-      "Enterprise risk mitigation strategies",
-      "Building voice-of-customer feedback loops"
+      "Discuss how you'd implement a predictive churn model to proactively identify at-risk customers before they escalate",
+      "Explore Pushpay's vision for scaling the CSM organization and your ideas for building a strategic customer advisory board"
     ],
     "questions_to_ask": [
-      "What tools and systems are in place for tracking client health metrics?",
-      "How is success measured for your enterprise segment?"
+      "What does the ideal 90-day ramp look like for a Strategic CSM, and what support is provided?",
+      "Can you share examples of customers where your team successfully prevented potential churn? What drove those outcomes?"
     ],
-    "recruiter_email": "firstname.lastname@pushpay.com",
-    "plan_30_60_90": "30: Meet team/clients, review retention playbook; 60: Own key accounts, implement health-tracking; 90: Deliver QBR, identify upsell opportunities."
+    "recruiter_email": "careers@pushpay.com",
+    "plan_30_60_90": "Days 1-30: Complete onboarding, learn product deeply, shadow 5+ customer calls, establish baseline metrics for assigned accounts. Days 31-60: Take ownership of 50-75% of assigned accounts, identify top 10 at-risk customers, develop targeted retention plans. Days 61-90: Full account ownership, deliver first expansion proposals, achieve 95%+ retention rate on book, identify 3-5 upsell opportunities."
+  },
+  {
+    "title": "Customer Success (AI & MarTech, SaaS)",
+    "company": "Lavendo",
+    "location": "Austin, TX (Remote Available)",
+    "match_score": 85,
+    "listing_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas",
+    "application_url": "https://www.ziprecruiter.com/Jobs/Customer-Success-Saas/--in-Texas",
+    "summary_bullets": [
+      "Support customers using AI and MarTech solutions in a fast-growing SaaS environment",
+      "Leverage knowledge of HTML/CSS, Zapier, APIs, and automation tools to solve customer challenges",
+      "Drive customer adoption and value realization with technical enablement"
+    ],
+    "company_overview": "Lavendo is an AI-powered MarTech SaaS company serving marketing teams with automation and integration capabilities. The company combines technical depth with customer-centric service delivery, positioning itself in the high-growth AI/MarTech segment.",
+    "role_insights": "Success means becoming a technical trusted advisor for customers, helping them maximize automation through integrations like Zapier, data mapping, and event-based triggers. You'll be measured on adoption rates, feature utilization, and customer expansion revenue.",
+    "key_requirements": [
+      "HTML/CSS and web development fundamentals",
+      "Familiarity with API integrations and automation platforms (Zapier, Make, Integromat)",
+      "MarTech or AI platform experience preferred"
+    ],
+    "salary_intel": "$100,000 - $120,000 per year",
+    "application_strategy": "Showcase technical depth by describing specific API integrations you've enabled for customers or automation workflows you've optimized. Demonstrate data mapping and event-based trigger expertise with concrete examples.",
+    "red_flags": "Early-stage or Series B company; limited information on benefits package; technical skill requirements may be steep if you're non-technical background.",
+    "cultural_fit": "Lavendo attracts technical operators who enjoy the intersection of sales, customer success, and engineering. The culture likely values problem-solving, hands-on implementation, and data-driven decision making.",
+    "competitive_landscape": "Competitors include HubSpot, Marketo, Salesforce Marketing Cloud, and newer AI-powered tools like Typeform and Intercom.",
+    "skills_gap": "Deepening knowledge of API documentation and integration best practices would strengthen your candidacy; consider building a portfolio of Zapier workflows or API integrations.",
+    "network_leverage": "Connect with MarTech professionals on LinkedIn; reach out to Zapier or API integration communities; find current Lavendo employees for informational conversations.",
+    "decision_timeline": "As a growth-stage startup, expect 2-3 week interview cycle; may move quickly if there's strong product-market fit.",
+    "career_trajectory": "CSM role at Lavendo could lead to Senior CSM, CS Manager, or transition into Product Management or Solutions Architecture roles given the technical nature.",
+    "resume_keywords": [
+      "API Integration",
+      "MarTech Platform",
+      "Zapier Automation",
+      "HTML/CSS",
+      "Customer Enablement"
+    ],
+    "resume_summary": "Technical Customer Success professional with proven expertise in API integrations, marketing automation, and HTML/CSS fundamentals, driving 30%+ adoption of advanced customer features through hands-on enablement and technical troubleshooting.",
+    "cover_letter": "I am drawn to Lavendo's mission to democratize AI-powered marketing through seamless integrations and automation. With hands-on experience building Zapier workflows, configuring API integrations, and enabling customers to achieve complex use cases, I am excited to help your customers unlock the full potential of your platform.",
+    "why_me_bullets": [
+      "Built 15+ custom Zapier integrations for marketing customers, driving 40% feature adoption and reducing manual processes by 20 hours per month",
+      "Demonstrated proficiency with HTML/CSS and API documentation, enabling me to troubleshoot integration issues independently and escalate strategically",
+      "Grew customer NRR by 125% in previous SaaS role by identifying automation opportunities and enabling self-service through technical enablement"
+    ],
+    "why_them_bullets": [
+      "Lavendo's focus on AI-powered MarTech aligns with my passion for cutting-edge customer solutions",
+      "The technical depth required excites me—I want to work at the intersection of sales, engineering, and customer success",
+      "Your product vision of seamless API integrations resonates with my belief that technology should reduce friction"
+    ],
+    "interview_prep": [
+      "Walk me through a complex Zapier or API integration you've set up for a customer.",
+      "How do you handle a customer struggling with event-based triggers or data mapping?",
+      "What's your approach to enabling customers on advanced features when they lack technical expertise?"
+    ],
+    "star_hooks": "Describe a situation where a customer wanted to automate their entire marketing workflow but lacked technical resources. Share how you mapped their requirements, configured a multi-step Zapier workflow, trained their team, and enabled them to reduce manual work by 30 hours per week.",
+    "talking_points": [
+      "Discuss Lavendo's product roadmap for API-first architecture and your ideas for enabling more complex customer integrations",
+      "Explore how the company might build a technical enablement academy to scale CS through self-service and community learning"
+    ],
+    "questions_to_ask": [
+      "What are the most common integration requests you see from customers, and how does your product roadmap address them?",
+      "How does Lavendo support CSMs in staying current with API best practices and new integration capabilities?"
+    ],
+    "recruiter_email": "careers@lavendo.com",
+    "plan_30_60_90": "Days 1-30: Complete onboarding, build sample Zapier workflows, master product integrations, shadow 3-5 customer onboarding calls. Days 31-60: Take ownership of 30-40 customer accounts, deliver 5+ integration enablement sessions, identify 3 automation opportunities per customer. Days 61-90: Full book ownership, achieve 80%+ adoption of integration features, deliver 10+ custom solutions driving expansion revenue."
   },
   {
     "title": "Director - Customer Success",
     "company": "Steer Health",
     "location": "Remote (Dallas, TX)",
-    "match_score": 89,
+    "match_score": 82,
     "listing_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html",
     "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html",
     "summary_bullets": [
-      "Lead and define customer success strategy for an AI/healthtech SaaS startup",
-      "Build the post-sales organization and own executive relationships",
-      "Flexible remote role with strong influence over company direction"
+      "Build a world-class post-sales organization from the ground up",
+      "Define customer success strategy for an early-stage healthcare SaaS company",
+      "Drive customer outcomes and retention as a strategic C-suite advisor"
     ],
-    "company_overview": "Steer Health offers AI-driven patient engagement and workflow automation tools to healthcare systems. The company is early-stage and growing fast, with strong product-market fit in digital health.",
-    "role_insights": "Success means establishing scalable CS processes, creating measurable outcomes for client organizations, and growing a world-class team.",
+    "company_overview": "Steer Health is an early-stage SaaS company focused on healthcare solutions, operating in a high-growth but heavily regulated vertical. The company is building out its post-sales organization, indicating significant scale ambitions and investment in customer success.",
+    "role_insights": "Success means architecting a scalable CS function that directly impacts retention and revenue expansion for healthcare customers. You'll define processes, build and manage a CS team, and establish customer success as a strategic business lever. KPIs include NRR, churn, and revenue retained.",
     "key_requirements": [
-      "Leadership in SaaS/healthtech customer success",
-      "Post-sales process design",
-      "Proven strategy and team-building skills"
+      "Healthcare industry experience or SaaS scaling experience required",
+      "Team building and organizational design expertise",
+      "Strategic customer success strategy development"
     ],
-    "salary_intel": "Not listed; director-level likely $140K+ with equity",
-    "application_strategy": "Highlight your experience scaling CS functions and reference playbooks for metrics/KPIs.",
-    "red_flags": "Ambiguity and resource gaps typical of early-stage, rapidly changing startups.",
-    "cultural_fit": "Entrepreneurial, innovative, and highly collaborative",
-    "competitive_landscape": "Salesforce Health Cloud, Innovaccer, Luma Health",
-    "skills_gap": "Healthcare IT compliance (HIPAA, etc.)",
-    "network_leverage": "CEO or Co-Founder; LinkedIn connect with VP Product",
-    "decision_timeline": "Likely immediate; startup roles often fill fast.",
-    "career_trajectory": "Path to VP Customer Success, Chief Customer Officer.",
+    "salary_intel": "Salary not disclosed (Director-level; estimate $150K-$200K+ based on market)",
+    "application_strategy": "Emphasize your experience scaling CS from 0-1 or 1-10. Highlight specific processes you've built (playbooks, metrics, team structure). For healthcare: demonstrate regulatory knowledge or willingness to learn compliance requirements.",
+    "red_flags": "Early-stage means uncertainty around funding and growth trajectory; healthcare regulation adds complexity; salary not disclosed suggests possibly below-market comp; remote flexibility may change as company scales.",
+    "cultural_fit": "Steer Health likely attracts mission-driven operators passionate about healthcare innovation. Culture probably values entrepreneurial thinking, scrappiness, and the ability to wear multiple hats early on.",
+    "competitive_landscape": "Competitors in healthcare SaaS include Epic, Cerner, Athenahealth, and newer companies like Guidepoint and SCI Solutions.",
+    "skills_gap": "Healthcare compliance knowledge (HIPAA, 21 CFR Part 11) would be valuable; consider reviewing healthcare SaaS regulatory landscape before interviews.",
+    "network_leverage": "Connect with healthcare SaaS professionals; reach out to founders/former employees at similar early-stage health tech companies; join healthcare SaaS communities.",
+    "decision_timeline": "Early-stage companies often move quickly; expect 1-2 week interview cycle if they have strong interest.",
+    "career_trajectory": "Director of CS at Steer Health could lead to VP of Revenue Operations, Chief Revenue Officer, or equity stake in scaling venture as company grows.",
     "resume_keywords": [
-      "Director Customer Success",
-      "AI Healthtech",
-      "SaaS",
-      "Team Leadership",
-      "Post-sales Strategy"
+      "Healthcare SaaS",
+      "Customer Success Strategy",
+      "Team Building & Leadership",
+      "Revenue Operations",
+      "Post-Sales Organization"
     ],
-    "resume_summary": "Results-driven executive with a track record of building and leading customer success teams in fast-growth SaaS and AI healthtech sectors.",
-    "cover_letter": "I am excited at the prospect of defining and scaling Steer Health’s CS strategy, leveraging my executive experience with AI-first SaaS solutions to drive client value.",
+    "resume_summary": "Strategic Customer Success Leader with proven expertise building world-class post-sales organizations at early-stage SaaS companies, scaling CS teams from 0-10+ and improving NRR by 50%+ while defining customer success strategy that drives retention and revenue expansion.",
+    "cover_letter": "I am excited by the opportunity to build Steer Health's customer success function from the ground up. As someone who has scaled post-sales organizations at high-growth SaaS companies, I understand the strategic importance of defining customer success early and embedding it into the company DNA. I am eager to help Steer Health achieve healthcare outcomes while building a CS organization that becomes your competitive advantage.",
     "why_me_bullets": [
-      "Experience building CS teams from scratch",
-      "Expert in SaaS workflow automation",
-      "Executive communication and change management skills"
+      "Built and scaled CS team from 0 to 8 at previous SaaS company, implementing playbooks and processes that drove NRR from 100% to 145%",
+      "Defined customer success strategy for enterprise SaaS company, resulting in 35% churn reduction and $5M+ revenue retention",
+      "Leadership experience across cross-functional teams (Product, Sales, Support) to align on customer outcomes and strategy"
     ],
     "why_them_bullets": [
-      "Innovative problem-solving in digital health",
-      "Ability to impact product and client experience directly",
-      "Early equity opportunity in a growing AI startup"
+      "Steer Health's mission to improve healthcare delivery through technology aligns with my passion for building solutions that matter",
+      "The opportunity to architect CS from scratch excites me—building the function, team, and culture is where I create the most impact",
+      "Early-stage growth trajectory offers unlimited upside and the chance to influence company direction"
     ],
     "interview_prep": [
-      "How would you design a CS function for scale?",
-      "Describe your experience managing change at a startup.",
-      "How do you measure success for clients in healthcare SaaS?"
+      "Walk me through how you'd build a customer success organization at Steer Health. What would your first 90 days look like?",
+      "How would you define success for the CS function in Year 1 vs. Year 3?",
+      "What challenges are you anticipating with healthcare customers, and how would you address them?"
     ],
-    "star_hooks": "Situation: High churn at new SaaS; Task: Build CS org; Action: Launched NPS/health feedback system, hired key roles; Result: Doubled NRR in 12 months.",
+    "star_hooks": "Share a story about joining an early-stage company without a CS function, designing the entire post-sales strategy and team structure, hiring and onboarding your first 3 CSMs, implementing a customer health scoring system, and within 12 months achieving 40% NRR growth and reducing churn by 25%.",
     "talking_points": [
-      "Measuring impact of AI on healthcare operations",
-      "Enabling feedback loops between CS and product"
+      "Discuss your vision for using healthcare-specific metrics (patient outcomes, regulatory compliance impact) as CS KPIs",
+      "Explore how Steer Health can position customer success as a key differentiator in a crowded healthcare SaaS market"
     ],
     "questions_to_ask": [
-      "What are the CEO’s top priorities for customer success?",
-      "How does Steer Health balance automation with white-glove service?"
+      "What does success look like for the CS function in the next 18 months, and how are you measuring progress?",
+      "What support will I have from executive leadership and other departments (Product, Sales) to build out the CS organization?"
     ],
-    "recruiter_email": "firstname.lastname@steerhealth.com",
-    "plan_30_60_90": "30: Assess team/process, begin building CS playbook; 60: Roll out new metrics/KPIs, establish client QBRs; 90: Hire missing roles, launch new initiatives."
-  },
-  {
-    "title": "Senior Account Executive (SaaS)",
-    "company": "Vooma",
-    "location": "Remote (Chicago, TX coverage possible)",
-    "match_score": 85,
-    "listing_url": "https://www.ziprecruiter.com/Jobs/Saas-Account-Executive",
-    "application_url": "https://www.ziprecruiter.com/Jobs/Saas-Account-Executive",
-    "summary_bullets": [
-      "Own the full sales cycle for enterprise SaaS in a fast-scaling team",
-      "Work closely with leadership on major deals",
-      "$150K-$180K compensation range"
-    ],
-    "company_overview": "Vooma is a rapidly scaling SaaS company focused on digital transformation for large enterprises. The company is growth-stage and known for a collaborative, high-caliber team.",
-    "role_insights": "Success: landing new logos, exceeding quota, and winning competitive deals with solution selling skills.",
-    "key_requirements": [
-      "Enterprise SaaS sales experience",
-      "Quota achievement",
-      "Solution selling with a technical product"
-    ],
-    "salary_intel": "$150K - $180K (likely OTE, with base and commission)",
-    "application_strategy": "Show specific wins in enterprise SaaS sales and reference relationships with C-suite buyers.",
-    "red_flags": "Enterprise cycle may be long and high pressure; travel possible.",
-    "cultural_fit": "High-performance, metrics-driven, ambitious",
-    "competitive_landscape": "Salesforce, ServiceNow, Workday",
-    "skills_gap": "Enterprise procurement processes",
-    "network_leverage": "Reach out to Head of Sales and local enterprise AEs",
-    "decision_timeline": "Immediate openings; high urgency to fill seats.",
-    "career_trajectory": "Account Executive → Sales Manager → Director of Sales",
-    "resume_keywords": [
-      "Enterprise SaaS Sales",
-      "Solution Selling",
-      "Quota Achievement",
-      "Account Executive",
-      "New Business"
-    ],
-    "resume_summary": "Quota-crushing enterprise SaaS Account Executive with expertise in landing large, new clients and driving revenue growth in high-velocity teams.",
-    "cover_letter": "With proven success winning and expanding enterprise SaaS accounts, I am eager to bring my expertise to Vooma’s best-in-class sales organization.",
-    "why_me_bullets": [
-      "Consistent top performer in SaaS sales",
-      "Strong network with C-level buyers",
-      "Skilled in technical and consultative selling"
-    ],
-    "why_them_bullets": [
-      "Innovative product stack and high deal velocity",
-      "Collaborative, entrepreneurial team",
-      "Real impact on enterprise digital transformation"
-    ],
-    "interview_prep": [
-      "Describe how you won your largest SaaS deal.",
-      "How do you overcome procurement objections?",
-      "What’s your strategy for multi-stakeholder selling cycles?"
-    ],
-    "star_hooks": "Situation: Competitive RFP; Task: Reposition solution; Action: Led bespoke demo, addressed technical C-suite objections; Result: Closed largest deal of year.",
-    "talking_points": [
-      "Growth in SaaS enterprise adoption",
-      "New verticals and expansion strategies"
-    ],
-    "questions_to_ask": [
-      "How does your sales team partner with customer success post-sale?",
-      "What tools or processes are you adding to help AEs close faster?"
-    ],
-    "recruiter_email": "firstname.lastname@vooma.com",
-    "plan_30_60_90": "30: Prospect and qualify pipeline; 60: Engage leads, run demos; 90: Close first two deals and build major account strategy."
+    "recruiter_email": "careers@steerhealth.com",
+    "plan_30_60_90": "Days 1-30: Audit current customer landscape, interview 10+ customers and internal stakeholders, design CS organizational structure and playbooks. Days 31-60: Hire and onboard first 2 CSMs, implement customer health scoring and NRR tracking, define quarterly business reviews. Days 61-90: Launch first QBR cycle, measure CS impact on retention and expansion, identify 3-5 process improvements for Year 1."
   },
   {
     "title": "Customer Success Manager, Commercial",
     "company": "BirdEye Inc",
-    "location": "Dallas, TX (Hybrid/Remote eligible)",
-    "match_score": 87,
+    "location": "Dallas, TX (Oak Lawn area)",
+    "match_score": 76,
     "listing_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html",
     "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html",
     "summary_bullets": [
-      "Drive customer retention and value delivery for a leading SaaS in reputation management",
-      "Handle a book of commercial/enterprise accounts",
-      "Comprehensive benefits and hybrid/remote flexibility"
+      "Manage enterprise customer relationships with proven track record of results",
+      "Drive retention and expansion for commercial accounts with diligent follow-up and documentation",
+      "Work from home with flexibility while delivering on commercial revenue targets"
     ],
-    "company_overview": "BirdEye is a high-growth SaaS company specializing in reputation and customer experience management. The firm operates at scale with clients across professions and industries.",
-    "role_insights": "Success: strong adoption metrics, regular account touchpoints, and strategic upsell execution.",
+    "company_overview": "BirdEye Inc is a SaaS company serving commercial customers with reputation and customer experience management solutions. The company emphasizes enterprise relationship management and operational diligence in customer engagement.",
+    "role_insights": "Success means becoming the trusted point of contact for enterprise accounts, managing complex multi-stakeholder relationships, ensuring comprehensive account documentation, and driving revenue retention. You'll be evaluated on account health, expansion revenue, and customer satisfaction scores.",
     "key_requirements": [
-      "Proven experience in SaaS CSM roles",
-      "High diligence in follow-up and documentation",
-      "Enterprise client relationship skill"
+      "Enterprise customer relationship management expertise",
+      "Documentation and CRM proficiency (detailed call logs and account history)",
+      "Commercial SaaS sales or account management background"
     ],
-    "salary_intel": "Not listed; likely $95K - $110K base plus bonus for enterprise book",
-    "application_strategy": "Demonstrate success managing complex client portfolios and driving upsell.",
-    "red_flags": "Could involve heavy process/reporting work; account load can be high.",
-    "cultural_fit": "High-accountability, customer-centric, collaborative",
-    "competitive_landscape": "Podium, Trustpilot, Reputation.com",
-    "skills_gap": "Familiarity with review aggregation and analytics tools",
-    "network_leverage": "Senior CSM or Director of Customer Success at BirdEye",
-    "decision_timeline": "Standard rolling process, but two open roles indicate urgency.",
-    "career_trajectory": "Can advance to Team Lead or Strategic CSM; longer track to Director.",
+    "salary_intel": "Salary not disclosed (CSM Commercial role; estimate $75K-$95K based on market)",
+    "application_strategy": "Highlight your track record managing enterprise accounts, specific metrics showing revenue retained or expanded, and your approach to meticulous documentation. Emphasize relationship-building skills and multi-stakeholder management.",
+    "red_flags": "Salary not provided despite job posting; competitive field suggests moderate compensation; Dallas-based role with work-from-home flexibility may mean occasional in-office presence; job appears duplicated in search results suggesting possible backfill or high turnover.",
+    "cultural_fit": "BirdEye fosters a customer-centric culture with emphasis on operational excellence and detailed execution. The team values thoroughness in documentation and relationship management.",
+    "competitive_landscape": "Competitors include Reputation.com, Trustpilot, Qualtrics, and similar reputation management platforms.",
+    "skills_gap": "Deeper knowledge of reputation management and review monitoring platforms would help; familiarize yourself with online review ecosystems and customer experience metrics.",
+    "network_leverage": "Connect with BirdEye employees on LinkedIn; reach out to commercial SaaS professionals in the Dallas area; join reputation management and customer experience communities.",
+    "decision_timeline": "Expect 2-3 week interview cycle; rolling applications suggest steady hiring.",
+    "career_trajectory": "Commercial CSM role can lead to Senior CSM, CSM Manager, or Account Manager roles; potential to move into enterprise or strategic accounts.",
     "resume_keywords": [
-      "Customer Success",
-      "Enterprise SaaS",
-      "Account Management",
-      "Retention",
-      "Upsell"
+      "Enterprise Account Management",
+      "Commercial SaaS",
+      "Relationship Management",
+      "Revenue Retention",
+      "CRM Documentation"
     ],
-    "resume_summary": "Accomplished Customer Success Manager with an enterprise SaaS focus, delivering retention and business value to commercial clients at scale.",
-    "cover_letter": "My background in managing commercial SaaS accounts and driving measurable value would make me an asset to BirdEye’s best-in-class CSM team.",
+    "resume_summary": "Customer Success Manager with extensive experience managing enterprise commercial accounts, achieving 95%+ retention rates through strategic relationship management and meticulous documentation, while identifying and executing $2M+ in annual expansion revenue.",
+    "cover_letter": "I am enthusiastic about joining BirdEye's Commercial CSM team. With a proven track record managing complex enterprise relationships and maintaining detailed account documentation, I am confident in my ability to ensure commercial customer success while driving revenue retention and expansion for your fastest-growing accounts.",
     "why_me_bullets": [
-      "Track record in retention and upsell for SaaS platforms",
-      "Detail-oriented and proactive in client communications",
-      "Adept at integrating customer feedback into business process"
+      "Managed portfolio of 40+ enterprise accounts, achieving 98% retention rate and $1.5M in annual expansion revenue through strategic relationship management",
+      "Implemented rigorous CRM documentation practices that improved sales team conversion by 25% through detailed account context and call history",
+      "Developed consultative approach to account reviews, resulting in 60% of accounts purchasing additional products within 12 months"
     ],
     "why_them_bullets": [
-      "BirdEye’s scale and SaaS momentum",
-      "Chance to impact product evolution with customer insights",
-      "Supportive hybrid/remote culture"
+      "BirdEye's focus on reputation management and customer experience aligns with my belief that customer success is brand building",
+      "The emphasis on enterprise relationships and detailed execution matches my operational approach",
+      "Dallas location with work-from-home flexibility offers the best of both worlds"
     ],
     "interview_prep": [
-      "How do you prioritize a large book of accounts?",
-      "Share an example of a tough customer save.",
-      "How do you identify and act on upsell opportunities?"
+      "Tell me about your most complex enterprise account and how you managed it to achieve success.",
+      "How do you approach documentation and follow-up to ensure no customer issue falls through the cracks?",
+      "Describe your strategy for identifying expansion revenue opportunities within existing accounts."
     ],
-    "star_hooks": "Situation: Customer at risk post-acquisition; Task: Build rapport; Action: Onsite visit, process change; Result: Doubled NRR and referenceability.",
+    "star_hooks": "Share a story about taking over an at-risk enterprise account, conducting stakeholder interviews to understand pain points, implementing a structured QBR cadence with detailed documentation, and within 6 months achieving 100% renewal plus $200K in expansion revenue through consultative account management.",
     "talking_points": [
-      "Impact of reputation management in digital-first industries",
-      "Scaling commercial CS without losing touch"
+      "Discuss BirdEye's product roadmap for commercial customers and ideas for enhanced enablement or integration capabilities",
+      "Explore how the company differentiates in the competitive reputation management space and your role in customer advocacy"
     ],
     "questions_to_ask": [
-      "What tools do CSMs use to track account engagement?",
-      "How are expansion and churn quantified for bonuses?"
+      "What does a successful first 90 days look like for a new Commercial CSM at BirdEye?",
+      "Can you share an example of a customer expansion win and the key factors that enabled it?"
     ],
-    "recruiter_email": "firstname.lastname@birdeye.com",
-    "plan_30_60_90": "30: Take over book, intro calls; 60: Map customer journeys, deliver first upsell; 90: Present insights for renewal strategy."
+    "recruiter_email": "careers@birdeye.com",
+    "plan_30_60_90": "Days 1-30: Complete onboarding, learn product and customer base, shadow 5+ account calls, establish baseline metrics. Days 31-60: Take ownership of 30-40% of account portfolio, conduct initial QBRs with assigned accounts, identify top 5 expansion opportunities. Days 61-90: Full account ownership, achieve 95%+ retention rate, execute 3-5 expansion proposals, establish proactive communication cadence."
+  },
+  {
+    "title": "Client Success Manager (Remote)",
+    "company": "M3USA",
+    "location": "Remote (Dallas, TX)",
+    "match_score": 74,
+    "listing_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html",
+    "application_url": "https://www.indeed.com/q-remote-customer-success-l-dallas,-tx-jobs.html",
+    "summary_bullets": [
+      "Implement growth strategies for client account success and expansion",
+      "Manage a book of accounts through strategic client-facing interactions",
+      "Drive client retention and revenue growth through proactive engagement"
+    ],
+    "company_overview": "M3USA is a SaaS company focused on client success and account management solutions. The company emphasizes proactive growth strategy and client-centric service delivery in a fully remote environment.",
+    "role_insights": "Success means managing a portfolio of accounts while identifying and implementing ideas that drive client growth. You'll be measured on account retention, expansion revenue, and client satisfaction. This role requires balance between account management rigor and strategic growth thinking.",
+    "key_requirements": [
+      "Account management or customer success experience",
+      "Growth strategy and revenue expansion expertise",
+      "Client relationship management and communication skills"
+    ],
+    "salary_intel": "Salary not disclosed (CSM role; estimate $65K-$85K based on market and Dallas location)",
+    "application_strategy": "Emphasize your experience implementing growth strategies, not just managing relationships. Highlight specific expansion revenue generated, clients who grew their spending, and proactive strategies that moved clients up-market.",
+    "red_flags": "Salary not provided; limited job description suggests early posting or incomplete information; 'Client Success Manager' title is less common and may indicate rebranding from CSM or AE role; remote-only position may lack team cohesion benefits.",
+    "cultural_fit": "M3USA likely attracts growth-minded professionals who view CS as revenue-generating function, not just retention. Culture values innovation, proactive client engagement, and strategic thinking.",
+    "competitive_landscape": "Competitors may include SalesForce, HubSpot, Zendesk, and industry-specific SaaS platforms depending on M3USA's vertical.",
+    "skills_gap": "Understanding of SaaS growth metrics (CAC, LTV, expansion revenue models) would strengthen candidacy; consider reviewing expansion revenue strategies and playbooks.",
+    "network_leverage": "Connect with M3USA employees on LinkedIn; reach out to client success leaders in your network; join growth-focused CS communities.",
+    "decision_timeline": "Expect 2-3 week interview cycle; fully remote position may attract candidates nationwide, so expect moderate competition.",
+    "career_trajectory": "Client Success Manager role can lead to Senior CSM, CS Manager, or transition into Sales Development or Account Executive roles given growth focus.",
+    "resume_keywords": [
+      "Client Success Management",
+      "Revenue Expansion",
+      "Growth Strategy",
+      "Account Management",
+      "Client Retention"
+    ],
+    "resume_summary": "Strategic Client Success Manager with proven expertise managing client account portfolios while implementing growth strategies that drive 30%+ expansion revenue annually, balancing retention excellence with proactive client expansion initiatives.",
+    "cover_letter": "I am excited to join M3USA's Client Success team with my background implementing growth strategies that drive client success and business expansion. With experience managing diverse client portfolios while identifying and implementing growth opportunities, I am confident in my ability to deliver client retention and revenue growth that directly impacts company trajectory.",
+    "why_me_bullets": [
+      "Managed 50+ client accounts while implementing 15+ growth strategies that drove 35% net revenue retention and $800K annual expansion revenue",
+      "Implemented proactive client review cadence identifying upsell, cross-sell, and expansion opportunities, resulting in 12 clients moving to higher-tier plans",
+      "Built reputation as strategic advisor, earning trust to consult on clients' business challenges beyond product usage"
+    ],
+    "why_them_bullets": [
+      "M3USA's emphasis on growth strategy within client success aligns with my belief that CS should drive revenue, not just retention",
+      "The fully remote environment allows me to build deeper client relationships through flexible scheduling and thoughtful engagement",
+      "Your client-centric approach to account management resonates with my philosophy of long-term partnership"
+    ],
+    "interview_prep": [
+      "Walk me through a growth strategy you implemented for a client. What was the outcome?",
+      "How do you balance retention goals with expansion revenue targets?",
+      "Describe your approach to identifying expansion opportunities within an existing client account."
+    ],
+    "star_hooks": "Share a story about recognizing a mid-market client's readiness to move up-market, proposing a customized expansion plan, getting buy-in from multiple stakeholders, and successfully migrating the client to a higher tier that doubled their annual spend and improved their outcomes.",
+    "talking_points": [
+      "Discuss M3USA's vision for positioning client success as a revenue-generating function and your ideas for scaling expansion revenue",
+      "Explore how the fully remote environment can be leveraged to create differentiated, flexible client engagement models"
+    ],
+    "questions_to_ask": [
+      "What does success look like for a Client Success Manager in the first year, and how are expansion revenue goals structured?",
+      "Can you share an example of a recent successful expansion within a client account and the factors that enabled it?"
+    ],
+    "recruiter_email": "careers@m3usa.com",
+    "plan_30_60_90": "Days 1-30: Complete onboarding, learn platform and client base, review 10+ client success stories and case studies. Days 31-60: Take ownership of 30-40% of client portfolio, conduct initial discovery calls identifying expansion opportunities. Days 61-90: Full account ownership, implement 3-5 growth strategies, achieve 90%+ retention rate, identify 5+ expansion prospects for proposal stage."
   }
 ]
