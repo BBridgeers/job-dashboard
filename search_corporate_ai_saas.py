@@ -41,11 +41,11 @@ For EACH job, you MUST extract or generate the following 30 fields in a valid JS
 11. salary_intel (Estimated range or mentioned comp)
 12. application_strategy (One specific tip to stand out)
 13. red_flags (Any potential downsides or risks)
-14. cultural_fit (Describe the vibe: e.g., "Fast-paced, chaotic")
+14. cultural_fit (Describe the vibe)
 15. competitive_landscape (Who are their main rivals?)
 16. skills_gap (One skill the candidate might need to brush up on)
-17. network_leverage (Who to reach out to? e.g., "Connect with VP of Success")
-18. decision_timeline (Urgent? Rolling? Estimated.)
+17. network_leverage (Who to reach out to?)
+18. decision_timeline (Urgent? Rolling? Estimated timeline)
 19. career_trajectory (Where does this role lead?)
 20. resume_keywords (5 ATS keywords to include)
 21. resume_summary (A tailored 2-sentence summary for the CV)
@@ -56,7 +56,7 @@ For EACH job, you MUST extract or generate the following 30 fields in a valid JS
 26. star_hooks (A suggestion for a STAR story to tell)
 27. talking_points (2 strategic topics to discuss with leadership)
 28. questions_to_ask (2 smart questions to ask the hiring manager)
-29. recruiter_email (Guess the format: e.g., firstname.lastname@company.com)
+29. recruiter_email (Guess the format: firstname.lastname@company.com)
 30. plan_30_60_90 (A rough 30-60-90 day plan outline)
 
 OUTPUT FORMAT:
@@ -70,6 +70,21 @@ OUTPUT FORMAT:
 ]
 """
 
+def validate_json_content(content):
+    """Validate that the content is valid JSON"""
+    try:
+        parsed = json.loads(content)
+        if not isinstance(parsed, list):
+            raise ValueError("JSON should be a list of job objects")
+        print(f"✅ Successfully parsed {len(parsed)} jobs.")
+        return True
+    except json.JSONDecodeError as e:
+        print(f"❌ JSON Decode Error: {e}")
+        return False
+    except ValueError as e:
+        print(f"❌ Validation Error: {e}")
+        return False
+
 def run_search():
     print(f"🔍 Scanning Corporate Jobs via Perplexity...")
 
@@ -82,11 +97,13 @@ def run_search():
     }
 
     try:
-        response = requests.post("https://api.perplexity.ai/chat/completions", json=payload, headers=HEADERS)
+        print("📡 Sending request to Perplexity API...")
+        response = requests.post("https://api.perplexity.ai/chat/completions", json=payload, headers=HEADERS, timeout=120)
         response.raise_for_status()
-
+        
         data = response.json()
         content = data["choices"][0]["message"]["content"]
+        print("✅ Received response from API")
 
         # Basic cleanup to ensure it's pure JSON
         if "```json" in content:
@@ -95,10 +112,7 @@ def run_search():
             content = content.split("```")[1].split("```")[0].strip()
 
         # Validate JSON
-        try:
-            parsed = json.loads(content)
-            print(f"✅ Successfully parsed {len(parsed)} jobs.")
-        except json.JSONDecodeError:
+        if not validate_json_content(content):
             print("⚠️ Warning: AI output might not be valid JSON. Saving raw output anyway.")
 
         # Save to file
@@ -108,8 +122,15 @@ def run_search():
 
         print(f"✅ Search Complete. Saved to {OUTPUT_FILE}")
 
+    except requests.exceptions.Timeout:
+        print("❌ Error: Request timed out. Try again later.")
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Network Error: {e}")
+    except KeyError as e:
+        print(f"❌ API Response Error: Missing expected field {e}")
+        print(f"   Response: {data if 'data' in locals() else 'No response data'}")
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"❌ Unexpected Error: {e}")
 
 if __name__ == "__main__":
     run_search()

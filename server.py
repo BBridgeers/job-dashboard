@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import sqlite3
@@ -45,6 +44,15 @@ def update_status():
     data = request.json
     conn = get_db_connection()
     conn.execute('UPDATE jobs SET status = ? WHERE id = ?', (data['status'], data['id']))
+    conn.commit()
+    conn.close()
+    return jsonify({"success": True})
+
+@app.route('/api/save_note', methods=['POST'])
+def save_note():
+    data = request.json
+    conn = get_db_connection()
+    conn.execute('UPDATE jobs SET notes = ? WHERE id = ?', (data['note'], data['id']))
     conn.commit()
     conn.close()
     return jsonify({"success": True})

@@ -68,11 +68,22 @@ def build_files():
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --primary: #4f46e5; 
-            --bg-color: #e2e8f0; 
+            --primary: #2563eb; 
+            --primary-dark: #1d4ed8;
+            --bg-color: #f8fafc; 
             --card-bg: #ffffff; 
             --text-main: #0f172a;
+            --text-secondary: #64748b;
+            --header-bg: #1e3a8a;
+            --header-text: #f1f5f9;
             --blue-company: #1e40af;
+            --tier-1: #f59e0b;
+            --tier-2: #94a3b8;
+            --tier-3: #cd7f32;
+            --corporate: #3b82f6;
+            --nonprofit: #10b981;
+            --high-match: #8b5cf6;
+            --border-color: #e2e8f0;
         }
         * { box-sizing: border-box; }
         body { 
@@ -80,40 +91,46 @@ def build_files():
             background: var(--bg-color); 
             color: var(--text-main); 
             margin: 0; 
-            padding-top: 160px; 
+            padding-top: 120px; 
             min-height: 100vh;
         }
         .header {
             position: fixed;
             top: 0; left: 0; right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid #cbd5e1;
-            padding: 15px 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: var(--header-bg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             z-index: 1000;
             transition: transform 0.3s ease;
         }
         .header.hidden { transform: translateY(-100%); }
         .app-title {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 15px;
+            color: var(--header-text);
+            margin: 0 0 12px 0;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .app-title-icon {
+            font-size: 24px;
         }
         .header-content {
             max-width: 1600px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
         .controls-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
         .search-section {
             flex: 1;
@@ -122,16 +139,26 @@ def build_files():
         }
         .search-input {
             width: 100%;
-            padding: 10px 15px 10px 40px;
+            padding: 12px 15px 12px 45px;
             border-radius: 8px;
-            border: 1px solid #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 14px;
-            background: #f8fafc;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
         }
         .search-icon {
             position: absolute;
-            left: 12px; top: 50%; transform: translateY(-50%);
-            color: #94a3b8;
+            left: 15px; top: 50%; transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
         }
         .filter-badges {
             display: flex;
@@ -139,30 +166,52 @@ def build_files():
             flex-wrap: wrap;
         }
         .badge-filter {
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            background: white;
-            border: 1px solid #e2e8f0;
-            color: #64748b;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--header-text);
             transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .badge-filter:hover, .badge-filter.active {
-            background: var(--text-main);
-            color: white;
-            border-color: var(--text-main);
+        .badge-filter:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
         }
+        .badge-filter.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--header-bg);
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+        .badge-filter.tier-1 { background: var(--tier-1); color: white; border-color: var(--tier-1); }
+        .badge-filter.tier-2 { background: var(--tier-2); color: white; border-color: var(--tier-2); }
+        .badge-filter.tier-3 { background: var(--tier-3); color: white; border-color: var(--tier-3); }
+        .badge-filter.corporate { background: var(--corporate); color: white; border-color: var(--corporate); }
+        .badge-filter.nonprofit { background: var(--nonprofit); color: white; border-color: var(--nonprofit); }
+        .badge-filter.high-match { background: var(--high-match); color: white; border-color: var(--high-match); }
+        .badge-filter.all-jobs { background: #60a5fa; color: white; border-color: #60a5fa; }
+        
         .tracker-link {
             margin-left: auto;
-            background: #0f172a;
+            background: #8b5cf6;
             color: white;
             padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
             font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+        .tracker-link:hover {
+            background: #7c3aed;
         }
         .grid-container {
             max-width: 1600px;
@@ -176,11 +225,11 @@ def build_files():
             background: white;
             border-radius: 12px;
             padding: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
         }
         .job-card:hover {
             transform: translateY(-4px);
@@ -189,12 +238,12 @@ def build_files():
         }
         .card-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
         .tag { font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .tag-tier-1 { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+        .tag-tier-1 { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
         .tag-tier-2 { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
         .tag-tier-3 { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
-        .tag-high { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+        .tag-high { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
         .tag-corp { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
-        .tag-nonprofit { background: #ccfbf1; color: #0f766e; border: 1px solid #5eead4; }
+        .tag-nonprofit { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
 
         .job-title {
             font-size: 18px;
@@ -243,14 +292,14 @@ def build_files():
             color: white;
             text-align: center;
             text-decoration: none;
-            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.1);
             transition: transform 0.1s;
         }
         .btn-3d:active { transform: translateY(2px); box-shadow: none; }
-        .btn-details { background: #4f46e5; }
+        .btn-details { background: #2563eb; }
         .btn-listing { background: #3b82f6; }
         .btn-apply { background: #10b981; }
-        .btn-track { background: #f59e0b; }
+        .btn-track { background: #8b5cf6; }
         .status-row {
             margin-top: 15px;
             padding-top: 15px;
@@ -266,6 +315,7 @@ def build_files():
             .controls-row { flex-direction: column; align-items: stretch; }
             .search-section, .tracker-link { width: 100%; max-width: none; }
             .filter-badges { justify-content: flex-start; overflow-x: auto; padding-bottom: 5px; }
+            .app-title { font-size: 24px; }
         }
     </style>
     """
@@ -315,7 +365,7 @@ def build_files():
             const cards = document.querySelectorAll('.job-card');
             const btns = document.querySelectorAll('.badge-filter');
             btns.forEach(b => b.classList.remove('active'));
-            if(event.target) event.target.classList.add('active');
+            if(event && event.target) event.target.classList.add('active');
             cards.forEach(card => {{
                 const tags = card.dataset.tags.toLowerCase();
                 let match = true;
@@ -354,22 +404,28 @@ def build_files():
 <body>
     <div class="header">
         <div class="header-content">
-            <div class="app-title">Strategic Match 🚀</div>
+            <div class="app-title">
+                <span class="app-title-icon">🎯</span>
+                Strategic Match
+            </div>
             <div class="controls-row">
                 <div class="search-section">
                     <span class="search-icon">🔍</span>
                     <input type="text" class="search-input" placeholder="Search jobs..." onkeyup="searchJobs(this.value)">
                 </div>
                 <div class="filter-badges">
-                    <div class="badge-filter active" onclick="filterJobs('all')">All Jobs ({total})</div>
-                    <div class="badge-filter" onclick="filterJobs('t1')">Tier 1 ({t1})</div>
-                    <div class="badge-filter" onclick="filterJobs('t2')">Tier 2 ({t2})</div>
-                    <div class="badge-filter" onclick="filterJobs('t3')">Tier 3 ({t3})</div>
-                    <div class="badge-filter" onclick="filterJobs('high')">🔥 High Match</div>
-                    <div class="badge-filter" onclick="filterJobs('corp')">🏢 Corporate</div>
-                    <div class="badge-filter" onclick="filterJobs('nonprofit')">💚 Nonprofit</div>
+                    <div class="badge-filter all-jobs active" onclick="filterJobs('all')">All Jobs ({total})</div>
+                    <div class="badge-filter tier-1" onclick="filterJobs('t1')">🥇 Tier 1 ({t1})</div>
+                    <div class="badge-filter tier-2" onclick="filterJobs('t2')">🥈 Tier 2 ({t2})</div>
+                    <div class="badge-filter tier-3" onclick="filterJobs('t3')">🥉 Tier 3 ({t3})</div>
+                    <div class="badge-filter high-match" onclick="filterJobs('high')">🔥 High Match</div>
+                    <div class="badge-filter corporate" onclick="filterJobs('corp')">🏢 Corporate</div>
+                    <div class="badge-filter nonprofit" onclick="filterJobs('nonprofit')">💚 Nonprofit</div>
                 </div>
-                <a href="tracker.html" class="tracker-link">📋 Tracker</a>
+                <a href="tracker.html" class="tracker-link">
+                    <span>📋</span>
+                    Tracker
+                </a>
             </div>
         </div>
     </div>
@@ -429,8 +485,8 @@ def build_files():
 
 def render_job_card(j):
     quick_links = []
-    if len(j.get('interview_prep', '')) > 10: quick_links.append(('⚡ Prep', 'Interview Prep'))
-    if len(j.get('talking_points', '')) > 10: quick_links.append(('🗣️ Talk', 'Talking Points'))
+    if len(str(j.get('interview_prep', ''))) > 10: quick_links.append(('⚡ Prep', 'Interview Prep'))
+    if len(str(j.get('talking_points', ''))) > 10: quick_links.append(('🗣️ Talk', 'Talking Points'))
     ql_html = ''.join([f'<div class="ql-btn" onclick="openModal({j["id"]}, \'{sec}\')">{label}</div>' for label, sec in quick_links])
     tag_html = ''
     for t in j['tags']:
@@ -458,7 +514,7 @@ def render_job_card(j):
             <select id="status-{j['id']}" class="status-select" onchange="updateStatus({j['id']}, this.value)">
                 {status_opts}
             </select>
-            <textarea id="note-{j['id']}" class="notes-area" placeholder="Notes...">{j.get('notes','')}</textarea>
+            <textarea id="note-{j['id']}" class="notes-area" placeholder="Notes...">{j.get('notes','') if j.get('notes') else ''}</textarea>
         </div>
     </div>
     """
