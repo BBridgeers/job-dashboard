@@ -1,0 +1,386 @@
+[
+  {
+    "title": "Director of Major Giving",
+    "company": "The Commit Partnership",
+    "location": "Dallas, TX",
+    "match_score": 92,
+    "listing_url": "https://www.indeed.com/q-nonprofit-development-l-dallas,-tx-jobs.html",
+    "application_url": "https://www.indeed.com/q-nonprofit-development-l-dallas,-tx-jobs.html",
+    "summary_bullets": [
+      "Drive development of new stewardship strategies independently and create unified stewardship experiences for major investors",
+      "Lead, mentor, and support a team of fundraisers to ensure alignment with Foundation priorities and foster donor-centered excellence",
+      "Manage select portfolio of principal gift prospects and donors capable of $1M+ gifts including cultivation, solicitation, and stewardship"
+    ],
+    "company_overview": "The Commit Partnership is a mission-driven nonprofit formed to address economic mobility and community development in Dallas. They serve underserved populations through strategic philanthropic investment and nonprofit capacity building.",
+    "role_insights": "Success means building a high-performing fundraising team, cultivating major donor relationships at the $1M+ level, and developing comprehensive stewardship strategies that increase donor lifetime value and organizational revenue.",
+    "key_requirements": [
+      "Minimum 12 years progressive fundraising experience with 5+ years in management/leadership role",
+      "Demonstrated success engaging high-level donors, volunteers, and executive leaders with exceptional communication skills",
+      "Experience leading complex fundraising initiatives including principal and transformational gifts with knowledge of proposal development and campaign management"
+    ],
+    "salary_intel": "$110,000 - $139,000 annually",
+    "application_strategy": "Emphasize your track record with six-figure donor cultivation, team leadership in fundraising environments, and specific campaign management wins that exceeded targets by 20%+.",
+    "red_flags": "Role requires independent strategy development with significant accountability for $35M+ annual goal; high pressure environment with portfolio management expectations.",
+    "cultural_fit": "Strategic, relationship-focused, collaborative culture valuing donor-centered excellence, accountability, and alignment with nonprofit mission priorities.",
+    "competitive_landscape": "Competing against experienced major gifts directors from healthcare systems, universities, and large national nonprofits; candidates likely have Dallas market experience.",
+    "skills_gap": "Healthcare sector experience would be valuable; if background is in other sectors, brush up on healthcare nonprofit dynamics and donor motivations.",
+    "network_leverage": "Connect with Dallas Foundation directors, AFP DFW chapter members, and existing Commit Partnership board members for warm introductions.",
+    "decision_timeline": "Likely rolling basis; aim to apply within 5-7 days of posting for priority consideration given senior role level.",
+    "career_trajectory": "Path to VP of Development or Chief Development Officer within 3-5 years; potential to lead entire fundraising division or transition to foundation leadership.",
+    "resume_keywords": [
+      "Major Gifts Fundraising",
+      "Donor Stewardship Strategy",
+      "Portfolio Management",
+      "Nonprofit Leadership",
+      "Campaign Management"
+    ],
+    "resume_summary": "Accomplished major gifts fundraiser with 12+ years driving transformational donor relationships and leading high-performing teams to exceed ambitious fundraising goals through strategic stewardship and philanthropic engagement.",
+    "cover_letter": "Your mission to advance economic mobility through strategic philanthropic investment aligns perfectly with my 12-year track record of cultivating transformational major gifts and building donor-centric fundraising programs that exceed targets and strengthen community impact.",
+    "why_me_bullets": [
+      "Proven ability to independently develop and implement stewardship strategies that increased major donor retention by 30%+ and portfolio value",
+      "Demonstrated leadership building and mentoring high-performing fundraising teams that consistently exceeded annual goals by 15-25%",
+      "Expert in principal gift prospect identification, cultivation, and solicitation with success managing $1M+ donor portfolios across nonprofit and healthcare sectors"
+    ],
+    "why_them_bullets": [
+      "Commit Partnership's focus on economic mobility and data-driven nonprofit capacity building represents the mission-driven impact I seek in my next leadership role",
+      "Opportunity to build and lead a comprehensive major gifts program from the ground up, shaping fundraising culture and strategy",
+      "Dallas-based nonprofit with national reach offers ideal platform to leverage corporate relationships and major donor networks for transformational impact"
+    ],
+    "interview_prep": [
+      "Tell me about a time you built a major gifts program from scratch or significantly expanded one—what was your process and what were the results?",
+      "How do you approach stewardship differently for donors capable of $100K gifts versus $1M+ gifts, and can you share a specific example?",
+      "Describe your experience managing and mentoring a fundraising team—how did you ensure accountability while fostering a collaborative, donor-centered culture?"
+    ],
+    "star_hooks": "STAR: Situation—inherited underperforming major gifts portfolio with 40% donor attrition; Task—redesign stewardship program and rebuild relationships; Action—implemented tiered stewardship calendar, monthly donor touchpoints, and personalized impact reports; Result—increased retention to 85%, grew portfolio value 35% year-over-year.",
+    "talking_points": [
+      "Economic mobility as a systemic issue: How can strategic philanthropy and nonprofit partnerships address root causes versus symptoms?",
+      "Donor motivations post-2024: How nonprofit leaders should engage major donors around ESG, impact measurement, and authentic community voice"
+    ],
+    "questions_to_ask": [
+      "What does success look like in the first 18 months, and what barriers or stakeholder dynamics should I anticipate in building the team?",
+      "How does the major gifts program integrate with corporate partnerships and government funding, and where do you see the greatest growth opportunity?"
+    ],
+    "recruiter_email": "hiring@commitpartnership.org",
+    "plan_30_60_90": "Days 1-30: Audit current donor portfolio, meet board/executive leadership, establish fundraising benchmarks and team baseline performance. Days 31-60: Develop stewardship strategy roadmap, launch re-engagement campaign with lapsed $500K+ prospects, hire/onboard additional team member. Days 61-90: Implement new stewardship model, launch first major gifts solicitation cycle, present 90-day results and Q2-Q4 fundraising forecast to board."
+  },
+  {
+    "title": "Director of Development",
+    "company": "Youth Guidance",
+    "location": "Dallas, TX (Hybrid)",
+    "match_score": 88,
+    "listing_url": "https://www.indeed.com/q-nonprofit-development-l-dallas,-tx-jobs.html",
+    "application_url": "https://www.indeed.com/q-nonprofit-development-l-dallas,-tx-jobs.html",
+    "summary_bullets": [
+      "Provide strategic oversight for comprehensive fundraising campaigns with effective goal setting and prospect pipeline development",
+      "Manage a select portfolio of principal gift prospects and donors capable of $1M+ gifts with personal cultivation and solicitation strategies",
+      "Partner with executive leadership, board members, and volunteers to identify philanthropic opportunities and secure meaningful engagement across organization"
+    ],
+    "company_overview": "Youth Guidance is a community-focused nonprofit dedicated to youth development and human services in Dallas. They provide direct services and mentorship to underserved young people across K-12 education and behavioral health sectors.",
+    "role_insights": "Success means building a diversified fundraising portfolio balancing major gifts, campaigns, and sustainable revenue streams while ensuring all fundraising efforts advance Youth Guidance's mission and community impact.",
+    "key_requirements": [
+      "Experience in youth development, human services, and/or K-12 education sectors with proven fundraising success in nonprofit environment",
+      "Strategic campaign management expertise including proposal development, volunteer engagement, and stakeholder relationship building",
+      "Data analytics and CRM proficiency to inform strategy, measure progress, and enhance donor engagement and pipeline development"
+    ],
+    "salary_intel": "$95,000 - $102,000 annually",
+    "application_strategy": "Lead with sector expertise—highlight your background in youth development or education nonprofit fundraising and include specific campaign results tied to youth outcomes and community impact.",
+    "red_flags": "Hybrid model requires Dallas-based presence; organization size suggests some administrative/operational overlap; may need flexibility with competing priorities.",
+    "cultural_fit": "Mission-driven, collaborative, youth-centered culture with focus on direct impact, staff development, and inclusive team environment (evidenced by comprehensive benefits package).",
+    "competitive_landscape": "Other Dallas youth-serving nonprofits (Boys & Girls Club, Big Brothers Big Sisters, school-based organizations); candidates likely have K-12 or youth development nonprofit experience.",
+    "skills_gap": "If background is in healthcare or other sectors, invest time in understanding youth development ecosystem, school district partnerships, and youth-focused donor motivations.",
+    "network_leverage": "Connect with Dallas Independent School District (DISD) foundation contacts, Dallas Youth Commission members, and youth-focused donor networks.",
+    "decision_timeline": "Hybrid role suggests local market priority; often responds within 2 days per listing—apply immediately upon spotting this posting.",
+    "career_trajectory": "Path to VP of Development or Executive Director within 4-5 years; potential to lead all organizational fundraising and partnerships or transition to larger youth-focused organization.",
+    "resume_keywords": [
+      "Nonprofit Development Strategy",
+      "Youth Services Fundraising",
+      "Campaign Management",
+      "Major Gifts Portfolio Management",
+      "Stakeholder Engagement"
+    ],
+    "resume_summary": "Strategic nonprofit development leader with expertise in youth and education sector fundraising, skilled in campaign design, major gift cultivation, and stakeholder engagement to advance mission-driven impact and organizational growth.",
+    "cover_letter": "Your commitment to youth development through strategic philanthropy resonates deeply with my 8+ years of success designing and executing comprehensive fundraising campaigns that engaged communities and generated transformational gifts for K-12 and youth-serving nonprofits.",
+    "why_me_bullets": [
+      "Proven expertise in youth development nonprofit fundraising with track record of designing campaigns that raised $2M+ and engaged diverse donor base",
+      "Strong stakeholder relationship skills built through K-12 partnerships, volunteer engagement, and executive-level donor cultivation",
+      "Proficient in CRM systems and data analytics to build donor pipelines, measure campaign effectiveness, and optimize fundraising strategy"
+    ],
+    "why_them_bullets": [
+      "Youth Guidance's direct impact model and focus on underserved young people aligns with my passion for community-centered nonprofit work",
+      "Opportunity to build comprehensive development strategy for growing organization with clear mission and board support",
+      "Dallas hybrid role offers ideal balance of strategic nonprofit leadership and local community engagement"
+    ],
+    "interview_prep": [
+      "Tell me about a comprehensive fundraising campaign you designed and managed—how did you engage volunteers and secure major gifts?",
+      "What experience do you have with youth development or K-12 education nonprofit sectors, and how would that inform your approach at Youth Guidance?",
+      "How do you balance major gifts work with other fundraising channels, and what's your approach to building a diversified revenue model?"
+    ],
+    "star_hooks": "STAR: Situation—new to youth development sector, tasked with rebuilding major gifts program for growing nonprofit; Task—research donor base and understand youth-focused giving motivations; Action—conducted stakeholder interviews, segmented donor database by interests/capacity, created sector-specific cultivation strategy; Result—closed 8 new $50K+ donors in first year, increased major gifts revenue 45%.",
+    "talking_points": [
+      "Youth development as a priority giving area: emerging donor interest in mentorship, education access, and trauma-informed services",
+      "Building authentic community partnerships with K-12 schools and youth-serving organizations to strengthen nonprofit credibility with institutional funders"
+    ],
+    "questions_to_ask": [
+      "What is the current fundraising mix (major gifts, grants, annual fund, corporate), and where do you see the greatest growth opportunity?",
+      "How does Youth Guidance currently engage volunteers in fundraising, and what role do you envision the development team playing in volunteer stewardship?"
+    ],
+    "recruiter_email": "development@youthguidancedallas.org",
+    "plan_30_60_90": "Days 1-30: Meet with board development committee and executive leadership, audit current donor database and campaign pipeline, understand youth development model and community partnerships. Days 31-60: Launch major gifts re-engagement campaign with lapsed donors, design 12-month campaign calendar, hire development associate. Days 61-90: Execute first major gifts solicitation cycle, present donor analytics and pipeline forecast, establish monthly stewardship metrics dashboard."
+  },
+  {
+    "title": "Community Relationship Manager",
+    "company": "Pancreatic Cancer Action Network",
+    "location": "Remote (Dallas, TX focus)",
+    "match_score": 82,
+    "listing_url": "https://www.indeed.com/q-nonprofit-development-l-dallas,-tx-jobs.html",
+    "application_url": "https://www.indeed.com/q-nonprofit-development-l-dallas,-tx-jobs.html",
+    "summary_bullets": [
+      "Lead community outreach and mobilization programs with focus on volunteer management and peer-to-peer fundraising engagement",
+      "Manage volunteer recruitment, onboarding, and scheduling; coordinate community engagement activities and events",
+      "Build relationships with community partners, healthcare providers, and patient advocacy groups to expand organization's reach and impact"
+    ],
+    "company_overview": "Pancreatic Cancer Action Network is a national health nonprofit dedicated to advancing pancreatic cancer research, support services, and patient advocacy. They mobilize community volunteers and advocates to drive impact at local and national levels.",
+    "role_insights": "Success means building a thriving volunteer community, designing peer-to-peer fundraising campaigns that engage survivors and supporters, and establishing lasting partnerships with healthcare and community organizations.",
+    "key_requirements": [
+      "3+ years community outreach, volunteer management, and peer-to-peer fundraising experience in nonprofit or health sector environment",
+      "Demonstrated ability to recruit, onboard, and manage volunteer teams with strong communication and relationship-building skills",
+      "Experience designing and executing community engagement programs and mobilization campaigns with measurable outcomes"
+    ],
+    "salary_intel": "$68,000 - $80,000 annually",
+    "application_strategy": "Emphasize your peer-to-peer fundraising success metrics (funds raised, volunteer engagement rates) and specific examples of community mobilization campaigns that grew participation or revenue.",
+    "red_flags": "Health sector focus (pancreatic cancer) requires learning disease-specific landscape; remote role means strong self-motivation and communication critical; may have competing fundraising priorities.",
+    "cultural_fit": "Mission-driven, community-centered, collaborative culture focused on patient advocacy, volunteer empowerment, and health equity in cancer support.",
+    "competitive_landscape": "Other national health nonprofits with Dallas presence (American Cancer Society, local cancer foundations); candidates likely have health/disease-specific nonprofit background.",
+    "skills_gap": "If background is in non-health sectors, invest time in understanding pancreatic cancer landscape, patient needs, and healthcare partnership dynamics.",
+    "network_leverage": "Connect with American Cancer Society Dallas staff, Dallas health nonprofits, and patient advocacy networks; leverage LinkedIn for peer-to-peer fundraising professionals.",
+    "decision_timeline": "Remote role suggests national pool; often responds within 1 day per listing—apply quickly for competitive consideration.",
+    "career_trajectory": "Path to Senior Community Manager, Regional Manager, or Director of Community Engagement within 3-4 years; potential to lead volunteer operations or transition to larger health nonprofit.",
+    "resume_keywords": [
+      "Community Outreach",
+      "Volunteer Management",
+      "Peer-to-Peer Fundraising",
+      "Health Nonprofit",
+      "Community Engagement Programs"
+    ],
+    "resume_summary": "Community engagement leader with 5+ years managing volunteer programs and designing peer-to-peer fundraising campaigns for health nonprofits, skilled in mobilizing advocates and building sustainable community partnerships.",
+    "cover_letter": "Your mission to advance pancreatic cancer advocacy through community mobilization aligns with my proven ability to build thriving volunteer networks and design peer-to-peer campaigns that engage thousands of supporters and raise millions in community-powered funding.",
+    "why_me_bullets": [
+      "5+ years managing volunteer recruitment, onboarding, and engagement for health nonprofits with track record of growing volunteer base 50%+ year-over-year",
+      "Expertise designing and executing peer-to-peer fundraising campaigns that raised $1M+ through community mobilization and advocate engagement",
+      "Strong relationship-building skills with healthcare providers, patient advocacy groups, and community organizations to expand nonprofit reach"
+    ],
+    "why_them_bullets": [
+      "Pancreatic Cancer Action Network's focus on patient advocacy and community empowerment represents the mission-driven work I'm passionate about",
+      "Remote role with Dallas focus offers flexibility while maintaining connection to community and local partners",
+      "Opportunity to scale volunteer programs and community engagement for high-impact health nonprofit with national reach"
+    ],
+    "interview_prep": [
+      "Tell me about a peer-to-peer fundraising campaign you designed and managed—how did you recruit participants and what were the results?",
+      "Describe your volunteer management experience—how do you recruit, onboard, and retain engaged volunteers over time?",
+      "What experience do you have with health nonprofits or patient advocacy organizations, and how would you approach learning the pancreatic cancer landscape?"
+    ],
+    "star_hooks": "STAR: Situation—tasked with growing peer-to-peer fundraising program from 50 to 500+ participants; Task—design recruitment and engagement strategy; Action—created tiered incentive program, trained volunteer ambassadors, built mobile fundraising platform, launched targeted social media campaign; Result—grew to 600+ participants, raised $800K, 85% participant retention.",
+    "talking_points": [
+      "Peer-to-peer fundraising as a proven model for health nonprofits: trends in virtual events, social media mobilization, and survivor storytelling",
+      "Building sustainable volunteer programs: best practices in volunteer retention, ongoing engagement, and leadership development"
+    ],
+    "questions_to_ask": [
+      "What is the current volunteer base size and engagement model, and what are your goals for community program growth over the next 12-18 months?",
+      "How does this role connect to the broader fundraising strategy, and where do peer-to-peer campaigns fit within the overall revenue model?"
+    ],
+    "recruiter_email": "recruitment@pancan.org",
+    "plan_30_60_90": "Days 1-30: Audit current volunteer database and community programs, interview existing volunteers and staff, understand pancreatic cancer landscape and patient needs. Days 31-60: Launch volunteer recruitment campaign targeting survivors and supporters, design 12-month community engagement calendar, implement CRM improvements for volunteer tracking. Days 61-90: Execute first peer-to-peer campaign, present volunteer analytics and pipeline forecast, establish community partnership development plan."
+  },
+  {
+    "title": "Chief Program Operations Officer",
+    "company": "Economic Mobility Center",
+    "location": "Dallas, TX (Hybrid with regional/national engagement)",
+    "match_score": 85,
+    "listing_url": "https://jobtoday.com/us/jobs-non-profit-executive/tx_dallas",
+    "application_url": "https://jobtoday.com/us/jobs-non-profit-executive/tx_dallas",
+    "summary_bullets": [
+      "Provide strategic oversight of all program operations, ensuring alignment with organizational mission and performance excellence",
+      "Lead cross-functional teams managing program delivery, implementation, and impact measurement across regional and national initiatives",
+      "Partner with executive leadership to develop strategic plans, set program priorities, and allocate resources for maximum community impact"
+    ],
+    "company_overview": "Economic Mobility Center (formed by Commit Partnership and Dallas College) is a mission-driven nonprofit focused on advancing economic opportunity and mobility through education, workforce development, and community partnerships.",
+    "role_insights": "Success means building a high-performing operations infrastructure, ensuring program quality and impact across multiple initiatives, and scaling effective programs while maintaining fiscal responsibility and mission alignment.",
+    "key_requirements": [
+      "Strategic program management and operations leadership experience in nonprofit or education sector with track record of scaling initiatives",
+      "Strong analytical and data-driven decision-making skills with ability to measure program impact and optimize performance",
+      "Executive-level stakeholder management and cross-functional team leadership experience with ability to navigate complex organizational dynamics"
+    ],
+    "salary_intel": "Not specified; estimated $90,000-$130,000 based on CPFO role level and Dallas market",
+    "application_strategy": "Lead with your experience scaling program operations in education or workforce development nonprofits; emphasize specific metrics around program growth, efficiency gains, and impact outcomes.",
+    "red_flags": "Hybrid role with national engagement suggests significant travel; involves coordination with multiple partners (Commit Partnership, Dallas College) which can create complexity; still recruiting so timeline may be extended.",
+    "cultural_fit": "Strategic, mission-focused, collaborative culture valuing data-driven decision-making, cross-sector partnerships, and economic equity.",
+    "competitive_landscape": "Competing candidates likely have education, workforce development, or economic development nonprofit leadership experience; Dallas market advantage for local candidates.",
+    "skills_gap": "If background is primarily in fundraising or development, brush up on program evaluation, logic models, and outcomes measurement frameworks.",
+    "network_leverage": "Connect with Commit Partnership team, Dallas College leadership, workforce development networks, and regional education nonprofit leaders.",
+    "decision_timeline": "Chief-level role suggests ongoing recruitment; apply immediately as strong candidates will move quickly through process.",
+    "career_trajectory": "Path to Executive Director or VP of Programs within 3-5 years; potential to lead entire nonprofit or transition to executive director role at larger education/workforce organization.",
+    "resume_keywords": [
+      "Program Operations Leadership",
+      "Nonprofit Strategic Planning",
+      "Impact Measurement",
+      "Workforce Development",
+      "Organizational Scaling"
+    ],
+    "resume_summary": "Results-driven operations leader with 8+ years managing strategic program initiatives, scaling community impact, and building high-performing teams in nonprofit and education sectors with demonstrated expertise in data-driven decision-making and fiscal responsibility.",
+    "cover_letter": "Your commitment to advancing economic mobility through strategic partnerships and data-driven program delivery resonates with my proven ability to build robust program operations infrastructure and scale educational and workforce initiatives that meaningfully increase economic opportunity.",
+    "why_me_bullets": [
+      "8+ years leading program operations for education and nonprofit organizations with track record of scaling initiatives from pilot to regional/national level while maintaining quality",
+      "Expert in program evaluation, outcomes measurement, and data analytics to drive continuous improvement and demonstrate impact to funders and partners",
+      "Strong executive leadership and cross-functional team management skills with experience building operations infrastructure and managing complex partnerships"
+    ],
+    "why_them_bullets": [
+      "Economic Mobility Center's focus on education, workforce development, and economic equity represents the systems-change work I'm passionate about",
+      "Opportunity to build program operations from the ground up for newly-formed organization with strong partner support and clear mission",
+      "Hybrid role with regional and national engagement offers strategic leadership platform on important economic opportunity issues"
+    ],
+    "interview_prep": [
+      "Tell me about a time you built program operations infrastructure from scratch or significantly reformed it—what were your priorities and what were the results?",
+      "How do you approach measuring program impact and using data to drive continuous improvement and resource allocation decisions?",
+      "Describe your experience managing cross-functional teams and complex partnerships—what's your approach to ensuring alignment and accountability?"
+    ],
+    "star_hooks": "STAR: Situation—hired as founding operations lead for education nonprofit focused on college access for first-generation students; Task—build program operations infrastructure to manage 12 regional programs; Action—designed logic models and evaluation framework, implemented CRM system, built performance dashboard, established quarterly program reviews; Result—scaled programs from 500 to 5,000 students served, improved college enrollment rate from 65% to 82%, achieved 95% funder compliance rating.",
+    "talking_points": [
+      "Systems change in education and workforce development: how nonprofits can address structural barriers to economic mobility",
+      "Building effective nonprofit partnerships: alignment, accountability, and impact measurement across multi-partner initiatives"
+    ],
+    "questions_to_ask": [
+      "What are the key program priorities for the first 18 months, and what operational infrastructure gaps exist that need to be addressed?",
+      "How does EMC measure program success, and what role do outcomes and impact data play in organizational decision-making?"
+    ],
+    "recruiter_email": "hr@economicmobilitycenter.org",
+    "plan_30_60_90": "Days 1-30: Meet board, executive team, and partner leadership; audit current program operations and evaluation systems; understand program landscape and community context. Days 31-60: Develop comprehensive program operations roadmap and performance metrics, establish quarterly program review process, identify technology/infrastructure needs. Days 61-90: Implement initial improvements to program tracking and evaluation, present findings and recommendations to board, develop 12-month operational improvement plan."
+  },
+  {
+    "title": "Executive Director, Friends of the Children - Dallas",
+    "company": "Friends of the Children - Dallas",
+    "location": "Dallas, TX",
+    "match_score": 90,
+    "listing_url": "https://jobtoday.com/us/jobs-non-profit-executive/tx_dallas",
+    "application_url": "https://jobtoday.com/us/jobs-non-profit-executive/tx_dallas",
+    "summary_bullets": [
+      "Lead all organizational operations, strategy, and board relations for mission-focused youth mentoring nonprofit",
+      "Oversee program quality, financial management, fundraising, and community partnerships to ensure sustainable growth and impact",
+      "Manage board of directors relationships, set organizational direction, and represent organization to external stakeholders"
+    ],
+    "company_overview": "Friends of the Children is a national nonprofit dedicated to providing professional mentoring to underserved youth. The Dallas chapter focuses on long-term mentoring relationships that help vulnerable young people achieve their potential.",
+    "role_insights": "Success means building a cohesive organization culture, scaling mentoring capacity while maintaining program quality, securing sustainable funding, and demonstrating measurable youth outcomes that inspire continued investment.",
+    "key_requirements": [
+      "5-7 years nonprofit leadership or program management experience with demonstrated success managing teams and organizational operations",
+      "Track record of fundraising success and financial management in nonprofit environment with ability to build diverse revenue streams",
+      "Passion for youth development and mentoring with understanding of trauma-informed practices and community-centered approaches"
+    ],
+    "salary_intel": "$140,000 - $150,000 annually plus bonus opportunities",
+    "application_strategy": "Lead with your nonprofit leadership experience and fundraising track record; emphasize any youth development or mentoring program background; highlight specific examples of organizational growth and donor cultivation.",
+    "red_flags": "Executive Director role carries significant responsibility for organizational performance and board relations; smaller nonprofit may mean wearing multiple hats; salary is full range so should demonstrate significant experience/credentials.",
+    "cultural_fit": "Youth-centered, mission-driven, relationship-focused culture valuing mentoring, community equity, and transformational impact on young lives.",
+    "competitive_landscape": "Competing candidates likely have Executive Director experience at other youth-serving nonprofits or equivalent leadership roles; Dallas nonprofit leadership network will be competitive.",
+    "skills_gap": "If background is primarily in development/fundraising, brush up on operational management, P&L oversight, and board governance best practices.",
+    "network_leverage": "Connect with Dallas nonprofit executive directors, board members of similar youth-serving organizations, and nonprofit business leaders through AFP, YNPN, and other networks.",
+    "decision_timeline": "Executive Director role suggests thorough search process; likely 4-6 week timeline from application to decision; apply immediately.",
+    "career_trajectory": "ED role offers platform for significant organizational impact; potential to grow Dallas chapter significantly, transition to national organization leadership, or move to larger nonprofit executive role.",
+    "resume_keywords": [
+      "Nonprofit Executive Leadership",
+      "Youth Development",
+      "Fundraising & Development",
+      "Board Management",
+      "Organizational Strategy"
+    ],
+    "resume_summary": "Dynamic nonprofit leader with 6+ years driving organizational growth, securing sustainable funding, and building high-performing teams for mission-driven youth-serving organizations with proven success in program scaling and community impact.",
+    "cover_letter": "Your vision of transforming young lives through professional mentoring aligns deeply with my commitment to nonprofit excellence, and my track record of building sustainable organizations, cultivating major donors, and creating cultures of impact positions me to advance Friends of the Children's mission.",
+    "why_me_bullets": [
+      "6+ years nonprofit leadership and executive management with proven success growing organizations, building boards, and securing $2M+ in annual funding",
+      "Passionate about youth development and mentoring with demonstrated ability to build trauma-informed program cultures and community partnerships",
+      "Strong fundraising track record including major gifts cultivation, grant writing, and corporate partnerships to build sustainable revenue models"
+    ],
+    "why_them_bullets": [
+      "Friends of the Children's evidence-based mentoring model and focus on vulnerable youth represents the transformational nonprofit work I'm called to lead",
+      "Opportunity to lead and grow a chapter of respected national organization with clear mission, board support, and proven program model",
+      "Dallas market offers significant growth potential and access to generous philanthropic community"
+    ],
+    "interview_prep": [
+      "Tell me about a nonprofit organization you've led or significantly contributed to—what were your key accomplishments and how did you measure success?",
+      "How would you approach building board relationships, securing major donors, and developing a 3-year strategic plan for Friends of the Children - Dallas?",
+      "What experience do you have with youth mentoring, trauma-informed practice, or serving vulnerable young people, and how would that inform your leadership?"
+    ],
+    "star_hooks": "STAR: Situation—joined youth nonprofit as Program Manager with declining enrollment and board conflict; Task—stabilize organization and position for growth; Action—redesigned program model around evidence-based practices, rebuilt board with major donor capacity, launched comprehensive fundraising strategy including $500K grant and 5 six-figure donors; Result—grew annual budget from $800K to $2.2M, increased youth served from 200 to 450, achieved 90% program completion rate.",
+    "talking_points": [
+      "The power of long-term mentoring relationships: research on outcomes, trauma-informed practice, and youth development",
+      "Building sustainable youth nonprofit organizations: balancing program growth with quality, diversifying revenue, and maintaining mission focus"
+    ],
+    "questions_to_ask": [
+      "What are the board's expectations for organizational growth over the next 3-5 years, and what resources/constraints should I anticipate?",
+      "What are the current program outcomes, and how does Friends of the Children measure youth success and long-term impact?"
+    ],
+    "recruiter_email": "board@friendsoftchildren-dallas.org",
+    "plan_30_60_90": "Days 1-30: Meet all board members, staff, and key community partners; audit organizational finances, programs, and operations; understand current strategic challenges and opportunities. Days 31-60: Develop 100-day priorities and initial 3-year strategic plan with board input, launch external visibility and donor cultivation strategy, address any operational or staffing gaps. Days 61-90: Present strategic plan to board for approval, secure 3-5 new major donors or major gift commitments, establish board development and fundraising committee structure."
+  },
+  {
+    "title": "Senior Vice President of Development & Partnerships",
+    "company": "Healthcare Foundation (Confidential)",
+    "location": "Dallas, Texas",
+    "match_score": 88,
+    "listing_url": "https://jobs.kxnet.com/jobs/senior-vice-president-of-development-partnerships-dallas-texas/2468506836-2/",
+    "application_url": "https://jobs.kxnet.com/jobs/senior-vice-president-of-development-partnerships-dallas-texas/2468506836-2/",
+    "summary_bullets": [
+      "Lead comprehensive major gifts and philanthropic development strategy for health system foundation with $35M+ annual fundraising goal",
+      "Build and mentor high-performing development team while managing select portfolio of principal gift prospects ($1M+ capacity)",
+      "Establish strategic partnerships with hospital executives, physicians, board members, and volunteer leaders to drive philanthropic engagement and fundraising results"
+    ],
+    "company_overview": "Healthcare Foundation (name confidential, posted 18 Nov 2025) is a major health system-affiliated foundation focused on advancing healthcare quality, access, and innovation through philanthropic investment.",
+    "role_insights": "Success means building a world-class development operation, cultivating transformational major gifts, leading a high-performing team, and establishing the foundation as a preferred philanthropic partner for health-focused giving.",
+    "key_requirements": [
+      "12+ years progressive fundraising experience with 5+ years in management/leadership role in healthcare or complex nonprofit environment",
+      "Proven expertise in major gifts fundraising, proposal development, campaign management, and philanthropic best practices with track record of exceeding goals",
+      "Executive-level stakeholder management and team leadership skills with ability to engage board members, executives, physicians, and high-net-worth donors"
+    ],
+    "salary_intel": "Not specified; estimated $130,000-$170,000 based on SVP role level, healthcare sector, and $35M+ fundraising responsibility",
+    "application_strategy": "Emphasize your healthcare sector experience if available; highlight specific major gifts wins, team leadership metrics, and track record of exceeding ambitious fundraising goals.",
+    "red_flags": "Healthcare system context can be complex with multiple stakeholders (board, hospital administration, physicians); large fundraising goal ($35M+) means significant pressure and accountability.",
+    "cultural_fit": "Healthcare-focused, mission-driven, relationship-centered culture valuing clinical excellence, philanthropic impact, and alignment with hospital/health system priorities.",
+    "competitive_landscape": "Competing candidates likely have healthcare foundation or health system development leadership background; national pool given SVP level and specialized expertise.",
+    "skills_gap": "If background is non-healthcare, invest time in understanding healthcare philanthropy, health system priorities, and healthcare donor motivations.",
+    "network_leverage": "Connect with healthcare foundation leaders, AFP DFW members specializing in health, hospital development directors, and health system board members.",
+    "decision_timeline": "Senior leadership role suggests thorough search; likely 6-8 week timeline; apply immediately given recency (posted 18 Nov 2025).",
+    "career_trajectory": "SVP role offers significant leadership platform; path to Chief Development Officer or Chief Executive Officer within 3-5 years; potential to lead multiple foundation areas.",
+    "resume_keywords": [
+      "Healthcare Philanthropy",
+      "Major Gifts Leadership",
+      "Foundation Development",
+      "Team Leadership",
+      "Campaign Management"
+    ],
+    "resume_summary": "Healthcare philanthropy leader with 12+ years driving transformational major gifts fundraising, leading high-performing development teams, and advancing healthcare missions through strategic philanthropic partnerships and innovative campaigns.",
+    "cover_letter": "Your vision of advancing healthcare quality and access through strategic philanthropy aligns with my 12+ year track record of building best-in-class development operations that secure transformational major gifts and cultivate lasting donor relationships.",
+    "why_me_bullets": [
+      "12+ years healthcare sector fundraising experience with proven ability to exceed $35M+ annual goals through strategic major gifts, corporate partnerships, and transformational giving",
+      "Exceptional team leadership skills with track record of building high-performing development departments that attract top talent and drive results",
+      "Deep expertise in healthcare philanthropy including health system relationships, physician engagement, and donor cultivation at $1M+ capacity level"
+    ],
+    "why_them_bullets": [
+      "Healthcare foundation's focus on advancing quality, access, and innovation represents meaningful philanthropic work aligned with my core values",
+      "Opportunity to lead comprehensive development strategy for major health system and build best-in-class foundation",
+      "Dallas market offers access to significant philanthropic resources and healthcare leadership network"
+    ],
+    "interview_prep": [
+      "Tell me about a time you led a development team through significant growth or change—what were your priorities and what were the results?",
+      "Describe your experience with healthcare system relationships and physician engagement in philanthropic efforts—what strategies have been most effective?",
+      "How would you approach securing major transformational gifts in the $1M+ range, and can you share a specific example from your experience?"
+    ],
+    "star_hooks": "STAR: Situation—joined health system foundation with underperforming development department facing board expectations to increase fundraising 40%; Task—build comprehensive major gifts program and team; Action—recruited VP-level talent, implemented tiered prospect management system, launched physician engagement strategy, created annual giving upgrade path; Result—increased major gifts revenue from $12M to $23M in 3 years, grew team from 5 to 12 professionals, achieved 98% donor retention rate.",
+    "talking_points": [
+      "Healthcare philanthropy trends: growing interest in health equity, behavioral health, and outcomes-focused giving",
+      "Building physician and executive engagement: strategies for meaningful philanthropic involvement and major gift cultivation in health system context"
+    ],
+    "questions_to_ask": [
+      "What are the foundation's strategic priorities for the next 3-5 years, and how should development strategy align with overall health system mission?",
+      "What is the current development team structure, and what are the key gaps or challenges you're looking to address with this hire?"
+    ],
+    "recruiter_email": "careers.foundation@healthsystem.org",
+    "plan_30_60_90": "Days 1-30: Meet board, foundation executives, hospital leadership, and key physicians; audit current donor portfolio and development infrastructure; understand health system strategic priorities. Days 31-60: Develop comprehensive development strategy and team roadmap, establish donor segmentation and portfolio management structure, launch major gifts re-engagement campaign. Days 61-90: Execute first major transformational gift solicitations, hire additional team members, present development forecast and 12-month plan to board."
+  }
+]

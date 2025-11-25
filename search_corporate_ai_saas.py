@@ -19,12 +19,30 @@ HEADERS = {
 # THE RICH DATA PROMPT
 SYSTEM_PROMPT = """You are a high-level Executive Recruiter Agent. 
 Your goal is to find live, high-value job openings and extract structured, actionable data for a candidate.
-You must output your answer STRICTLY as a JSON list of objects. No markdown, no conversational text."""
+You must output your answer STRICTLY as a JSON list of objects. No markdown, no conversational text.
+
+SCORING RUBRIC (0-100):
+1. Responsibilities Alignment (40pts): Does the day-to-day work match the candidate's expertise in driving retention, expansion, and strategic relationships?
+2. Experience/Role Title Match (30pts): Target roles INCLUDE BUT ARE NOT LIMITED TO: Customer Success Manager, Senior Customer Success Manager, Customer Success Specialist, Customer Success Associate, Customer Success Consultant, Customer Success Lead, Client Success Manager, Client Success Specialist, Client Services Manager, Client Relationship Manager, Customer Experience Manager, Customer Engagement Manager, Customer Account Manager, Customer Retention Manager, Adoption Manager, Renewal Manager, Expansion Manager, Account Manager (existing accounts/growth), Strategic Account Manager, Key Account Manager, Major Account Manager, Named Account Manager, National Account Manager, Enterprise Account Manager, Global Account Manager, Partner Account Manager, Customer Account Executive, Channel Account Manager, Strategic Relationship Manager, Strategic Partnerships Manager, Partnership Manager, Partner Success Manager, Partner Success Specialist, Partner Engagement Manager, Partner Enablement Manager, Partner Relationship Manager, Ecosystem Manager, Alliance Manager, Channel Manager, Channel Development Manager, Implementation Specialist, Implementation Consultant, Implementation Manager, Client Implementation Manager, Software Implementation Specialist, Technical Implementation Consultant, Customer Onboarding Specialist, Onboarding Consultant, Onboarding Manager, Deployment Specialist, Delivery Consultant, Engagement Manager, Solutions Consultant, Solutions Delivery Manager, Training Specialist, Training Consultant, Training Manager, Enablement Specialist, Customer Enablement Manager, Learning & Development Specialist, Instructional Specialist, Adoption Consultant, User Enablement Manager, Education Services Manager, Customer Education Specialist, Customer Growth Manager, Value Manager, Business Value Consultant, Customer Outcomes Manager, Retention Specialist, Renewals Manager, Expansion Specialist, Customer Value Manager, Engagement Specialist.
+3. Skills/Tools (15pts): Salesforce, Gainsight, MEDDIC, Churn Prediction, Python/AI.
+4. Culture/Location (10pts): Remote or Dallas-Ft. Worth. High-growth/Innovation culture.
+5. Salary Range (5pts): >$90k.
+
+CRITICAL: AUTO-REJECT (Score = 0) any "SDR", "BDR", "Sales Development Representative", or "Business Development Representative" roles.
+"""
 
 SEARCH_QUERY = """
-Find 5 high-paying Customer Success or Account Executive roles in AI/SaaS companies (Remote or Dallas/TX).
-Focus on: OpenAI, Anthropic, Stripe, Databricks, or similar high-growth tech.
-Only include roles posted in the last 14 days.
+Find 30-50 high-paying Customer Success, Account Management, or Strategic Partnership roles in AI/SaaS companies (Remote or Dallas/TX).
+Focus on: High-growth Series B+ or Public Tech companies.
+Comp: $90k+. Only include roles posted in the last 14 days.
+EXCLUDE: "Sales Development", "Business Development Representative", "SDR", "BDR", "Inside Sales".
+
+PRIORITY SOURCES (Prioritize listings from these domains):
+1. Major Boards: LinkedIn, Indeed, Glassdoor, Wellfound (AngelList).
+2. Tech/SaaS Specific: Built In, Remote.co, We Work Remotely, SaaS Jobs, CrunchBoard, Stack Overflow.
+3. ATS Direct Links: site:lever.co, site:greenhouse.io, site:myworkdayjobs.com, site:ashbyhq.com.
+4. Diversity/Niche: Tech Ladies, PowerToFly, The Muse.
+5. Google Search Logic: (site:lever.co OR site:greenhouse.io OR site:ashbyhq.com) ("Customer Success" OR "Account Manager") ("Dallas" OR "Remote") -intitle:engineer.
 
 For EACH job, you MUST extract or generate the following 30 fields in a valid JSON object:
 
@@ -50,7 +68,7 @@ For EACH job, you MUST extract or generate the following 30 fields in a valid JS
 20. resume_keywords (5 ATS keywords to include)
 21. resume_summary (A tailored 2-sentence summary for the CV)
 22. cover_letter (A draft opening paragraph for the cover letter)
-23. why_me_bullets (3 arguments for why I am the perfect fit)
+23. why_me_bullets (3arguments for why I am the perfect fit)
 24. why_them_bullets (3 reasons why I want to join THEM)
 25. interview_prep (3 likely interview questions)
 26. star_hooks (A suggestion for a STAR story to tell)

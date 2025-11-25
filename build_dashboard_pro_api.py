@@ -1,0 +1,238 @@
+import sqlite3
+import os
+import json
+from datetime import datetime
+
+# CONFIGURATION
+DB_PATH = 'jobs.db'
+HTML_OUTPUT = 'index.html'
+API_BASE = "https://my-job-dashboard.onrender.com"
+
+def generate_api_dashboard():
+    """Generate dashboard that pulls data from Render API."""
+    
+    html = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Job Search Command Center</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+            body {{ font-family: 'Inter', sans-serif; background-color: #f3f4f6; }}
+            .kanban-col {{ min-height: 80vh; }}
+            .card {{ transition: transform 0.2s; }}
+            .card:hover {{ transform: translateY(-2px); }}
+            .tier-1 {{ border-left: 4px solid #10b981; }}
+            .tier-2 {{ border-left: 4px solid #f59e0b; }}
+            .tier-3 {{ border-left: 4px solid #6b7280; }}
+            .modal {{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 50; }}
+            .modal-content {{ background: white; margin: 5% auto; padding: 20px; width: 80%; max-width: 900px; max-height: 90vh; overflow-y: auto; border-radius: 8px; }}
+            .loading {{ text-align: center; padding: 40px; color: #6b7280; }}
+        </style>
+    </head>
+    <body class="p-6">
+        <header class="mb-8 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">🚀 Job Search Command Center</h1>
+                <p class="text-gray-600" id="jobCount">Loading...</p>
+            </div>
+            <div class="space-x-4">
+                <button onclick="loadJobs()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Refresh Data</button>
+            </div>
+        </header>
+
+        <!-- KANBAN BOARD -->
+        <div id="kanbanBoard" class="grid grid-cols-1 md:grid-cols-5 gap-4 overflow-x-auto">
+            <div class="loading">Loading jobs from Render...</div>
+        </div>
+
+        <!-- STRATEGY MODAL -->
+        <div id="strategyModal" class="modal">
+            <div class="modal-content">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 id="modalTitle" class="text-2xl font-bold">Strategy Kit</h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+                </div>
+                <div id="modalBody" class="space-y-6"></div>
+            </div>
+        </div>
+
+        <script>
+            const API_BASE = "{API_BASE}";
+
+            async function loadJobs() {{
+                try {{
+                    const response = await fetch(`${{API_BASE}}/api/get_jobs`);
+                    const jobs = await response.json();
+                    
+                    document.getElementById('jobCount').innerText = `Tracking ${{jobs.length}} Opportunities`;
+                    renderKanban(jobs);
+                }} catch (error) {{
+                    console.error('Error loading jobs:', error);
+                    document.getElementById('kanbanBoard').innerHTML = '<div class="loading">Error loading jobs from API</div>';
+                }}
+            }}
+
+            function renderKanban(jobs) {{
+                const columns = {{
+                    "New": [],
+                    "Applied": [],
+                    "Interview": [],
+                    "Offer": [],
+                    "Rejected": []
+                }};
+
+                jobs.forEach(j => {{
+                    const status = j.display_status || j.status || 'New';
+                    if (columns[status]) {{
+                        columns[status].push(j);
+                    }} else {{
+                        columns['New'].push(j);
+                    }}
+                }});
+
+                let html = '';
+                const configs = [
+                    ['New', 'bg-gray-100', 'text-gray-700', 'bg-gray-200'],
+                    ['Applied', 'bg-blue-50', 'text-blue-800', 'bg-blue-200'],
+                    ['Interview', 'bg-purple-50', 'text-purple-800', 'bg-purple-200'],
+                    ['Offer', 'bg-green-50', 'text-green-800', 'bg-green-200'],
+                    ['Rejected', 'bg-red-50', 'text-red-800', 'bg-red-200']
+                ];
+
+                configs.forEach(([title, bg, text, countBg]) => {{
+                    html += `
+                        <div class="${{bg}} p-4 rounded-lg kanban-col">
+                            <h2 class="font-bold ${{text}} mb-4 flex justify-between">
+                                ${{title}} <span class="${{countBg}} px-2 rounded text-sm">${{columns[title].length}}</span>
+                            </h2>
+                            <div class="space-y-3">
+                                ${{renderCards(columns[title])}}
+                            </div>
+                        </div>
+                    `;
+                }});
+
+                document.getElementById('kanbanBoard').innerHTML = html;
+            }}
+
+            function renderCards(jobs) {{
+                return jobs.map(job => {{
+                    const tierClass = `tier-${{job.tier || 3}}`;
+                    const scoreColor = job.match_score >= 90 ? 'text-green-600' : 'text-yellow-600';
+                    const tags = job.tags || [];
+                    const strategyBtn = job.has_strategy ? 
+                        `<button onclick="openStrategy(${{job.id}})" class="w-full mt-2 bg-purple-600 text-white text-xs py-1 rounded hover:bg-purple-700">🧠 View Strategy Kit</button>` : '';
+
+                    return `
+                        <div class="bg-white p-4 rounded shadow card ${{tierClass}} cursor-pointer">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-gray-900 leading-tight">${{job.title}}</h3>
+                                <span class="font-bold ${{scoreColor}}">${{job.match_score}}</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">${{job.company}}</p>
+                            
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                ${{tags.map(t => `<span class="text-xs bg-gray-100 px-2 py-1 rounded">${{t}}</span>`).join('')}}
+                            </div>
+                            
+                            <div class="flex justify-between items-center text-xs text-gray-500">
+                                <span>${{job.location || ''}}</span>
+                            </div>
+                            
+                            ${{strategyBtn}}
+                            
+                            <div class="mt-3 pt-3 border-t border-gray-100 flex justify-between">
+                                <a href="${{job.url || '#'}}" target="_blank" class="text-blue-600 text-xs hover:underline">View Job</a>
+                                <button class="text-gray-400 hover:text-gray-600 text-xs">Details</button>
+                            </div>
+                        </div>
+                    `;
+                }}).join('');
+            }}
+
+            async function openStrategy(jobId) {{
+                try {{
+                    const response = await fetch(`${{API_BASE}}/api/get_strategy/${{jobId}}`);
+                    const data = await response.json();
+                    
+                    if (!data.strategy) {{
+                        alert('No strategy kit available for this job.');
+                        return;
+                    }}
+
+                    const s = data.strategy;
+                    document.getElementById('modalTitle').innerText = `Strategy Kit: ${{data.title}}`;
+                    
+                    const html = `
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-blue-50 p-4 rounded">
+                                <h3 class="font-bold text-blue-800 mb-2">🎯 Precision Match</h3>
+                                <div class="text-3xl font-bold text-blue-600">${{s.precision_match.total_score}}/100</div>
+                                <p class="text-sm mt-1">${{s.precision_match.reasoning}}</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded">
+                                <h3 class="font-bold text-yellow-800 mb-2">⚠️ Gap Analysis</h3>
+                                <ul class="list-disc pl-4 text-sm">
+                                    ${{s.gap_analysis.hard_gaps.map(g => `<li>${{g}}</li>`).join('')}}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="border-t pt-4">
+                            <h3 class="font-bold text-lg mb-2">📄 Resume Customization</h3>
+                            <div class="space-y-2">
+                                ${{s.resume_customization.swap_instructions.map(i => `
+                                    <div class="bg-gray-50 p-3 rounded text-sm">
+                                        <div class="text-red-500 line-through text-xs">${{i.original}}</div>
+                                        <div class="text-green-600 font-medium">→ ${{i.new}}</div>
+                                        <div class="text-gray-400 text-xs italic">${{i.reason}}</div>
+                                    </div>
+                                `).join('')}}
+                            </div>
+                        </div>
+
+                        <div class="border-t pt-4">
+                            <h3 class="font-bold text-lg mb-2">💌 Cover Letter Hook</h3>
+                            <div class="bg-gray-50 p-4 rounded italic text-gray-700">
+                                "${{s.cover_letter.opening_paragraph}}"
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">News Hook: ${{s.cover_letter.news_hook}}</p>
+                        </div>
+                    `;
+                    
+                    document.getElementById('modalBody').innerHTML = html;
+                    document.getElementById('strategyModal').style.display = 'block';
+                }} catch (error) {{
+                    console.error('Error loading strategy:', error);
+                    alert('Failed to load strategy kit.');
+                }}
+            }}
+
+            function closeModal() {{
+                document.getElementById('strategyModal').style.display = 'none';
+            }}
+            
+            window.onclick = function(event) {{
+                if (event.target == document.getElementById('strategyModal')) {{
+                    closeModal();
+                }}
+            }}
+
+            // Load jobs on page load
+            window.addEventListener('DOMContentLoaded', loadJobs);
+        </script>
+    </body>
+    </html>
+    """
+    return html
+
+if __name__ == "__main__":
+    print("📊 Generating API-Enabled Dashboard...")
+    html = generate_api_dashboard()
+    with open(HTML_OUTPUT, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"✅ Dashboard saved to {HTML_OUTPUT}")

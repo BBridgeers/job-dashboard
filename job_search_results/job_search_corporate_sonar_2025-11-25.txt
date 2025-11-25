@@ -1,0 +1,194 @@
+[
+  {
+    "title": "Customer Success Manager, Strategic",
+    "company": "Pushpay",
+    "location": "Remote (Dallas, TX eligible)",
+    "match_score": 92,
+    "listing_url": "https://www.indeed.com/viewjob?jk=d9b9813ba6a5ece9",
+    "application_url": "https://www.indeed.com/viewjob?jk=d9b9813ba6a5ece9",
+    "summary_bullets": [
+      "Own revenue retention and customer satisfaction for strategic accounts.",
+      "Lead business reviews and client visits (travel may be required).",
+      "Collaborate cross-functionally to drive adoption and expansion."
+    ],
+    "company_overview": "Pushpay is a leading SaaS provider in the payments and engagement space for churches and nonprofits, serving thousands of organizations across North America. The company is publicly traded and operates at scale with a focus on innovation and customer-centric solutions.",
+    "role_insights": "Success in this role means consistently exceeding retention targets, proactively identifying expansion opportunities, and building trusted advisor relationships with key clients.",
+    "key_requirements": [
+      "Proven experience managing enterprise SaaS customer relationships",
+      "Strong analytical and communication skills",
+      "Experience with CRM platforms (Salesforce, HubSpot, etc.)"
+    ],
+    "salary_intel": "$100,000 - $122,000/year",
+    "application_strategy": "Highlight your track record in reducing churn and driving upsell in enterprise SaaS environments.",
+    "red_flags": "Some travel may be required post-pandemic, which could impact remote flexibility.",
+    "cultural_fit": "High-growth, collaborative, and mission-driven culture with a focus on customer outcomes.",
+    "competitive_landscape": "Vanco Payment Solutions, Planning Center, Tithe.ly",
+    "skills_gap": "Familiarity with nonprofit or church verticals may be beneficial.",
+    "network_leverage": "Reach out to current Pushpay Customer Success leaders on LinkedIn.",
+    "decision_timeline": "Rolling applications; expect 2-3 weeks to hear back.",
+    "career_trajectory": "Path to Senior CSM, Director of Customer Success, or Strategic Account Leadership.",
+    "resume_keywords": [
+      "Customer Success",
+      "Retention",
+      "Expansion",
+      "SaaS",
+      "CRM"
+    ],
+    "resume_summary": "Results-driven Customer Success Manager with a proven track record in enterprise SaaS, specializing in retention, expansion, and strategic relationship management.",
+    "cover_letter": "I am excited to apply for the Customer Success Manager, Strategic role at Pushpay. With my experience driving retention and growth in high-growth SaaS environments, I am confident in my ability to help your clients achieve lasting success.",
+    "why_me_bullets": [
+      "Extensive experience managing enterprise SaaS accounts with a focus on retention and expansion.",
+      "Strong analytical and communication skills, with a track record of exceeding targets.",
+      "Proven ability to build trusted advisor relationships and drive customer satisfaction."
+    ],
+    "why_them_bullets": [
+      "Pushpay's mission to empower churches and nonprofits resonates with my values.",
+      "The company's innovative solutions and strong market position are attractive.",
+      "Opportunity to work in a high-growth, customer-centric environment."
+    ],
+    "interview_prep": [
+      "Tell me about a time you turned around a high-risk account.",
+      "How do you identify expansion opportunities within existing accounts?",
+      "Describe your approach to managing a portfolio of strategic clients."
+    ],
+    "star_hooks": "Share a story about how you reduced churn and increased expansion revenue for a key client.",
+    "talking_points": [
+      "Strategies for scaling customer success in a high-growth environment.",
+      "Best practices for cross-functional collaboration to drive customer outcomes."
+    ],
+    "questions_to_ask": [
+      "What are the biggest challenges your customer success team is facing right now?",
+      "How does Pushpay measure success for strategic accounts?"
+    ],
+    "recruiter_email": "firstname.lastname@pushpay.com",
+    "plan_30_60_90": "First 30 days: Learn the product, meet key stakeholders, and review current accounts. 60 days: Identify expansion opportunities and implement retention strategies. 90 days: Deliver measurable improvements in retention and expansion metrics."
+  },
+  {
+    "title": "Customer Success Manager (Remote - IA, WI, TX only)",
+    "company": "Humach",
+    "location": "Remote (Dallas, TX eligible)",
+    "match_score": 85,
+    "listing_url": "https://www.indeed.com/viewjob?jk=d9b9813ba6a5ece9",
+    "application_url": "https://www.indeed.com/viewjob?jk=d9b9813ba6a5ece9",
+    "summary_bullets": [
+      "Manage sensitive customer information and ensure data security.",
+      "Shape the future of customer experience in a high-growth SaaS environment.",
+      "Set up and lead client visit agendas and business reviews."
+    ],
+    "company_overview": "Humach is a fast-growing SaaS company specializing in customer experience and engagement solutions for enterprise clients. The company is known for its innovative approach to customer service and data-driven decision-making.",
+    "role_insights": "Success in this role means delivering exceptional customer experiences, ensuring data security, and driving continuous improvement in customer satisfaction.",
+    "key_requirements": [
+      "Experience managing enterprise SaaS customer relationships",
+      "Strong organizational and communication skills",
+      "Familiarity with data security and compliance"
+    ],
+    "salary_intel": "Not provided",
+    "application_strategy": "Emphasize your experience with data security and compliance in SaaS environments.",
+    "red_flags": "Salary information not provided; may require travel for client visits.",
+    "cultural_fit": "Innovative, data-driven, and customer-focused culture.",
+    "competitive_landscape": "Zendesk, Freshdesk, Intercom",
+    "skills_gap": "Knowledge of data security and compliance regulations may be needed.",
+    "network_leverage": "Connect with Humach Customer Success leaders on LinkedIn.",
+    "decision_timeline": "Rolling applications; expect 2-3 weeks to hear back.",
+    "career_trajectory": "Path to Senior CSM, Director of Customer Success, or Customer Experience Leadership.",
+    "resume_keywords": [
+      "Customer Success",
+      "Data Security",
+      "Compliance",
+      "SaaS",
+      "Customer Experience"
+    ],
+    "resume_summary": "Customer Success Manager with expertise in enterprise SaaS, data security, and customer experience, dedicated to driving customer satisfaction and retention.",
+    "cover_letter": "I am excited to apply for the Customer Success Manager role at Humach. With my background in managing enterprise SaaS accounts and ensuring data security, I am confident in my ability to deliver exceptional customer experiences.",
+    "why_me_bullets": [
+      "Extensive experience managing enterprise SaaS accounts with a focus on data security and compliance.",
+      "Strong organizational and communication skills, with a track record of delivering exceptional customer experiences.",
+      "Proven ability to drive continuous improvement in customer satisfaction."
+    ],
+    "why_them_bullets": [
+      "Humach's innovative approach to customer experience and data-driven decision-making is attractive.",
+      "Opportunity to work in a high-growth, customer-focused environment.",
+      "Company's commitment to data security and compliance aligns with my values."
+    ],
+    "interview_prep": [
+      "How do you ensure data security and compliance in customer interactions?",
+      "Describe a time you improved customer satisfaction in a SaaS environment.",
+      "What strategies do you use to drive continuous improvement in customer experience?"
+    ],
+    "star_hooks": "Share a story about how you improved customer satisfaction and ensured data security for a key client.",
+    "talking_points": [
+      "Best practices for ensuring data security and compliance in SaaS environments.",
+      "Strategies for driving continuous improvement in customer experience."
+    ],
+    "questions_to_ask": [
+      "What are the biggest challenges your customer success team is facing right now?",
+      "How does Humach measure success for customer experience initiatives?"
+    ],
+    "recruiter_email": "firstname.lastname@humach.com",
+    "plan_30_60_90": "First 30 days: Learn the product, meet key stakeholders, and review current accounts. 60 days: Identify areas for improvement in customer experience and implement data security measures. 90 days: Deliver measurable improvements in customer satisfaction and data security."
+  },
+  {
+    "title": "Director - Customer Success",
+    "company": "Steer Health",
+    "location": "Remote (Dallas, TX eligible)",
+    "match_score": 88,
+    "listing_url": "https://www.indeed.com/viewjob?jk=d9b9813ba6a5ece9",
+    "application_url": "https://www.indeed.com/viewjob?jk=d9b9813ba6a5ece9",
+    "summary_bullets": [
+      "Build and lead a world-class post-sales organization.",
+      "Define and execute customer success strategy for early-stage healthcare SaaS.",
+      "Ensure customer retention and satisfaction across the portfolio."
+    ],
+    "company_overview": "Steer Health is an early-stage healthcare SaaS company focused on improving patient outcomes through innovative technology solutions. The company is backed by top-tier investors and is rapidly scaling its customer base.",
+    "role_insights": "Success in this role means building a high-performing customer success team, defining a scalable customer success strategy, and driving retention and satisfaction across the portfolio.",
+    "key_requirements": [
+      "Experience building and leading customer success teams",
+      "Strong strategic and operational skills",
+      "Healthcare or SaaS industry experience"
+    ],
+    "salary_intel": "Not provided",
+    "application_strategy": "Highlight your experience building and leading customer success teams in SaaS or healthcare environments.",
+    "red_flags": "Salary information not provided; early-stage company may have higher risk.",
+    "cultural_fit": "Fast-paced, innovative, and mission-driven culture with a focus on patient outcomes.",
+    "competitive_landscape": "Epic Systems, Cerner, Athenahealth",
+    "skills_gap": "Healthcare industry knowledge may be needed.",
+    "network_leverage": "Reach out to Steer Health leadership on LinkedIn.",
+    "decision_timeline": "Rolling applications; expect 2-3 weeks to hear back.",
+    "career_trajectory": "Path to VP of Customer Success or broader leadership roles.",
+    "resume_keywords": [
+      "Customer Success",
+      "Team Leadership",
+      "Healthcare",
+      "SaaS",
+      "Retention"
+    ],
+    "resume_summary": "Customer Success leader with experience building and leading high-performing teams in SaaS and healthcare environments, focused on retention and satisfaction.",
+    "cover_letter": "I am excited to apply for the Director - Customer Success role at Steer Health. With my experience building and leading customer success teams in SaaS and healthcare, I am confident in my ability to drive retention and satisfaction across your portfolio.",
+    "why_me_bullets": [
+      "Extensive experience building and leading customer success teams in SaaS and healthcare environments.",
+      "Strong strategic and operational skills, with a track record of driving retention and satisfaction.",
+      "Proven ability to build high-performing teams and define scalable customer success strategies."
+    ],
+    "why_them_bullets": [
+      "Steer Health's mission to improve patient outcomes through innovative technology is inspiring.",
+      "Opportunity to work in a fast-paced, mission-driven environment.",
+      "Company's rapid growth and top-tier investor backing are attractive."
+    ],
+    "interview_prep": [
+      "How do you build and lead a high-performing customer success team?",
+      "Describe your approach to defining a scalable customer success strategy.",
+      "What strategies do you use to drive retention and satisfaction in healthcare SaaS?"
+    ],
+    "star_hooks": "Share a story about how you built and led a high-performing customer success team in a SaaS or healthcare environment.",
+    "talking_points": [
+      "Best practices for building and leading customer success teams in SaaS and healthcare.",
+      "Strategies for defining and executing a scalable customer success strategy."
+    ],
+    "questions_to_ask": [
+      "What are the biggest challenges your customer success team is facing right now?",
+      "How does Steer Health measure success for customer retention and satisfaction?"
+    ],
+    "recruiter_email": "firstname.lastname@steerhealth.com",
+    "plan_30_60_90": "First 30 days: Learn the product, meet key stakeholders, and assess current customer success operations. 60 days: Build and lead the customer success team, define strategy. 90 days: Deliver measurable improvements in retention and satisfaction."
+  }
+]

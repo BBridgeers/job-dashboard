@@ -61,8 +61,9 @@ def check_prerequisites():
     required_files = [
         "search_corporate_ai_saas.py",
         "search_nonprofit_missions.py",
-        "migrate_final.py",
-        "build_dashboard_pro.py"
+        "db_migrator.py",
+        "run_daily_strategy.py",
+        "build_dashboard_pro_api.py"
     ]
     
     missing_files = []
@@ -122,18 +123,23 @@ def main():
 
     # 2. Migrate Data
     print("\n💾 PHASE 2: Migrating Data to Database...")
-    if not run_step("python3 migrate_final.py", "Database Migration"):
+    if not run_step("python3 db_migrator.py", "Database Migration"):
         print("❌ CRITICAL: Database migration failed. Stopping.")
         sys.exit(1)
 
-    # 3. Build Dashboard
-    print("\n🎨 PHASE 3: Building Dashboard...")
-    if not run_step("python3 build_dashboard_pro.py", "Dashboard Build"):
+    # 3. Generate Strategy Kits (Top 5 Jobs)
+    print("\n🧠 PHASE 3: Generating Strategy Kits...")
+    if not run_step("python3 run_daily_strategy.py", "Strategy Kit Generation"):
+        print("⚠️  Warning: Strategy generation had issues. Continuing...")
+
+    # 4. Build Dashboard
+    print("\n🎨 PHASE 4: Building Dashboard...")
+    if not run_step("python3 build_dashboard_pro_api.py", "Dashboard Build"):
         print("❌ CRITICAL: Dashboard build failed. Stopping.")
         sys.exit(1)
 
-    # 4. Git Push (Optional flag)
-    print("\n📤 PHASE 4: Deployment...")
+    # 5. Git Push (Optional flag)
+    print("\n📤 PHASE 5: Deployment...")
     if "--push" in sys.argv:
         if git_push():
             print("\n🎉 SUCCESS: All steps complete & deployed to cloud!")

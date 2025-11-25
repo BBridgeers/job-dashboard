@@ -1,0 +1,20 @@
+[CANDIDATE PROFILE]
+Name: Blake
+Experience: 14 Years
+Industry: SaaS / Customer Success
+Location: Dallas, TX
+
+[PROFESSIONAL SUMMARY]
+(Paste your LinkedIn About section or Resume Summary here)
+
+[CORE SKILLS]
+- Strategic Account Management
+- Churn Reduction
+- Executive Business Reviews (EBRs)
+- Team Leadership
+- (Add more...)
+
+[CAREER HIGHLIGHTS]
+- Managed $5M ARR book of business...
+- Reduced churn by 15%...
+- (Add more...)

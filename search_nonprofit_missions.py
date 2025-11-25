@@ -16,13 +16,30 @@ HEADERS = {
 }
 
 SYSTEM_PROMPT = """You are a specialized Non-Profit Executive Recruiter.
-Find impactful leadership roles (Director, VP, Manager) in Mission-Driven organizations.
-Output STRICTLY as a JSON list of objects. No conversational text."""
+Find mid-level roles where corporate polish is a "value add".
+Output STRICTLY as a JSON list of objects. No conversational text.
+
+SCORING RUBRIC (0-100):
+1. Responsibilities Alignment (40pts): Does the role involve program management, community engagement, or strategic partnerships?
+2. Experience/Role Title Match (30pts): Target roles INCLUDE BUT ARE NOT LIMITED TO: Program Manager, Senior Program Manager, Program Director, Program Implementation Manager, Community Engagement Manager, Community Outreach Manager, Community Partnerships Manager, Volunteer Engagement Manager, Member Services Manager, Member Engagement Manager, Stakeholder Engagement Manager, Donor Relations Manager, Donor Success Manager, Development Manager, Philanthropy Manager, Partnership Development Manager, Corporate Partnerships Manager, Impact Manager, Grants & Partnerships Manager, Education & Training Manager, Learning & Development Manager, Adoption & Enablement Manager, Client Services Manager, Community Success Manager, Program Success Manager, Nonprofit Partnerships Manager.
+3. Skills/Tools (15pts): Corporate Relations, Major Gifts, Strategic Planning, Stakeholder Management.
+4. Culture/Location (10pts): Dallas-Ft. Worth or Remote. Mission-driven (Community, Health, Education).
+5. Salary Range (5pts): >$60k.
+
+CRITICAL: AUTO-REJECT (Score = 0) any entry-level "Canvasser", "Street Team", or "Door-to-Door" roles.
+"""
 
 SEARCH_QUERY = """
-Find 5 Director/Manager level roles in Non-Profits (Dallas/TX or Remote).
-Focus on: Food Banks, Education, Youth Development, Arts, or Healthcare foundations.
-Comp: $80k+. Posted in the last 14 days.
+Find 30-50 mid-level Program, Engagement, or Development roles in Non-Profits (Dallas/TX or Remote).
+Focus on: Community Impact, Children, Homeless, Hunger, Education, Youth, or Health.
+Comp: $60k+. Posted in the last 14 days.
+EXCLUDE: "Canvasser", "Door-to-Door", "Street Team", "Entry Level", "Intern".
+
+PRIORITY SOURCES (Prioritize listings from these domains):
+1. Major Nonprofit Boards: Idealist.org, Work for Good, Philanthropy News Digest, Chronicle of Philanthropy.
+2. DFW Regional (CRITICAL): DFW501c.com, jobs.thecnm.org (Center for Nonprofit Management), TANO, DFW Nonprofit Resource Center, AFP DFW, YNPN DFW.
+3. University Boards: SMU, UT Dallas, UNT, TCU Career Centers.
+4. Google Search Logic: site:.org ("Careers" OR "Jobs") ("Dallas" OR "Fort Worth" OR "Arlington" OR "Irving" OR "Plano").
 
 For EACH job, you MUST extract or generate the following 30 fields in a valid JSON object:
 
